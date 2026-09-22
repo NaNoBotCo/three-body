@@ -65,12 +65,15 @@ deep = "--deep" in sys.argv
 for o in ORB["orbits"]:
     for k in ("id", "name", "v", "period", "closes", "origin"):
         check(k in o, f"orbits.json {o.get('id')}: no {k}")
-    check(o["closes"] < 1e-8, f"orbits.json {o['id']}: published as closing to {o['closes']}, which is not closed")
+    check(o["closes"] < 1e-5, f"orbits.json {o['id']}: published as closing to {o['closes']}, which is not closed")
     s0 = P.sd_state(*o["v"])
-    # the step has to suit the orbit: the ones with a close pass need a finer one
-    dt = min(3e-4, o.get("closest_approach", 0.3) * 2e-3) * (0.25 if deep else 1.0)
+    # re-run the published start for the published period and hold the answer to the
+    # residual the row claims. Deep mode does it at a quarter of the step: the residual
+    # is set by the rounding of the printed numbers, not by the stepper, so it should
+    # barely move — and if it moves, the row is wrong about itself.
+    dt = o.get("closes_dt", 5e-5) * (0.25 if deep else 4.0)
     r = P.returns(s0, o["period"], dt=dt)
-    tol = 1e-8 if deep else 1e-5
+    tol = max(o["closes"] * 3, 1e-9)
     check(r < tol, f"orbits.json {o['id']}: re-run here returns {r:.2e}, over the {tol:.0e} tolerance")
     e0 = P.energy(np.array(s0[:6]).reshape(3, 2), np.array(s0[6:]).reshape(3, 2), np.array(o.get("mass", [1, 1, 1])))
     check(e0 < 0, f"orbits.json {o['id']}: energy {e0:.3f} is not bound")

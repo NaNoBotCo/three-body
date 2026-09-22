@@ -321,15 +321,15 @@ Sources: Wikipedia, Three-body problem <https://en.wikipedia.org/wiki/Three-body
 
 ## Orbits
 
-- The braided eight: start speeds (0.339407412, 0.536184978) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 6.29081877; closes to 1.09e-12; found by the scan on this machine
-- The figure eight: start speeds (0.347116888, 0.532724945) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 6.32591398; closes to 5.61e-13; found here, and published before
-- The moth: start speeds (0.464445163, 0.396060015) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 14.89430474; closes to 4.79e-12; found here, and published before
-- The lacewing: start speeds (0.181942880, 0.514805998) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 18.14136765; closes to 4.75e-12; found by the scan on this machine
-- The shawl: start speeds (0.189004892, 0.539762453) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 19.73539189; closes to 3.92e-12; found by the scan on this machine
-- The thicket: start speeds (0.327578071, 0.579861680) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 29.21293407; closes to 2.21e-11; found by the scan on this machine
-- The ribbon: start speeds (0.209661505, 0.525702389) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 33.86151867; closes to 1.28e-11; found by the scan on this machine
-- The wide ribbon: start speeds (0.255430936, 0.516385839) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 35.04308702; closes to 3.52e-11; found by the scan on this machine
-- The skein: start speeds (0.254918844, 0.539739712) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 37.77007981; closes to 1.22e-11; found by the scan on this machine
+- The braided eight: start speeds (0.339407412, 0.536184978) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 6.29081877; closes to 1.78e-08; found by the scan on this machine
+- The figure eight: start speeds (0.347116888, 0.532724945) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 6.32591398; closes to 1.48e-08; found here, and published before
+- The moth: start speeds (0.464445163, 0.396060015) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 14.89430474; closes to 4.25e-07; found here, and published before
+- The lacewing: start speeds (0.181942880, 0.514805998) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 18.14136765; closes to 4.88e-08; found by the scan on this machine
+- The shawl: start speeds (0.189004892, 0.539762453) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 19.73539189; closes to 1.05e-07; found by the scan on this machine
+- The thicket: start speeds (0.327578071, 0.579861680) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 29.21293407; closes to 2.06e-07; found by the scan on this machine
+- The ribbon: start speeds (0.209661505, 0.525702389) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 33.86151867; closes to 1.61e-08; found by the scan on this machine
+- The wide ribbon: start speeds (0.255430936, 0.516385839) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 35.04308702; closes to 4.54e-08; found by the scan on this machine
+- The skein: start speeds (0.254918844, 0.539739712) on the line x=(-1,0),(1,0),(0,0) with v3 = -2 v1; period 37.77007981; closes to 4.70e-08; found by the scan on this machine
 
 ## History
 

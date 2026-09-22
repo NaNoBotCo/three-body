@@ -319,7 +319,7 @@ def orbits_page():
 <span class="tag">{'choreography · ' if o.get('choreography') else ''}{E(o.get('origin_label', ''))}</span>
 <h3>{E(o["name"])}</h3>
 <p class="small">{E(o.get("note", ""))}{src}</p>
-<div class="kv">period {o['period']:.6f}<br>start speed ({o['v'][0]:.7f}, {o['v'][1]:.7f})<br>closes to {o['closes']:.1e}<br>closest approach {o['closest_approach']:.3f}</div></article>""")
+<div class="kv">period {o['period']:.6f}<br>start speed ({o['v'][0]:.9f}, {o['v'][1]:.9f})<br>closes to {o['closes']:.1e}<br>solver reached {o['closes_solver']:.0e}<br>closest approach {o['closest_approach']:.3f}</div></article>""")
     scan = ORB.get("scan", {})
     body = f"""
 <h1>Orbits</h1>
@@ -331,12 +331,16 @@ def orbits_page():
 <li><b>Run {SCAN_STARTS:,} of them at once.</b> A {SCAN_N}×{SCAN_N} grid of starting speeds, stepped forward together for {scan.get('T', 40)} time units, each one asked at every step how far it is from its own starting state. Keep the closest it ever got. That is <a href="{REPO}/blob/main/tools/find_orbits.py">tools/find_orbits.py scan</a>, and it takes about three and a half minutes.</li>
 <li><b>Read the valleys.</b> {scan.get('near', 0)} of the {SCAN_STARTS:,} came back within 0.05 of their own start. The dips in that map are where the closed orbits live — the picture below is that map.</li>
 <li><b>Walk each one in.</b> Three unknowns — the two velocity components and the period — against twelve residuals, the state at time T minus the state at 0. Finite-difference Jacobian, least squares, damped. Ten iterations takes the residual from about 10⁻² to about 10⁻¹¹.</li>
+<li><b>Round it, and measure again.</b> The numbers printed on the cards are rounded to nine decimal places. That rounding moves the answer, so the residual on each card is re-measured from the rounded start rather than reported from the solver — both figures are on the card, and the gap between them is below.</li>
 <li><b>Throw out the repeats.</b> The scan keeps whichever return was closest, which is often two or three laps, so the same orbit arrives several times with its period doubled or tripled. The shortest period that closes is the orbit's own.</li>
 </ol>
 {band("band-map.jpg", "the map", "Every start, and how close it came to closing", "Brighter is closer. The bright valleys are the periodic orbits; everything dark is a start that wandered off and never came back to itself. This is the whole search, drawn.", depth=1)}
 <h2>The ones that closed</h2>
 <div class="orbits">{"".join(cards)}</div>
 <p class="small mute">Each card's picture is one period, integrated at build time from the numbers printed under it. The period is in the units the equations use — three equal weights of 1, G = 1 — and the close figure is the distance between the twelve numbers at time T and the twelve at time 0.</p>
+<h2>Two numbers, and the gap between them</h2>
+<p>Every card carries the residual twice. <b>Closes to</b> is what the start printed on that card does: type those numbers in, run them for that period, and the state comes back within that distance. <b>Solver reached</b> is what the search got to before the numbers were rounded to nine decimal places for printing.</p>
+<p>The gap is a factor of ten thousand or so, and it is not the stepper: the same residual comes out at a step four times finer and at one four times coarser. It is the rounding itself. A change of five in the tenth decimal place of a starting speed, grown over one period of a three-body orbit, is a change in the eighth decimal of where everything ends up. The subject of this whole site, turning up in its own data files, on the tidiest orbits it has.</p>
 <h2>What is not here</h2>
 <p>This scan covers one two-dimensional sheet of starts, at one resolution, for one set of weights, looking only at returns inside {scan.get('T', 40)} time units. Longer periods, unequal weights, non-zero spin and the whole rest of the space are outside it. Šuvakov and Dmitrašinović reported thirteen families from a finer search of the same sheet in 2013, and Li and Liao have since taken the catalogue into the thousands with more machine and more digits. The point of the search here is not the count; it is that the method fits in a file you can read in ten minutes.</p>
 <p><a class="btn" href="../code/index.html">The program that does it →</a></p>

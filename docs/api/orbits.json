@@ -1,5 +1,5 @@
 {
- "note": "Periodic three-body orbits, equal weights, G = 1, found on the machine that built this site. The start is the line Suvakov and Dmitrasinovic scan: bodies at (-1,0), (1,0) and (0,0), the first two with velocity v and the third with -2v, so the total momentum and the total spin are both zero. `closes` is the distance between the twelve numbers of the state at time `period` and at time zero.",
+ "note": "Periodic three-body orbits, equal weights, G = 1, found on the machine that built this site. The start is the line Suvakov and Dmitrasinovic scan: bodies at (-1,0), (1,0) and (0,0), the first two with velocity v and the third with -2v, so the total momentum and the total spin are both zero. `closes` is the distance between the twelve numbers of the state at time `period` and at time zero. `closes` is measured from the numbers printed here, which are rounded to nine decimal places, at a step of 5e-5; `closes_solver` is what the solver reached before that rounding. The gap between the two is the rounding in the ninth decimal, grown over one period — this problem's own subject, turning up in its own data.",
  "method": "tools/find_orbits.py — scan, then Gauss-Newton on (vx, vy, period)",
  "scan": {
   "grid": 200,
@@ -19,7 +19,7 @@
     0.536184978
    ],
    "period": 6.29081877,
-   "closes": 1.09e-12,
+   "closes": 1.78e-08,
    "mass": [
     1.0,
     1.0,
@@ -35,7 +35,9 @@
     0.34121,
     0.53598,
     0.00326
-   ]
+   ],
+   "closes_solver": 1.09e-12,
+   "closes_dt": 5e-05
   },
   {
    "id": "figure-eight",
@@ -46,7 +48,7 @@
     0.532724945
    ],
    "period": 6.32591398,
-   "closes": 5.61e-13,
+   "closes": 1.48e-08,
    "mass": [
     1.0,
     1.0,
@@ -64,7 +66,9 @@
     0.00209
    ],
    "source": "https://arxiv.org/abs/math/0011268",
-   "source_name": "Chenciner & Montgomery, Annals of Mathematics 152 (2000)"
+   "source_name": "Chenciner & Montgomery, Annals of Mathematics 152 (2000)",
+   "closes_solver": 5.61e-13,
+   "closes_dt": 5e-05
   },
   {
    "id": "moth",
@@ -75,7 +79,7 @@
     0.396060015
    ],
    "period": 14.89430474,
-   "closes": 4.79e-12,
+   "closes": 4.25e-07,
    "mass": [
     1.0,
     1.0,
@@ -93,7 +97,9 @@
     0.01653
    ],
    "source": "https://arxiv.org/abs/1303.0181",
-   "source_name": "Šuvakov & Dmitrašinović, PRL 110, 114301 (2013)"
+   "source_name": "Šuvakov & Dmitrašinović, PRL 110, 114301 (2013)",
+   "closes_solver": 4.79e-12,
+   "closes_dt": 5e-05
   },
   {
    "id": "lacewing",
@@ -104,7 +110,7 @@
     0.514805998
    ],
    "period": 18.14136765,
-   "closes": 4.75e-12,
+   "closes": 4.88e-08,
    "mass": [
     1.0,
     1.0,
@@ -120,7 +126,9 @@
     0.18402,
     0.51548,
     0.0438
-   ]
+   ],
+   "closes_solver": 4.75e-12,
+   "closes_dt": 5e-05
   },
   {
    "id": "shawl",
@@ -131,7 +139,7 @@
     0.539762453
    ],
    "period": 19.73539189,
-   "closes": 3.92e-12,
+   "closes": 1.05e-07,
    "mass": [
     1.0,
     1.0,
@@ -147,7 +155,9 @@
     0.18402,
     0.5394,
     0.04457
-   ]
+   ],
+   "closes_solver": 3.92e-12,
+   "closes_dt": 5e-05
   },
   {
    "id": "thicket",
@@ -158,7 +168,7 @@
     0.57986168
    ],
    "period": 29.21293407,
-   "closes": 2.21e-11,
+   "closes": 2.06e-07,
    "mass": [
     1.0,
     1.0,
@@ -174,7 +184,9 @@
     0.34121,
     0.57015,
     0.10656
-   ]
+   ],
+   "closes_solver": 2.21e-11,
+   "closes_dt": 5e-05
   },
   {
    "id": "ribbon",
@@ -185,7 +197,7 @@
     0.525702389
    ],
    "period": 33.86151867,
-   "closes": 1.28e-11,
+   "closes": 1.61e-08,
    "mass": [
     1.0,
     1.0,
@@ -201,7 +213,9 @@
     0.20794,
     0.52573,
     0.02444
-   ]
+   ],
+   "closes_solver": 1.28e-11,
+   "closes_dt": 5e-05
   },
   {
    "id": "wide-ribbon",
@@ -212,7 +226,7 @@
     0.516385839
    ],
    "period": 35.04308702,
-   "closes": 3.52e-11,
+   "closes": 4.54e-08,
    "mass": [
     1.0,
     1.0,
@@ -228,7 +242,9 @@
     0.25578,
     0.51548,
     0.02221
-   ]
+   ],
+   "closes_solver": 3.52e-11,
+   "closes_dt": 5e-05
   },
   {
    "id": "skein",
@@ -239,7 +255,7 @@
     0.539739712
    ],
    "period": 37.77007981,
-   "closes": 1.22e-11,
+   "closes": 4.7e-08,
    "mass": [
     1.0,
     1.0,
@@ -255,7 +271,9 @@
     0.26603,
     0.5394,
     0.01388
-   ]
+   ],
+   "closes_solver": 1.22e-11,
+   "closes_dt": 5e-05
   }
  ]
 }
