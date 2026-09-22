@@ -1,0 +1,67 @@
+# The Three-Body Problem
+
+> The mathematics of the three-body problem in plain English: the law, the two-body solution, the eighteen numbers and the ten that hold, Bruns and Poincaré, chaos and the Lyapunov time, the restricted problem and the Lagrange points, central configurations, periodic orbits including the figure eight, Sundman's series, singularities, numerical stepping, and the statistics of what usually happens. 34 equations, each with a plain reading. CC BY 4.0.
+
+- [Math](https://nanobotco.github.io/three-body/math/): 13 chapters
+- [Everything pulls on everything](https://nanobotco.github.io/three-body/math/pull/): Two things pull on each other. The pull goes up with the weight and down with the square of the distance. That one line is the whole engine.
+- [Two is easy](https://nanobotco.github.io/three-body/math/two/): With two bodies you can write the answer down, once, and it is right forever. This is the only case that works that way.
+- [Add one rock](https://nanobotco.github.io/three-body/math/three/): The equations for three bodies fit on one line and hide nothing. What breaks is not the writing down. It is the solving.
+- [Ten things that never change](https://nanobotco.github.io/three-body/math/count/): Eighteen numbers, ten of them pinned down by conservation laws. The eight left over are where the trouble lives — and two theorems say no further law is coming.
+- [A hair's difference, and a different sky](https://nanobotco.github.io/three-body/math/chaos/): Move one rock by the width of an atom and an hour later the whole arrangement is different. The equations are exact; the answer is still out of reach.
+- [Two big, one small](https://nanobotco.github.io/three-body/math/restricted/): Let the third body be a pebble too light to pull back. Now the problem has a fence you can draw, five places where a pebble can sit still, and a number that says which side of the fence you are on.
+- [The two ways three rocks can hold a shape](https://nanobotco.github.io/three-body/math/shapes/): Three bodies can keep the same shape while they spin, and there are exactly two shapes that allow it: a straight line and an equilateral triangle. Euler found the first in 1767, Lagrange the second in 1772.
+- [The ones that come back around](https://nanobotco.github.io/three-body/math/eight/): Some starts run a closed loop and repeat forever. Three equal weights chasing each other around a figure eight is the famous one, and it was found by looking, not by solving.
+- [There is a formula. Nobody can add it up.](https://nanobotco.github.io/three-body/math/series/): In 1912 Karl Sundman wrote a series that converges to the answer for almost every three-body start. One estimate of how many terms you would need to use it runs to a 1 followed by eight million zeros.
+- [Crashes, and the kind of trouble that is not a crash](https://nanobotco.github.io/three-body/math/blowup/): Solutions can stop existing. With three bodies the only way is a collision, and a three-way collision needs the whole system to have no spin. With four or more, something stranger is possible.
+- [So you step it](https://nanobotco.github.io/three-body/math/numbers/): Nobody solves the three-body problem. Everybody steps it: work out the pulls, move everything a little, do it again. The skill is in knowing when your own arithmetic has started lying.
+- [What usually happens](https://nanobotco.github.io/three-body/math/odds/): Throw three bodies together and the usual ending is a fight two of them win: one gets thrown out, the other two are left closer than they started. You cannot predict which — but you can price it.
+- [What it is not](https://nanobotco.github.io/three-body/math/myths/): Five things the phrase 'the three-body problem' gets used for that it does not mean.
+- [Orbits](https://nanobotco.github.io/three-body/orbits/): 9 periodic orbits with initial conditions, periods and residuals; 9 found by a scan of 40,000 starts run on the building machine
+- [History](https://nanobotco.github.io/three-body/history/): 27 events, 1687 to 2022
+- [Code](https://nanobotco.github.io/three-body/code/): the whole thing in 30 lines of Python, no libraries
+- [Words](https://nanobotco.github.io/three-body/words/): 38 terms
+- [Sources](https://nanobotco.github.io/three-body/sources/): 45 sources
+
+## Computed on this site rather than quoted
+- Lyapunov time for the reference start: 3.514 time units
+- Sun–Earth L1 from the quintic: 1,491,539 km
+- 435 of 643 random equal-mass triples ejected a body within 60 time units (67.7%); rerun at a third of the step the share is unchanged but only 69% of individual triples end the same way
+
+## Data
+- https://nanobotco.github.io/three-body/api/theory.json · https://nanobotco.github.io/three-body/api/orbits.json · https://nanobotco.github.io/three-body/api/timeline.json · https://nanobotco.github.io/three-body/api/words.json
+- https://nanobotco.github.io/three-body/llms-full.txt — every chapter, equation, orbit and event as text
+- Repository: https://github.com/NaNoBotCo/three-body
+
+# — roster of sibling sites, generated from data/fleet.json —
+## Elsewhere from the same publisher
+
+Made by Hongdam (https://hongdam.net/), a bilingual web studio in Chiang Rai.
+
+- [Mot Dang](https://motdang.net/): city directory for Chiang Mai and Chiang Rai
+- [The Mae Hong Son Loop](https://nanobotco.github.io/mae-hong-son-loop/): motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured
+- [Muay Thai](https://motdang.net/muay-thai/): the eight limbs, the thirty named techniques, the ceremony, and every gym on the map
+- [Roads of Chiang Mai](https://motdang.net/roads/): the square of 1296, four rings, and what each one did to the city — counted from the map
+- [wichaa](https://wichaa.net/): Lanna manuscripts, the amulet market, and the traditions around them
+- [Hand Poke](https://nanobotco.github.io/hand-poke/): 28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted
+- [Black Holes, Drawn](https://nanobotco.github.io/black-holes/): black holes modelled and drawn from the equations — generators, the past, present and future, the legends
+- [Quantum Computing, plainly](https://nanobotco.github.io/quantum-computing/): the history and theory of quantum computing in plain words, with demos; refreshed weekly
+- [Goin' Fast](https://nanobotco.github.io/goin-fast/): a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs
+- [Amulet Atlas](https://nanobotco.github.io/amulet-atlas/): amulets, charms and talismans worldwide
+- [Carolina Barbecue](https://nanobotco.github.io/carolina-barbecue/): barbecue in North and South Carolina
+- [Wing Country](https://nanobotco.github.io/buffalo-wings/): the American chicken wing
+- [Pink Box](https://nanobotco.github.io/pink-box/): the American mom-and-pop donut shop
+- [Basque Tables](https://nanobotco.github.io/basque-tables/): Basque dining rooms of California, Nevada and Idaho
+- [Pinot Country](https://nanobotco.github.io/pinot-noir/): pinot noir: the vine, the regions, the cellars
+- [Care Abroad](https://nanobotco.github.io/care-abroad/): treatment across borders, with published prices and their dates
+- [Thai Roots](https://nanobotco.github.io/thairoots/): a root dictionary of Thai, with a word decomposer
+- [The index](https://nanobotco.github.io/index/): every corpus, site and repository, counted
+- [Uptake](https://nanobotco.github.io/uptake/): a field manual on publishing for machines that copy
+- [NaNoBotCo](https://nanobotco.github.io/): the portal
+- [Ask Mot Dang](https://ask.motdang.net/): reader assistant over the directory
+- [ai.motdang.net](https://ai.motdang.net/): white-label assistants, by seat
+- [Defiant](https://defiant.to/): medical and dental care in Chiang Mai, with a translator at the appointment
+- [Hongdam](https://hongdam.net/): bilingual web development, Chiang Rai
+- [ฮักฝรั่ง](https://hakfarang.net/): เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง
+- [Offrampt](https://offrampt.net/): turning crypto into spendable local money, Thailand first
+
+- [The roster as JSON](https://nanobotco.github.io/index/fleet.json)

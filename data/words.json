@@ -1,0 +1,194 @@
+{
+ "terms": [
+  {
+   "term": "action",
+   "plain": "A total added up along a path: the motion in it minus the pull, summed over the whole trip. Nature's paths make it as small as possible, which is how the figure-eight orbit was proved to exist without solving anything.",
+   "see": "eight"
+  },
+  {
+   "term": "angular momentum",
+   "plain": "How much spin a system has, counted around a chosen point. It never changes, which is why three bodies with any spin at all can never all meet at one place.",
+   "see": "count"
+  },
+  {
+   "term": "barycentre",
+   "plain": "The balance point of a group of bodies. For two bodies alone it either sits still or coasts in a straight line forever, whatever the two get up to.",
+   "see": "two"
+  },
+  {
+   "term": "central configuration",
+   "plain": "An arrangement of bodies that can spin without changing shape. For three bodies there are five: three straight lines and two triangles.",
+   "see": "shapes"
+  },
+  {
+   "term": "chaos",
+   "plain": "Nearby starts drifting apart at an exponential rate. Not randomness — the same start always gives the same path — but it puts an expiry date on any prediction.",
+   "see": "chaos"
+  },
+  {
+   "term": "conic section",
+   "plain": "Circle, ellipse, parabola, hyperbola: the shapes you get by slicing a cone, and exactly the shapes a two-body orbit can take.",
+   "see": "two"
+  },
+  {
+   "term": "conserved quantity",
+   "plain": "Something about a system that never changes as it moves — energy, momentum, spin. Each one found is one unknown removed. Three bodies have ten and, by Bruns' theorem, no more of the usable kind.",
+   "see": "count"
+  },
+  {
+   "term": "double precision",
+   "plain": "The sixteen-or-so digits a computer normally carries. Enough for most work, and in a chaotic triple the error in the last digit grows to swamp the first one.",
+   "see": "numbers"
+  },
+  {
+   "term": "eccentricity",
+   "plain": "How stretched an orbit is. Zero is a circle, near one is a long cigar, one or more and the body leaves and does not return.",
+   "see": "two"
+  },
+  {
+   "term": "ejection",
+   "plain": "The usual ending for three bodies thrown together: one leaves for good and the other two are left in a tighter pair.",
+   "see": "odds"
+  },
+  {
+   "term": "energy",
+   "plain": "Motion plus pull, added up. Negative means bound together, positive means the system will come apart. It cannot change, which makes it the audit on any computed orbit.",
+   "see": "count"
+  },
+  {
+   "term": "ephemeris",
+   "plain": "A table of where the bodies will be, at stated times. What astronomers actually want, and what stepping the equations produces.",
+   "see": "numbers"
+  },
+  {
+   "term": "figure-eight orbit",
+   "plain": "Three equal weights chasing one another around a single figure-eight track, with no overall spin. Found by computer in 1993, proved to exist in 2000.",
+   "see": "eight"
+  },
+  {
+   "term": "gravitational constant",
+   "plain": "G, the number that sets how strong gravity is: 6.674 30 × 10⁻¹¹ in metres, kilograms and seconds. The least precisely known of the fundamental constants.",
+   "see": "pull"
+  },
+  {
+   "term": "hierarchical triple",
+   "plain": "A close pair with a distant third body. The stable way to arrange three bodies, and the arrangement of the Sun, the Earth and the Moon.",
+   "see": "odds"
+  },
+  {
+   "term": "Hill sphere",
+   "plain": "How far a planet's grip reaches before the Sun wins. About 1.5 million km for the Earth; the Moon orbits at a quarter of that.",
+   "see": "restricted"
+  },
+  {
+   "term": "homoclinic tangle",
+   "plain": "The infinitely folded crossing pattern Poincaré found in 1890 and declined to draw. The first sight of chaos in mathematics.",
+   "see": "chaos"
+  },
+  {
+   "term": "inverse square",
+   "plain": "A quantity that falls off as the square of the distance. Twice as far, a quarter as strong. Gravity and light both do it, for the same geometric reason.",
+   "see": "pull"
+  },
+  {
+   "term": "Jacobi constant",
+   "plain": "The one quantity a light third body cannot change in the rotating frame. It fixes which regions the body is shut out of.",
+   "see": "restricted"
+  },
+  {
+   "term": "KAM theorem",
+   "plain": "Kolmogorov, Arnold and Moser: in a system close to a solvable one, most orbits keep their shape under small disturbances and the rest go chaotic. Named for all three, proved over nine years.",
+   "see": "chaos"
+  },
+  {
+   "term": "Kozai–Lidov mechanism",
+   "plain": "A distant third body tilted more than about 39 degrees trades its tilt for stretch in the inner orbit, cycling it between round and elongated.",
+   "see": "odds"
+  },
+  {
+   "term": "Lagrange point",
+   "plain": "One of five places where a light body can keep station with two heavy ones. L1, L2 and L3 sit on the line through the pair and need correcting; L4 and L5 sit at the triangle corners and hold.",
+   "see": "restricted"
+  },
+  {
+   "term": "leapfrog",
+   "plain": "The stepping method that kicks by half a step, drifts a whole step, then kicks again. Cheap, symplectic, and it does not leak energy. Every animation on this site runs it.",
+   "see": "numbers"
+  },
+  {
+   "term": "Lyapunov time",
+   "plain": "How long it takes a small error to grow by a factor of about three. The shelf life of a prediction: about five million years for the inner solar system.",
+   "see": "chaos"
+  },
+  {
+   "term": "n-body problem",
+   "plain": "The same question for any number of bodies. Two is solved, three is this site, and a hundred billion is a galaxy — which is oddly easier to describe than three.",
+   "see": "myths"
+  },
+  {
+   "term": "periodic orbit",
+   "plain": "A motion that returns to its exact starting positions and speeds and then repeats. Two bodies always do it; three bodies do it only for special starts, of which thousands are now known.",
+   "see": "eight"
+  },
+  {
+   "term": "perturbation",
+   "plain": "Treating a hard problem as an easy one plus a small correction. How the Moon's motion was worked out for two centuries, and how a spacecraft's path is planned.",
+   "see": "restricted"
+  },
+  {
+   "term": "Poincaré section",
+   "plain": "Instead of watching the whole path, mark the spot every time it crosses a chosen plane. Order shows up as curves and loops; chaos shows up as a scatter of dots.",
+   "see": "chaos"
+  },
+  {
+   "term": "reduced mass",
+   "plain": "The single weight that makes a two-body problem behave like one body: the product of the two divided by their sum.",
+   "see": "two"
+  },
+  {
+   "term": "regularisation",
+   "plain": "Changing variables so that a collision, where the equations divide by zero, turns into something a calculation can pass through. Levi-Civita, 1903.",
+   "see": "numbers"
+  },
+  {
+   "term": "restricted three-body problem",
+   "plain": "The case where the third body is too light to pull back. Two heavy bodies on a known orbit, one speck along for the ride, and enough structure left to draw.",
+   "see": "restricted"
+  },
+  {
+   "term": "shape sphere",
+   "plain": "Throw away a triangle's size and which way it points, and what is left — its shape — is a point on a sphere. Collisions sit on the equator; the equilateral triangles are the poles.",
+   "see": "eight"
+  },
+  {
+   "term": "singularity",
+   "plain": "A moment past which a solution stops existing. For three bodies it is always a collision; with five bodies, Xia built one with no collision in it.",
+   "see": "blowup"
+  },
+  {
+   "term": "softening",
+   "plain": "Adding a small constant under the distance in the equations so a close pass cannot blow up the arithmetic. A deliberate lie, used where the close passes are not the point.",
+   "see": "numbers"
+  },
+  {
+   "term": "symplectic",
+   "plain": "A property of a stepping method: it preserves the geometry of the equations, so energy wobbles instead of drifting. The reason leapfrog beats the obvious method.",
+   "see": "numbers"
+  },
+  {
+   "term": "Trojan",
+   "plain": "A body sitting near a planet's L4 or L5 point. Jupiter has over ten thousand catalogued; the Earth has a couple.",
+   "see": "restricted"
+  },
+  {
+   "term": "two-body problem",
+   "plain": "Two bodies under gravity. Solved in closed form: an ellipse or its relatives, repeating forever. The only gravitational case with a napkin answer.",
+   "see": "two"
+  },
+  {
+   "term": "zero-velocity curve",
+   "plain": "The fence drawn by Jacobi's constant: the boundary of where a light body could go if it stopped. It cannot cross, and the gates open in a fixed order as the constant falls.",
+   "see": "restricted"
+  }
+ ]
+}

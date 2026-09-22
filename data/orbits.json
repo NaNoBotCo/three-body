@@ -1,0 +1,261 @@
+{
+ "note": "Periodic three-body orbits, equal weights, G = 1, found on the machine that built this site. The start is the line Suvakov and Dmitrasinovic scan: bodies at (-1,0), (1,0) and (0,0), the first two with velocity v and the third with -2v, so the total momentum and the total spin are both zero. `closes` is the distance between the twelve numbers of the state at time `period` and at time zero.",
+ "method": "tools/find_orbits.py — scan, then Gauss-Newton on (vx, vy, period)",
+ "scan": {
+  "grid": 200,
+  "vmax": 0.7,
+  "T": 40.0,
+  "dt": 0.004,
+  "near": 131,
+  "valleys": 23
+ },
+ "orbits": [
+  {
+   "id": "braided-eight",
+   "name": "The braided eight",
+   "note": "Three strands of one figure eight, each body on its own, a hair apart from the others. It misses being a choreography by four hundredths.",
+   "v": [
+    0.339407412,
+    0.536184978
+   ],
+   "period": 6.29081877,
+   "closes": 1.09e-12,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found by the scan on this machine",
+   "choreography": false,
+   "track_deviation": 0.0431,
+   "closest_approach": 0.6583,
+   "size": 1.055,
+   "scan_seed": [
+    0.34121,
+    0.53598,
+    0.00326
+   ]
+  },
+  {
+   "id": "figure-eight",
+   "name": "The figure eight",
+   "note": "All three on one track, evenly spaced in time, no spin in the system at all. Found by Cris Moore in 1993 and proved to exist by Chenciner and Montgomery in 2000; the numbers here come out of this site's own solver and agree with the published start to seven places.",
+   "v": [
+    0.347116888,
+    0.532724945
+   ],
+   "period": 6.32591398,
+   "closes": 5.61e-13,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found here, and published before",
+   "choreography": true,
+   "track_deviation": 0.0,
+   "closest_approach": 0.6905,
+   "size": 1.058,
+   "scan_seed": [
+    0.34804,
+    0.53256,
+    0.00209
+   ],
+   "source": "https://arxiv.org/abs/math/0011268",
+   "source_name": "Chenciner & Montgomery, Annals of Mathematics 152 (2000)"
+  },
+  {
+   "id": "moth",
+   "name": "The moth",
+   "note": "Two broad wings and a body between them. The published start for the family Šuvakov and Dmitrašinović named moth I rounds to the same five decimals as the one found here, and the period agrees to four.",
+   "v": [
+    0.464445163,
+    0.396060015
+   ],
+   "period": 14.89430474,
+   "closes": 4.79e-12,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found here, and published before",
+   "choreography": false,
+   "track_deviation": 1.5235,
+   "closest_approach": 0.0795,
+   "size": 1.137,
+   "scan_seed": [
+    0.46764,
+    0.39588,
+    0.01653
+   ],
+   "source": "https://arxiv.org/abs/1303.0181",
+   "source_name": "Šuvakov & Dmitrašinović, PRL 110, 114301 (2013)"
+  },
+  {
+   "id": "lacewing",
+   "name": "The lacewing",
+   "note": "Wings again, with a nest of small loops where the three cross. Its closest approach is the tightest of the nine after the moth's.",
+   "v": [
+    0.18194288,
+    0.514805998
+   ],
+   "period": 18.14136765,
+   "closes": 4.75e-12,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found by the scan on this machine",
+   "choreography": false,
+   "track_deviation": 0.3529,
+   "closest_approach": 0.2283,
+   "size": 1.014,
+   "scan_seed": [
+    0.18402,
+    0.51548,
+    0.0438
+   ]
+  },
+  {
+   "id": "shawl",
+   "name": "The shawl",
+   "note": "A figure eight with two long loops thrown over it, one each side.",
+   "v": [
+    0.189004892,
+    0.539762453
+   ],
+   "period": 19.73539189,
+   "closes": 3.92e-12,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found by the scan on this machine",
+   "choreography": false,
+   "track_deviation": 0.3005,
+   "closest_approach": 0.2609,
+   "size": 1.015,
+   "scan_seed": [
+    0.18402,
+    0.5394,
+    0.04457
+   ]
+  },
+  {
+   "id": "thicket",
+   "name": "The thicket",
+   "note": "The widest of the nine and the most crowded: twenty-nine time units of looping before anything repeats.",
+   "v": [
+    0.327578071,
+    0.57986168
+   ],
+   "period": 29.21293407,
+   "closes": 2.21e-11,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found by the scan on this machine",
+   "choreography": false,
+   "track_deviation": 0.3903,
+   "closest_approach": 0.3388,
+   "size": 1.197,
+   "scan_seed": [
+    0.34121,
+    0.57015,
+    0.10656
+   ]
+  },
+  {
+   "id": "ribbon",
+   "name": "The ribbon",
+   "note": "A choreography: all three bodies on one closed track, a folded band five times longer than the figure eight's.",
+   "v": [
+    0.209661505,
+    0.525702389
+   ],
+   "period": 33.86151867,
+   "closes": 1.28e-11,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found by the scan on this machine",
+   "choreography": true,
+   "track_deviation": 0.0,
+   "closest_approach": 0.3442,
+   "size": 1.019,
+   "scan_seed": [
+    0.20794,
+    0.52573,
+    0.02444
+   ]
+  },
+  {
+   "id": "wide-ribbon",
+   "name": "The wide ribbon",
+   "note": "The other long choreography found by this scan. One track, three bodies, thirty-five time units to get round it.",
+   "v": [
+    0.255430936,
+    0.516385839
+   ],
+   "period": 35.04308702,
+   "closes": 3.52e-11,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found by the scan on this machine",
+   "choreography": true,
+   "track_deviation": 0.0,
+   "closest_approach": 0.3607,
+   "size": 1.029,
+   "scan_seed": [
+    0.25578,
+    0.51548,
+    0.02221
+   ]
+  },
+  {
+   "id": "skein",
+   "name": "The skein",
+   "note": "An eight wound several times over, each body keeping to its own bundle of strands.",
+   "v": [
+    0.254918844,
+    0.539739712
+   ],
+   "period": 37.77007981,
+   "closes": 1.22e-11,
+   "mass": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "origin": "scan",
+   "origin_label": "found by the scan on this machine",
+   "choreography": false,
+   "track_deviation": 0.2439,
+   "closest_approach": 0.405,
+   "size": 1.029,
+   "scan_seed": [
+    0.26603,
+    0.5394,
+    0.01388
+   ]
+  }
+ ]
+}

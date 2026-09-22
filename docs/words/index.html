@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Words — The Three-Body Problem</title>
+<meta name="description" content="38 terms from the three-body problem defined in plain English: Lyapunov time, Jacobi constant, central configuration, shape sphere, symplectic, regularisation, Hill sphere and the rest.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="color-scheme" content="light dark">
+<meta property="og:site_name" content="The Three-Body Problem"><meta property="og:locale" content="en_US">
+<meta property="og:title" content="Words — The Three-Body Problem"><meta property="og:description" content="38 terms from the three-body problem defined in plain English: Lyapunov time, Jacobi constant, central configuration, shape sphere, symplectic, regularisation, Hill sphere and the rest."><meta property="og:type" content="website">
+<meta property="og:image" content="https://nanobotco.github.io/three-body/img/card.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://nanobotco.github.io/three-body/img/card.jpg">
+<link rel="canonical" href="https://nanobotco.github.io/three-body/words/">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0b7a76">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<style>
+:root{
+ --bg:#f7f6f1;--panel:#ffffff;--ink:#101418;--mute:#5b6570;--line:#e2e0d6;--chip:#eceae0;
+ --teal:#0b7a76;--gold:#b7791f;--violet:#6d4fc4;--red:#c8323c;--navy:#0b1220;
+ --focus:#0a4fd1;--shadow:rgba(10,14,20,.10);
+ --e-law:#b7791f;--e-shapes:#0b7a76;--e-proof:#6d4fc4;--e-step:#c8323c;--e-found:#0a66c2;--e-sky:#5b6570;
+ --display:"Avenir Next Condensed","HelveticaNeue-CondensedBold","Arial Narrow Bold",
+   "Franklin Gothic Heavy",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --bg:#0d1117;--panel:#151b24;--ink:#eef1f4;--mute:#a4afbb;--line:#26303c;--chip:#1c2530;
+ --teal:#2fc4bd;--gold:#f0b545;--violet:#a891f2;--red:#ff6b74;--navy:#070b13;
+ --focus:#8ab4f8;--shadow:rgba(0,0,0,.5);
+ --e-law:#f0b545;--e-shapes:#2fc4bd;--e-proof:#a891f2;--e-step:#ff6b74;--e-found:#6cb4ff;--e-sky:#a4afbb;}}
+:root[data-theme="dark"]{
+ --bg:#0d1117;--panel:#151b24;--ink:#eef1f4;--mute:#a4afbb;--line:#26303c;--chip:#1c2530;
+ --teal:#2fc4bd;--gold:#f0b545;--violet:#a891f2;--red:#ff6b74;--navy:#070b13;
+ --focus:#8ab4f8;--shadow:rgba(0,0,0,.5);
+ --e-law:#f0b545;--e-shapes:#2fc4bd;--e-proof:#a891f2;--e-step:#ff6b74;--e-found:#6cb4ff;--e-sky:#a4afbb;}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;-webkit-text-size-adjust:100%}
+a{color:var(--teal);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:var(--violet)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,svg{max-width:100%}
+main{max-width:46rem;margin:0 auto;padding:0 1rem 3rem}
+main.wide{max-width:64rem}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.005em;margin:1.6rem 0 .5rem}
+h1{font-size:clamp(2.2rem,7vw,4rem);margin-top:1.2rem}
+h2{font-size:clamp(1.6rem,4.5vw,2.4rem);border-bottom:3px solid var(--ink);padding-bottom:.2rem}
+h3{font-size:1.3rem}
+p{margin:.6rem 0}
+.lead{font-size:1.25rem;line-height:1.5;max-width:36ch}
+.line{font-size:1.2rem;font-weight:600;border-left:5px solid var(--gold);padding:.3rem 0 .3rem .9rem;margin:1rem 0 1.2rem;background:var(--chip)}
+.mute{color:var(--mute)}
+.small{font-size:.86rem}
+code,.mono{font-family:var(--mono);font-size:.9em}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+/* header */
+header.top{max-width:64rem;margin:0 auto;padding:.7rem 1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.2rem}
+.brand{font-family:var(--display);font-size:1.5rem;text-decoration:none;color:var(--ink);letter-spacing:.01em}
+.brand b{color:var(--teal)}
+nav.crumbs{font-size:.92rem;display:flex;flex-wrap:wrap;gap:.2rem .9rem}
+nav.crumbs a{text-decoration:none;color:var(--ink);border-bottom:2px solid transparent;padding-bottom:.1rem}
+nav.crumbs a:hover,nav.crumbs a[aria-current]{border-bottom-color:var(--gold);color:var(--ink)}
+/* the linked picture: background · scrim · spacer · text — the whole box is the link */
+.shot{position:relative;display:block;overflow:hidden;text-decoration:none;border:3px solid var(--ink);color:#fff;isolation:isolate;background:var(--navy)}
+.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.shot .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,8,14,.05) 0%,rgba(6,8,14,.25) 45%,rgba(6,8,14,.86) 100%)}
+.shot .sp{display:block;padding-top:62%}
+.shot .tx{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:.7rem .9rem;font-family:var(--display);font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.02;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.shot .tx small{display:block;font-family:var(--body);font-size:.78rem;opacity:.9;margin-top:.3rem;font-weight:400}
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin:1.4rem 0}
+.doors h3{margin:0}
+.hero{margin:1rem 0 0}
+.hero .sp{padding-top:44%}
+.hero .tx{font-size:clamp(2rem,7vw,4.4rem);padding:1rem 1.2rem}
+.hero .tx small{font-size:clamp(.95rem,2vw,1.15rem);max-width:40ch}
+/* the parallax band — full bleed, the photograph held still while the page moves over it */
+.band{position:relative;isolation:isolate;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;
+ min-height:clamp(220px,44vh,440px);display:grid;align-items:center;background-size:cover;background-position:center;
+ background-repeat:no-repeat;background-attachment:fixed;background-color:var(--navy);
+ border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);margin-block:2.4rem;color:#fff}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,8,14,.72) 0%,rgba(6,8,14,.30) 40%,rgba(6,8,14,.40) 60%,rgba(6,8,14,.82) 100%)}
+.band .in{max-width:46rem;margin:0 auto;padding:clamp(1.6rem,5vw,3.4rem) 1rem;width:100%}
+.band .kicker{display:block;font-family:var(--display);font-size:.72rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#f0b545;margin-bottom:.5rem}
+.band h2{border:0;color:#fff;text-transform:uppercase;margin:0 0 .4rem;max-width:22ch;text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.band p{color:#e8ecf0;max-width:38ch;text-shadow:0 1px 12px rgba(0,0,0,.7)}
+.band .big{font-family:var(--display);font-size:clamp(3rem,11vw,7rem);line-height:.86;font-weight:800;color:#fff;margin:0}
+.band .big small{display:block;font-family:var(--body);font-size:.16em;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin-top:.5rem;color:#f0b545}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+/* chapters */
+.chapter{margin:2.2rem 0}
+.chapter .body p{max-width:64ch}
+.try{background:var(--chip);border-left:5px solid var(--teal);padding:.5rem .9rem;margin:.8rem 0;font-size:.95rem}
+.try b{color:var(--teal)}
+.demo{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem;margin:1.2rem 0;box-shadow:0 10px 30px var(--shadow)}
+.demo .row{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin:.5rem 0}
+.demo label{font-size:.88rem;color:var(--mute);display:flex;align-items:center;gap:.4rem}
+.demo input[type=range]{accent-color:var(--teal);width:9rem}
+.demo .readout{font-family:var(--mono);font-size:.9rem;background:var(--chip);padding:.15rem .5rem;border-radius:6px}
+.demo svg{display:block;width:100%;height:auto}
+.demo canvas{display:block;width:100%;height:auto;border-radius:8px;background:#070b13}
+.btn{display:inline-block;font:inherit;font-weight:700;font-size:.92rem;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.45rem 1rem;cursor:pointer;text-decoration:none}
+.btn.alt{background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+.tally{display:grid;grid-template-columns:auto 1fr auto;gap:.3rem .6rem;align-items:center;font-size:.9rem;margin:.5rem 0}
+.tally .bar{height:.7rem;background:var(--line);border-radius:4px;overflow:hidden}
+.tally .bar i{display:block;height:100%;background:var(--teal);transform-origin:left;transform:scaleX(var(--v,0))}
+.tally .bar.t i{background:var(--gold)}
+.note{font-size:.86rem;color:var(--mute);margin:.4rem 0 0}
+/* timeline */
+.tl{list-style:none;margin:1.5rem 0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:5.2rem;top:0;bottom:0;width:3px;background:var(--line)}
+.tl li{position:relative;display:grid;grid-template-columns:4.2rem 1fr;gap:1.4rem;margin:0 0 1.6rem}
+.tl .yr{font-family:var(--display);font-size:1.6rem;line-height:1;text-align:right;color:var(--mute);padding-top:.15rem}
+.tl .dot{position:absolute;left:calc(5.2rem - 8px);top:.45rem;width:19px;height:19px;border-radius:50%;background:var(--e,var(--teal));border:3px solid var(--bg);box-shadow:0 0 0 2px var(--e,var(--teal))}
+.tl h3{margin:0 0 .2rem;font-size:1.35rem}
+.tl .plain{margin:.1rem 0 .3rem;font-size:1.02rem}
+.tl details{font-size:.95rem}
+.tl summary{cursor:pointer;color:var(--teal);font-size:.9rem}
+.tl .who{font-size:.82rem;color:var(--mute)}
+.tl .era{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--e,var(--teal));margin-right:.5rem}
+@media (max-width:540px){.tl::before{left:.55rem}.tl li{grid-template-columns:1fr;gap:.2rem;padding-left:1.6rem}.tl .yr{text-align:left}.tl .dot{left:calc(.55rem - 8px)}}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-size:.82rem;margin:.6rem 0}
+.legend span::before{content:"";display:inline-block;width:.8em;height:.8em;border-radius:50%;background:var(--e);margin-right:.35em;vertical-align:-.05em}
+/* cards, lists */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:1rem;margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;box-shadow:0 6px 18px var(--shadow)}
+.card h3{margin:.2rem 0 .3rem}
+.card .kv{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;font-size:.86rem;margin:.6rem 0}
+.card .kv b{color:var(--mute);font-weight:600}
+.card .who{font-size:.84rem;color:var(--mute)}
+.pro,.con{font-size:.94rem;margin:.4rem 0;padding-left:1.2rem;position:relative}
+.pro::before{content:"+";position:absolute;left:0;color:var(--teal);font-weight:800}
+.con::before{content:"−";position:absolute;left:0;color:var(--red);font-weight:800}
+dl.gloss{margin:1rem 0}
+dl.gloss dt{font-weight:700;margin-top:.8rem}
+dl.gloss dd{margin:0 0 0 0;color:var(--ink)}
+dl.gloss dd a{font-size:.84rem}
+.ledger{list-style:none;margin:1rem 0;padding:0}
+.ledger li{display:grid;grid-template-columns:6.2rem 1fr;gap:.2rem 1rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.ledger .d{font-family:var(--mono);font-size:.84rem;color:var(--mute);padding-top:.25rem}
+.ledger .w{font-weight:700}
+.ledger .why{font-size:.92rem;color:var(--mute)}
+.ledger .src{font-size:.82rem}
+.ledger .unc{font-size:.78rem;color:var(--gold);font-weight:700}
+@media (max-width:540px){.ledger li{grid-template-columns:1fr}}
+.feed{list-style:none;margin:.6rem 0;padding:0;font-size:.92rem}
+.feed li{padding:.45rem 0;border-top:1px solid var(--line);display:grid;grid-template-columns:5.6rem 1fr;gap:.6rem}
+.feed .d{font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+.feed .s{color:var(--mute);font-size:.82rem}
+@media (max-width:540px){.feed li{grid-template-columns:1fr}}
+.chart{margin:1.2rem 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.8rem}
+.chart svg text{font-family:var(--body);fill:var(--ink)}
+.chart .cap{font-size:.84rem;color:var(--mute);margin:.4rem .2rem 0}
+.myth p{max-width:64ch}
+.myth strong{color:var(--red)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:1rem 0}
+th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.wrap{overflow-x:auto}
+footer{max-width:64rem;margin:2rem auto 0;padding:1.4rem 1rem 3rem;border-top:3px solid var(--ink);font-size:.86rem;color:var(--mute)}
+footer a{color:var(--mute)}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+.bots a{margin-right:.5rem}
+.share{margin:2rem 0 0;font-size:.86rem;color:var(--mute)}
+
+/* the maths: one equation to a block, a plain reading under it */
+.eq{margin:1.1rem 0;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--gold);
+ border-radius:10px;padding:.7rem .95rem;box-shadow:0 4px 14px var(--shadow)}
+.eqn{display:block;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+ font-size:clamp(1.15rem,3.1vw,1.5rem);line-height:1.5;text-align:center;padding:.35rem 0 .5rem;overflow-x:auto}
+.eqn i{font-style:italic;padding:0 .04em}
+.eqn b{font-weight:700;font-style:italic}
+.eqn sub,.eqn sup{font-size:.66em}
+.eqn .sum{font-size:1.15em;padding:0 .12em}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .28em;line-height:1.22}
+.frac>span:first-child{padding:0 .3em .05em}
+.frac>span:last-child{border-top:1.5px solid currentColor;padding:.05em .3em 0}
+.eq .read{margin:.2rem 0 0;font-size:.98rem}
+.eq .read b{color:var(--gold)}
+.eq .why{margin:.35rem 0 0;font-size:.88rem;color:var(--mute)}
+.kvgrid{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;align-items:center;margin:.6rem 0;font-size:.9rem}
+.kvgrid b{color:var(--mute);font-weight:600}
+.sel{font:inherit;font-size:.9rem;padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);
+ background:var(--chip);color:var(--ink);max-width:18rem}
+.orbits{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;margin:1.2rem 0}
+.orb{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.7rem .8rem;box-shadow:0 6px 18px var(--shadow)}
+.orb svg{display:block;width:100%;height:auto;background:var(--chip);border-radius:10px}
+.orb h3{margin:.5rem 0 .15rem;font-size:1.05rem}
+.orb .kv{font-family:var(--mono);font-size:.76rem;color:var(--mute);line-height:1.5}
+.orb .tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--teal);margin-bottom:.2rem}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:.2rem 0 .6rem 2.4rem}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.15rem;width:1.7rem;height:1.7rem;border-radius:50%;
+ background:var(--chip);border:2px solid var(--gold);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+pre.code{background:var(--navy);color:#e8ecf0;border-radius:12px;padding:.9rem 1rem;overflow-x:auto;font-family:var(--mono);
+ font-size:.82rem;line-height:1.55;border:1px solid var(--line)}
+pre.code b{color:#f0b545;font-weight:700}
+pre.code i{color:#8fb7c9;font-style:normal}
+/* motion — transform and opacity only, behind the gate */
+@media (prefers-reduced-motion:no-preference){
+ .shot .bg{transition:transform .6s ease}.shot:hover .bg{transform:scale(1.04)}
+ .shot,.card{transition:transform .18s ease,box-shadow .18s ease}
+ .shot:hover,.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px var(--shadow)}
+ .btn{transition:transform .15s ease}.btn:hover{transform:scale(1.05)}.btn:active{transform:scale(.97)}
+ .tl li{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+ .tl li.in,.tl.nojs li{opacity:1;transform:none}
+ .tally .bar i{transition:transform .35s ease}
+ .demo::before{content:"";position:absolute;inset:-2px;border-radius:16px;z-index:-1;
+  background:conic-gradient(from var(--a,0deg),var(--teal),var(--violet),var(--gold),var(--teal));
+  animation:spin 9s linear infinite;opacity:.55}
+ @property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+ @keyframes spin{to{--a:360deg}}
+ .coin.air{animation:flip 1.1s linear infinite}
+ @keyframes flip{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(1)}}
+ .pulse{animation:pulse 1.6s ease-in-out infinite}
+ @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+ .spinarrow{transform-origin:center;animation:turn 6s linear infinite}
+ @keyframes turn{to{transform:rotate(360deg)}}
+}
+</style>
+
+</head>
+<body>
+<header class="top"><a class="brand" href="../index.html">Three <b>Body</b></a>
+<nav class="crumbs"><a href="../index.html">Home</a> · <a href="../math/index.html">Math</a> · <a href="../orbits/index.html">Orbits</a> · <a href="../history/index.html">History</a> · <a href="../code/index.html">Code</a> · <a href="../words/index.html" aria-current=page>Words</a> · <a href="../sources/index.html">Sources</a> · <a href="../llms.txt">llms.txt</a> · <a href="https://github.com/NaNoBotCo/three-body">Source</a></nav></header>
+<main>
+
+<h1>Words</h1>
+<p class="lead">38 words, each in a sentence or two, with the chapter that uses it.</p>
+<dl class="gloss"><dt id="action">action</dt><dd>A total added up along a path: the motion in it minus the pull, summed over the whole trip. Nature&#x27;s paths make it as small as possible, which is how the figure-eight orbit was proved to exist without solving anything. — <a href="../math/eight/index.html">The ones that come back around</a></dd><dt id="angular-momentum">angular momentum</dt><dd>How much spin a system has, counted around a chosen point. It never changes, which is why three bodies with any spin at all can never all meet at one place. — <a href="../math/count/index.html">Ten things that never change</a></dd><dt id="barycentre">barycentre</dt><dd>The balance point of a group of bodies. For two bodies alone it either sits still or coasts in a straight line forever, whatever the two get up to. — <a href="../math/two/index.html">Two is easy</a></dd><dt id="central-configuration">central configuration</dt><dd>An arrangement of bodies that can spin without changing shape. For three bodies there are five: three straight lines and two triangles. — <a href="../math/shapes/index.html">The two ways three rocks can hold a shape</a></dd><dt id="chaos">chaos</dt><dd>Nearby starts drifting apart at an exponential rate. Not randomness — the same start always gives the same path — but it puts an expiry date on any prediction. — <a href="../math/chaos/index.html">A hair&#x27;s difference, and a different sky</a></dd><dt id="conic-section">conic section</dt><dd>Circle, ellipse, parabola, hyperbola: the shapes you get by slicing a cone, and exactly the shapes a two-body orbit can take. — <a href="../math/two/index.html">Two is easy</a></dd><dt id="conserved-quantity">conserved quantity</dt><dd>Something about a system that never changes as it moves — energy, momentum, spin. Each one found is one unknown removed. Three bodies have ten and, by Bruns&#x27; theorem, no more of the usable kind. — <a href="../math/count/index.html">Ten things that never change</a></dd><dt id="double-precision">double precision</dt><dd>The sixteen-or-so digits a computer normally carries. Enough for most work, and in a chaotic triple the error in the last digit grows to swamp the first one. — <a href="../math/numbers/index.html">So you step it</a></dd><dt id="eccentricity">eccentricity</dt><dd>How stretched an orbit is. Zero is a circle, near one is a long cigar, one or more and the body leaves and does not return. — <a href="../math/two/index.html">Two is easy</a></dd><dt id="ejection">ejection</dt><dd>The usual ending for three bodies thrown together: one leaves for good and the other two are left in a tighter pair. — <a href="../math/odds/index.html">What usually happens</a></dd><dt id="energy">energy</dt><dd>Motion plus pull, added up. Negative means bound together, positive means the system will come apart. It cannot change, which makes it the audit on any computed orbit. — <a href="../math/count/index.html">Ten things that never change</a></dd><dt id="ephemeris">ephemeris</dt><dd>A table of where the bodies will be, at stated times. What astronomers actually want, and what stepping the equations produces. — <a href="../math/numbers/index.html">So you step it</a></dd><dt id="figure-eight-orbit">figure-eight orbit</dt><dd>Three equal weights chasing one another around a single figure-eight track, with no overall spin. Found by computer in 1993, proved to exist in 2000. — <a href="../math/eight/index.html">The ones that come back around</a></dd><dt id="gravitational-constant">gravitational constant</dt><dd>G, the number that sets how strong gravity is: 6.674 30 × 10⁻¹¹ in metres, kilograms and seconds. The least precisely known of the fundamental constants. — <a href="../math/pull/index.html">Everything pulls on everything</a></dd><dt id="hierarchical-triple">hierarchical triple</dt><dd>A close pair with a distant third body. The stable way to arrange three bodies, and the arrangement of the Sun, the Earth and the Moon. — <a href="../math/odds/index.html">What usually happens</a></dd><dt id="hill-sphere">Hill sphere</dt><dd>How far a planet&#x27;s grip reaches before the Sun wins. About 1.5 million km for the Earth; the Moon orbits at a quarter of that. — <a href="../math/restricted/index.html">Two big, one small</a></dd><dt id="homoclinic-tangle">homoclinic tangle</dt><dd>The infinitely folded crossing pattern Poincaré found in 1890 and declined to draw. The first sight of chaos in mathematics. — <a href="../math/chaos/index.html">A hair&#x27;s difference, and a different sky</a></dd><dt id="inverse-square">inverse square</dt><dd>A quantity that falls off as the square of the distance. Twice as far, a quarter as strong. Gravity and light both do it, for the same geometric reason. — <a href="../math/pull/index.html">Everything pulls on everything</a></dd><dt id="jacobi-constant">Jacobi constant</dt><dd>The one quantity a light third body cannot change in the rotating frame. It fixes which regions the body is shut out of. — <a href="../math/restricted/index.html">Two big, one small</a></dd><dt id="kam-theorem">KAM theorem</dt><dd>Kolmogorov, Arnold and Moser: in a system close to a solvable one, most orbits keep their shape under small disturbances and the rest go chaotic. Named for all three, proved over nine years. — <a href="../math/chaos/index.html">A hair&#x27;s difference, and a different sky</a></dd><dt id="kozai-lidov-mechanism">Kozai–Lidov mechanism</dt><dd>A distant third body tilted more than about 39 degrees trades its tilt for stretch in the inner orbit, cycling it between round and elongated. — <a href="../math/odds/index.html">What usually happens</a></dd><dt id="lagrange-point">Lagrange point</dt><dd>One of five places where a light body can keep station with two heavy ones. L1, L2 and L3 sit on the line through the pair and need correcting; L4 and L5 sit at the triangle corners and hold. — <a href="../math/restricted/index.html">Two big, one small</a></dd><dt id="leapfrog">leapfrog</dt><dd>The stepping method that kicks by half a step, drifts a whole step, then kicks again. Cheap, symplectic, and it does not leak energy. Every animation on this site runs it. — <a href="../math/numbers/index.html">So you step it</a></dd><dt id="lyapunov-time">Lyapunov time</dt><dd>How long it takes a small error to grow by a factor of about three. The shelf life of a prediction: about five million years for the inner solar system. — <a href="../math/chaos/index.html">A hair&#x27;s difference, and a different sky</a></dd><dt id="n-body-problem">n-body problem</dt><dd>The same question for any number of bodies. Two is solved, three is this site, and a hundred billion is a galaxy — which is oddly easier to describe than three. — <a href="../math/myths/index.html">What it is not</a></dd><dt id="periodic-orbit">periodic orbit</dt><dd>A motion that returns to its exact starting positions and speeds and then repeats. Two bodies always do it; three bodies do it only for special starts, of which thousands are now known. — <a href="../math/eight/index.html">The ones that come back around</a></dd><dt id="perturbation">perturbation</dt><dd>Treating a hard problem as an easy one plus a small correction. How the Moon&#x27;s motion was worked out for two centuries, and how a spacecraft&#x27;s path is planned. — <a href="../math/restricted/index.html">Two big, one small</a></dd><dt id="poincar-section">Poincaré section</dt><dd>Instead of watching the whole path, mark the spot every time it crosses a chosen plane. Order shows up as curves and loops; chaos shows up as a scatter of dots. — <a href="../math/chaos/index.html">A hair&#x27;s difference, and a different sky</a></dd><dt id="reduced-mass">reduced mass</dt><dd>The single weight that makes a two-body problem behave like one body: the product of the two divided by their sum. — <a href="../math/two/index.html">Two is easy</a></dd><dt id="regularisation">regularisation</dt><dd>Changing variables so that a collision, where the equations divide by zero, turns into something a calculation can pass through. Levi-Civita, 1903. — <a href="../math/numbers/index.html">So you step it</a></dd><dt id="restricted-three-body-problem">restricted three-body problem</dt><dd>The case where the third body is too light to pull back. Two heavy bodies on a known orbit, one speck along for the ride, and enough structure left to draw. — <a href="../math/restricted/index.html">Two big, one small</a></dd><dt id="shape-sphere">shape sphere</dt><dd>Throw away a triangle&#x27;s size and which way it points, and what is left — its shape — is a point on a sphere. Collisions sit on the equator; the equilateral triangles are the poles. — <a href="../math/eight/index.html">The ones that come back around</a></dd><dt id="singularity">singularity</dt><dd>A moment past which a solution stops existing. For three bodies it is always a collision; with five bodies, Xia built one with no collision in it. — <a href="../math/blowup/index.html">Crashes, and the kind of trouble that is not a crash</a></dd><dt id="softening">softening</dt><dd>Adding a small constant under the distance in the equations so a close pass cannot blow up the arithmetic. A deliberate lie, used where the close passes are not the point. — <a href="../math/numbers/index.html">So you step it</a></dd><dt id="symplectic">symplectic</dt><dd>A property of a stepping method: it preserves the geometry of the equations, so energy wobbles instead of drifting. The reason leapfrog beats the obvious method. — <a href="../math/numbers/index.html">So you step it</a></dd><dt id="trojan">Trojan</dt><dd>A body sitting near a planet&#x27;s L4 or L5 point. Jupiter has over ten thousand catalogued; the Earth has a couple. — <a href="../math/restricted/index.html">Two big, one small</a></dd><dt id="two-body-problem">two-body problem</dt><dd>Two bodies under gravity. Solved in closed form: an ellipse or its relatives, repeating forever. The only gravitational case with a napkin answer. — <a href="../math/two/index.html">Two is easy</a></dd><dt id="zero-velocity-curve">zero-velocity curve</dt><dd>The fence drawn by Jacobi&#x27;s constant: the boundary of where a light body could go if it stopped. It cannot cross, and the gates open in a fixed order as the constant falls. — <a href="../math/restricted/index.html">Two big, one small</a></dd></dl>
+
+</main>
+<footer>
+<div class="bots">For the machines: <a href="../api/theory.json">theory.json</a> <a href="../api/orbits.json">orbits.json</a> <a href="../api/timeline.json">timeline.json</a> <a href="../api/words.json">words.json</a> <a href="../llms-full.txt">llms-full.txt</a> <a href="../sitemap.xml">sitemap.xml</a></div>
+<p>Text, data and pictures <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; code <a href="https://github.com/NaNoBotCo/three-body/blob/main/LICENSE">MIT</a>. The pictures and diagrams are computed from the equations in <a href="https://github.com/NaNoBotCo/three-body/blob/main/tools/physics.py">tools/physics.py</a> when the page is built. Sources sit beside the facts they support and are listed at <a href="../sources/index.html">Sources</a>. Built 2026-09-22.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</footer>
+
+</body>
+</html>

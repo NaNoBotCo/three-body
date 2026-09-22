@@ -1,0 +1,614 @@
+{
+ "chapters": [
+  {
+   "id": "pull",
+   "title": "Everything pulls on everything",
+   "demo": "inverse",
+   "line": "Two things pull on each other. The pull goes up with the weight and down with the square of the distance. That one line is the whole engine.",
+   "body": [
+    "Put two rocks in empty space and let go. They drift toward each other. Newton wrote down how hard, and the sentence has held for three hundred years.",
+    "Weight helps the pull. Distance hurts it, and it hurts it twice over: move the rocks twice as far apart and the pull drops to a quarter. Ten times as far, a hundredth. That is what **inverse square** means, and it is the reason a tractor a mile off does nothing to your coffee while the Earth under the porch holds you in the chair.",
+    "The second line matters as much as the first. The pull is a force, and a force divided by weight is how fast something picks up speed. Divide, and your own weight cancels out. A feather and an anvil dropped on the Moon land together — the Moon pulls the anvil harder, and the anvil is harder to move, by the same factor.",
+    "So each rock's speeding-up depends on the **other** rock's weight, not its own. Hold that and the rest of this site follows."
+   ],
+   "eqs": [
+    {
+     "html": "<i>F</i> = <i>G</i> <span class=\"frac\"><span><i>m</i><sub>1</sub> <i>m</i><sub>2</sub></span><span><i>r</i><sup>2</sup></span></span>",
+     "read": "The pull between two things equals a fixed number G, times the first weight, times the second weight, divided by the distance between them multiplied by itself."
+    },
+    {
+     "html": "<i>a</i><sub>1</sub> = <span class=\"frac\"><span><i>F</i></span><span><i>m</i><sub>1</sub></span></span> = <i>G</i> <span class=\"frac\"><span><i>m</i><sub>2</sub></span><span><i>r</i><sup>2</sup></span></span>",
+     "read": "How fast the first one picks up speed does not depend on its own weight at all. Only on the other one's weight and the distance.",
+     "note": "This cancellation is why the Sun's grip on the Earth can be worked out without knowing what the Earth weighs."
+    },
+    {
+     "html": "<i>G</i> = 6.674 30 × 10<sup>−11</sup> m<sup>3</sup> kg<sup>−1</sup> s<sup>−2</sup>",
+     "read": "G is a tiny number, which is why you never feel your neighbour's gravity.",
+     "note": "Measured, not derived. The 2022 value carries an uncertainty of 22 parts in a million — the worst-known of the fundamental constants."
+    }
+   ],
+   "sources": [
+    [
+     "Newton, Philosophiæ Naturalis Principia Mathematica (1687), Book I",
+     "https://www.gutenberg.org/ebooks/28233"
+    ],
+    [
+     "NIST, Newtonian constant of gravitation",
+     "https://physics.nist.gov/cgi-bin/cuu/Value?bg"
+    ],
+    [
+     "Wikipedia, Newton's law of universal gravitation",
+     "https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation"
+    ]
+   ],
+   "try": "Two hay bales, 300 kg each, a metre apart. The pull between them is about 2×10⁻⁵ newtons — the weight of a grain of sand. Gravity is the weakest thing in physics and it runs the sky because nothing cancels it out."
+  },
+  {
+   "id": "two",
+   "title": "Two is easy",
+   "demo": "kepler",
+   "line": "With two bodies you can write the answer down, once, and it is right forever. This is the only case that works that way.",
+   "body": [
+    "Two rocks, nothing else. Watch the pair from the point that sits between them — the **barycentre**, the balance point. That point either sits still or coasts in a straight line at a steady speed, no matter what the rocks do, because the two pulls are equal and opposite and cancel in the total.",
+    "Sit on the balance point and there is only one thing left to track: the line from one rock to the other. Its length and its direction. Two moving bodies collapse into one moving arrow, and the arrow obeys the same inverse-square law with the two weights added together.",
+    "Solve that and you get a shape, not a list of positions. An ellipse, or a parabola, or a hyperbola — a slice through a cone. Each rock runs its own copy of the shape around the balance point, the lighter one on the bigger copy, and it repeats. Forever, exactly, with no stepping and no computer.",
+    "Kepler had the ellipse from Tycho Brahe's naked-eye records before Newton had the law that explains it. Newton then showed the inverse square and the ellipse are the same fact said two ways.",
+    "Two is the case where a formula exists. Everything hard about three bodies is the loss of this page."
+   ],
+   "eqs": [
+    {
+     "html": "<b>r</b> = <b>r</b><sub>2</sub> − <b>r</b><sub>1</sub>&nbsp;&nbsp;&nbsp; <span class=\"frac\"><span><i>d</i><sup>2</sup><b>r</b></span><span><i>dt</i><sup>2</sup></span></span> = −<i>G</i>(<i>m</i><sub>1</sub>+<i>m</i><sub>2</sub>) <span class=\"frac\"><span><b>r</b></span><span><i>r</i><sup>3</sup></span></span>",
+     "read": "Track only the arrow from one body to the other. It speeds up toward the other end, at a rate set by the two weights added together.",
+     "note": "Twelve numbers (two positions, two velocities, in space) become six. This is the whole trick, and there is no version of it for three."
+    },
+    {
+     "html": "<i>r</i> = <span class=\"frac\"><span><i>a</i>(1 − <i>e</i><sup>2</sup>)</span><span>1 + <i>e</i> cos <i>θ</i></span></span>",
+     "read": "The distance at any angle around the orbit. One number sets the size, one sets how squashed it is.",
+     "note": "e = 0 is a circle. e below 1 is an ellipse and closes. e = 1 is a parabola, e above 1 a hyperbola — those leave and do not come back."
+    },
+    {
+     "html": "<i>T</i><sup>2</sup> = <span class=\"frac\"><span>4<i>π</i><sup>2</sup> <i>a</i><sup>3</sup></span><span><i>G</i>(<i>m</i><sub>1</sub>+<i>m</i><sub>2</sub>)</span></span>",
+     "read": "Square the time it takes to go around and you get the cube of the orbit's size, times a constant. Farther out means slower, and by exactly this much.",
+     "note": "Kepler's third law. Written this way it is also a scale: the same equation weighs the Sun, weighs a black hole, and weighs a pair of stars nobody will ever visit."
+    }
+   ],
+   "sources": [
+    [
+     "Wikipedia, Two-body problem",
+     "https://en.wikipedia.org/wiki/Two-body_problem"
+    ],
+    [
+     "Wikipedia, Kepler's laws of planetary motion",
+     "https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion"
+    ],
+    [
+     "Wikipedia, Barycentre",
+     "https://en.wikipedia.org/wiki/Barycenter_(astronomy)"
+    ]
+   ],
+   "try": "Earth: a = 149.6 million km, T = 365.25 days. Put those in and the mass that comes out is 2.0×10³⁰ kg. That is how the Sun got weighed — with a calendar and a ruler."
+  },
+  {
+   "id": "three",
+   "title": "Add one rock",
+   "demo": "sim",
+   "line": "The equations for three bodies fit on one line and hide nothing. What breaks is not the writing down. It is the solving.",
+   "body": [
+    "Three bodies. Each one feels the pull of the other two, added as arrows. That is the entire physics, and here it is, written out.",
+    "Nothing is missing from that line. No approximation, no fudge, no term dropped for being small. If you know where the three are and how fast each is going, the line tells you what happens next, to as many decimal places as you care to carry.",
+    "Count what you have to keep track of. Three bodies, three coordinates each, is nine numbers for position and nine for velocity: **eighteen numbers**, and the line above says how each of the eighteen changes. In a flat plane it is twelve. That is a small bookkeeping job.",
+    "And yet. There is no formula that takes the eighteen numbers and the time and hands back where everything is. Not a hard one, not a long one — there is none, and the next two chapters are about how that got proved rather than assumed.",
+    "Newton knew. Book I of the *Principia*, Proposition 66, is him going at the Sun–Earth–Moon case by hand, with twenty-two corollaries and no clean answer. Three and a half centuries later the plain statement has not changed much: you can say what the rules are, and to find out what they do you have to watch."
+   ],
+   "eqs": [
+    {
+     "html": "<span class=\"frac\"><span><i>d</i><sup>2</sup><b>r</b><sub><i>i</i></sub></span><span><i>dt</i><sup>2</sup></span></span> = <i>G</i> <span class=\"sum\">Σ<sub><i>j</i>≠<i>i</i></sub></span> <i>m<sub>j</sub></i> <span class=\"frac\"><span>(<b>r</b><sub><i>j</i></sub> − <b>r</b><sub><i>i</i></sub>)</span><span>|<b>r</b><sub><i>j</i></sub> − <b>r</b><sub><i>i</i></sub>|<sup>3</sup></span></span>",
+     "read": "For each body: add up, over the other two, the other one's weight times the direction toward it, divided by the distance cubed. That sum is how fast this body's velocity is changing.",
+     "note": "The cube on the bottom is the inverse square plus one more power to turn the arrow on top into a pure direction. Same law as chapter one, written for a crowd."
+    },
+    {
+     "html": "18 numbers&nbsp;&nbsp;→&nbsp;&nbsp;18 equations&nbsp;&nbsp;→&nbsp;&nbsp;no formula",
+     "read": "Enough equations to fix the answer, and no way to write the answer as a formula.",
+     "note": "Existence and uniqueness are not in doubt: the path is there and it is the only one. Writing it in closed form is the part that fails."
+    }
+   ],
+   "sources": [
+    [
+     "Wikipedia, Three-body problem",
+     "https://en.wikipedia.org/wiki/Three-body_problem"
+    ],
+    [
+     "Newton, Principia, Book I, Proposition 66",
+     "https://www.gutenberg.org/ebooks/28233"
+    ],
+    [
+     "Wikipedia, n-body problem",
+     "https://en.wikipedia.org/wiki/N-body_problem"
+    ]
+   ],
+   "try": "The sandbox below runs that line and nothing else. Drag a body, press play, and what you are watching is the equation — no physics engine, no cheating, a hundred-odd lines of arithmetic repeated a few thousand times a second."
+  },
+  {
+   "id": "count",
+   "title": "Ten things that never change",
+   "demo": "integrals",
+   "line": "Eighteen numbers, ten of them pinned down by conservation laws. The eight left over are where the trouble lives — and two theorems say no further law is coming.",
+   "body": [
+    "There is a way of solving equations by bookkeeping. Find a quantity that never changes, and you have traded one unknown for a known. Enough of those and the problem falls open.",
+    "Three bodies hand you ten of them for free. The total momentum is three numbers that hold steady. The balance point's coasting gives three more. The total energy is one. The total spin — **angular momentum** — is three. Ten quantities, fixed for all time, whatever the three rocks get up to.",
+    "Eighteen minus ten is eight. Then you can slide the clock, because the laws do not care what time it is, and you can turn the whole picture, because they do not care which way is north. Call it **six**. Six stubborn numbers.",
+    "For two hundred years the hope was that somebody would find another conserved quantity and then another, until the six were gone and the formula appeared. Two results ended that hope.",
+    "**Heinrich Bruns, 1887.** Beyond the ten, there are no more conserved quantities that are algebraic in the coordinates, the velocities and the time. **Henri Poincaré, 1890.** In the restricted case, with the mass ratio small and not special, no further conserved quantity exists that is analytic and single-valued.",
+    "Read those narrowly, the way they were proved. Neither says that no expression of any kind can exist — Sundman later wrote one down, and it is in a later chapter. They say that the *bookkeeping* route is closed. You cannot grind the six numbers away by finding more things that never change, because there are no more of the usable kind."
+   ],
+   "eqs": [
+    {
+     "html": "<b>P</b> = <span class=\"sum\">Σ</span> <i>m<sub>i</sub></i> <b>v</b><sub><i>i</i></sub> &nbsp;&nbsp;(3)&nbsp;&nbsp;·&nbsp;&nbsp; <b>R</b> − <b>V</b><i>t</i> &nbsp;(3)&nbsp;&nbsp;·&nbsp;&nbsp; <b>L</b> = <span class=\"sum\">Σ</span> <i>m<sub>i</sub></i> <b>r</b><sub><i>i</i></sub> × <b>v</b><sub><i>i</i></sub> &nbsp;(3)",
+     "read": "Total momentum, three numbers. The balance point's straight-line drift, three more. Total spin, three.",
+     "note": "Ten counting the energy below. These are the classical integrals, and they are all of them."
+    },
+    {
+     "html": "<i>E</i> = <span class=\"sum\">Σ</span> ½ <i>m<sub>i</sub> v<sub>i</sub></i><sup>2</sup> − <i>G</i> <span class=\"sum\">Σ<sub><i>i</i>&lt;<i>j</i></sub></span> <span class=\"frac\"><span><i>m<sub>i</sub> m<sub>j</sub></i></span><span><i>r<sub>ij</sub></i></span></span>",
+     "read": "Add up the motion of all three, then subtract the pull holding them together. That total never changes.",
+     "note": "This one is the workhorse of the numbers chapter: a computer's answer is checked by watching whether its energy stays put."
+    },
+    {
+     "html": "18 − 10 = 8&nbsp;&nbsp;→&nbsp;&nbsp;clock and compass&nbsp;&nbsp;→&nbsp;&nbsp;6",
+     "read": "The bookkeeping gets you from eighteen unknowns down to six and stops there.",
+     "note": "Bruns 1887 and Poincaré 1890 are the proofs that it stops."
+    }
+   ],
+   "sources": [
+    [
+     "Florin Diacu, The solution of the n-body problem (Mathematical Intelligencer, 1996)",
+     "https://doi.org/10.1007/BF03024313"
+    ],
+    [
+     "Wikipedia, n-body problem: integrals and Bruns' theorem",
+     "https://en.wikipedia.org/wiki/N-body_problem"
+    ],
+    [
+     "June Barrow-Green, Poincaré and the Three Body Problem (1997)",
+     "https://bookstore.ams.org/hmath-11"
+    ],
+    [
+     "Wikipedia, Henri Poincaré",
+     "https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9"
+    ]
+   ],
+   "try": "Watch the energy readout in any demo on this site. It wobbles a hair as the stepper works and comes back. If it ever walks steadily off in one direction, the computer is lying and the wobble is how you catch it."
+  },
+  {
+   "id": "chaos",
+   "title": "A hair's difference, and a different sky",
+   "demo": "chaos",
+   "line": "Move one rock by the width of an atom and an hour later the whole arrangement is different. The equations are exact; the answer is still out of reach.",
+   "body": [
+    "Here is the thing that makes three bodies different in kind, not in difficulty.",
+    "Start two copies of the same three rocks. In the second copy, nudge one of them by a millionth of a millimetre. Run both. For a while the two copies agree. Then they part, and the gap does not grow by a little each time — it **doubles**, and doubles again, on a fixed schedule. Twenty doublings turns a millionth into a whole. After that the two copies have nothing to do with each other.",
+    "The time it takes to grow by a factor of e — about three — has a name: the **Lyapunov time**. It is the shelf life of a prediction. Past a few dozen Lyapunov times, knowing the starting numbers to any precision you can name buys you nothing.",
+    "This is not sloppiness in the equations and it is not randomness. Run the same start twice and you get the same path twice, to the last decimal. The trouble is that you never have the start to the last decimal. Nobody does. The rocks are not measured that well, and cannot be.",
+    "Poincaré found this in 1889 while competing for a prize from Oscar II of Sweden, and he found it by finding a mistake in his own winning entry. The corrected memoir describes two curves that were supposed to meet cleanly and instead cross each other an infinite number of times, folded into what he called a tangle so complicated he would not attempt to draw it. He paid to have the printed copies replaced. That reversal is where the study of chaos begins, thirty years before anyone had a computer to see it with.",
+    "Our own solar system is in this condition, mildly. Track the inner planets and the predictions go soft after around **five million years** — fine for a calendar, useless for asking where Mercury will be in a hundred million."
+   ],
+   "eqs": [
+    {
+     "html": "<i>δ</i>(<i>t</i>) ≈ <i>δ</i><sub>0</sub> <i>e</i><sup><i>t</i>/<i>τ</i></sup>",
+     "read": "The gap between two nearly identical starts multiplies itself as time goes on, instead of adding.",
+     "note": "τ is the Lyapunov time. The demo below measures it for whatever start you give it, by fitting a straight line to the gap on a log scale."
+    },
+    {
+     "html": "<i>t</i><sub>useful</sub> ≈ <i>τ</i> · ln <span class=\"frac\"><span>accuracy wanted</span><span>accuracy of the start</span></span>",
+     "read": "How long a prediction lasts: the Lyapunov time, times the logarithm of how much better your starting numbers are than the error you will accept.",
+     "note": "The logarithm is the bad news. A thousand times better measurements buy about seven more Lyapunov times. Not a thousand times longer — seven times the constant."
+    },
+    {
+     "html": "<i>τ</i><sub>inner planets</sub> ≈ 5 × 10<sup>6</sup> yr",
+     "read": "The solar system's own shelf life, from Laskar's calculations.",
+     "note": "Which is why the standard result is a probability — about a 1% chance of Mercury's orbit going unstable within five billion years — and not a date."
+    }
+   ],
+   "sources": [
+    [
+     "June Barrow-Green, Poincaré and the Three Body Problem (1997)",
+     "https://bookstore.ams.org/hmath-11"
+    ],
+    [
+     "Florin Diacu, The solution of the n-body problem (Mathematical Intelligencer, 1996)",
+     "https://doi.org/10.1007/BF03024313"
+    ],
+    [
+     "Laskar & Gastineau, Existence of collisional trajectories of Mercury (Nature, 2009)",
+     "https://www.nature.com/articles/nature08096"
+    ],
+    [
+     "Wikipedia, Lyapunov time",
+     "https://en.wikipedia.org/wiki/Lyapunov_time"
+    ],
+    [
+     "Wikipedia, Stability of the Solar System",
+     "https://en.wikipedia.org/wiki/Stability_of_the_Solar_System"
+    ]
+   ],
+   "try": "In the demo, set the nudge to 10⁻⁹ and watch the gap. It sits flat, then bends, then goes straight up the log scale, then flattens at the top — that last flattening is not order returning, it is the gap running out of room to grow."
+  },
+  {
+   "id": "restricted",
+   "title": "Two big, one small",
+   "demo": "zvc",
+   "line": "Let the third body be a pebble too light to pull back. Now the problem has a fence you can draw, five places where a pebble can sit still, and a number that says which side of the fence you are on.",
+   "body": [
+    "Most useful three-body arrangements have one body that does not matter to the other two. A spacecraft between the Earth and the Sun. A pebble near Jupiter. Set its weight to zero — it still gets pulled, it does not pull — and the problem changes character. The two heavy bodies now run a plain two-body orbit, which is solved, and the pebble moves in a field that repeats.",
+    "Take the next step and spin the paper. Put the two heavy bodies on a turntable that rotates with them, so they sit still on the page. In that turning frame the pebble feels gravity from both plus the outward throw of the spin, and all three of those can be rolled into one hill-and-valley surface.",
+    "On that surface there is a quantity the pebble cannot change: Jacobi's constant. Carl Gustav Jacob Jacobi found it in 1836 and it is the only conserved quantity this case has left. Rearranged, it says the pebble's speed is fixed by where it is — so at the places where the arithmetic would need the speed to be negative, the pebble cannot go. Draw that boundary and you have drawn a fence. On the inside, the pebble is trapped with one body; loosen the fence and a gate opens between them.",
+    "Five places on the surface are flat — the pull and the throw cancel exactly. **L1, L2, L3** sit on the line through the two bodies and are saddles: a pebble there slides off, slowly, which is why the James Webb telescope at L2 has to nudge itself back every three weeks. **L4 and L5** sit at the corners of equilateral triangles with the two bodies, and they are hilltops that nevertheless hold, provided the lighter of the two heavy bodies is under about 4% of the total. Jupiter clears that by a mile, and its L4 and L5 have been collecting asteroids for four billion years — over ten thousand catalogued.",
+    "The same surface gives you the **Hill sphere**: how close a moon has to be for a planet to keep it rather than the Sun taking it. For the Earth that radius is about 1.5 million km, and the Moon sits at a quarter of it."
+   ],
+   "eqs": [
+    {
+     "html": "<i>C</i> = 2<i>Ω</i>(<i>x</i>,<i>y</i>) − <i>v</i><sup>2</sup>,&nbsp;&nbsp; <i>Ω</i> = ½(<i>x</i><sup>2</sup>+<i>y</i><sup>2</sup>) + <span class=\"frac\"><span>1−<i>μ</i></span><span><i>r</i><sub>1</sub></span></span> + <span class=\"frac\"><span><i>μ</i></span><span><i>r</i><sub>2</sub></span></span>",
+     "read": "Jacobi's constant: twice the hill-and-valley surface at the pebble's position, minus its speed squared. It does not change, ever.",
+     "note": "μ is the small body's share of the two weights. The first term is the spin's outward throw, the other two are the two pulls."
+    },
+    {
+     "html": "<i>v</i><sup>2</sup> = 2<i>Ω</i> − <i>C</i> ≥ 0",
+     "read": "Speed squared cannot be negative, so the pebble is shut out of everywhere the surface sits below its own constant.",
+     "note": "The boundary where it equals zero is the zero-velocity curve. Drawn in the demo, and it is a fence with gates that open in a fixed order as C comes down."
+    },
+    {
+     "html": "<i>μ</i> &lt; ½(1 − √(23/27)) ≈ 0.0385",
+     "read": "The triangle points hold onto things only if the smaller heavy body is under about four percent of the pair.",
+     "note": "Sun and Jupiter: 0.00095. Earth and Moon: 0.0121 — both under, both hold. Pluto and Charon: 0.104, over the line."
+    },
+    {
+     "html": "<i>r</i><sub>Hill</sub> ≈ <i>a</i> <span class=\"frac\"><span><sup>3</sup>√<i>m</i></span><span><sup>3</sup>√(3<i>M</i>)</span></span>",
+     "read": "A planet's grip reaches out about its distance from the Sun times the cube root of its share of weight.",
+     "note": "Earth: 1.5 million km. The Moon at 0.384 million km is comfortably inside, which is the whole reason we have one."
+    }
+   ],
+   "sources": [
+    [
+     "Wikipedia, Jacobi integral",
+     "https://en.wikipedia.org/wiki/Jacobi_integral"
+    ],
+    [
+     "Wikipedia, Lagrange point",
+     "https://en.wikipedia.org/wiki/Lagrange_point"
+    ],
+    [
+     "Wikipedia, Hill sphere",
+     "https://en.wikipedia.org/wiki/Hill_sphere"
+    ],
+    [
+     "NASA, Webb orbit at L2",
+     "https://webb.nasa.gov/content/about/orbit.html"
+    ],
+    [
+     "IAU Minor Planet Center, Jupiter Trojans",
+     "https://www.minorplanetcenter.net/iau/lists/JupiterTrojans.html"
+    ]
+   ],
+   "try": "In the demo, bring Jacobi's constant down slowly and watch the fence. First the pebble is locked in a pocket around one body; then a neck opens at L1 and it can cross to the other; then the outside opens at L2 and it can leave the system altogether. Every low-energy transfer ever flown is a trip through those gates."
+  },
+  {
+   "id": "shapes",
+   "title": "The two ways three rocks can hold a shape",
+   "demo": "shapes",
+   "line": "Three bodies can keep the same shape while they spin, and there are exactly two shapes that allow it: a straight line and an equilateral triangle. Euler found the first in 1767, Lagrange the second in 1772.",
+   "body": [
+    "Forget the general case for a minute and ask a smaller question. Can three bodies move so that the triangle they make never changes shape — only turns and scales? That is a shape you could write down.",
+    "**Euler, 1767.** Put all three on a line, spinning about the balance point like a baton. It works, but only at one spacing, and finding it means solving a fifth-degree equation. There is no formula for a general fifth-degree equation — that is Abel's theorem, a different piece of mathematics arriving in the same century — so even this tidy case ends in a number you have to hunt for rather than write. It has exactly one answer for any three weights you choose.",
+    "**Lagrange, 1772.** Put the three at the corners of an equilateral triangle and spin. This one works for **any** three weights, with no equation to solve: the triangle holds, each body running an ellipse of its own around the balance point. A heavy body and a light one at two corners is the Trojan asteroid case from the last chapter.",
+    "Those two are the only ones. For three bodies there are five such arrangements in total — three collinear ones, depending on which body sits in the middle, and the two mirror-image triangles — and that is the complete list. Nobody has proved the equivalent for every number of bodies; whether the count is always finite is Smale's sixth problem, still open.",
+    "This is worth sitting with. The general three-body problem has no formula, and yet within it sit these exact, eternal, writable solutions. A problem being unsolvable in general does not mean it is dark everywhere."
+   ],
+   "eqs": [
+    {
+     "html": "<i>r</i><sup>5</sup> − (3−<i>μ</i>)<i>r</i><sup>4</sup> + (3−2<i>μ</i>)<i>r</i><sup>3</sup> − <i>μr</i><sup>2</sup> + 2<i>μr</i> − <i>μ</i> = 0",
+     "read": "Where the inner balance point sits: the one distance that satisfies this fifth-degree equation.",
+     "note": "This is the L1 case of Euler's quintic. Solved by hunting, not by formula. For the Sun and the Earth it puts L1 about 1.5 million km sunward of us — the figure printed on the page is this equation solved at build time."
+    },
+    {
+     "html": "<i>ω</i><sup>2</sup> = <span class=\"frac\"><span><i>G</i>(<i>m</i><sub>1</sub>+<i>m</i><sub>2</sub>+<i>m</i><sub>3</sub>)</span><span><i>a</i><sup>3</sup></span></span>",
+     "read": "An equilateral triangle of any three weights, sides of length a, spins at this rate and holds its shape.",
+     "note": "Compare Kepler's third law for two bodies — same form, with all three weights added. Lagrange's triangle is the closest thing the three-body problem has to a napkin answer."
+    },
+    {
+     "html": "3 collinear + 2 triangles = 5",
+     "read": "Five arrangements that keep their shape, for any three weights. That is all of them.",
+     "note": "Called central configurations. Five for three bodies; fifty for five bodies with generic weights; no general count is proved."
+    }
+   ],
+   "sources": [
+    [
+     "Wikipedia, Euler's three-body problem",
+     "https://en.wikipedia.org/wiki/Euler%27s_three-body_problem"
+    ],
+    [
+     "Wikipedia, Central configuration",
+     "https://en.wikipedia.org/wiki/Central_configuration"
+    ],
+    [
+     "Wikipedia, Lagrange point derivation",
+     "https://en.wikipedia.org/wiki/Lagrange_point"
+    ],
+    [
+     "Wikipedia, Smale's problems",
+     "https://en.wikipedia.org/wiki/Smale%27s_problems"
+    ]
+   ],
+   "try": "Press the triangle in the demo and then drag one weight up. The shape holds — the spin rate changes and the balance point moves, and the triangle stays equilateral. Now press the line and drag: the spacing has to be re-solved every time, and you can watch the solver hunt."
+  },
+  {
+   "id": "eight",
+   "title": "The ones that come back around",
+   "demo": "eight",
+   "line": "Some starts run a closed loop and repeat forever. Three equal weights chasing each other around a figure eight is the famous one, and it was found by looking, not by solving.",
+   "body": [
+    "A **periodic** orbit is one that returns to exactly where it started, at exactly the speeds it started with, and then does the whole thing again. Two bodies always do this. Three bodies almost never do — but the almost is doing some work in that sentence.",
+    "In 1993 Cris Moore, looking for closed orbits by computer, found three equal masses that chase one another around a single figure eight. All three on the same track, evenly spaced in time, no spin in the system at all. In 2000 Alain Chenciner and Richard Montgomery proved it exists, by a route worth knowing: instead of solving the equations, they showed that the path which minimises a certain total over all possible looping paths has to be that eight. The orbit is the answer to a *least-effort* question.",
+    "The trick that makes such searching possible is to throw away what does not matter. Three bodies make a triangle. Ignore how big the triangle is and which way it points, and what is left is its shape — and the space of all triangle shapes is a **sphere**. Three points on its equator are the three two-body collisions; the poles are the two equilateral triangles; Euler's straight lines lie on the equator between the collisions. Every three-body motion, however wild, is a curve drawn on that sphere. The figure eight is a curve that crosses the equator between collisions and closes.",
+    "In 2013 Milovan Šuvakov and Veljko Dmitrašinović scanned a whole sheet of starting speeds by computer and reported thirteen new families, with names off the shapes they draw — butterfly, moth, yin-yang, goggles. Xiaoming Li and Shijun Liao and colleagues then pushed the same search much further with more computing and higher precision, into the hundreds and then the thousands of families.",
+    "The orbits on this site's **Orbits** page were found the same way, here, on this machine: a grid of starting speeds, run forward, looking for the ones that come back near their own start, then a solver that walks each candidate in until it closes. Each one carries the distance it closes to."
+   ],
+   "eqs": [
+    {
+     "html": "<b>s</b>(<i>T</i>) = <b>s</b>(0)",
+     "read": "The whole state — all the positions and all the speeds — is the same after a time T as it was at the start.",
+     "note": "Twelve equations in the plane. The solver on this site treats them as twelve residuals in three unknowns and drives them toward zero."
+    },
+    {
+     "html": "<i>A</i> = ∫<sub>0</sub><sup><i>T</i></sup> ( kinetic + potential ) <i>dt</i>&nbsp;&nbsp;→&nbsp;&nbsp;least",
+     "read": "Add up the motion and the pull along the whole loop. The figure eight is the loop that makes this total as small as it can be.",
+     "note": "The action. Chenciner and Montgomery's 2000 proof works by minimising it over loops of a fixed symmetry type, which is how a shape gets proved to exist without ever being written as a formula."
+    },
+    {
+     "html": "shape of a triangle&nbsp;&nbsp;→&nbsp;&nbsp;a point on a sphere",
+     "read": "Drop the size and the direction and all possible triangles form a sphere. Collisions sit on its equator.",
+     "note": "The shape sphere. The reason searches of this kind are possible at all: it turns an eighteen-number problem into a curve on a two-dimensional surface."
+    }
+   ],
+   "sources": [
+    [
+     "Chenciner & Montgomery, A remarkable periodic solution of the three-body problem (Annals of Mathematics, 2000)",
+     "https://arxiv.org/abs/math/0011268"
+    ],
+    [
+     "Moore, Braids in classical dynamics (Physical Review Letters, 1993)",
+     "https://doi.org/10.1103/PhysRevLett.70.3675"
+    ],
+    [
+     "Šuvakov & Dmitrašinović, Three classes of Newtonian three-body planar periodic orbits (PRL, 2013)",
+     "https://arxiv.org/abs/1303.0181"
+    ],
+    [
+     "Li & Liao, More than six hundred new families of Newtonian periodic planar collisionless three-body orbits (2017)",
+     "https://arxiv.org/abs/1705.00527"
+    ],
+    [
+     "Montgomery, The three-body problem and the shape sphere (American Mathematical Monthly, 2015)",
+     "https://arxiv.org/abs/1402.0841"
+    ]
+   ],
+   "try": "Open the Orbits page and start the figure eight. Watch one body all the way round and count: it does the whole eight once per period, and the other two are doing the same track a third of a period ahead and behind."
+  },
+  {
+   "id": "series",
+   "title": "There is a formula. Nobody can add it up.",
+   "demo": "",
+   "line": "In 1912 Karl Sundman wrote a series that converges to the answer for almost every three-body start. One estimate of how many terms you would need to use it runs to a 1 followed by eight million zeros.",
+   "body": [
+    "The last two chapters said there is no formula. That needs narrowing, because there is one, and the story of it is the best joke in the subject.",
+    "**Karl Frithiof Sundman, 1912**, working in Helsinki, proved that the three-body problem can be written as a power series that converges for all time — provided the total spin is not zero, which rules out only the triple collisions. Not an approximation. A convergent series, the answer, on paper.",
+    "The catch is in the fine print twice over. First, the series runs in powers of the cube root of time, not time — a fractional power, because a near-collision does something to the solution that whole powers cannot follow. Second, and fatally, it converges slowly. Slowly enough that in 1930 D. Beloriszky estimated the number of terms needed to compute a position at astronomical accuracy at around 10 to the eight-millionth power.",
+    "For scale: the observable universe holds something like 10⁸⁰ atoms. The exponent here is eight million, not eighty. A recipe that calls for more steps than there are particles is a recipe in name only.",
+    "Qiu-Dong Wang extended Sundman's result to any number of bodies in 1991, with the same catch. So the state of play is this: an exact expression exists and cannot be used; the bookkeeping route is proved closed; and every number anybody has ever actually used for a three-body system came out of stepping the equations forward and watching. That is the next chapter."
+   ],
+   "eqs": [
+    {
+     "html": "<i>q</i>(<i>t</i>) = <span class=\"sum\">Σ</span><sub><i>n</i>≥0</sub> <i>c<sub>n</sub></i> <i>τ</i><sup><i>n</i></sup>,&nbsp;&nbsp; <i>τ</i> ∝ <i>t</i><sup>1/3</sup>",
+     "read": "The positions written as an endless sum of powers — not of time, but of the cube root of time.",
+     "note": "The cube root is forced by what happens near a two-body collision. Sundman's regularising change of variable is the same idea the numbers chapter uses to keep a computer from choking on a close pass."
+    },
+    {
+     "html": "terms needed ≈ 10<sup>8 000 000</sup>&nbsp;&nbsp;vs&nbsp;&nbsp;atoms in the universe ≈ 10<sup>80</sup>",
+     "read": "The number of terms you would have to add up, against the number of atoms there are.",
+     "note": "Beloriszky's 1930 estimate, quoted in the standard references. A convergent series and a usable method are not the same thing, and this is the cleanest example anywhere of the difference."
+    }
+   ],
+   "sources": [
+    [
+     "Wikipedia, n-body problem: Sundman's theorem and Wang's global solution",
+     "https://en.wikipedia.org/wiki/N-body_problem"
+    ],
+    [
+     "Florin Diacu, The solution of the n-body problem (Mathematical Intelligencer, 1996)",
+     "https://doi.org/10.1007/BF03024313"
+    ],
+    [
+     "Wang, The global solution of the n-body problem (Celestial Mechanics, 1991)",
+     "https://doi.org/10.1007/BF00048987"
+    ]
+   ],
+   "try": "Ask yourself what 'solved' should mean. A formula nobody can evaluate, or a stepping method that gives you twelve digits by lunchtime and tells you when to stop trusting it? Mathematicians and engineers answer that differently, and both are right about their own question."
+  },
+  {
+   "id": "blowup",
+   "title": "Crashes, and the kind of trouble that is not a crash",
+   "demo": "",
+   "line": "Solutions can stop existing. With three bodies the only way is a collision, and a three-way collision needs the whole system to have no spin. With four or more, something stranger is possible.",
+   "body": [
+    "The equations have a division in them, by the distance cubed. Let a distance go to zero and the arithmetic stops meaning anything. That is a **singularity**: a moment beyond which the solution does not continue.",
+    "Two bodies hitting each other does it. So does all three arriving at the same point at the same instant. **Paul Painlevé proved in 1895** that for three bodies those are the only ways — every singularity is a collision. No other kind of breakdown is available.",
+    "Sundman added the condition on the three-way case, and it is a strange and beautiful one. A **triple collision requires the total angular momentum to be exactly zero.** Give the system the faintest overall spin and all three can never meet. Not unlikely — impossible. The spin is conserved, and it cannot be carried by a single point.",
+    "Painlevé also guessed that for more bodies there would be a singularity that is not a collision: a solution that ceases to exist in finite time with nothing having hit anything. It took until **1992**, when **Zhihong (Jeff) Xia** built one with five bodies — an arrangement in which distances and speeds run to infinity in a finite time, each body having only ever passed near the others. Joseph Gerver later did it with four. For three, Painlevé's proof stands: a crash is the only way out.",
+    "This is where the three-body problem earns its position. Two bodies are solvable. Four or more can misbehave in ways three cannot. Three is the narrowest place where the trouble starts and the last place it is still fully mapped."
+   ],
+   "eqs": [
+    {
+     "html": "<b>L</b> = 0&nbsp;&nbsp;⟺&nbsp;&nbsp;triple collision possible",
+     "read": "All three can meet at one point only if the whole system has no spin at all.",
+     "note": "Sundman's theorem, 1907. The one-line reason: a point has no room for angular momentum, and angular momentum never changes."
+    },
+    {
+     "html": "<i>I</i> = <span class=\"sum\">Σ</span> <i>m<sub>i</sub> r<sub>i</sub></i><sup>2</sup>,&nbsp;&nbsp; <span class=\"frac\"><span><i>d</i><sup>2</sup><i>I</i></span><span><i>dt</i><sup>2</sup></span></span> = 4<i>E</i> − 2<i>U</i>",
+     "read": "Take the spread of the system. How its spread speeds up or slows depends only on the energy and the pull.",
+     "note": "Lagrange–Jacobi. If the total energy is positive the spread must grow without limit: a system with too much energy cannot stay together, whatever anybody arranges."
+    }
+   ],
+   "sources": [
+    [
+     "Wikipedia, Painlevé conjecture",
+     "https://en.wikipedia.org/wiki/Painlev%C3%A9_conjecture"
+    ],
+    [
+     "Xia, The existence of noncollision singularities in Newtonian systems (Annals of Mathematics, 1992)",
+     "https://doi.org/10.2307/2946598"
+    ],
+    [
+     "Wikipedia, n-body problem: singularities",
+     "https://en.wikipedia.org/wiki/N-body_problem"
+    ],
+    [
+     "Wikipedia, Virial theorem and the Lagrange–Jacobi identity",
+     "https://en.wikipedia.org/wiki/Virial_theorem"
+    ]
+   ],
+   "try": "Set up a near-collision in the sandbox: two bodies almost on top of each other. Watch the energy readout jump and the step size warning appear. The computer is not wrong about the physics there — it is being asked to divide by nearly nothing, which is the same problem Painlevé was writing about with a pen."
+  },
+  {
+   "id": "numbers",
+   "title": "So you step it",
+   "demo": "integrator",
+   "line": "Nobody solves the three-body problem. Everybody steps it: work out the pulls, move everything a little, do it again. The skill is in knowing when your own arithmetic has started lying.",
+   "body": [
+    "Here is the whole method, and it is old enough that Euler used it by hand. Where is everything? What is the pull on each? Move each one a little way at its current speed, change each speed a little by its current pull. Repeat a million times.",
+    "Done the obvious way — move, then change speed, with the same step — it is called **Euler's method** and it leaks. Energy climbs, orbits spiral outward, and nothing warns you. The fix is almost free: change the speed by half a step, move a whole step, change the speed by the other half. That is **leapfrog**, also called Verlet, and it belongs to a family called **symplectic** methods whose defining virtue is that they do not leak. The energy wobbles up and down with each orbit and comes back. Over a million orbits it is still wobbling around the same value.",
+    "That wobble is the audit. Total energy is a quantity that cannot change, so watching what your computer does to it tells you what your computer is doing to everything else. Every demo on this site prints it, and the demo on this page runs both methods side by side so the leak is visible.",
+    "Close passes are where stepping fails. When two bodies nearly touch, the pull goes up like the square of the closing distance and a step that was fine a second ago now throws a body across the screen. Two ways out. **Softening** — add a small constant under the square root, which rounds off the bottom of the well and is a lie you have chosen knowingly. Or **regularisation** — change variables so a collision stretches out into something smooth, which Levi-Civita did in 1903 and which is what serious codes use.",
+    "Then there is the deeper problem the chaos chapter set up. A computer carries about sixteen digits. In a chaotic triple, the error in the sixteenth digit doubles its way up to the first one, and after a few dozen Lyapunov times the trajectory on the screen is a trajectory, not *the* trajectory. Boekholt and Portegies Zwart put a number on it in 2015 by running the same systems in arbitrary precision: a large share of chaotic triples are **not reproducible** at ordinary double precision. Their answer was Brutus, a code that carries as many digits as needed and slows down to whatever extent that takes.",
+    "So a picture of a three-body orbit is a claim about a calculation. The version of the claim worth printing comes with the method, the step size, and what the energy did."
+   ],
+   "eqs": [
+    {
+     "html": "Euler:&nbsp; <b>v</b> ← <b>v</b> + <b>a</b> <i>h</i>,&nbsp; <b>r</b> ← <b>r</b> + <b>v</b> <i>h</i>",
+     "read": "Change the speed by the pull times the step, then move at the new speed. One line, and it leaks energy.",
+     "note": "Error per step proportional to h². The leak is systematic, not random, which is what makes it dangerous: the orbit drifts one way forever."
+    },
+    {
+     "html": "Leapfrog:&nbsp; <b>v</b> ← <b>v</b> + <b>a</b> <span class=\"frac\"><span><i>h</i></span><span>2</span></span>,&nbsp; <b>r</b> ← <b>r</b> + <b>v</b><i>h</i>,&nbsp; <b>a</b> ← <b>a</b>(<b>r</b>),&nbsp; <b>v</b> ← <b>v</b> + <b>a</b> <span class=\"frac\"><span><i>h</i></span><span>2</span></span>",
+     "read": "Half a kick, a full drift, then the other half kick with the new pull. Four lines instead of two, and the energy stays put.",
+     "note": "Symplectic and time-reversible: run it backwards and you land on the start. This is what runs the demos on this site, in the browser, and tools/physics.py, in Python."
+    },
+    {
+     "html": "<i>h</i> ≲ <span class=\"frac\"><span><i>r</i><sub>min</sub></span><span><i>v</i><sub>max</sub></span></span> × <span class=\"frac\"><span>1</span><span>100</span></span>",
+     "read": "Your step has to be a small fraction of the time the closest pair takes to cross its own separation.",
+     "note": "A rule of thumb, not a theorem. Codes that mean business compute a step from the current configuration every time round, rather than fixing one in advance."
+    }
+   ],
+   "sources": [
+    [
+     "Wikipedia, Verlet integration",
+     "https://en.wikipedia.org/wiki/Verlet_integration"
+    ],
+    [
+     "Wikipedia, Symplectic integrator",
+     "https://en.wikipedia.org/wiki/Symplectic_integrator"
+    ],
+    [
+     "Boekholt & Portegies Zwart, On the reliability of N-body simulations (2015)",
+     "https://arxiv.org/abs/1411.6671"
+    ],
+    [
+     "Wikipedia, Levi-Civita regularisation / Kustaanheimo–Stiefel transformation",
+     "https://en.wikipedia.org/wiki/Kustaanheimo%E2%80%93Stiefel_transformation"
+    ]
+   ],
+   "try": "On the demo, put the step size up until the two curves part, then read the energy drift on each. Euler goes one way and keeps going; leapfrog wobbles. That difference is a hundred years of numerical analysis in one picture."
+  },
+  {
+   "id": "odds",
+   "title": "What usually happens",
+   "demo": "odds",
+   "line": "Throw three bodies together and the usual ending is a fight two of them win: one gets thrown out, the other two are left closer than they started. You cannot predict which — but you can price it.",
+   "body": [
+    "Give up on predicting the path and ask a different question: out of many random triples, what fraction end which way? That question has answers, and they are stable, and they are useful.",
+    "Start a pair in orbit and send a third body in. Three things can happen. It can fly past, leaving the pair a little changed — a **flyby**. It can trade places with one of the pair and leave the other one out in the cold — an **exchange**. Or all three can mill about for a while in a **resonance**, drawing loops around each other, and then one leaves for good — an **ejection**. Given enough time, and with the energy to allow it, ejection is what almost always happens.",
+    "The bookkeeping is exact even though the path is not. Energy is conserved, so the body that leaves takes kinetic energy with it, and the pair left behind must go **down** by the same amount — which for a gravitational pair means closer together and faster. This is how a binary tightens: by throwing things out. It is also where a slingshot comes from. Voyager 2 did not gain energy from nothing; Jupiter lost a slice, and Jupiter can afford it.",
+    "In 2019 Nicholas Stone and Nathan Leigh derived the outcome distribution — a closed-form answer for the *statistics* of the chaotic problem, with the escaper's energy and the leftover pair's shape as probabilities. The individual path stays unpredictable; the odds are now written down.",
+    "The stable arrangements are the **hierarchical** ones: a close pair with a distant third, each level looking like a two-body orbit with a small correction. Sun, Earth, Moon. Every triple star that has lasted. Even those have a slow knife: if the outer orbit is tilted more than about 39.2° from the inner one, the **Kozai–Lidov** mechanism trades the tilt for stretch, and the inner pair's orbit swings between round and cigar-shaped over thousands of orbits. That mechanism is now standard equipment in explanations of hot Jupiters and of black-hole pairs that merge.",
+    "The demo below runs a few hundred random triples in your browser and counts what they did. The percentages on the page are whatever the run produced, computed there and then."
+   ],
+   "eqs": [
+    {
+     "html": "<i>E</i><sub>pair, after</sub> = <i>E</i><sub>pair, before</sub> − <i>E</i><sub>escaper</sub>",
+     "read": "Whatever energy the ejected body leaves with comes out of the pair that stays, which pulls them closer together.",
+     "note": "A tighter pair is a lower-energy pair, because the energy is negative and grows more so. This is the engine behind hard binaries in star clusters getting harder."
+    },
+    {
+     "html": "<i>a</i><sub>after</sub> = <span class=\"frac\"><span><i>a</i><sub>before</sub></span><span>1 + <i>a</i><sub>before</sub>Δ</span></span>&nbsp;&nbsp;·&nbsp;&nbsp;cos <i>i</i><sub>crit</sub> = ±√(3/5), <i>i</i> ≈ 39.2°",
+     "read": "How much the pair tightens, and the tilt beyond which a distant third body starts stretching the inner orbit.",
+     "note": "The second is the Kozai–Lidov threshold. Above it, the inner pair's roundness and its tilt trade back and forth on a long cycle."
+    },
+    {
+     "html": "<i>t</i><sub>eject</sub> — heavy tailed",
+     "read": "How long the milling-about lasts has no typical value worth quoting: mostly quick, with a long tail of triples that hang on.",
+     "note": "Which is why the demo shows the spread rather than an average. An average over a heavy-tailed distribution is a number that describes nothing."
+    }
+   ],
+   "sources": [
+    [
+     "Stone & Leigh, A statistical solution to the chaotic, non-hierarchical three-body problem (Nature, 2019)",
+     "https://www.nature.com/articles/s41586-019-1833-8"
+    ],
+    [
+     "Hut & Bahcall, Binary–single star scattering (Astrophysical Journal, 1983)",
+     "https://ui.adsabs.harvard.edu/abs/1983ApJ...268..319H"
+    ],
+    [
+     "Wikipedia, Kozai mechanism",
+     "https://en.wikipedia.org/wiki/Kozai_mechanism"
+    ],
+    [
+     "Wikipedia, Gravity assist",
+     "https://en.wikipedia.org/wiki/Gravity_assist"
+    ],
+    [
+     "Wikipedia, Hierarchical triple star system",
+     "https://en.wikipedia.org/wiki/Star_system"
+    ]
+   ],
+   "try": "Run the demo once, then again. The individual endings differ and the percentages barely move. That gap — unpredictable one at a time, dependable in bulk — is the whole reason stellar dynamics is a science."
+  },
+  {
+   "id": "myths",
+   "title": "What it is not",
+   "demo": "",
+   "line": "Five things the phrase 'the three-body problem' gets used for that it does not mean.",
+   "body": [
+    "**It is not unsolvable.** The path exists, it is unique, and it can be computed to as many digits as you are willing to pay for. What does not exist is a closed-form formula of certain kinds — algebraic conserved quantities, single-valued analytic ones — and a usable one in general. 'No formula' and 'no answer' are different claims and only the first one is true.",
+    "**Chaos is not randomness.** The same start gives the same path every time, exactly. What chaos adds is that nearby starts part company at an exponential rate, so a prediction's useful life is finite. A dice roll has no path; a three-body system has one and you cannot get at it.",
+    "**Three bodies are not automatically unstable.** Lagrange's triangle holds its shape forever. The figure eight repeats forever. Jupiter's Trojan asteroids have sat at L4 and L5 for billions of years, and the Sun–Earth–Moon arrangement is older than anything that has ever looked at it.",
+    "**Computers did not solve it.** They step it, which is a different thing, and the stepping has to be audited. Some chaotic triples are not reproducible at ordinary sixteen-digit precision — the figure on the numbers page — so a simulation is a hypothesis with a method attached.",
+    "**More bodies is not strictly worse.** A galaxy of a hundred billion stars is described well by smooth approximations, because the crowd averages out. Three is the awkward middle: too many for a formula, too few for statistics. Which is why it took two hundred and fifty years and is still producing papers.",
+    "And the novel is a novel. Liu Cixin's *The Three-Body Problem* takes the name and the chaos seriously enough, and then goes where fiction goes. The planet with three suns in it would be governed by the mathematics on this site; the rest is the book's own."
+   ],
+   "eqs": [],
+   "sources": [
+    [
+     "Wikipedia, Three-body problem",
+     "https://en.wikipedia.org/wiki/Three-body_problem"
+    ],
+    [
+     "Wikipedia, Chaos theory",
+     "https://en.wikipedia.org/wiki/Chaos_theory"
+    ],
+    [
+     "Boekholt & Portegies Zwart, On the reliability of N-body simulations (2015)",
+     "https://arxiv.org/abs/1411.6671"
+    ]
+   ],
+   "try": ""
+  }
+ ]
+}

@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The ones that come back around — The Three-Body Problem</title>
+<meta name="description" content="Some starts run a closed loop and repeat forever. Three equal weights chasing each other around a figure eight is the famous one, and it was found by looking, not by solving.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="color-scheme" content="light dark">
+<meta property="og:site_name" content="The Three-Body Problem"><meta property="og:locale" content="en_US">
+<meta property="og:title" content="The ones that come back around — The Three-Body Problem"><meta property="og:description" content="Some starts run a closed loop and repeat forever. Three equal weights chasing each other around a figure eight is the famous one, and it was found by looking, not by solving."><meta property="og:type" content="website">
+<meta property="og:image" content="https://nanobotco.github.io/three-body/img/card.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://nanobotco.github.io/three-body/img/card.jpg">
+<link rel="canonical" href="https://nanobotco.github.io/three-body/math/eight/">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#0b7a76">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<style>
+:root{
+ --bg:#f7f6f1;--panel:#ffffff;--ink:#101418;--mute:#5b6570;--line:#e2e0d6;--chip:#eceae0;
+ --teal:#0b7a76;--gold:#b7791f;--violet:#6d4fc4;--red:#c8323c;--navy:#0b1220;
+ --focus:#0a4fd1;--shadow:rgba(10,14,20,.10);
+ --e-law:#b7791f;--e-shapes:#0b7a76;--e-proof:#6d4fc4;--e-step:#c8323c;--e-found:#0a66c2;--e-sky:#5b6570;
+ --display:"Avenir Next Condensed","HelveticaNeue-CondensedBold","Arial Narrow Bold",
+   "Franklin Gothic Heavy",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --bg:#0d1117;--panel:#151b24;--ink:#eef1f4;--mute:#a4afbb;--line:#26303c;--chip:#1c2530;
+ --teal:#2fc4bd;--gold:#f0b545;--violet:#a891f2;--red:#ff6b74;--navy:#070b13;
+ --focus:#8ab4f8;--shadow:rgba(0,0,0,.5);
+ --e-law:#f0b545;--e-shapes:#2fc4bd;--e-proof:#a891f2;--e-step:#ff6b74;--e-found:#6cb4ff;--e-sky:#a4afbb;}}
+:root[data-theme="dark"]{
+ --bg:#0d1117;--panel:#151b24;--ink:#eef1f4;--mute:#a4afbb;--line:#26303c;--chip:#1c2530;
+ --teal:#2fc4bd;--gold:#f0b545;--violet:#a891f2;--red:#ff6b74;--navy:#070b13;
+ --focus:#8ab4f8;--shadow:rgba(0,0,0,.5);
+ --e-law:#f0b545;--e-shapes:#2fc4bd;--e-proof:#a891f2;--e-step:#ff6b74;--e-found:#6cb4ff;--e-sky:#a4afbb;}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;-webkit-text-size-adjust:100%}
+a{color:var(--teal);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:var(--violet)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,svg{max-width:100%}
+main{max-width:46rem;margin:0 auto;padding:0 1rem 3rem}
+main.wide{max-width:64rem}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.005em;margin:1.6rem 0 .5rem}
+h1{font-size:clamp(2.2rem,7vw,4rem);margin-top:1.2rem}
+h2{font-size:clamp(1.6rem,4.5vw,2.4rem);border-bottom:3px solid var(--ink);padding-bottom:.2rem}
+h3{font-size:1.3rem}
+p{margin:.6rem 0}
+.lead{font-size:1.25rem;line-height:1.5;max-width:36ch}
+.line{font-size:1.2rem;font-weight:600;border-left:5px solid var(--gold);padding:.3rem 0 .3rem .9rem;margin:1rem 0 1.2rem;background:var(--chip)}
+.mute{color:var(--mute)}
+.small{font-size:.86rem}
+code,.mono{font-family:var(--mono);font-size:.9em}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+/* header */
+header.top{max-width:64rem;margin:0 auto;padding:.7rem 1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.2rem}
+.brand{font-family:var(--display);font-size:1.5rem;text-decoration:none;color:var(--ink);letter-spacing:.01em}
+.brand b{color:var(--teal)}
+nav.crumbs{font-size:.92rem;display:flex;flex-wrap:wrap;gap:.2rem .9rem}
+nav.crumbs a{text-decoration:none;color:var(--ink);border-bottom:2px solid transparent;padding-bottom:.1rem}
+nav.crumbs a:hover,nav.crumbs a[aria-current]{border-bottom-color:var(--gold);color:var(--ink)}
+/* the linked picture: background · scrim · spacer · text — the whole box is the link */
+.shot{position:relative;display:block;overflow:hidden;text-decoration:none;border:3px solid var(--ink);color:#fff;isolation:isolate;background:var(--navy)}
+.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.shot .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,8,14,.05) 0%,rgba(6,8,14,.25) 45%,rgba(6,8,14,.86) 100%)}
+.shot .sp{display:block;padding-top:62%}
+.shot .tx{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:.7rem .9rem;font-family:var(--display);font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.02;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.shot .tx small{display:block;font-family:var(--body);font-size:.78rem;opacity:.9;margin-top:.3rem;font-weight:400}
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin:1.4rem 0}
+.doors h3{margin:0}
+.hero{margin:1rem 0 0}
+.hero .sp{padding-top:44%}
+.hero .tx{font-size:clamp(2rem,7vw,4.4rem);padding:1rem 1.2rem}
+.hero .tx small{font-size:clamp(.95rem,2vw,1.15rem);max-width:40ch}
+/* the parallax band — full bleed, the photograph held still while the page moves over it */
+.band{position:relative;isolation:isolate;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;
+ min-height:clamp(220px,44vh,440px);display:grid;align-items:center;background-size:cover;background-position:center;
+ background-repeat:no-repeat;background-attachment:fixed;background-color:var(--navy);
+ border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);margin-block:2.4rem;color:#fff}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,8,14,.72) 0%,rgba(6,8,14,.30) 40%,rgba(6,8,14,.40) 60%,rgba(6,8,14,.82) 100%)}
+.band .in{max-width:46rem;margin:0 auto;padding:clamp(1.6rem,5vw,3.4rem) 1rem;width:100%}
+.band .kicker{display:block;font-family:var(--display);font-size:.72rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#f0b545;margin-bottom:.5rem}
+.band h2{border:0;color:#fff;text-transform:uppercase;margin:0 0 .4rem;max-width:22ch;text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.band p{color:#e8ecf0;max-width:38ch;text-shadow:0 1px 12px rgba(0,0,0,.7)}
+.band .big{font-family:var(--display);font-size:clamp(3rem,11vw,7rem);line-height:.86;font-weight:800;color:#fff;margin:0}
+.band .big small{display:block;font-family:var(--body);font-size:.16em;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin-top:.5rem;color:#f0b545}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+/* chapters */
+.chapter{margin:2.2rem 0}
+.chapter .body p{max-width:64ch}
+.try{background:var(--chip);border-left:5px solid var(--teal);padding:.5rem .9rem;margin:.8rem 0;font-size:.95rem}
+.try b{color:var(--teal)}
+.demo{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem;margin:1.2rem 0;box-shadow:0 10px 30px var(--shadow)}
+.demo .row{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin:.5rem 0}
+.demo label{font-size:.88rem;color:var(--mute);display:flex;align-items:center;gap:.4rem}
+.demo input[type=range]{accent-color:var(--teal);width:9rem}
+.demo .readout{font-family:var(--mono);font-size:.9rem;background:var(--chip);padding:.15rem .5rem;border-radius:6px}
+.demo svg{display:block;width:100%;height:auto}
+.demo canvas{display:block;width:100%;height:auto;border-radius:8px;background:#070b13}
+.btn{display:inline-block;font:inherit;font-weight:700;font-size:.92rem;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.45rem 1rem;cursor:pointer;text-decoration:none}
+.btn.alt{background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+.tally{display:grid;grid-template-columns:auto 1fr auto;gap:.3rem .6rem;align-items:center;font-size:.9rem;margin:.5rem 0}
+.tally .bar{height:.7rem;background:var(--line);border-radius:4px;overflow:hidden}
+.tally .bar i{display:block;height:100%;background:var(--teal);transform-origin:left;transform:scaleX(var(--v,0))}
+.tally .bar.t i{background:var(--gold)}
+.note{font-size:.86rem;color:var(--mute);margin:.4rem 0 0}
+/* timeline */
+.tl{list-style:none;margin:1.5rem 0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:5.2rem;top:0;bottom:0;width:3px;background:var(--line)}
+.tl li{position:relative;display:grid;grid-template-columns:4.2rem 1fr;gap:1.4rem;margin:0 0 1.6rem}
+.tl .yr{font-family:var(--display);font-size:1.6rem;line-height:1;text-align:right;color:var(--mute);padding-top:.15rem}
+.tl .dot{position:absolute;left:calc(5.2rem - 8px);top:.45rem;width:19px;height:19px;border-radius:50%;background:var(--e,var(--teal));border:3px solid var(--bg);box-shadow:0 0 0 2px var(--e,var(--teal))}
+.tl h3{margin:0 0 .2rem;font-size:1.35rem}
+.tl .plain{margin:.1rem 0 .3rem;font-size:1.02rem}
+.tl details{font-size:.95rem}
+.tl summary{cursor:pointer;color:var(--teal);font-size:.9rem}
+.tl .who{font-size:.82rem;color:var(--mute)}
+.tl .era{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--e,var(--teal));margin-right:.5rem}
+@media (max-width:540px){.tl::before{left:.55rem}.tl li{grid-template-columns:1fr;gap:.2rem;padding-left:1.6rem}.tl .yr{text-align:left}.tl .dot{left:calc(.55rem - 8px)}}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-size:.82rem;margin:.6rem 0}
+.legend span::before{content:"";display:inline-block;width:.8em;height:.8em;border-radius:50%;background:var(--e);margin-right:.35em;vertical-align:-.05em}
+/* cards, lists */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:1rem;margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;box-shadow:0 6px 18px var(--shadow)}
+.card h3{margin:.2rem 0 .3rem}
+.card .kv{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;font-size:.86rem;margin:.6rem 0}
+.card .kv b{color:var(--mute);font-weight:600}
+.card .who{font-size:.84rem;color:var(--mute)}
+.pro,.con{font-size:.94rem;margin:.4rem 0;padding-left:1.2rem;position:relative}
+.pro::before{content:"+";position:absolute;left:0;color:var(--teal);font-weight:800}
+.con::before{content:"−";position:absolute;left:0;color:var(--red);font-weight:800}
+dl.gloss{margin:1rem 0}
+dl.gloss dt{font-weight:700;margin-top:.8rem}
+dl.gloss dd{margin:0 0 0 0;color:var(--ink)}
+dl.gloss dd a{font-size:.84rem}
+.ledger{list-style:none;margin:1rem 0;padding:0}
+.ledger li{display:grid;grid-template-columns:6.2rem 1fr;gap:.2rem 1rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.ledger .d{font-family:var(--mono);font-size:.84rem;color:var(--mute);padding-top:.25rem}
+.ledger .w{font-weight:700}
+.ledger .why{font-size:.92rem;color:var(--mute)}
+.ledger .src{font-size:.82rem}
+.ledger .unc{font-size:.78rem;color:var(--gold);font-weight:700}
+@media (max-width:540px){.ledger li{grid-template-columns:1fr}}
+.feed{list-style:none;margin:.6rem 0;padding:0;font-size:.92rem}
+.feed li{padding:.45rem 0;border-top:1px solid var(--line);display:grid;grid-template-columns:5.6rem 1fr;gap:.6rem}
+.feed .d{font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+.feed .s{color:var(--mute);font-size:.82rem}
+@media (max-width:540px){.feed li{grid-template-columns:1fr}}
+.chart{margin:1.2rem 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.8rem}
+.chart svg text{font-family:var(--body);fill:var(--ink)}
+.chart .cap{font-size:.84rem;color:var(--mute);margin:.4rem .2rem 0}
+.myth p{max-width:64ch}
+.myth strong{color:var(--red)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:1rem 0}
+th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.wrap{overflow-x:auto}
+footer{max-width:64rem;margin:2rem auto 0;padding:1.4rem 1rem 3rem;border-top:3px solid var(--ink);font-size:.86rem;color:var(--mute)}
+footer a{color:var(--mute)}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+.bots a{margin-right:.5rem}
+.share{margin:2rem 0 0;font-size:.86rem;color:var(--mute)}
+
+/* the maths: one equation to a block, a plain reading under it */
+.eq{margin:1.1rem 0;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--gold);
+ border-radius:10px;padding:.7rem .95rem;box-shadow:0 4px 14px var(--shadow)}
+.eqn{display:block;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+ font-size:clamp(1.15rem,3.1vw,1.5rem);line-height:1.5;text-align:center;padding:.35rem 0 .5rem;overflow-x:auto}
+.eqn i{font-style:italic;padding:0 .04em}
+.eqn b{font-weight:700;font-style:italic}
+.eqn sub,.eqn sup{font-size:.66em}
+.eqn .sum{font-size:1.15em;padding:0 .12em}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .28em;line-height:1.22}
+.frac>span:first-child{padding:0 .3em .05em}
+.frac>span:last-child{border-top:1.5px solid currentColor;padding:.05em .3em 0}
+.eq .read{margin:.2rem 0 0;font-size:.98rem}
+.eq .read b{color:var(--gold)}
+.eq .why{margin:.35rem 0 0;font-size:.88rem;color:var(--mute)}
+.kvgrid{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;align-items:center;margin:.6rem 0;font-size:.9rem}
+.kvgrid b{color:var(--mute);font-weight:600}
+.sel{font:inherit;font-size:.9rem;padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);
+ background:var(--chip);color:var(--ink);max-width:18rem}
+.orbits{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;margin:1.2rem 0}
+.orb{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.7rem .8rem;box-shadow:0 6px 18px var(--shadow)}
+.orb svg{display:block;width:100%;height:auto;background:var(--chip);border-radius:10px}
+.orb h3{margin:.5rem 0 .15rem;font-size:1.05rem}
+.orb .kv{font-family:var(--mono);font-size:.76rem;color:var(--mute);line-height:1.5}
+.orb .tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--teal);margin-bottom:.2rem}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:.2rem 0 .6rem 2.4rem}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.15rem;width:1.7rem;height:1.7rem;border-radius:50%;
+ background:var(--chip);border:2px solid var(--gold);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+pre.code{background:var(--navy);color:#e8ecf0;border-radius:12px;padding:.9rem 1rem;overflow-x:auto;font-family:var(--mono);
+ font-size:.82rem;line-height:1.55;border:1px solid var(--line)}
+pre.code b{color:#f0b545;font-weight:700}
+pre.code i{color:#8fb7c9;font-style:normal}
+/* motion — transform and opacity only, behind the gate */
+@media (prefers-reduced-motion:no-preference){
+ .shot .bg{transition:transform .6s ease}.shot:hover .bg{transform:scale(1.04)}
+ .shot,.card{transition:transform .18s ease,box-shadow .18s ease}
+ .shot:hover,.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px var(--shadow)}
+ .btn{transition:transform .15s ease}.btn:hover{transform:scale(1.05)}.btn:active{transform:scale(.97)}
+ .tl li{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+ .tl li.in,.tl.nojs li{opacity:1;transform:none}
+ .tally .bar i{transition:transform .35s ease}
+ .demo::before{content:"";position:absolute;inset:-2px;border-radius:16px;z-index:-1;
+  background:conic-gradient(from var(--a,0deg),var(--teal),var(--violet),var(--gold),var(--teal));
+  animation:spin 9s linear infinite;opacity:.55}
+ @property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+ @keyframes spin{to{--a:360deg}}
+ .coin.air{animation:flip 1.1s linear infinite}
+ @keyframes flip{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(1)}}
+ .pulse{animation:pulse 1.6s ease-in-out infinite}
+ @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+ .spinarrow{transform-origin:center;animation:turn 6s linear infinite}
+ @keyframes turn{to{transform:rotate(360deg)}}
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The ones that come back around", "description": "Some starts run a closed loop and repeat forever. Three equal weights chasing each other around a figure eight is the famous one, and it was found by looking, not by solving.", "url": "https://nanobotco.github.io/three-body/math/eight/", "license": "https://creativecommons.org/licenses/by/4.0/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "The Three-Body Problem", "url": "https://nanobotco.github.io/three-body/"}, "publisher": {"@type": "Organization", "name": "NaNoBotCo", "url": "https://nanobotco.github.io/index/", "email": "nan@motdang.net", "sameAs": ["https://motdang.net/", "https://nanobotco.github.io/mae-hong-son-loop/", "https://motdang.net/muay-thai/", "https://motdang.net/roads/", "https://wichaa.net/", "https://nanobotco.github.io/hand-poke/", "https://nanobotco.github.io/black-holes/", "https://nanobotco.github.io/quantum-computing/", "https://nanobotco.github.io/goin-fast/", "https://nanobotco.github.io/amulet-atlas/", "https://nanobotco.github.io/carolina-barbecue/", "https://nanobotco.github.io/buffalo-wings/", "https://nanobotco.github.io/pink-box/", "https://nanobotco.github.io/basque-tables/", "https://nanobotco.github.io/pinot-noir/", "https://nanobotco.github.io/care-abroad/", "https://nanobotco.github.io/thairoots/", "https://nanobotco.github.io/index/", "https://nanobotco.github.io/uptake/", "https://nanobotco.github.io/", "https://ask.motdang.net/", "https://ai.motdang.net/", "https://defiant.to/", "https://hongdam.net/", "https://hakfarang.net/", "https://offrampt.net/"]}, "dateModified": "2026-09-22"}</script>
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html">Three <b>Body</b></a>
+<nav class="crumbs"><a href="../../index.html">Home</a> · <a href="../../math/index.html" aria-current=page>Math</a> · <a href="../../orbits/index.html">Orbits</a> · <a href="../../history/index.html">History</a> · <a href="../../code/index.html">Code</a> · <a href="../../words/index.html">Words</a> · <a href="../../sources/index.html">Sources</a> · <a href="../../llms.txt">llms.txt</a> · <a href="https://github.com/NaNoBotCo/three-body">Source</a></nav></header>
+<main>
+
+<p class="small mute">Math · chapter 8 of 13</p>
+<h1>The ones that come back around</h1>
+<p class="line">Some starts run a closed loop and repeat forever. Three equal weights chasing each other around a figure eight is the famous one, and it was found by looking, not by solving.</p>
+<div class="chapter"><div class="body"><p>A <strong>periodic</strong> orbit is one that returns to exactly where it started, at exactly the speeds it started with, and then does the whole thing again. Two bodies always do this. Three bodies almost never do — but the almost is doing some work in that sentence.</p><p>In 1993 Cris Moore, looking for closed orbits by computer, found three equal masses that chase one another around a single figure eight. All three on the same track, evenly spaced in time, no spin in the system at all. In 2000 Alain Chenciner and Richard Montgomery proved it exists, by a route worth knowing: instead of solving the equations, they showed that the path which minimises a certain total over all possible looping paths has to be that eight. The orbit is the answer to a <em>least-effort</em> question.</p><p>The trick that makes such searching possible is to throw away what does not matter. Three bodies make a triangle. Ignore how big the triangle is and which way it points, and what is left is its shape — and the space of all triangle shapes is a <strong>sphere</strong>. Three points on its equator are the three two-body collisions; the poles are the two equilateral triangles; Euler&#x27;s straight lines lie on the equator between the collisions. Every three-body motion, however wild, is a curve drawn on that sphere. The figure eight is a curve that crosses the equator between collisions and closes.</p><p>In 2013 Milovan Šuvakov and Veljko Dmitrašinović scanned a whole sheet of starting speeds by computer and reported thirteen new families, with names off the shapes they draw — butterfly, moth, yin-yang, goggles. Xiaoming Li and Shijun Liao and colleagues then pushed the same search much further with more computing and higher precision, into the hundreds and then the thousands of families.</p><p>The orbits on this site&#x27;s <strong>Orbits</strong> page were found the same way, here, on this machine: a grid of starting speeds, run forward, looking for the ones that come back near their own start, then a solver that walks each candidate in until it closes. Each one carries the distance it closes to.</p></div></div>
+<div class="eq"><span class="eqn"><b>s</b>(<i>T</i>) = <b>s</b>(0)</span><p class="read"><b>Reading it:</b> The whole state — all the positions and all the speeds — is the same after a time T as it was at the start.</p><p class="why">Twelve equations in the plane. The solver on this site treats them as twelve residuals in three unknowns and drives them toward zero.</p></div><div class="eq"><span class="eqn"><i>A</i> = ∫<sub>0</sub><sup><i>T</i></sup> ( kinetic + potential ) <i>dt</i>&nbsp;&nbsp;→&nbsp;&nbsp;least</span><p class="read"><b>Reading it:</b> Add up the motion and the pull along the whole loop. The figure eight is the loop that makes this total as small as it can be.</p><p class="why">The action. Chenciner and Montgomery&#x27;s 2000 proof works by minimising it over loops of a fixed symmetry type, which is how a shape gets proved to exist without ever being written as a formula.</p></div><div class="eq"><span class="eqn">shape of a triangle&nbsp;&nbsp;→&nbsp;&nbsp;a point on a sphere</span><p class="read"><b>Reading it:</b> Drop the size and the direction and all possible triangles form a sphere. Collisions sit on its equator.</p><p class="why">The shape sphere. The reason searches of this kind are possible at all: it turns an eighteen-number problem into a curve on a two-dimensional surface.</p></div>
+<div class="try"><b>Try it.</b> Open the Orbits page and start the figure eight. Watch one body all the way round and count: it does the whole eight once per period, and the other two are doing the same track a third of a period ahead and behind.</div>
+<div class="demo" data-demo="eight"><p class="mute small">This one runs in the browser, with JavaScript on. The words above it stand on their own.</p></div>
+<div class="chart"><svg viewBox="0 0 560 420" role="img" aria-label="the figure-eight orbit drawn on the shape sphere"><circle cx="280.0" cy="210.0" r="176.4" fill="var(--chip)" stroke="var(--line)" stroke-width="1.5"/><path d="M280.00 281.93 L286.03 281.89 L292.06 281.75 L298.07 281.53 L304.06 281.23 L310.02 280.84 L315.94 280.36 L321.82 279.79 L327.65 279.14 L333.42 278.41 L339.13 277.59 L344.76 276.69 L350.31 275.71 L355.78 274.65 L361.16 273.51 L366.44 272.29 L371.61 271.00 L376.67 269.63 L381.61 268.19 L386.43 266.68 L391.12 265.10 L395.67 263.45 L400.09 261.74 L404.35 259.97 L408.47 258.13 L412.43 256.24 L416.22 254.28 L419.86 252.28 L423.32 250.22 L426.60 248.12 L429.71 245.96 L432.64 243.77 L435.38 241.53 L437.93 239.26 L440.28 236.95 L442.45 234.60 L444.41 232.23 L446.18 229.83 L447.74 227.40 L449.09 224.95 L450.25 222.49 L451.19 220.01 L451.92 217.52 L452.45 215.02 L452.77 212.51 L452.87 210.00 L452.77 207.49 L452.45 204.98 L451.92 202.48 L451.19 199.99 L450.25 197.51 L449.09 195.05 L447.74 192.60 L446.18 190.17 L444.41 187.77 L442.45 185.40 L440.28 183.05 L437.93 180.74 L435.38 178.47 L432.64 176.23 L429.71 174.04 L426.60 171.88 L423.32 169.78 L419.86 167.72 L416.22 165.72 L412.43 163.76 L408.47 161.87 L404.35 160.03 L400.09 158.26 L395.67 156.55 L391.12 154.90 L386.43 153.32 L381.61 151.81 L376.67 150.37 L371.61 149.00 L366.44 147.71 L361.16 146.49 L355.78 145.35 L350.31 144.29 L344.76 143.31 L339.13 142.41 L333.42 141.59 L327.65 140.86 L321.82 140.21 L315.94 139.64 L310.02 139.16 L304.06 138.77 L298.07 138.47 L292.06 138.25 L286.03 138.11 L280.00 138.07 L273.97 138.11 L267.94 138.25 L261.93 138.47 L255.94 138.77 L249.98 139.16 L244.06 139.64 L238.18 140.21 L232.35 140.86 L226.58 141.59 L220.87 142.41 L215.24 143.31 L209.69 144.29 L204.22 145.35 L198.84 146.49 L193.56 147.71 L188.39 149.00 L183.33 150.37 L178.39 151.81 L173.57 153.32 L168.88 154.90 L164.33 156.55 L159.91 158.26 L155.65 160.03 L151.53 161.87 L147.57 163.76 L143.78 165.72 L140.14 167.72 L136.68 169.78 L133.40 171.88 L130.29 174.04 L127.36 176.23 L124.62 178.47 L122.07 180.74 L119.72 183.05 L117.55 185.40 L115.59 187.77 L113.82 190.17 L112.26 192.60 L110.91 195.05 L109.75 197.51 L108.81 199.99 L108.08 202.48 L107.55 204.98 L107.23 207.49 L107.13 210.00 L107.23 212.51 L107.55 215.02 L108.08 217.52 L108.81 220.01 L109.75 222.49 L110.91 224.95 L112.26 227.40 L113.82 229.83 L115.59 232.23 L117.55 234.60 L119.72 236.95 L122.07 239.26 L124.62 241.53 L127.36 243.77 L130.29 245.96 L133.40 248.12 L136.68 250.22 L140.14 252.28 L143.78 254.28 L147.57 256.24 L151.53 258.13 L155.65 259.97 L159.91 261.74 L164.33 263.45 L168.88 265.10 L173.57 266.68 L178.39 268.19 L183.33 269.63 L188.39 271.00 L193.56 272.29 L198.84 273.51 L204.22 274.65 L209.69 275.71 L215.24 276.69 L220.87 277.59 L226.58 278.41 L232.35 279.14 L238.18 279.79 L244.06 280.36 L249.98 280.84 L255.94 281.23 L261.93 281.53 L267.94 281.75 L273.97 281.89 L280.00 281.93 Z" fill="none" stroke="var(--mute)" stroke-width="1.4" stroke-dasharray="4 4"/><path d="M279.34 282.87 L278.69 283.80 L278.03 284.73 L277.37 285.66 L276.71 286.58 L276.05 287.50 L275.40 288.42 L274.74 289.33 L274.08 290.24 L273.42 291.15 L272.76 292.05 L272.11 292.94 L271.45 293.83 L270.79 294.72 L270.13 295.60 L269.47 296.48 L268.81 297.36 L268.15 298.23 L267.49 299.09 L266.83 299.95 L266.17 300.81 L265.51 301.66 L264.85 302.50 L264.18 303.35 L263.52 304.18 L262.86 305.01 L262.20 305.84 L261.53 306.66 L260.87 307.48 L260.20 308.29 L259.54 309.09 L258.87 309.89 L258.21 310.68 L257.54 311.47 L256.88 312.26 L256.21 313.03 L255.54 313.80 L254.87 314.57 L254.20 315.33 L253.53 316.08 L252.86 316.83 L252.19 317.57 L251.52 318.31 L250.85 319.04 L250.18 319.76 L249.50 320.48 L248.83 321.19 L248.16 321.89 L247.48 322.59 L246.81 323.28 L246.13 323.97 L245.45 324.64 L244.78 325.31 L244.10 325.98 L243.42 326.63 L242.74 327.28 L242.06 327.93 L241.38 328.56 L240.70 329.19 L240.01 329.81 L239.33 330.43 L238.65 331.03 L237.96 331.63 L237.28 332.22 L236.59 332.81 L235.91 333.38 L235.22 333.95 L234.53 334.51 L233.84 335.07 L233.15 335.61 L232.46 336.15 L231.77 336.68 L231.08 337.20 L230.39 337.71 L229.70 338.21 L229.00 338.71 L228.31 339.20 L227.61 339.68 L226.92 340.15 L226.22 340.61 L225.52 341.06 L224.83 341.50 L224.13 341.94 L223.43 342.37 L222.73 342.78 L222.03 343.19 L221.33 343.59 L220.63 343.98 L219.93 344.36 L219.23 344.73 L218.52 345.10 L217.82 345.45 L217.12 345.79 L216.41 346.13 L215.71 346.45 L215.01 346.77 L214.30 347.07 L213.59 347.37 L212.89 347.65 L212.18 347.93 L211.48 348.19 L210.77 348.45 L210.06 348.69 L209.35 348.93 L208.65 349.15 L207.94 349.37 L207.23 349.57 L206.52 349.77 L205.81 349.95 L205.11 350.13 L204.40 350.29 L203.69 350.44 L202.98 350.58 L202.27 350.72 L201.57 350.84 L200.86 350.95 L200.15 351.05 L199.44 351.13 L198.73 351.21 L198.03 351.28 L197.32 351.33 L196.61 351.38 L195.91 351.41 L195.20 351.44 L194.50 351.45 L193.79 351.45 L193.09 351.44 L192.38 351.42 L191.68 351.38 L190.98 351.34 L190.28 351.29 L189.58 351.22 L188.88 351.14 L188.18 351.05 L187.48 350.95 L186.78 350.84 L186.08 350.72 L185.39 350.58 L184.70 350.44 L184.00 350.28 L183.31 350.11 L182.62 349.94 L181.93 349.74 L181.24 349.54 L180.56 349.33 L179.87 349.10 L179.19 348.87 L178.51 348.62 L177.83 348.36 L177.15 348.09 L176.47 347.81 L175.80 347.52 L175.12 347.21 L174.45 346.90 L173.78 346.57 L173.11 346.23 L172.45 345.88 L171.79 345.52 L171.13 345.15 L170.47 344.77 L169.81 344.37 L169.16 343.97 L168.50 343.55 L167.86 343.12 L167.21 342.69 L166.57 342.24 L165.92 341.78 L165.29 341.31 L164.65 340.83 L164.02 340.33 L163.39 339.83 L162.76 339.32 L162.14 338.79 L161.51 338.26 L160.90 337.71 L160.28 337.15 L159.67 336.59 L159.06 336.01 L158.46 335.42 L157.86 334.83 L157.26 334.22 L156.66 333.60 L156.07 332.97 L155.49 332.34 L154.90 331.69 L154.32 331.03 L153.75 330.36 L153.18 329.69 L152.61 329.00 L152.04 328.31 L151.48 327.60 L150.93 326.89 L150.38 326.16 L149.83 325.43 L149.29 324.69 L148.75 323.93 L148.21 323.17 L147.68 322.40 L147.16 321.63 L146.63 320.84 L146.12 320.04 L145.60 319.24 L145.10 318.43 L144.59 317.61 L144.10 316.78 L143.60 315.94 L143.11 315.09 L142.63 314.24 L142.15 313.38 L141.68 312.51 L141.21 311.63 L140.75 310.75 L140.29 309.86 L139.83 308.96 L139.38 308.05 L138.94 307.14 L138.50 306.21 L138.07 305.29 L137.64 304.35 L137.22 303.41 L136.81 302.46 L136.39 301.50 L135.99 300.54 L135.59 299.57 L135.19 298.60 L134.81 297.62 L134.42 296.63 L134.05 295.63 L133.67 294.63 L133.31 293.63 L132.95 292.62 L132.59 291.60 L132.24 290.58 L131.90 289.55 L131.56 288.51 L131.23 287.48 L130.91 286.43 L130.59 285.38 L130.28 284.33 L129.97 283.27 L129.67 282.20 L129.37 281.13 L129.08 280.06 L128.80 278.98 L128.52 277.90 L128.25 276.81 L127.99 275.72 L127.73 274.62 L127.48 273.52 L127.23 272.42 L126.99 271.31 L126.76 270.20 L126.53 269.08 L126.31 267.97 L126.10 266.84 L125.89 265.72 L125.69 264.59 L125.50 263.45 L125.31 262.32 L125.13 261.18 L124.95 260.03 L124.78 258.89 L124.62 257.74 L124.46 256.59 L124.31 255.43 L124.17 254.28 L124.04 253.12 L123.91 251.96 L123.78 250.79 L123.67 249.62 L123.56 248.46 L123.45 247.28 L123.36 246.11 L123.27 244.94 L123.18 243.76 L123.11 242.58 L123.04 241.40 L122.98 240.21 L122.92 239.03 L122.87 237.84 L122.83 236.66 L122.79 235.47 L122.76 234.28 L122.74 233.09 L122.72 231.89 L122.72 230.70 L122.71 229.50 L122.72 228.31 L122.73 227.11 L122.75 225.91 L122.77 224.71 L122.81 223.51 L122.85 222.31 L122.89 221.11 L122.95 219.91 L123.01 218.71 L123.07 217.50 L123.15 216.30 L123.23 215.10 L123.31 213.89 L123.41 212.69 L123.51 211.49 L123.62 210.28 L123.74 209.08 L123.86 207.87 L123.99 206.67 L124.13 205.47 L124.27 204.26 L124.42 203.06 L124.58 201.86 L124.74 200.65 L124.92 199.45 L125.09 198.25 L125.28 197.05 L125.47 195.85 L125.67 194.65 L125.88 193.45 L126.10 192.26 L126.32 191.06 L126.55 189.86 L126.78 188.67 L127.03 187.47 L127.28 186.28 L127.54 185.09 L127.80 183.90 L128.07 182.71 L128.35 181.52 L128.64 180.34 L128.93 179.15 L129.23 177.97 L129.54 176.79 L129.86 175.61 L130.18 174.43 L130.51 173.25 L130.85 172.08 L131.19 170.90 L131.54 169.73 L131.90 168.56 L132.27 167.40 L132.64 166.23 L133.02 165.07 L133.41 163.91 L133.81 162.75 L134.21 161.59 L134.62 160.44 L135.04 159.28 L135.46 158.14 L135.90 156.99 L136.34 155.84 L136.78 154.70 L137.24 153.56 L137.70 152.43 L138.17 151.29 L138.65 150.16 L139.13 149.04 L139.62 147.91 L140.12 146.79 L140.63 145.67 L141.14 144.56 L141.66 143.44 L142.19 142.34 L142.73 141.23 L143.27 140.13 L143.82 139.03 L144.38 137.93 L144.95 136.84 L145.52 135.75 L146.10 134.67 L146.69 133.59 L147.29 132.51 L147.89 131.44 L148.50 130.37 L149.12 129.30 L149.74 128.24 L150.38 127.19 L151.02 126.13 L151.67 125.08 L152.32 124.04 L152.99 123.00 L153.66 121.96 L154.34 120.93 L155.02 119.91 L155.71 118.88 L156.41 117.87 L157.12 116.86 L157.84 115.85 L158.56 114.84 L159.29 113.85 L160.03 112.85 L160.77 111.87 L161.53 110.88 L162.29 109.91 L163.05 108.94 L163.83 107.97 L164.61 107.01 L165.40 106.05 L166.20 105.10 L167.00 104.16 L167.81 103.22 L168.63 102.29 L169.46 101.36 L170.29 100.44 L171.13 99.52 L171.98 98.61 L172.84 97.71 L173.70 96.82 L174.57 95.93 L175.44 95.04 L176.33 94.16 L177.22 93.29 L178.12 92.43 L179.02 91.57 L179.93 90.72 L180.85 89.88 L181.78 89.04 L182.71 88.21 L183.65 87.39 L184.60 86.57 L185.55 85.76 L186.51 84.96 L187.48 84.17 L188.45 83.38 L189.43 82.60 L190.42 81.83 L191.41 81.07 L192.41 80.31 L193.42 79.56 L194.43 78.82 L195.45 78.09 L196.48 77.37 L197.51 76.65 L198.55 75.94 L199.60 75.24 L200.65 74.55 L201.71 73.87 L202.77 73.20 L203.84 72.53 L204.91 71.87 L206.00 71.22 L207.08 70.59 L208.18 69.95 L209.27 69.33 L210.38 68.72 L211.49 68.12 L212.61 67.52 L213.73 66.94 L214.85 66.36 L215.98 65.80 L217.12 65.24 L218.26 64.69 L219.41 64.15 L220.56 63.63 L221.72 63.11 L222.88 62.60 L224.05 62.10 L225.22 61.61 L226.40 61.13 L227.58 60.66 L228.76 60.21 L229.95 59.76 L231.15 59.32 L232.35 58.89 L233.55 58.47 L234.76 58.07 L235.97 57.67 L237.18 57.28 L238.40 56.91 L239.62 56.54 L240.84 56.19 L242.07 55.84 L243.30 55.51 L244.54 55.19 L245.78 54.88 L247.02 54.58 L248.26 54.29 L249.51 54.01 L250.76 53.74 L252.01 53.49 L253.27 53.24 L254.52 53.01 L255.78 52.79 L257.05 52.58 L258.31 52.38 L259.57 52.19 L260.84 52.01 L262.11 51.84 L263.38 51.69 L264.65 51.54 L265.93 51.41 L267.20 51.29 L268.48 51.18 L269.76 51.08 L271.04 51.00 L272.31 50.92 L273.59 50.86 L274.87 50.81 L276.16 50.77 L277.44 50.74 L278.72 50.72 L280.00 50.72 L281.28 50.72 L282.56 50.74 L283.84 50.77 L285.12 50.81 L286.41 50.86 L287.69 50.92 L288.96 51.00 L290.24 51.08 L291.52 51.18 L292.80 51.29 L294.07 51.41 L295.35 51.54 L296.62 51.69 L297.89 51.84 L299.16 52.01 L300.43 52.19 L301.69 52.38 L302.95 52.58 L304.22 52.79 L305.48 53.01 L306.73 53.24 L307.99 53.49 L309.24 53.74 L310.49 54.01 L311.74 54.29 L312.98 54.58 L314.22 54.88 L315.46 55.19 L316.70 55.51 L317.93 55.84 L319.16 56.19 L320.38 56.54 L321.60 56.91 L322.82 57.28 L324.03 57.67 L325.24 58.07 L326.45 58.47 L327.65 58.89 L328.85 59.32 L330.05 59.76 L331.24 60.21 L332.42 60.66 L333.60 61.13 L334.78 61.61 L335.95 62.10 L337.12 62.60 L338.28 63.11 L339.44 63.63 L340.59 64.15 L341.74 64.69 L342.88 65.24 L344.02 65.80 L345.15 66.36 L346.27 66.94 L347.39 67.52 L348.51 68.12 L349.62 68.72 L350.73 69.33 L351.82 69.95 L352.92 70.59 L354.00 71.22 L355.09 71.87 L356.16 72.53 L357.23 73.20 L358.29 73.87 L359.35 74.55 L360.40 75.24 L361.45 75.94 L362.49 76.65 L363.52 77.37 L364.55 78.09 L365.57 78.82 L366.58 79.56 L367.59 80.31 L368.59 81.07 L369.58 81.83 L370.57 82.60 L371.55 83.38 L372.52 84.17 L373.49 84.96 L374.45 85.76 L375.40 86.57 L376.35 87.39 L377.29 88.21 L378.22 89.04 L379.15 89.88 L380.07 90.72 L380.98 91.57 L381.88 92.43 L382.78 93.29 L383.67 94.16 L384.56 95.04 L385.43 95.93 L386.30 96.82 L387.16 97.71 L388.02 98.61 L388.87 99.52 L389.71 100.44 L390.54 101.36 L391.37 102.29 L392.19 103.22 L393.00 104.16 L393.80 105.10 L394.60 106.05 L395.39 107.01 L396.17 107.97 L396.95 108.94 L397.71 109.91 L398.47 110.88 L399.23 111.87 L399.97 112.85 L400.71 113.85 L401.44 114.84 L402.16 115.85 L402.88 116.86 L403.59 117.87 L404.29 118.88 L404.98 119.91 L405.66 120.93 L406.34 121.96 L407.01 123.00 L407.68 124.04 L408.33 125.08 L408.98 126.13 L409.62 127.19 L410.26 128.24 L410.88 129.30 L411.50 130.37 L412.11 131.44 L412.71 132.51 L413.31 133.59 L413.90 134.67 L414.48 135.75 L415.05 136.84 L415.62 137.93 L416.18 139.03 L416.73 140.13 L417.27 141.23 L417.81 142.34 L418.34 143.44 L418.86 144.56 L419.37 145.67 L419.88 146.79 L420.38 147.91 L420.87 149.04 L421.35 150.16 L421.83 151.29 L422.30 152.43 L422.76 153.56 L423.22 154.70 L423.66 155.84 L424.10 156.99 L424.54 158.14 L424.96 159.28 L425.38 160.44 L425.79 161.59 L426.19 162.75 L426.59 163.91 L426.98 165.07 L427.36 166.23 L427.73 167.40 L428.10 168.56 L428.46 169.73 L428.81 170.90 L429.15 172.08 L429.49 173.25 L429.82 174.43 L430.14 175.61 L430.46 176.79 L430.77 177.97 L431.07 179.15 L431.36 180.34 L431.65 181.52 L431.93 182.71 L432.20 183.90 L432.46 185.09 L432.72 186.28 L432.97 187.47 L433.22 188.67 L433.45 189.86 L433.68 191.06 L433.90 192.26 L434.12 193.45 L434.33 194.65 L434.53 195.85 L434.72 197.05 L434.91 198.25 L435.08 199.45 L435.26 200.65 L435.42 201.86 L435.58 203.06 L435.73 204.26 L435.87 205.47 L436.01 206.67 L436.14 207.87 L436.26 209.08 L436.38 210.28 L436.49 211.49 L436.59 212.69 L436.69 213.89 L436.77 215.10 L436.85 216.30 L436.93 217.50 L436.99 218.71 L437.05 219.91 L437.11 221.11 L437.15 222.31 L437.19 223.51 L437.23 224.71 L437.25 225.91 L437.27 227.11 L437.28 228.31 L437.29 229.50 L437.28 230.70 L437.28 231.89 L437.26 233.09 L437.24 234.28 L437.21 235.47 L437.17 236.66 L437.13 237.84 L437.08 239.03 L437.02 240.21 L436.96 241.40 L436.89 242.58 L436.82 243.76 L436.73 244.94 L436.64 246.11 L436.55 247.28 L436.44 248.46 L436.33 249.62 L436.22 250.79 L436.09 251.96 L435.96 253.12 L435.83 254.28 L435.69 255.43 L435.54 256.59 L435.38 257.74 L435.22 258.89 L435.05 260.03 L434.87 261.18 L434.69 262.32 L434.50 263.45 L434.31 264.59 L434.11 265.72 L433.90 266.84 L433.69 267.97 L433.47 269.08 L433.24 270.20 L433.01 271.31 L432.77 272.42 L432.52 273.52 L432.27 274.62 L432.01 275.72 L431.75 276.81 L431.48 277.90 L431.20 278.98 L430.92 280.06 L430.63 281.13 L430.33 282.20 L430.03 283.27 L429.72 284.33 L429.41 285.38 L429.09 286.43 L428.77 287.48 L428.44 288.51 L428.10 289.55 L427.76 290.58 L427.41 291.60 L427.05 292.62 L426.69 293.63 L426.33 294.63 L425.95 295.63 L425.58 296.63 L425.19 297.62 L424.81 298.60 L424.41 299.57 L424.01 300.54 L423.61 301.50 L423.19 302.46 L422.78 303.41 L422.36 304.35 L421.93 305.29 L421.50 306.21 L421.06 307.14 L420.62 308.05 L420.17 308.96 L419.71 309.86 L419.25 310.75 L418.79 311.63 L418.32 312.51 L417.85 313.38 L417.37 314.24 L416.89 315.09 L416.40 315.94 L415.90 316.78 L415.41 317.61 L414.90 318.43 L414.40 319.24 L413.88 320.04 L413.37 320.84 L412.84 321.63 L412.32 322.40 L411.79 323.17 L411.25 323.93 L410.71 324.69 L410.17 325.43 L409.62 326.16 L409.07 326.89 L408.52 327.60 L407.96 328.31 L407.39 329.00 L406.82 329.69 L406.25 330.36 L405.68 331.03 L405.10 331.69 L404.51 332.34 L403.93 332.97 L403.34 333.60 L402.74 334.22 L402.14 334.83 L401.54 335.42 L400.94 336.01 L400.33 336.59 L399.72 337.15 L399.10 337.71 L398.49 338.26 L397.86 338.79 L397.24 339.32 L396.61 339.83 L395.98 340.33 L395.35 340.83 L394.71 341.31 L394.08 341.78 L393.43 342.24 L392.79 342.69 L392.14 343.12 L391.50 343.55 L390.84 343.97 L390.19 344.37 L389.53 344.77 L388.87 345.15 L388.21 345.52 L387.55 345.88 L386.89 346.23 L386.22 346.57 L385.55 346.90 L384.88 347.21 L384.20 347.52 L383.53 347.81 L382.85 348.09 L382.17 348.36 L381.49 348.62 L380.81 348.87 L380.13 349.10 L379.44 349.33 L378.76 349.54 L378.07 349.74 L377.38 349.94 L376.69 350.11 L376.00 350.28 L375.30 350.44 L374.61 350.58 L373.92 350.72 L373.22 350.84 L372.52 350.95 L371.82 351.05 L371.12 351.14 L370.42 351.22 L369.72 351.29 L369.02 351.34 L368.32 351.38 L367.62 351.42 L366.91 351.44 L366.21 351.45 L365.50 351.45 L364.80 351.44 L364.09 351.41 L363.39 351.38 L362.68 351.33 L361.97 351.28 L361.27 351.21 L360.56 351.13 L359.85 351.05 L359.14 350.95 L358.43 350.84 L357.73 350.72 L357.02 350.58 L356.31 350.44 L355.60 350.29 L354.89 350.13 L354.19 349.95 L353.48 349.77 L352.77 349.57 L352.06 349.37 L351.35 349.15 L350.65 348.93 L349.94 348.69 L349.23 348.45 L348.52 348.19 L347.82 347.93 L347.11 347.65 L346.41 347.37 L345.70 347.07 L344.99 346.77 L344.29 346.45 L343.59 346.13 L342.88 345.79 L342.18 345.45 L341.48 345.10 L340.77 344.73 L340.07 344.36 L339.37 343.98 L338.67 343.59 L337.97 343.19 L337.27 342.78 L336.57 342.37 L335.87 341.94 L335.17 341.50 L334.48 341.06 L333.78 340.61 L333.08 340.15 L332.39 339.68 L331.69 339.20 L331.00 338.71 L330.30 338.21 L329.61 337.71 L328.92 337.20 L328.23 336.68 L327.54 336.15 L326.85 335.61 L326.16 335.07 L325.47 334.51 L324.78 333.95 L324.09 333.38 L323.41 332.81 L322.72 332.22 L322.04 331.63 L321.35 331.03 L320.67 330.43 L319.99 329.81 L319.30 329.19 L318.62 328.56 L317.94 327.93 L317.26 327.28 L316.58 326.63 L315.90 325.98 L315.22 325.31 L314.55 324.64 L313.87 323.97 L313.19 323.28 L312.52 322.59 L311.84 321.89 L311.17 321.19 L310.50 320.48 L309.82 319.76 L309.15 319.04 L308.48 318.31 L307.81 317.57 L307.14 316.83 L306.47 316.08 L305.80 315.33 L305.13 314.57 L304.46 313.80 L303.79 313.03 L303.12 312.26 L302.46 311.47 L301.79 310.68 L301.13 309.89 L300.46 309.09 L299.80 308.29 L299.13 307.48 L298.47 306.66 L297.80 305.84 L297.14 305.01 L296.48 304.18 L295.82 303.35 L295.15 302.50 L294.49 301.66 L293.83 300.81 L293.17 299.95 L292.51 299.09 L291.85 298.23 L291.19 297.36 L290.53 296.48 L289.87 295.60 L289.21 294.72 L288.55 293.83 L287.89 292.94 L287.24 292.05 L286.58 291.15 L285.92 290.24 L285.26 289.33 L284.60 288.42 L283.95 287.50 L283.29 286.58 L282.63 285.66 L281.97 284.73 L281.31 283.80 L280.66 282.87 L280.00 281.93 L279.34 280.99 L278.69 280.04 L278.03 279.09 L277.37 278.14 L276.71 277.19 L276.05 276.23 L275.40 275.27 L274.74 274.30 L274.08 273.33 L273.42 272.36 L272.76 271.39 L272.11 270.41 L271.45 269.43 L270.79 268.45 L270.13 267.47 L269.47 266.48 L268.81 265.49 L268.15 264.50 L267.49 263.51 L266.83 262.51 L266.17 261.51 L265.51 260.51 L264.85 259.51 L264.18 258.50 L263.52 257.50 L262.86 256.49 L262.20 255.48 L261.53 254.46 L260.87 253.45 L260.20 252.43 L259.54 251.41 L258.87 250.40 L258.21 249.38 L257.54 248.35 L256.88 247.33 L256.21 246.31 L255.54 245.28 L254.87 244.25 L254.20 243.22 L253.53 242.20 L252.86 241.17 L252.19 240.14 L251.52 239.10 L250.85 238.07 L250.18 237.04 L249.50 236.01 L248.83 234.97 L248.16 233.94 L247.48 232.90 L246.81 231.87 L246.13 230.83 L245.45 229.80 L244.78 228.76 L244.10 227.73 L243.42 226.69 L242.74 225.66 L242.06 224.62 L241.38 223.59 L240.70 222.56 L240.01 221.52 L239.33 220.49 L238.65 219.46 L237.96 218.43 L237.28 217.40 L236.59 216.37 L235.91 215.34 L235.22 214.31 L234.53 213.29 L233.84 212.26 L233.15 211.24 L232.46 210.21 L231.77 209.19 L231.08 208.17 L230.39 207.16 L229.70 206.14 L229.00 205.13 L228.31 204.11 L227.61 203.10 L226.92 202.10 L226.22 201.09 L225.52 200.09 L224.83 199.09 L224.13 198.09 L223.43 197.09 L222.73 196.10 L222.03 195.11 L221.33 194.12 L220.63 193.14 L219.93 192.15 L219.23 191.17 L218.52 190.20 L217.82 189.23 L217.12 188.26 L216.41 187.29 L215.71 186.33 L215.01 185.37 L214.30 184.42 L213.59 183.47 L212.89 182.52 L212.18 181.58 L211.48 180.64 L210.77 179.71 L210.06 178.78 L209.35 177.85 L208.65 176.93 L207.94 176.02 L207.23 175.10 L206.52 174.20 L205.81 173.30 L205.11 172.40 L204.40 171.51 L203.69 170.62 L202.98 169.74 L202.27 168.87 L201.57 168.00 L200.86 167.13 L200.15 166.27 L199.44 165.42 L198.73 164.57 L198.03 163.73 L197.32 162.90 L196.61 162.07 L195.91 161.25 L195.20 160.43 L194.50 159.62 L193.79 158.82 L193.09 158.03 L192.38 157.24 L191.68 156.45 L190.98 155.68 L190.28 154.91 L189.58 154.15 L188.88 153.40 L188.18 152.65 L187.48 151.91 L186.78 151.18 L186.08 150.45 L185.39 149.74 L184.70 149.03 L184.00 148.33 L183.31 147.63 L182.62 146.95 L181.93 146.27 L181.24 145.60 L180.56 144.94 L179.87 144.29 L179.19 143.64 L178.51 143.01 L177.83 142.38 L177.15 141.76 L176.47 141.15 L175.80 140.55 L175.12 139.96 L174.45 139.38 L173.78 138.80 L173.11 138.23 L172.45 137.68 L171.79 137.13 L171.13 136.59 L170.47 136.06 L169.81 135.54 L169.16 135.03 L168.50 134.53 L167.86 134.04 L167.21 133.56 L166.57 133.08 L165.92 132.62 L165.29 132.17 L164.65 131.72 L164.02 131.29 L163.39 130.86 L162.76 130.45 L162.14 130.04 L161.51 129.65 L160.90 129.26 L160.28 128.89 L159.67 128.52 L159.06 128.16 L158.46 127.82 L157.86 127.48 L157.26 127.16 L156.66 126.84 L156.07 126.53 L155.49 126.24 L154.90 125.95 L154.32 125.68 L153.75 125.41 L153.18 125.15 L152.61 124.91 L152.04 124.67 L151.48 124.45 L150.93 124.23 L150.38 124.03 L149.83 123.83 L149.29 123.65 L148.75 123.47 L148.21 123.31 L147.68 123.15 L147.16 123.01 L146.63 122.87 L146.12 122.75 L145.60 122.63 L145.10 122.53 L144.59 122.43 L144.10 122.34 L143.60 122.27 L143.11 122.20 L142.63 122.15 L142.15 122.10 L141.68 122.06 L141.21 122.04 L140.75 122.02 L140.29 122.01 L139.83 122.02 L139.38 122.03 L138.94 122.05 L138.50 122.08 L138.07 122.12 L137.64 122.17 L137.22 122.23 L136.81 122.30 L136.39 122.37 L135.99 122.46 L135.59 122.56 L135.19 122.66 L134.81 122.78 L134.42 122.90 L134.05 123.03 L133.67 123.17 L133.31 123.32 L132.95 123.48 L132.59 123.65 L132.24 123.83 L131.90 124.01 L131.56 124.20 L131.23 124.41 L130.91 124.62 L130.59 124.84 L130.28 125.06 L129.97 125.30 L129.67 125.54 L129.37 125.79 L129.08 126.05 L128.80 126.32 L128.52 126.60 L128.25 126.88 L127.99 127.17 L127.73 127.47 L127.48 127.78 L127.23 128.09 L126.99 128.42 L126.76 128.74 L126.53 129.08 L126.31 129.43 L126.10 129.78 L125.89 130.14 L125.69 130.50 L125.50 130.88 L125.31 131.26 L125.13 131.64 L124.95 132.04 L124.78 132.44 L124.62 132.84 L124.46 133.26 L124.31 133.68 L124.17 134.11 L124.04 134.54 L123.91 134.98 L123.78 135.43 L123.67 135.88 L123.56 136.34 L123.45 136.80 L123.36 137.27 L123.27 137.75 L123.18 138.23 L123.11 138.72 L123.04 139.21 L122.98 139.71 L122.92 140.22 L122.87 140.73 L122.83 141.24 L122.79 141.76 L122.76 142.29 L122.74 142.82 L122.72 143.36 L122.72 143.90 L122.71 144.45 L122.72 145.00 L122.73 145.56 L122.75 146.12 L122.77 146.68 L122.81 147.25 L122.85 147.83 L122.89 148.41 L122.95 148.99 L123.01 149.58 L123.07 150.18 L123.15 150.77 L123.23 151.37 L123.31 151.98 L123.41 152.59 L123.51 153.20 L123.62 153.82 L123.74 154.44 L123.86 155.07 L123.99 155.70 L124.13 156.33 L124.27 156.96 L124.42 157.60 L124.58 158.24 L124.74 158.89 L124.92 159.54 L125.09 160.19 L125.28 160.85 L125.47 161.51 L125.67 162.17 L125.88 162.83 L126.10 163.50 L126.32 164.17 L126.55 164.84 L126.78 165.52 L127.03 166.19 L127.28 166.87 L127.54 167.56 L127.80 168.24 L128.07 168.93 L128.35 169.62 L128.64 170.31 L128.93 171.01 L129.23 171.70 L129.54 172.40 L129.86 173.10 L130.18 173.80 L130.51 174.50 L130.85 175.21 L131.19 175.92 L131.54 176.63 L131.90 177.34 L132.27 178.05 L132.64 178.76 L133.02 179.47 L133.41 180.19 L133.81 180.90 L134.21 181.62 L134.62 182.34 L135.04 183.06 L135.46 183.78 L135.90 184.50 L136.34 185.22 L136.78 185.95 L137.24 186.67 L137.70 187.39 L138.17 188.12 L138.65 188.84 L139.13 189.57 L139.62 190.29 L140.12 191.02 L140.63 191.74 L141.14 192.47 L141.66 193.20 L142.19 193.92 L142.73 194.65 L143.27 195.37 L143.82 196.10 L144.38 196.82 L144.95 197.55 L145.52 198.27 L146.10 198.99 L146.69 199.72 L147.29 200.44 L147.89 201.16 L148.50 201.88 L149.12 202.60 L149.74 203.32 L150.38 204.03 L151.02 204.75 L151.67 205.46 L152.32 206.18 L152.99 206.89 L153.66 207.60 L154.34 208.31 L155.02 209.02 L155.71 209.72 L156.41 210.43 L157.12 211.13 L157.84 211.83 L158.56 212.53 L159.29 213.23 L160.03 213.92 L160.77 214.61 L161.53 215.30 L162.29 215.99 L163.05 216.67 L163.83 217.36 L164.61 218.04 L165.40 218.72 L166.20 219.39 L167.00 220.06 L167.81 220.73 L168.63 221.40 L169.46 222.06 L170.29 222.72 L171.13 223.38 L171.98 224.03 L172.84 224.68 L173.70 225.33 L174.57 225.97 L175.44 226.61 L176.33 227.24 L177.22 227.88 L178.12 228.50 L179.02 229.13 L179.93 229.75 L180.85 230.37 L181.78 230.98 L182.71 231.58 L183.65 232.19 L184.60 232.79 L185.55 233.38 L186.51 233.97 L187.48 234.56 L188.45 235.14 L189.43 235.71 L190.42 236.28 L191.41 236.85 L192.41 237.41 L193.42 237.97 L194.43 238.52 L195.45 239.06 L196.48 239.60 L197.51 240.14 L198.55 240.66 L199.60 241.19 L200.65 241.70 L201.71 242.22 L202.77 242.72 L203.84 243.22 L204.91 243.72 L206.00 244.20 L207.08 244.68 L208.18 245.16 L209.27 245.63 L210.38 246.09 L211.49 246.55 L212.61 247.00 L213.73 247.44 L214.85 247.88 L215.98 248.31 L217.12 248.73 L218.26 249.15 L219.41 249.55 L220.56 249.96 L221.72 250.35 L222.88 250.74 L224.05 251.12 L225.22 251.49 L226.40 251.86 L227.58 252.22 L228.76 252.57 L229.95 252.91 L231.15 253.25 L232.35 253.57 L233.55 253.89 L234.76 254.21 L235.97 254.51 L237.18 254.81 L238.40 255.09 L239.62 255.38 L240.84 255.65 L242.07 255.91 L243.30 256.17 L244.54 256.42 L245.78 256.66 L247.02 256.89 L248.26 257.11 L249.51 257.33 L250.76 257.53 L252.01 257.73 L253.27 257.92 L254.52 258.10 L255.78 258.27 L257.05 258.43 L258.31 258.59 L259.57 258.74 L260.84 258.87 L262.11 259.00 L263.38 259.12 L264.65 259.23 L265.93 259.33 L267.20 259.43 L268.48 259.51 L269.76 259.59 L271.04 259.66 L272.31 259.71 L273.59 259.76 L274.88 259.80 L276.16 259.83 L277.44 259.86 L278.72 259.87 L280.00 259.87 L281.28 259.87 L282.56 259.86 L283.84 259.83 L285.13 259.80 L286.41 259.76 L287.69 259.71 L288.96 259.66 L290.24 259.59 L291.52 259.51 L292.80 259.43 L294.07 259.33 L295.35 259.23 L296.62 259.12 L297.89 259.00 L299.16 258.87 L300.43 258.74 L301.69 258.59 L302.95 258.43 L304.22 258.27 L305.48 258.10 L306.73 257.92 L307.99 257.73 L309.24 257.53 L310.49 257.33 L311.74 257.11 L312.98 256.89 L314.22 256.66 L315.46 256.42 L316.70 256.17 L317.93 255.91 L319.16 255.65 L320.38 255.38 L321.60 255.09 L322.82 254.81 L324.03 254.51 L325.24 254.21 L326.45 253.89 L327.65 253.57 L328.85 253.25 L330.05 252.91 L331.24 252.57 L332.42 252.22 L333.60 251.86 L334.78 251.49 L335.95 251.12 L337.12 250.74 L338.28 250.35 L339.44 249.96 L340.59 249.55 L341.74 249.15 L342.88 248.73 L344.02 248.31 L345.15 247.88 L346.27 247.44 L347.39 247.00 L348.51 246.55 L349.62 246.09 L350.73 245.63 L351.82 245.16 L352.92 244.68 L354.00 244.20 L355.09 243.72 L356.16 243.22 L357.23 242.72 L358.29 242.22 L359.35 241.70 L360.40 241.19 L361.45 240.66 L362.49 240.14 L363.52 239.60 L364.55 239.06 L365.57 238.52 L366.58 237.97 L367.59 237.41 L368.59 236.85 L369.58 236.28 L370.57 235.71 L371.55 235.14 L372.52 234.56 L373.49 233.97 L374.45 233.38 L375.40 232.79 L376.35 232.19 L377.29 231.58 L378.22 230.98 L379.15 230.37 L380.07 229.75 L380.98 229.13 L381.88 228.50 L382.78 227.88 L383.67 227.24 L384.56 226.61 L385.43 225.97 L386.30 225.33 L387.16 224.68 L388.02 224.03 L388.87 223.38 L389.71 222.72 L390.54 222.06 L391.37 221.40 L392.19 220.73 L393.00 220.06 L393.80 219.39 L394.60 218.71 L395.39 218.04 L396.17 217.36 L396.95 216.67 L397.71 215.99 L398.47 215.30 L399.23 214.61 L399.97 213.92 L400.71 213.23 L401.44 212.53 L402.16 211.83 L402.88 211.13 L403.59 210.43 L404.29 209.72 L404.98 209.02 L405.66 208.31 L406.34 207.60 L407.01 206.89 L407.68 206.18 L408.33 205.46 L408.98 204.75 L409.62 204.03 L410.26 203.32 L410.88 202.60 L411.50 201.88 L412.11 201.16 L412.71 200.44 L413.31 199.72 L413.90 198.99 L414.48 198.27 L415.05 197.55 L415.62 196.82 L416.18 196.10 L416.73 195.37 L417.27 194.65 L417.81 193.92 L418.34 193.20 L418.86 192.47 L419.37 191.74 L419.88 191.02 L420.38 190.29 L420.87 189.57 L421.35 188.84 L421.83 188.12 L422.30 187.39 L422.76 186.67 L423.22 185.95 L423.66 185.22 L424.10 184.50 L424.54 183.78 L424.96 183.06 L425.38 182.34 L425.79 181.62 L426.19 180.90 L426.59 180.19 L426.98 179.47 L427.36 178.76 L427.73 178.05 L428.10 177.34 L428.46 176.63 L428.81 175.92 L429.15 175.21 L429.49 174.50 L429.82 173.80 L430.14 173.10 L430.46 172.40 L430.77 171.70 L431.07 171.01 L431.36 170.31 L431.65 169.62 L431.93 168.93 L432.20 168.24 L432.46 167.56 L432.72 166.87 L432.97 166.19 L433.22 165.52 L433.45 164.84 L433.68 164.17 L433.90 163.50 L434.12 162.83 L434.33 162.17 L434.53 161.51 L434.72 160.85 L434.91 160.19 L435.08 159.54 L435.26 158.89 L435.42 158.24 L435.58 157.60 L435.73 156.96 L435.87 156.33 L436.01 155.70 L436.14 155.07 L436.26 154.44 L436.38 153.82 L436.49 153.20 L436.59 152.59 L436.69 151.98 L436.77 151.37 L436.85 150.77 L436.93 150.18 L436.99 149.58 L437.05 148.99 L437.11 148.41 L437.15 147.83 L437.19 147.25 L437.23 146.68 L437.25 146.12 L437.27 145.56 L437.28 145.00 L437.29 144.45 L437.28 143.90 L437.28 143.36 L437.26 142.82 L437.24 142.29 L437.21 141.76 L437.17 141.24 L437.13 140.73 L437.08 140.22 L437.02 139.71 L436.96 139.21 L436.89 138.72 L436.82 138.23 L436.73 137.75 L436.64 137.27 L436.55 136.80 L436.44 136.34 L436.33 135.88 L436.22 135.43 L436.09 134.98 L435.96 134.54 L435.83 134.11 L435.69 133.68 L435.54 133.26 L435.38 132.84 L435.22 132.44 L435.05 132.04 L434.87 131.64 L434.69 131.26 L434.50 130.88 L434.31 130.50 L434.11 130.14 L433.90 129.78 L433.69 129.43 L433.47 129.08 L433.24 128.74 L433.01 128.42 L432.77 128.09 L432.52 127.78 L432.27 127.47 L432.01 127.17 L431.75 126.88 L431.48 126.60 L431.20 126.32 L430.92 126.05 L430.63 125.79 L430.33 125.54 L430.03 125.30 L429.72 125.06 L429.41 124.84 L429.09 124.62 L428.77 124.41 L428.44 124.20 L428.10 124.01 L427.76 123.83 L427.41 123.65 L427.05 123.48 L426.69 123.32 L426.33 123.17 L425.95 123.03 L425.58 122.90 L425.19 122.78 L424.81 122.66 L424.41 122.56 L424.01 122.46 L423.61 122.37 L423.19 122.30 L422.78 122.23 L422.36 122.17 L421.93 122.12 L421.50 122.08 L421.06 122.05 L420.62 122.03 L420.17 122.02 L419.71 122.01 L419.25 122.02 L418.79 122.04 L418.32 122.06 L417.85 122.10 L417.37 122.15 L416.89 122.20 L416.40 122.27 L415.90 122.34 L415.41 122.43 L414.90 122.53 L414.40 122.63 L413.88 122.75 L413.37 122.87 L412.84 123.01 L412.32 123.15 L411.79 123.31 L411.25 123.47 L410.71 123.65 L410.17 123.83 L409.62 124.03 L409.07 124.23 L408.52 124.45 L407.96 124.67 L407.39 124.91 L406.82 125.15 L406.25 125.41 L405.68 125.68 L405.10 125.95 L404.51 126.24 L403.93 126.53 L403.34 126.84 L402.74 127.16 L402.14 127.48 L401.54 127.82 L400.94 128.16 L400.33 128.52 L399.72 128.89 L399.10 129.26 L398.49 129.65 L397.86 130.04 L397.24 130.45 L396.61 130.86 L395.98 131.29 L395.35 131.72 L394.71 132.17 L394.08 132.62 L393.43 133.08 L392.79 133.56 L392.14 134.04 L391.50 134.53 L390.84 135.03 L390.19 135.54 L389.53 136.06 L388.87 136.59 L388.21 137.13 L387.55 137.68 L386.89 138.23 L386.22 138.80 L385.55 139.38 L384.88 139.96 L384.20 140.55 L383.53 141.15 L382.85 141.76 L382.17 142.38 L381.49 143.01 L380.81 143.64 L380.13 144.29 L379.44 144.94 L378.76 145.60 L378.07 146.27 L377.38 146.95 L376.69 147.63 L376.00 148.33 L375.30 149.03 L374.61 149.74 L373.92 150.45 L373.22 151.18 L372.52 151.91 L371.82 152.65 L371.12 153.40 L370.42 154.15 L369.72 154.91 L369.02 155.68 L368.32 156.45 L367.62 157.24 L366.91 158.03 L366.21 158.82 L365.50 159.62 L364.80 160.43 L364.09 161.25 L363.39 162.07 L362.68 162.90 L361.97 163.73 L361.27 164.57 L360.56 165.42 L359.85 166.27 L359.14 167.13 L358.43 168.00 L357.73 168.87 L357.02 169.74 L356.31 170.62 L355.60 171.51 L354.89 172.40 L354.19 173.30 L353.48 174.20 L352.77 175.10 L352.06 176.02 L351.35 176.93 L350.65 177.85 L349.94 178.78 L349.23 179.71 L348.52 180.64 L347.82 181.58 L347.11 182.52 L346.41 183.47 L345.70 184.42 L344.99 185.37 L344.29 186.33 L343.59 187.29 L342.88 188.26 L342.18 189.23 L341.48 190.20 L340.77 191.17 L340.07 192.15 L339.37 193.14 L338.67 194.12 L337.97 195.11 L337.27 196.10 L336.57 197.09 L335.87 198.09 L335.17 199.09 L334.48 200.09 L333.78 201.09 L333.08 202.10 L332.39 203.10 L331.69 204.11 L331.00 205.13 L330.30 206.14 L329.61 207.16 L328.92 208.17 L328.23 209.19 L327.54 210.21 L326.85 211.24 L326.16 212.26 L325.47 213.29 L324.78 214.31 L324.09 215.34 L323.41 216.37 L322.72 217.40 L322.04 218.43 L321.35 219.46 L320.67 220.49 L319.99 221.52 L319.30 222.56 L318.62 223.59 L317.94 224.62 L317.26 225.66 L316.58 226.69 L315.90 227.73 L315.22 228.76 L314.55 229.80 L313.87 230.83 L313.19 231.87 L312.52 232.90 L311.84 233.94 L311.17 234.97 L310.50 236.01 L309.82 237.04 L309.15 238.07 L308.48 239.10 L307.81 240.14 L307.14 241.17 L306.47 242.20 L305.80 243.22 L305.13 244.25 L304.46 245.28 L303.79 246.31 L303.12 247.33 L302.46 248.35 L301.79 249.38 L301.13 250.40 L300.46 251.41 L299.80 252.43 L299.13 253.45 L298.47 254.46 L297.80 255.48 L297.14 256.49 L296.48 257.50 L295.82 258.50 L295.15 259.51 L294.49 260.51 L293.83 261.51 L293.17 262.51 L292.51 263.51 L291.85 264.50 L291.19 265.49 L290.53 266.48 L289.87 267.47 L289.21 268.45 L288.55 269.43 L287.89 270.41 L287.24 271.39 L286.58 272.36 L285.92 273.33 L285.26 274.30 L284.60 275.27 L283.95 276.23 L283.29 277.19 L282.63 278.14 L281.97 279.09 L281.31 280.04 L280.66 280.99 L280.00 281.93 Z" fill="none" stroke="var(--teal)" stroke-width="2.6" opacity=".95"/><circle cx="452.9" cy="210.0" r="6" fill="var(--red)"><title>2 and 3 together</title></circle><circle cx="193.6" cy="147.7" r="6" fill="var(--red)"><title>1 and 2 together</title></circle><circle cx="193.6" cy="272.3" r="6" fill="var(--red)"><title>1 and 3 together</title></circle><circle cx="280.0" cy="48.9" r="6" fill="var(--gold)"><title>equilateral, one way round</title></circle><circle cx="280.0" cy="371.1" r="6" fill="var(--gold)"><title>equilateral, the other way</title></circle><text x="280" y="26" text-anchor="middle" font-size="12" fill="var(--mute)">equilateral triangle</text><text x="280" y="406" text-anchor="middle" font-size="12" fill="var(--mute)">the other equilateral triangle</text><text x="455" y="230" text-anchor="end" font-size="12" fill="var(--red)">collisions sit on this circle</text></svg><p class="cap">The figure eight drawn on the shape sphere: every triangle shape is a point on this ball, size and direction thrown away. The dashed circle is every straight-line arrangement, and the three red dots on it are the three two-body collisions. The orbit threads between them and closes.</p></div>
+<h3>Sources</h3><ul class='small'><li><a href="https://arxiv.org/abs/math/0011268">Chenciner &amp; Montgomery, A remarkable periodic solution of the three-body problem (Annals of Mathematics, 2000)</a></li><li><a href="https://doi.org/10.1103/PhysRevLett.70.3675">Moore, Braids in classical dynamics (Physical Review Letters, 1993)</a></li><li><a href="https://arxiv.org/abs/1303.0181">Šuvakov &amp; Dmitrašinović, Three classes of Newtonian three-body planar periodic orbits (PRL, 2013)</a></li><li><a href="https://arxiv.org/abs/1705.00527">Li &amp; Liao, More than six hundred new families of Newtonian periodic planar collisionless three-body orbits (2017)</a></li><li><a href="https://arxiv.org/abs/1402.0841">Montgomery, The three-body problem and the shape sphere (American Mathematical Monthly, 2015)</a></li></ul>
+<p class="row"><a class="btn alt" href="../shapes/index.html">← The two ways three rocks can hold a shape</a> <a class="btn" href="../series/index.html">There is a formula. Nobody can add it up. →</a></p>
+
+</main>
+<footer>
+<div class="bots">For the machines: <a href="../../api/theory.json">theory.json</a> <a href="../../api/orbits.json">orbits.json</a> <a href="../../api/timeline.json">timeline.json</a> <a href="../../api/words.json">words.json</a> <a href="../../llms-full.txt">llms-full.txt</a> <a href="../../sitemap.xml">sitemap.xml</a></div>
+<p>Text, data and pictures <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; code <a href="https://github.com/NaNoBotCo/three-body/blob/main/LICENSE">MIT</a>. The pictures and diagrams are computed from the equations in <a href="https://github.com/NaNoBotCo/three-body/blob/main/tools/physics.py">tools/physics.py</a> when the page is built. Sources sit beside the facts they support and are listed at <a href="../../sources/index.html">Sources</a>. Built 2026-09-22.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</footer>
+<script>window.TB_ORBITS=[{"id": "braided-eight", "name": "The braided eight", "v": [0.339407412, 0.536184978], "period": 6.29081877, "closes": 1.09e-12}, {"id": "figure-eight", "name": "The figure eight", "v": [0.347116888, 0.532724945], "period": 6.32591398, "closes": 5.61e-13}, {"id": "moth", "name": "The moth", "v": [0.464445163, 0.396060015], "period": 14.89430474, "closes": 4.79e-12}, {"id": "lacewing", "name": "The lacewing", "v": [0.18194288, 0.514805998], "period": 18.14136765, "closes": 4.75e-12}, {"id": "shawl", "name": "The shawl", "v": [0.189004892, 0.539762453], "period": 19.73539189, "closes": 3.92e-12}, {"id": "thicket", "name": "The thicket", "v": [0.327578071, 0.57986168], "period": 29.21293407, "closes": 2.21e-11}, {"id": "ribbon", "name": "The ribbon", "v": [0.209661505, 0.525702389], "period": 33.86151867, "closes": 1.28e-11}, {"id": "wide-ribbon", "name": "The wide ribbon", "v": [0.255430936, 0.516385839], "period": 35.04308702, "closes": 3.52e-11}, {"id": "skein", "name": "The skein", "v": [0.254918844, 0.539739712], "period": 37.77007981, "closes": 1.22e-11}];</script><script>/* anim.js — the demos. Vanilla, no library, inlined into the pages that use them.
+
+   Each demo mounts into an element with data-demo="<name>". The physics is the same
+   leapfrog step as tools/physics.py, written out for three bodies. Continuous motion
+   runs only where the reader has not asked for reduced motion; every demo also works
+   from its buttons, so a still page is a working page.
+
+   The orbits a demo can load are put on the page by tools/build.py as window.TB_ORBITS. */
+(function () {
+  "use strict";
+  var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ORB = window.TB_ORBITS || [];
+
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) { if (k === "text") e.textContent = attrs[k]; else if (k === "html") e.innerHTML = attrs[k]; else e.setAttribute(k, attrs[k]); }
+    (kids || []).forEach(function (c) { e.appendChild(c); });
+    return e;
+  }
+  function btn(label, cls) { return el("button", { class: "btn" + (cls ? " " + cls : ""), type: "button", text: label }); }
+  function range(min, max, val, step) { return el("input", { type: "range", min: min, max: max, value: val, step: step || 1 }); }
+  function readout(t) { return el("span", { class: "readout", text: t || "" }); }
+  function row(kids) { return el("div", { class: "row" }, kids); }
+  function note(t) { return el("p", { class: "note", text: t }); }
+  function label(t, kids) { return el("label", { text: t }, kids); }
+  function fmt(x, d) { return (isFinite(x) ? x : 0).toFixed(d); }
+  function pick(opts, val) {
+    var s = el("select", { class: "sel" });
+    opts.forEach(function (o) { var op = el("option", { value: o[0], text: o[1] }); if (o[0] === val) op.selected = true; s.appendChild(op); });
+    return s;
+  }
+  var css = getComputedStyle(document.documentElement);
+  function v(n, d) { return (css.getPropertyValue(n) || "").trim() || d; }
+  var C = { teal: v("--teal", "#0b7a76"), gold: v("--gold", "#b7791f"), violet: v("--violet", "#6d4fc4"),
+            red: v("--red", "#c8323c"), ink: v("--ink", "#101418"), mute: v("--mute", "#5b6570"),
+            line: v("--line", "#e2e0d6"), panel: v("--panel", "#fff") };
+  var BODY = [C.teal, C.gold, C.violet];
+
+  /* ---------------------------------------------------------------- the physics */
+  function accel(s, m, soft) {
+    var a = [0, 0, 0, 0, 0, 0], e = soft || 0;
+    for (var i = 0; i < 3; i++) for (var j = i + 1; j < 3; j++) {
+      var dx = s[2 * j] - s[2 * i], dy = s[2 * j + 1] - s[2 * i + 1];
+      var r2 = dx * dx + dy * dy + e * e, inv = 1 / (r2 * Math.sqrt(r2));
+      a[2 * i] += m[j] * dx * inv; a[2 * i + 1] += m[j] * dy * inv;
+      a[2 * j] -= m[i] * dx * inv; a[2 * j + 1] -= m[i] * dy * inv;
+    }
+    return a;
+  }
+  /* state = [x1,y1,x2,y2,x3,y3, vx1,vy1,vx2,vy2,vx3,vy3] */
+  function step(s, m, h, soft) {
+    var a = accel(s, m, soft), i;
+    for (i = 0; i < 6; i++) { s[6 + i] += 0.5 * h * a[i]; s[i] += h * s[6 + i]; }
+    a = accel(s, m, soft);
+    for (i = 0; i < 6; i++) s[6 + i] += 0.5 * h * a[i];
+    return s;
+  }
+  function stepEuler(s, m, h) {
+    var a = accel(s, m, 0), i;
+    for (i = 0; i < 6; i++) { s[i] += h * s[6 + i]; s[6 + i] += h * a[i]; }
+    return s;
+  }
+  function energy(s, m) {
+    var ke = 0, pe = 0, i, j;
+    for (i = 0; i < 3; i++) ke += 0.5 * m[i] * (s[6 + 2 * i] * s[6 + 2 * i] + s[7 + 2 * i] * s[7 + 2 * i]);
+    for (i = 0; i < 3; i++) for (j = i + 1; j < 3; j++) {
+      var dx = s[2 * j] - s[2 * i], dy = s[2 * j + 1] - s[2 * i + 1];
+      pe -= m[i] * m[j] / Math.sqrt(dx * dx + dy * dy);
+    }
+    return ke + pe;
+  }
+  function spin(s, m) {
+    var l = 0;
+    for (var i = 0; i < 3; i++) l += m[i] * (s[2 * i] * s[7 + 2 * i] - s[2 * i + 1] * s[6 + 2 * i]);
+    return l;
+  }
+  function momentum(s, m) {
+    var px = 0, py = 0;
+    for (var i = 0; i < 3; i++) { px += m[i] * s[6 + 2 * i]; py += m[i] * s[7 + 2 * i]; }
+    return [px, py];
+  }
+  function sdState(vx, vy) { return [-1, 0, 1, 0, 0, 0, vx, vy, vx, vy, -2 * vx, -2 * vy]; }
+  function clone(s) { return s.slice(0); }
+
+  /* ---------------------------------------------------------------- canvas helpers */
+  function canvas(root, w, h) {
+    var c = el("canvas"); var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = w * dpr; c.height = h * dpr; c.style.aspectRatio = w + " / " + h;
+    var g = c.getContext("2d"); g.scale(dpr, dpr);
+    c._w = w; c._h = h; c._g = g;
+    root.appendChild(c);
+    return c;
+  }
+  function clear(c, fade) {
+    var g = c._g;
+    g.globalCompositeOperation = "source-over";
+    g.fillStyle = fade ? "rgba(7,11,19," + fade + ")" : "#070b13";
+    g.fillRect(0, 0, c._w, c._h);
+  }
+  function view(c, span, cx, cy) {
+    var s = Math.min(c._w, c._h) / span;
+    return { x: function (x) { return c._w / 2 + (x - (cx || 0)) * s; },
+             y: function (y) { return c._h / 2 - (y - (cy || 0)) * s; }, s: s };
+  }
+  function dot(c, V, x, y, r, col) {
+    var g = c._g;
+    g.beginPath(); g.arc(V.x(x), V.y(y), r, 0, 6.2832); g.fillStyle = col; g.fill();
+  }
+  function rafLoop(fn) {
+    var on = false, id = 0;
+    function tick() { if (!on) return; fn(); id = requestAnimationFrame(tick); }
+    return { start: function () { if (!on) { on = true; tick(); } }, stop: function () { on = false; cancelAnimationFrame(id); },
+             get running() { return on; } };
+  }
+  function onScreen(node, loop) {
+    if (!("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (!e.isIntersecting && loop.running) loop.stop(); });
+    }, { rootMargin: "200px" }).observe(node);
+  }
+
+  /* ---------------------------------------------------------------- 1  inverse square */
+  function inverse(root) {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "0 0 640 190"); s.setAttribute("role", "img");
+    s.setAttribute("aria-label", "two masses and the pull between them");
+    root.appendChild(s);
+    function mk(tag, at) { var e = document.createElementNS(s.namespaceURI, tag); for (var k in at) e.setAttribute(k, at[k]); return e; }
+    var barBg = mk("rect", { x: 60, y: 140, width: 520, height: 16, rx: 8, fill: C.line });
+    var bar = mk("rect", { x: 60, y: 140, height: 16, rx: 8, fill: C.teal });
+    var a = mk("circle", { cx: 90, cy: 70, r: 22, fill: C.gold, stroke: C.ink, "stroke-width": 2 });
+    var b = mk("circle", { cx: 400, cy: 70, r: 16, fill: C.violet, stroke: C.ink, "stroke-width": 2 });
+    var link = mk("line", { x1: 90, y1: 70, x2: 400, y2: 70, stroke: C.mute, "stroke-dasharray": "5 5" });
+    var txt = mk("text", { x: 60, y: 128, "font-size": 13, fill: C.mute }); txt.textContent = "";
+    [link, a, b, barBg, bar, txt].forEach(function (n) { s.appendChild(n); });
+    var d = range(10, 100, 30), m2 = range(1, 10, 3), out = readout("");
+    function draw() {
+      var dist = d.value / 10, mm = +m2.value;
+      var F = mm / (dist * dist);
+      var Fmax = 10 / 1;
+      b.setAttribute("cx", 90 + dist * 55);
+      b.setAttribute("r", 8 + mm * 1.6);
+      link.setAttribute("x2", 90 + dist * 55);
+      var wpx = Math.max(2, Math.min(1, F / Fmax) * 520);
+      bar.setAttribute("width", wpx);
+      txt.textContent = "pull";
+      out.textContent = "distance " + fmt(dist, 1) + " · weight " + mm + " · pull " + (F < 0.01 ? F.toExponential(1) : fmt(F, 3));
+    }
+    d.oninput = draw; m2.oninput = draw;
+    root.appendChild(row([label("distance", [d]), label("the other weight", [m2]), out]));
+    root.appendChild(note("Double the distance and the bar drops to a quarter. Double the weight and it doubles. That is the whole of Newton's law in two sliders."));
+    draw();
+  }
+
+  /* ---------------------------------------------------------------- 2  Kepler */
+  function kepler(root) {
+    var c = canvas(root, 640, 340);
+    var ecc = range(0, 85, 50), speed = range(1, 40, 14), out = readout("");
+    var th = 0, sweeps = [], last = 0;
+    function draw() {
+      var e = ecc.value / 100, a = 1.0;
+      clear(c);
+      var V = view(c, 2.9, e * a, 0);
+      var g = c._g;
+      // the ellipse
+      g.beginPath();
+      for (var k = 0; k <= 240; k++) {
+        var t = k / 240 * 6.2832, r = a * (1 - e * e) / (1 + e * Math.cos(t));
+        var x = r * Math.cos(t), y = r * Math.sin(t);
+        if (k === 0) g.moveTo(V.x(x), V.y(y)); else g.lineTo(V.x(x), V.y(y));
+      }
+      g.strokeStyle = C.mute; g.lineWidth = 1.2; g.stroke();
+      // equal areas: wedges swept in equal time
+      var r0 = a * (1 - e * e) / (1 + e * Math.cos(th));
+      sweeps.forEach(function (w, i) {
+        g.beginPath(); g.moveTo(V.x(0), V.y(0));
+        w.forEach(function (p, j) { g.lineTo(V.x(p[0]), V.y(p[1])); });
+        g.closePath(); g.fillStyle = i % 2 ? "rgba(47,196,189,.30)" : "rgba(240,181,69,.30)"; g.fill();
+      });
+      dot(c, V, 0, 0, 9, C.gold);
+      dot(c, V, r0 * Math.cos(th), r0 * Math.sin(th), 6, C.teal);
+      var vel = Math.sqrt((1 + e * e + 2 * e * Math.cos(th)) / (1 - e * e));
+      out.textContent = "e = " + fmt(e, 2) + " · distance " + fmt(r0, 2) + " · speed " + fmt(vel, 2) + " (fast when close, slow when far)";
+    }
+    var loop = rafLoop(function () {
+      var e = ecc.value / 100;
+      var r = 1 * (1 - e * e) / (1 + e * Math.cos(th));
+      th += (speed.value / 1400) / (r * r) * (1 - e * e);       // equal areas in equal times
+      if (th > 6.2832) { th -= 6.2832; }
+      var pts = sweeps[sweeps.length - 1];
+      if (!pts || pts.length > 26) { sweeps.push(pts = []); if (sweeps.length > 6) sweeps.shift(); }
+      pts.push([r * Math.cos(th), r * Math.sin(th)]);
+      draw();
+    });
+    var go = btn("Pause");
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    root.appendChild(row([go, label("squash", [ecc]), label("speed", [speed]), out]));
+    root.appendChild(note("One body, one fixed pull, and the shape closes and repeats forever. The shaded wedges are swept in equal times — Kepler's second law, which is angular momentum not changing."));
+    ecc.oninput = function () { sweeps = []; th = 0; draw(); };
+    draw();
+    onScreen(c, loop);
+    if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 3  the sandbox */
+  function sim(root) {
+    var c = canvas(root, 640, 400);
+    var presets = [["eight", "figure eight"], ["triangle", "Lagrange triangle"], ["line", "Euler line"],
+                   ["random", "a random throw"], ["binary", "a pair and an intruder"]];
+    ORB.slice(0, 6).forEach(function (o) { if (o.id !== "figure-eight") presets.push(["orb:" + o.id, o.name]); });
+    var sel = pick(presets, "eight");
+    var play = btn("Pause"), reset = btn("Reset", "alt"), trailsBtn = btn("Clear trails", "alt");
+    var sp = range(1, 40, 14), out = readout(""), eout = readout("");
+    var m = [1, 1, 1], s = null, E0 = 0, t = 0, trails = [[], [], []], span = 3.2;
+    function setup(kind) {
+      t = 0; trails = [[], [], []]; m = [1, 1, 1]; span = 3.2;
+      if (kind === "eight" || kind.indexOf("orb:") === 0) {
+        var o = kind === "eight" ? (ORB.filter(function (q) { return q.id === "figure-eight"; })[0] || { v: [0.3471169, 0.5327249] })
+                                 : ORB.filter(function (q) { return "orb:" + q.id === kind; })[0];
+        s = sdState(o.v[0], o.v[1]); span = 3.4;
+      } else if (kind === "triangle") {
+        var w = Math.sqrt(3);                                   // ω² = 3Gm/a³ with a = side = √3 r
+        var r = 1 / Math.sqrt(3), om = Math.sqrt(3 * 1 / Math.pow(w * r, 3));
+        s = [];
+        for (var i = 0; i < 3; i++) { var th = i * 2.0944; s.push(r * Math.cos(th), r * Math.sin(th)); }
+        for (i = 0; i < 3; i++) { var th2 = i * 2.0944; s.push(-om * r * Math.sin(th2), om * r * Math.cos(th2)); }
+        span = 2.4;
+      } else if (kind === "line") {
+        var omg = Math.sqrt(1.25);                              // equal masses at -1, 0, 1
+        s = [-1, 0, 0, 0, 1, 0, 0, -omg, 0, 0, 0, omg];
+        span = 3.0;
+      } else if (kind === "binary") {
+        s = [-0.5, 0, 0.5, 0, 3.0, 1.6, 0, -0.707, 0, 0.707, -0.62, -0.30];
+        span = 7.0;
+      } else {
+        s = [];
+        for (var k = 0; k < 3; k++) s.push((Math.random() * 2 - 1) * 1.1, (Math.random() * 2 - 1) * 1.1);
+        var vx = 0, vy = 0, vs = [];
+        for (k = 0; k < 3; k++) { var ax = (Math.random() * 2 - 1) * 0.45, ay = (Math.random() * 2 - 1) * 0.45; vs.push(ax, ay); vx += ax; vy += ay; }
+        for (k = 0; k < 3; k++) { vs[2 * k] -= vx / 3; vs[2 * k + 1] -= vy / 3; }
+        s = s.concat(vs); span = 4.0;
+      }
+      E0 = energy(s, m);
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, span);
+      var g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.globalAlpha = 0.85; g.lineWidth = 1.6; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 5.5 + 2 * (m[i] - 1), BODY[i]);
+      }
+      var E = energy(s, m);
+      out.textContent = "t = " + fmt(t, 1);
+      eout.textContent = "energy " + fmt(E, 5) + "  ·  drift " + ((Math.abs((E - E0) / E0)) < 1e-9 ? "under 1e-9" : (Math.abs((E - E0) / E0)).toExponential(1));
+    }
+    var loop = rafLoop(function () {
+      var h = 0.0006 * sp.value;
+      for (var k = 0; k < 12; k++) { step(s, m, h / 12, 0); t += h / 12; }
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 1400) trails[i].shift(); }
+      draw();
+    });
+    play.onclick = function () { if (loop.running) { loop.stop(); play.textContent = "Run"; } else { loop.start(); play.textContent = "Pause"; } };
+    reset.onclick = function () { setup(sel.value); draw(); };
+    trailsBtn.onclick = function () { trails = [[], [], []]; draw(); };
+    sel.onchange = function () { setup(sel.value); draw(); };
+    root.appendChild(row([play, reset, trailsBtn, sel]));
+    root.appendChild(row([label("speed", [sp]), out, eout]));
+    root.appendChild(note("The same four lines of arithmetic as tools/physics.py, running in your browser. The drift readout is the check on it: energy cannot change, so anything it does here is the stepper's doing, not the physics."));
+    setup("eight"); draw();
+    onScreen(c, loop);
+    if (!RM) loop.start(); else play.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 4  the ten */
+  function integrals(root) {
+    var c = canvas(root, 640, 300);
+    var s = sdState(0.28, 0.45), m = [1, 1, 1], t = 0, trails = [[], [], []];
+    var E0 = energy(s, m), L0 = spin(s, m), P0 = momentum(s, m);
+    var tbl = el("div", { class: "kvgrid" });
+    var cells = {};
+    [["energy", "never changes"], ["spin", "never changes"], ["momentum x", "never changes"],
+     ["momentum y", "never changes"], ["time", "runs on"]].forEach(function (r) {
+      tbl.appendChild(el("b", { text: r[0] }));
+      var sp2 = el("span", { class: "readout" }); cells[r[0]] = sp2; tbl.appendChild(sp2);
+    });
+    function draw() {
+      clear(c);
+      var V = view(c, 4.2), g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.globalAlpha = .7; g.lineWidth = 1.4; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 5, BODY[i]);
+      }
+      var p = momentum(s, m);
+      cells["energy"].textContent = fmt(energy(s, m), 8);
+      cells["spin"].textContent = fmt(spin(s, m), 8);
+      cells["momentum x"].textContent = fmt(p[0], 8);
+      cells["momentum y"].textContent = fmt(p[1], 8);
+      cells["time"].textContent = fmt(t, 2);
+    }
+    var loop = rafLoop(function () {
+      for (var k = 0; k < 10; k++) { step(s, m, 0.0012, 0); t += 0.0012; }
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 700) trails[i].shift(); }
+      draw();
+    });
+    var go = btn("Pause"), rs = btn("Reset", "alt");
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    rs.onclick = function () { s = sdState(0.28, 0.45); t = 0; trails = [[], [], []]; draw(); };
+    root.appendChild(row([go, rs]));
+    root.appendChild(tbl);
+    root.appendChild(note("Four of the ten, ticking away while the three bodies do whatever they like. They hold to eight decimal places, and they are not enough to pin the motion down — that is the whole difficulty in one panel."));
+    draw(); onScreen(c, loop); if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 5  divergence */
+  function chaos(root) {
+    var c = canvas(root, 640, 300);
+    var plot = canvas(root, 640, 220);
+    var nud = range(3, 14, 6), go = btn("Run"), rs = btn("Reset", "alt"), out = readout("");
+    var m = [1, 1, 1], a = null, b = null, t = 0, hist = [], trails = [[], []];
+    function setup() {
+      var e = Math.pow(10, -nud.value);
+      a = sdState(0.28, 0.45); b = sdState(0.28, 0.45); b[0] += e;
+      t = 0; hist = []; trails = [[], []];
+      out.textContent = "nudge " + e.toExponential(0) + " — the two starts differ by that much, in one number";
+    }
+    function gap() {
+      var d = 0; for (var i = 0; i < 12; i++) { var q = a[i] - b[i]; d += q * q; } return Math.sqrt(d);
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, 4.6), g = c._g, i;
+      [a, b].forEach(function (s, k) {
+        for (i = 0; i < 3; i++) dot(c, V, s[2 * i], s[2 * i + 1], k ? 4 : 6, k ? C.red : BODY[i]);
+      });
+      [0, 1].forEach(function (k) {
+        g.beginPath();
+        trails[k].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = k ? C.red : C.teal; g.globalAlpha = .55; g.lineWidth = 1.2; g.stroke(); g.globalAlpha = 1;
+      });
+      // the log plot
+      var pg = plot._g;
+      pg.fillStyle = C.panel; pg.fillRect(0, 0, plot._w, plot._h);
+      pg.strokeStyle = C.line; pg.lineWidth = 1;
+      for (var p = -14; p <= 1; p += 3) {
+        var Y = 200 - (p + 15) / 16 * 180;
+        pg.beginPath(); pg.moveTo(40, Y); pg.lineTo(630, Y); pg.stroke();
+        pg.fillStyle = C.mute; pg.font = "11px system-ui"; pg.fillText("1e" + p, 4, Y + 4);
+      }
+      pg.beginPath();
+      hist.forEach(function (h, j) {
+        var X = 40 + h[0] / 60 * 590, Y = 200 - (Math.log(Math.max(h[1], 1e-15)) / Math.LN10 + 15) / 16 * 180;
+        if (j === 0) pg.moveTo(X, Y); else pg.lineTo(X, Y);
+      });
+      pg.strokeStyle = C.teal; pg.lineWidth = 2.4; pg.stroke();
+      // fit the straight stretch → Lyapunov time
+      var fit = hist.filter(function (h) { return h[1] > Math.pow(10, -nud.value) * 30 && h[1] < 0.3; });
+      if (fit.length > 12) {
+        var n = fit.length, sx = 0, sy = 0, sxx = 0, sxy = 0;
+        fit.forEach(function (h) { var x = h[0], y = Math.log(h[1]); sx += x; sy += y; sxx += x * x; sxy += x * y; });
+        var sl = (n * sxy - sx * sy) / (n * sxx - sx * sx);
+        if (sl > 0) out.textContent = "nudge " + Math.pow(10, -nud.value).toExponential(0) +
+          " · the gap multiplies by e every " + fmt(1 / sl, 2) + " time units · at this rate a millionth becomes a whole in " +
+          fmt(Math.log(1e6) / sl, 1);
+      }
+    }
+    var loop = rafLoop(function () {
+      for (var k = 0; k < 44; k++) { step(a, m, 0.002, 0); step(b, m, 0.002, 0); t += 0.002; }
+      hist.push([t, gap()]);
+      trails[0].push([a[0], a[1]]); trails[1].push([b[0], b[1]]);
+      if (trails[0].length > 900) { trails[0].shift(); trails[1].shift(); }
+      draw();
+      if (t > 60) { loop.stop(); go.textContent = "Run again"; }
+    });
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { if (t > 60) setup(); loop.start(); go.textContent = "Pause"; } };
+    rs.onclick = function () { setup(); draw(); };
+    nud.oninput = function () { setup(); draw(); };
+    root.appendChild(row([go, rs, label("nudge size", [nud])]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("Two copies of one start, differing in a single number. The lower panel is the gap between them on a log scale: flat, then a straight climb — that straight stretch is the exponent — then flat again at the top, where the gap has run out of room to grow."));
+    setup(); draw(); onScreen(c, loop);
+    if (!RM) { loop.start(); go.textContent = "Pause"; }
+  }
+
+  /* ---------------------------------------------------------------- 6  the fence */
+  function zvc(root) {
+    var c = canvas(root, 640, 400);
+    var mu = range(1, 50, 25), cj = range(280, 420, 360), out = readout("");
+    function lagr(m2) {
+      function dO(x) {
+        var r1 = Math.abs(x + m2), r2 = Math.abs(x - 1 + m2);
+        return x - (1 - m2) * (x + m2) / (r1 * r1 * r1) - m2 * (x - 1 + m2) / (r2 * r2 * r2);
+      }
+      function root(a, b) { var fa = dO(a); for (var i = 0; i < 90; i++) { var m = (a + b) / 2, fm = dO(m); if ((fm > 0) === (fa > 0)) { a = m; fa = fm; } else b = m; } return (a + b) / 2; }
+      var e = 1e-7;
+      return [[root(-m2 + e, 1 - m2 - e), 0], [root(1 - m2 + e, 2.5), 0], [root(-2.5, -m2 - e), 0],
+              [0.5 - m2, Math.sqrt(3) / 2], [0.5 - m2, -Math.sqrt(3) / 2]];
+    }
+    function draw() {
+      var m2 = mu.value / 100, Cj = cj.value / 100;
+      var g = c._g, w = c._w, h = c._h;
+      var img = g.createImageData(w, h);
+      var span = 3.4, sc = Math.min(w, h) / span;
+      for (var py = 0; py < h; py++) for (var px = 0; px < w; px++) {
+        var x = (px - w / 2) / sc, y = (h / 2 - py) / sc;
+        var r1 = Math.hypot(x + m2, y), r2 = Math.hypot(x - 1 + m2, y);
+        var Om = 0.5 * (x * x + y * y) + (1 - m2) / r1 + m2 / r2;
+        var vv = 2 * Om - Cj;
+        var k = (py * w + px) * 4;
+        if (vv < 0) { img.data[k] = 12; img.data[k + 1] = 16; img.data[k + 2] = 26; }      // shut out
+        else {
+          var u = Math.min(Math.sqrt(vv) / 2.2, 1);
+          img.data[k] = 20 + u * 60; img.data[k + 1] = 40 + u * 150; img.data[k + 2] = 60 + u * 140;
+        }
+        img.data[k + 3] = 255;
+      }
+      g.putImageData(img, 0, 0);
+      var V = view(c, span);
+      dot(c, V, -m2, 0, 9, C.gold); dot(c, V, 1 - m2, 0, 6, C.teal);
+      lagr(m2).forEach(function (p, i) {
+        dot(c, V, p[0], p[1], 5, i < 3 ? C.violet : C.red);
+        g.fillStyle = i < 3 ? C.violet : C.red; g.font = "bold 12px system-ui";
+        g.fillText("L" + (i + 1), V.x(p[0]) + 8, V.y(p[1]) - 6);
+      });
+      out.textContent = "mass ratio μ = " + fmt(m2, 2) + " · Jacobi constant C = " + fmt(Cj, 2) +
+        " · the dark region is where this body cannot go";
+    }
+    mu.oninput = draw; cj.oninput = draw;
+    root.appendChild(row([label("mass ratio", [mu]), label("Jacobi constant", [cj]), out]));
+    root.appendChild(note("Bring the constant down and watch the neck open at L1, then the back door at L2. Every low-energy transfer ever flown goes through those gates, and the picture is computed per pixel from 2Ω − C."));
+    draw();
+  }
+
+  /* ---------------------------------------------------------------- 7  the two shapes */
+  function shapes(root) {
+    var c = canvas(root, 640, 360);
+    var kind = pick([["tri", "Lagrange's triangle"], ["line", "Euler's line"]], "tri");
+    var m1 = range(5, 40, 10), m3 = range(5, 40, 10), out = readout("");
+    var s = null, m = [1, 1, 1], trails = [[], [], []];
+    /* Three on a line, spinning about the balance point. Bodies at -1, 0 and x with
+       weights m1, m2, m3: both outer bodies have to need the same ω, which fixes x.
+       There is no formula for it — this hunts for it by bisection, every time. */
+    function lineConfig(m1v, m2v, m3v) {
+      function mism(x) {
+        var M = m1v + m2v + m3v;
+        var xc = (m1v * -1 + m3v * x) / M;
+        var w1 = (m2v + m3v / ((x + 1) * (x + 1))) / (xc + 1);
+        var w3 = (m1v / ((x + 1) * (x + 1)) + m2v / (x * x)) / (x - xc);
+        return w1 - w3;
+      }
+      var lo = 0.02, hi = 40, flo = mism(lo);
+      for (var i = 0; i < 200; i++) {
+        var mid = Math.sqrt(lo * hi), fm = mism(mid);
+        if ((fm > 0) === (flo > 0)) { lo = mid; flo = fm; } else hi = mid;
+      }
+      var x = Math.sqrt(lo * hi);
+      var M2 = m1v + m2v + m3v, xc2 = (m1v * -1 + m3v * x) / M2;
+      var om2 = (m2v + m3v / ((x + 1) * (x + 1))) / (xc2 + 1);
+      return { x: x, xc: xc2, om: Math.sqrt(Math.abs(om2)) };
+    }
+    function setup() {
+      m = [m1.value / 10, 1, m3.value / 10];
+      trails = [[], [], []];
+      if (kind.value === "tri") {
+        var M = m[0] + m[1] + m[2], a = 1.0;
+        var om = Math.sqrt(M / (a * a * a));
+        var pos = [[0, 0], [1, 0], [0.5, Math.sqrt(3) / 2]];
+        var cx = (m[0] * pos[0][0] + m[1] * pos[1][0] + m[2] * pos[2][0]) / M;
+        var cy = (m[0] * pos[0][1] + m[1] * pos[1][1] + m[2] * pos[2][1]) / M;
+        s = [];
+        pos.forEach(function (p) { s.push(p[0] - cx, p[1] - cy); });
+        pos.forEach(function (p) { s.push(-om * (p[1] - cy), om * (p[0] - cx)); });
+        out.textContent = "any three weights, one equilateral triangle, ω = " + fmt(om, 4) + " — no equation to solve";
+      } else {
+        var cfg = lineConfig(m[0], m[1], m[2]);
+        var xs = [-1 - cfg.xc, 0 - cfg.xc, cfg.x - cfg.xc];
+        s = [xs[0], 0, xs[1], 0, xs[2], 0];
+        xs.forEach(function (px) { s.push(0, cfg.om * px); });
+        var x = cfg.x, om2 = cfg.om;
+        out.textContent = "spacing solved by hunting: the far body sits at " + fmt(x, 5) + " · ω = " + fmt(om2, 4);
+      }
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, 3.4), g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.globalAlpha = .8; g.lineWidth = 1.4; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 4 + 3 * m[i], BODY[i]);
+      }
+      g.strokeStyle = C.mute; g.setLineDash([4, 4]); g.beginPath();
+      g.moveTo(V.x(s[0]), V.y(s[1])); g.lineTo(V.x(s[2]), V.y(s[3])); g.lineTo(V.x(s[4]), V.y(s[5])); g.closePath();
+      g.stroke(); g.setLineDash([]);
+    }
+    var loop = rafLoop(function () {
+      for (var k = 0; k < 8; k++) step(s, m, 0.0015, 0);
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 500) trails[i].shift(); }
+      draw();
+    });
+    var go = btn("Pause");
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    [m1, m3].forEach(function (r) { r.oninput = function () { setup(); draw(); }; });
+    kind.onchange = function () { setup(); draw(); };
+    root.appendChild(row([go, kind, label("first weight", [m1]), label("third weight", [m3]), ]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("The triangle holds its shape for any weights you set. The line has to be re-solved every time you move a slider, and the solving is a hunt, because there is no formula for a fifth-degree equation."));
+    setup(); draw(); onScreen(c, loop); if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 8  the closed ones */
+  function eight(root) {
+    var c = canvas(root, 640, 380);
+    var opts = ORB.map(function (o) { return [o.id, o.name + " · T = " + o.period.toFixed(3)]; });
+    var sel = pick(opts.length ? opts : [["figure-eight", "figure eight"]], "figure-eight");
+    var go = btn("Pause"), tr = btn("Clear trails", "alt"), sp = range(1, 40, 16), out = readout("");
+    var s = null, m = [1, 1, 1], t = 0, trails = [[], [], []], cur = null, span = 3.4;
+    function setup() {
+      cur = ORB.filter(function (o) { return o.id === sel.value; })[0] || { v: [0.3471169, 0.5327249], period: 6.325914, closes: 0, name: "figure eight" };
+      s = sdState(cur.v[0], cur.v[1]); t = 0; trails = [[], [], []];
+      var mx = 0;
+      var probe = clone(s);
+      for (var k = 0; k < 4000; k++) { step(probe, m, cur.period / 4000, 0); for (var i = 0; i < 3; i++) mx = Math.max(mx, Math.abs(probe[2 * i]), Math.abs(probe[2 * i + 1])); }
+      span = Math.max(2.4, mx * 2.3);
+      out.textContent = cur.name + " · period " + cur.period.toFixed(6) + " · returns to its start within " +
+        (cur.closes ? cur.closes.toExponential(1) : "—");
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, span), g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.lineWidth = 1.7; g.globalAlpha = .9; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 6, BODY[i]);
+      }
+      g.fillStyle = C.mute; g.font = "12px system-ui";
+      g.fillText("t = " + fmt(t, 2) + " of " + cur.period.toFixed(3), 12, 20);
+    }
+    var loop = rafLoop(function () {
+      var h = 0.0005 * sp.value;
+      for (var k = 0; k < 10; k++) { step(s, m, h / 10, 0); t += h / 10; }
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 2600) trails[i].shift(); }
+      draw();
+    });
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    tr.onclick = function () { trails = [[], [], []]; draw(); };
+    sel.onchange = function () { setup(); draw(); };
+    root.appendChild(row([go, tr, sel, label("speed", [sp])]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("Every start in this list was found on the machine that built the page: a grid of starting speeds, then a solver that walks each near-miss in until the orbit closes. The number it closes to is printed beside it."));
+    setup(); draw(); onScreen(c, loop); if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 9  the two steppers */
+  function integrator(root) {
+    var c = canvas(root, 640, 300);
+    var plot = canvas(root, 640, 200);
+    var hs = range(5, 120, 40), go = btn("Run"), rs = btn("Reset", "alt"), out = readout("");
+    var m = [1, 1, 1], a = null, b = null, E0 = 0, t = 0, hist = [];
+    function setup() {
+      var st = [0.97000436, -0.24308753, -0.97000436, 0.24308753, 0, 0,
+                0.466203685, 0.43236573, 0.466203685, 0.43236573, -0.93240737, -0.86473146];
+      a = clone(st); b = clone(st); E0 = energy(a, m); t = 0; hist = [];
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, 3.2), g = c._g, i;
+      for (i = 0; i < 3; i++) dot(c, V, a[2 * i], a[2 * i + 1], 5, C.teal);
+      for (i = 0; i < 3; i++) dot(c, V, b[2 * i], b[2 * i + 1], 5, C.red);
+      g.fillStyle = C.teal; g.font = "bold 13px system-ui"; g.fillText("leapfrog", 12, 22);
+      g.fillStyle = C.red; g.fillText("Euler", 12, 42);
+      var pg = plot._g;
+      pg.fillStyle = C.panel; pg.fillRect(0, 0, plot._w, plot._h);
+      pg.strokeStyle = C.line;
+      for (var p = -12; p <= 2; p += 2) {
+        var Y = 180 - (p + 13) / 15 * 160;
+        pg.beginPath(); pg.moveTo(44, Y); pg.lineTo(630, Y); pg.stroke();
+        pg.fillStyle = C.mute; pg.font = "11px system-ui"; pg.fillText("1e" + p, 6, Y + 4);
+      }
+      [[0, C.teal], [1, C.red]].forEach(function (q) {
+        pg.beginPath();
+        hist.forEach(function (hh, j) {
+          var X = 44 + hh[0] / 60 * 586, Y = 180 - (Math.log(Math.max(hh[1 + q[0]], 1e-13)) / Math.LN10 + 13) / 15 * 160;
+          if (j === 0) pg.moveTo(X, Y); else pg.lineTo(X, Y);
+        });
+        pg.strokeStyle = q[1]; pg.lineWidth = 2.2; pg.stroke();
+      });
+      var ea = Math.abs((energy(a, m) - E0) / E0), eb = Math.abs((energy(b, m) - E0) / E0);
+      out.textContent = "step " + fmt(hs.value / 10000, 4) + " · t = " + fmt(t, 1) +
+        " · leapfrog error " + ea.toExponential(1) + " · Euler error " + eb.toExponential(1);
+    }
+    var loop = rafLoop(function () {
+      var h = hs.value / 10000;
+      for (var k = 0; k < 8; k++) { step(a, m, h, 0); stepEuler(b, m, h); t += h; }
+      hist.push([t, Math.abs((energy(a, m) - E0) / E0), Math.abs((energy(b, m) - E0) / E0)]);
+      draw();
+      if (t > 60) { loop.stop(); go.textContent = "Run again"; }
+    });
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { if (t > 60) setup(); loop.start(); go.textContent = "Pause"; } };
+    rs.onclick = function () { setup(); draw(); };
+    hs.oninput = function () { setup(); draw(); };
+    root.appendChild(row([go, rs, label("step size", [hs])]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("Both start on the figure eight. Leapfrog's energy error wobbles and stays put; Euler's climbs and keeps climbing, and its orbit swells until it comes apart. Same equations, same step, four lines of difference."));
+    setup(); draw(); onScreen(c, loop);
+  }
+
+  /* ---------------------------------------------------------------- 10  the odds */
+  function odds(root) {
+    var runs = range(50, 600, 200, 50), go = btn("Run them"), out = readout(""), bars = el("div", { class: "tally" });
+    var plot = canvas(root, 640, 200);
+    root.insertBefore(el("p", { class: "mute small", text: "Random starts, equal weights, zero total momentum. Each one is run for 60 time units and the ending is recorded. The bottom of each well is rounded off at 0.05, so that a near pass cannot throw the arithmetic — the same choice, and the same number, as the chart above." }), plot);
+    var rows = {};
+    ["one was thrown out", "all three still together"].forEach(function (k) {
+      bars.appendChild(el("span", { text: k }));
+      var bar = el("div", { class: "bar" }), fill = el("i");
+      bar.appendChild(fill); bars.appendChild(bar);
+      var n = el("span", { text: "0" }); bars.appendChild(n);
+      rows[k] = { fill: fill, n: n };
+    });
+    function one() {
+      var s = [], vx = 0, vy = 0, k;
+      for (k = 0; k < 3; k++) s.push((Math.random() * 2 - 1) * 1.1, (Math.random() * 2 - 1) * 1.1);
+      var vs = [];
+      for (k = 0; k < 3; k++) { var ax = (Math.random() * 2 - 1) * 0.4, ay = (Math.random() * 2 - 1) * 0.4; vs.push(ax, ay); vx += ax; vy += ay; }
+      for (k = 0; k < 3; k++) { vs[2 * k] -= vx / 3; vs[2 * k + 1] -= vy / 3; }
+      s = s.concat(vs);
+      for (k = 0; k < 3; k++) for (var j = k + 1; j < 3; j++) {
+        var dx = s[2 * j] - s[2 * k], dy = s[2 * j + 1] - s[2 * k + 1];
+        if (Math.hypot(dx, dy) < 0.4) return null;
+      }
+      var m = [1, 1, 1], t = 0, out2 = null;
+      while (t < 60) {
+        step(s, m, 0.001, 0.05); t += 0.001;
+        var far = 0;
+        for (k = 0; k < 3; k++) far = Math.max(far, Math.hypot(s[2 * k], s[2 * k + 1]));
+        if (far > 12) { out2 = t; break; }
+      }
+      return { ejected: out2 !== null, t: out2 };
+    }
+    var times = [], tally = { "one was thrown out": 0, "all three still together": 0 }, total = 0;
+    function draw() {
+      var n = total || 1;
+      Object.keys(tally).forEach(function (k) {
+        rows[k].fill.style.setProperty("--v", tally[k] / n);
+        rows[k].n.textContent = tally[k] + " (" + Math.round(100 * tally[k] / n) + "%)";
+      });
+      var g = plot._g;
+      g.fillStyle = C.panel; g.fillRect(0, 0, plot._w, plot._h);
+      var bins = new Array(30).fill(0);
+      times.forEach(function (t) { bins[Math.min(29, Math.floor(t / 2))]++; });
+      var mx = Math.max.apply(null, bins) || 1;
+      bins.forEach(function (cnt, i) {
+        var hh = cnt / mx * 150;
+        g.fillStyle = C.teal;
+        g.fillRect(40 + i * 19, 175 - hh, 17, hh);
+      });
+      g.fillStyle = C.mute; g.font = "11px system-ui";
+      [0, 20, 40, 60].forEach(function (k) { g.fillText(String(k), 36 + k / 60 * 570, 192); });
+      g.fillText("how long before one of them left, in time units", 40, 16);
+    }
+    go.onclick = function () {
+      go.disabled = true; go.textContent = "running…";
+      var want = +runs.value, done = 0;
+      times = []; tally = { "one was thrown out": 0, "all three still together": 0 }; total = 0;
+      function batch() {
+        for (var i = 0; i < 12 && done < want; i++) {
+          var r = one();
+          if (!r) continue;
+          done++; total++;
+          if (r.ejected) { tally["one was thrown out"]++; times.push(r.t); }
+          else tally["all three still together"]++;
+        }
+        draw();
+        out.textContent = done + " of " + want + " run" + (done >= want && times.length ?
+          " · half of the ejections happened before t = " + fmt(times.slice().sort(function (a, b) { return a - b; })[Math.floor(times.length / 2)], 1) : "");
+        if (done < want) setTimeout(batch, 0); else { go.disabled = false; go.textContent = "Run them again"; }
+      }
+      batch();
+    };
+    root.appendChild(row([go, label("how many", [runs]), out]));
+    root.appendChild(bars);
+    root.appendChild(note("Run it twice. Which triples break up changes; the percentage barely moves. That is why this problem has a statistical answer even though it has no formula."));
+    draw();
+  }
+
+  var DEMOS = { inverse: inverse, kepler: kepler, sim: sim, integrals: integrals, chaos: chaos,
+                zvc: zvc, shapes: shapes, eight: eight, integrator: integrator, odds: odds };
+  document.querySelectorAll("[data-demo]").forEach(function (root) {
+    var f = DEMOS[root.getAttribute("data-demo")];
+    if (f) { root.innerHTML = ""; try { f(root); } catch (e) { root.innerHTML = '<p class="note">This demo did not start: ' + e.message + "</p>"; } }
+  });
+
+  var tl = document.querySelector(".tl");
+  if (tl && !RM && "IntersectionObserver" in window) {
+    tl.classList.remove("nojs");
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    tl.querySelectorAll("li").forEach(function (li) { io.observe(li); });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+The Three-Body Problem — https://nanobotco.github.io/three-body/
+
+Code (tools/, tests/, three_body.py, publish.sh): MIT, see LICENSE.
+Text, data (data/*.json) and pictures (build/img, docs/img): CC BY 4.0,
+https://creativecommons.org/licenses/by/4.0/ — use it, credit NaNoBotCo and link back.
+
+The pictures are trajectories computed in tools/draw.py; no photograph or stock image
+is used. The orbits in data/orbits.json were found by tools/find_orbits.py on the
+machine that built the site, and each row carries the distance it closes to. Facts
+carry their sources in the data files; those sources keep their own terms.

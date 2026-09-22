@@ -1,0 +1,274 @@
+{
+ "events": [
+  {
+   "year": 1687,
+   "era": "law",
+   "who": "Isaac Newton",
+   "title": "The law, and the problem in the same book",
+   "plain": "Newton publishes the inverse-square law, solves two bodies, and then spends Proposition 66 of Book I failing to solve three.",
+   "more": "Proposition 66 and its twenty-two corollaries work at the Sun–Earth–Moon system by geometry. Newton gets corrections and tendencies, not an orbit. The problem is as old as the law it comes from.",
+   "source": "https://www.gutenberg.org/ebooks/28233",
+   "source_name": "Newton, Principia (1687), Gutenberg"
+  },
+  {
+   "year": 1749,
+   "era": "law",
+   "who": "Alexis Clairaut",
+   "title": "The Moon's wandering perigee is not a flaw in the law",
+   "plain": "The Moon's orbit turns twice as fast as Newton's first calculation allowed, and for decades that looked like evidence against inverse-square. Clairaut shows it comes out right if you keep the terms everybody had dropped.",
+   "more": "Clairaut, Euler and d'Alembert were all working the lunar three-body problem by successive approximation. Clairaut's result — carrying the expansion to higher order doubles the predicted precession — settled that gravity was not at fault, and established approximation as the working method for two hundred years.",
+   "source": "https://en.wikipedia.org/wiki/Alexis_Clairaut",
+   "source_name": "Wikipedia, Alexis Clairaut"
+  },
+  {
+   "year": 1767,
+   "era": "shapes",
+   "who": "Leonhard Euler",
+   "title": "Three in a row that keep their spacing",
+   "plain": "Euler finds the first exact three-body solutions: all three on a line, spinning about the balance point, spacing fixed.",
+   "more": "The spacing solves a fifth-degree equation with one positive root for any three weights. Euler also set the problem in a rotating frame, which is the move the whole restricted theory is built on.",
+   "source": "https://en.wikipedia.org/wiki/Euler%27s_three-body_problem",
+   "source_name": "Wikipedia, Euler's three-body problem"
+  },
+  {
+   "year": 1772,
+   "era": "shapes",
+   "who": "Joseph-Louis Lagrange",
+   "title": "The equilateral triangle, for any three weights",
+   "plain": "Lagrange's prize essay on the three-body problem gives the second exact family: three bodies at the corners of an equilateral triangle, holding the shape as they turn.",
+   "more": "It works for any masses with no equation to solve. Applied to a heavy pair plus a speck, the two triangle corners are L4 and L5, and together with Euler's three collinear points they are the five Lagrange points.",
+   "source": "https://en.wikipedia.org/wiki/Lagrange_point",
+   "source_name": "Wikipedia, Lagrange point"
+  },
+  {
+   "year": 1836,
+   "era": "proof",
+   "who": "Carl Gustav Jacob Jacobi",
+   "title": "The one quantity the small body cannot change",
+   "plain": "Jacobi finds a conserved quantity for the restricted problem — the only one it has — and with it the fence that says where a small body can and cannot go.",
+   "more": "In the rotating frame, twice the effective potential minus the speed squared is constant. Setting the speed to zero draws the zero-velocity curves; the gates in that fence at L1 and L2 are the routes every low-energy spacecraft transfer uses.",
+   "source": "https://en.wikipedia.org/wiki/Jacobi_integral",
+   "source_name": "Wikipedia, Jacobi integral"
+  },
+  {
+   "year": 1878,
+   "era": "proof",
+   "who": "George William Hill",
+   "title": "How far a planet's grip reaches",
+   "plain": "Hill's lunar theory maps the regions of the restricted problem and gives the radius inside which a planet keeps a moon rather than the Sun taking it.",
+   "more": "The Hill sphere is the everyday consequence: for the Earth about 1.5 million km, with the Moon at a quarter of that. Hill's approach to the lunar problem was still the basis of the American ephemeris well into the twentieth century.",
+   "source": "https://en.wikipedia.org/wiki/Hill_sphere",
+   "source_name": "Wikipedia, Hill sphere"
+  },
+  {
+   "year": 1887,
+   "era": "proof",
+   "who": "Heinrich Bruns",
+   "title": "No more conserved quantities of that kind",
+   "plain": "Bruns proves that beyond the ten classical conserved quantities, the three-body problem has no further ones that are algebraic in the positions, velocities and time.",
+   "more": "This closed the most popular route to a formula. The ten are the total momentum, the balance point's drift, the energy and the angular momentum — and nothing algebraic joins them.",
+   "source": "https://en.wikipedia.org/wiki/N-body_problem",
+   "source_name": "Wikipedia, n-body problem"
+  },
+  {
+   "year": 1890,
+   "era": "proof",
+   "who": "Henri Poincaré",
+   "title": "He won the prize, then found his own mistake",
+   "plain": "Poincaré's entry for King Oscar II's prize wins in 1889. While it is being printed, questions from the editor Lars Phragmén lead him to an error, and the correction is the discovery of chaos.",
+   "more": "Two curves he had taken to close on each other in fact cross infinitely often, folded into a tangle he declined to draw. He paid for the printed copies to be replaced. The corrected memoir and the three volumes of Méthodes nouvelles de la mécanique céleste that followed are the start of dynamical systems theory — thirty years before anyone could compute a picture of it.",
+   "source": "https://bookstore.ams.org/hmath-11",
+   "source_name": "Barrow-Green, Poincaré and the Three Body Problem (AMS, 1997)"
+  },
+  {
+   "year": 1895,
+   "era": "proof",
+   "who": "Paul Painlevé",
+   "title": "The only way out is a crash",
+   "plain": "Painlevé proves that for three bodies, the only way a solution can stop existing in finite time is a collision.",
+   "more": "He also conjectured that with more bodies there would be a finite-time breakdown with no collision in it. That took until 1992.",
+   "source": "https://en.wikipedia.org/wiki/Painlev%C3%A9_conjecture",
+   "source_name": "Wikipedia, Painlevé conjecture"
+  },
+  {
+   "year": 1903,
+   "era": "step",
+   "who": "Tullio Levi-Civita",
+   "title": "Smoothing out a collision",
+   "plain": "Levi-Civita changes variables so that a two-body collision, where the equations divide by zero, becomes something a calculation can pass through.",
+   "more": "Regularisation is what separates a code that survives a close pass from one that throws a body off the screen. The later Kustaanheimo–Stiefel transformation generalises it and is still in use.",
+   "source": "https://en.wikipedia.org/wiki/Kustaanheimo%E2%80%93Stiefel_transformation",
+   "source_name": "Wikipedia, KS transformation"
+  },
+  {
+   "year": 1906,
+   "era": "sky",
+   "who": "Max Wolf",
+   "title": "The triangle points turn out to be occupied",
+   "plain": "Wolf finds 588 Achilles, an asteroid sitting near Jupiter's L4 — Lagrange's 1772 triangle, with a rock in it.",
+   "more": "Over ten thousand Jupiter Trojans are now catalogued at L4 and L5. Lagrange's exact solution stopped being a curiosity and became a census.",
+   "source": "https://www.minorplanetcenter.net/iau/lists/JupiterTrojans.html",
+   "source_name": "IAU Minor Planet Center, Jupiter Trojans"
+  },
+  {
+   "year": 1907,
+   "era": "proof",
+   "who": "Karl Sundman",
+   "title": "A three-way crash needs the spin to be exactly zero",
+   "plain": "Sundman proves that all three bodies can arrive at the same point only if the system's total angular momentum is zero.",
+   "more": "Give the arrangement the faintest overall spin and a triple collision becomes impossible, not merely unlikely. A single point cannot hold angular momentum, and angular momentum never changes.",
+   "source": "https://en.wikipedia.org/wiki/N-body_problem",
+   "source_name": "Wikipedia, n-body problem"
+  },
+  {
+   "year": 1912,
+   "era": "proof",
+   "who": "Karl Sundman",
+   "title": "The formula that exists and cannot be used",
+   "plain": "Sundman writes a power series in the cube root of time that converges to the three-body answer for all time, whenever the total spin is not zero.",
+   "more": "So a closed expression does exist. It converges far too slowly to compute with: an estimate by Beloriszky in 1930 puts the terms needed for astronomical accuracy at about 10 to the eight-millionth power. Wang extended the result to any number of bodies in 1991.",
+   "source": "https://doi.org/10.1007/BF03024313",
+   "source_name": "Diacu, The solution of the n-body problem (1996)"
+  },
+  {
+   "year": 1954,
+   "era": "proof",
+   "who": "Kolmogorov, Arnold, Moser",
+   "title": "Some orbits survive being disturbed",
+   "plain": "The KAM theorem: in a system near an exactly solvable one, most orbits keep their shape under a small disturbance, while the rest go chaotic.",
+   "more": "Kolmogorov announced it in 1954, Moser proved a version in 1962, Arnold another in 1963. It is why the solar system can be chaotic and stable-looking at once, and why the boundary between the two is a fractal rather than a line.",
+   "source": "https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold%E2%80%93Moser_theorem",
+   "source_name": "Wikipedia, KAM theorem"
+  },
+  {
+   "year": 1960,
+   "era": "found",
+   "who": "Kirill Sitnikov",
+   "title": "A body that comes back forever without settling",
+   "plain": "Sitnikov builds an explicit three-body arrangement whose third body oscillates through the plane of the other two forever, with no pattern and no escape.",
+   "more": "Two equal masses in an eccentric orbit, the third on the axis through their centre. It became the standard worked example of chaotic motion in celestial mechanics, and the first case where the chaos was proved rather than observed.",
+   "source": "https://en.wikipedia.org/wiki/Sitnikov_problem",
+   "source_name": "Wikipedia, Sitnikov problem"
+  },
+  {
+   "year": 1962,
+   "era": "found",
+   "who": "Mikhail Lidov, Yoshihide Kozai",
+   "title": "A tilted outer orbit stretches the inner one",
+   "plain": "Lidov in 1961 and Kozai in 1962 independently find that a distant third body tilted more than about 39 degrees trades that tilt for eccentricity, cycling the inner pair between round and elongated.",
+   "more": "Lidov was working on artificial satellites, Kozai on asteroids. The mechanism is now standard in accounts of hot Jupiters, of black-hole pairs driven to merge, and of triple stars that tear themselves apart.",
+   "source": "https://en.wikipedia.org/wiki/Kozai_mechanism",
+   "source_name": "Wikipedia, Kozai mechanism"
+  },
+  {
+   "year": 1975,
+   "era": "found",
+   "who": "Broucke, Hénon, Hadjidemetriou",
+   "title": "Computers turn the hunt for closed orbits into a survey",
+   "plain": "With machines to do the stepping, periodic three-body orbits stop being individual discoveries and become catalogued families.",
+   "more": "The Broucke–Hénon–Hadjidemetriou family is the one that bears their names. The method — scan starting conditions, look for near returns, refine — is the method every later search including this site's uses.",
+   "source": "https://en.wikipedia.org/wiki/Three-body_problem",
+   "source_name": "Wikipedia, Three-body problem"
+  },
+  {
+   "year": 1978,
+   "era": "sky",
+   "who": "ISEE-3",
+   "title": "Somebody parks a spacecraft at a point that is not there",
+   "plain": "ISEE-3 flies the first halo orbit around the Sun–Earth L1 point, a place where nothing sits and where a spacecraft can be made to loop anyway.",
+   "more": "The orbit was designed by Robert Farquhar. L1 is a saddle, so the loop is not stable and the craft must correct itself — the price of a spot with a permanent view of the Sun.",
+   "source": "https://en.wikipedia.org/wiki/International_Cometary_Explorer",
+   "source_name": "Wikipedia, ISEE-3 / ICE"
+  },
+  {
+   "year": 1983,
+   "era": "found",
+   "who": "Piet Hut, John Bahcall",
+   "title": "Counting outcomes instead of predicting them",
+   "plain": "Hut and Bahcall run thousands of binary-plus-intruder encounters and publish the statistics: how often a flyby, an exchange, an ejection.",
+   "more": "The move from 'what will happen' to 'how often does each ending happen' is what made the chaotic three-body problem useful to astronomy. Star cluster models rest on these cross-sections.",
+   "source": "https://ui.adsabs.harvard.edu/abs/1983ApJ...268..319H",
+   "source_name": "Hut & Bahcall, ApJ 268, 319 (1983)"
+  },
+  {
+   "year": 1992,
+   "era": "proof",
+   "who": "Zhihong (Jeff) Xia",
+   "title": "Trouble with no crash in it",
+   "plain": "Xia constructs a five-body solution that ceases to exist in finite time without any two bodies ever touching, settling Painlevé's conjecture.",
+   "more": "Distances and speeds run away in finite time through a sequence of near passes. Gerver later did it with four bodies. For three, Painlevé's 1895 theorem still holds: a collision is the only way out.",
+   "source": "https://doi.org/10.2307/2946598",
+   "source_name": "Xia, Annals of Mathematics 135 (1992)"
+  },
+  {
+   "year": 1993,
+   "era": "found",
+   "who": "Cris Moore",
+   "title": "Three bodies on one figure eight",
+   "plain": "Searching by computer for closed orbits, Moore finds three equal masses chasing each other around a single figure-eight track.",
+   "more": "Zero total angular momentum, all three on the same curve, evenly spaced in time. Nobody had suspected it existed.",
+   "source": "https://doi.org/10.1103/PhysRevLett.70.3675",
+   "source_name": "Moore, Physical Review Letters 70, 3675 (1993)"
+  },
+  {
+   "year": 2000,
+   "era": "found",
+   "who": "Chenciner & Montgomery",
+   "title": "The figure eight, proved",
+   "plain": "Chenciner and Montgomery prove the figure-eight orbit exists — not by solving the equations, but by showing it is the loop of least action with its symmetry.",
+   "more": "The proof runs on the shape sphere, where a triangle's shape is a point and its size and direction are thrown away. Turning a search for a formula into a search for a minimum is what opened the door to the family hunts that followed.",
+   "source": "https://arxiv.org/abs/math/0011268",
+   "source_name": "Chenciner & Montgomery, Annals of Mathematics 152 (2000)"
+  },
+  {
+   "year": 2013,
+   "era": "found",
+   "who": "Šuvakov & Dmitrašinović",
+   "title": "Thirteen new families in one scan",
+   "plain": "Scanning a sheet of starting speeds by computer, Šuvakov and Dmitrašinović report thirteen previously unknown families of closed three-body orbits and name them off their shapes: butterfly, moth, yin-yang, goggles.",
+   "more": "Their starting line — two bodies at ±1 with the same velocity, the third at the origin with twice it the other way, zero spin — is the line this site scans on its Orbits page.",
+   "source": "https://arxiv.org/abs/1303.0181",
+   "source_name": "Šuvakov & Dmitrašinović, PRL 110, 114301 (2013)"
+  },
+  {
+   "year": 2015,
+   "era": "step",
+   "who": "Boekholt & Portegies Zwart",
+   "title": "A large share of these calculations cannot be reproduced",
+   "plain": "Running chaotic triples in arbitrary precision and comparing against ordinary double precision, they find that a substantial fraction of the standard calculations are not reproducible.",
+   "more": "Their code, Brutus, carries as many digits as the problem needs. The finding does not say the simulations are worthless; it says a trajectory is a claim about a calculation, and the claim needs the method attached.",
+   "source": "https://arxiv.org/abs/1411.6671",
+   "source_name": "Boekholt & Portegies Zwart (2015)"
+  },
+  {
+   "year": 2017,
+   "era": "found",
+   "who": "Li & Liao",
+   "title": "Six hundred more, then thousands",
+   "plain": "With more computing power and higher precision, Li and Liao report over six hundred new families of closed three-body orbits, and more in the years after.",
+   "more": "Same method as 1993 and 2013, more machine. The catalogue of exact periodic three-body orbits is now large and still growing, which is a strange thing to be able to say about a problem with no formula.",
+   "source": "https://arxiv.org/abs/1705.00527",
+   "source_name": "Li & Liao (2017)"
+  },
+  {
+   "year": 2019,
+   "era": "found",
+   "who": "Stone & Leigh",
+   "title": "The odds, in closed form",
+   "plain": "Stone and Leigh derive the probability distribution of outcomes for the chaotic three-body problem — which body leaves, and what the surviving pair looks like.",
+   "more": "A statistical solution, not a trajectory. The individual path stays out of reach; the bookmaker's answer is now written down.",
+   "source": "https://www.nature.com/articles/s41586-019-1833-8",
+   "source_name": "Stone & Leigh, Nature 576 (2019)"
+  },
+  {
+   "year": 2022,
+   "era": "sky",
+   "who": "James Webb Space Telescope",
+   "title": "Living on a saddle",
+   "plain": "Webb reaches its halo orbit around Sun–Earth L2 in January 2022, a month after launch, and holds station there with small burns.",
+   "more": "L2 is a saddle point: left alone, the telescope would drift off. The thrusters point only one way by design, so the orbit is trimmed from the sunward side — the three-body problem as an engineering constraint with a launch window attached.",
+   "source": "https://webb.nasa.gov/content/about/orbit.html",
+   "source_name": "NASA, Webb orbit"
+  }
+ ]
+}

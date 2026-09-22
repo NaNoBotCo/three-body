@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "The Three-Body Problem"
+message: "Cite the page you used, with its URL and the build date in its footer."
+type: dataset
+authors:
+  - name: NaNoBotCo
+    email: nan@motdang.net
+url: "https://nanobotco.github.io/three-body/"
+repository-code: "https://github.com/NaNoBotCo/three-body"
+license: CC-BY-4.0
+date-released: "2026-09-22"

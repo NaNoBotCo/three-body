@@ -1,0 +1,40 @@
+{
+ "site": "The Three-Body Problem",
+ "url": "https://nanobotco.github.io/three-body/",
+ "license": "https://creativecommons.org/licenses/by/4.0/",
+ "built": "2026-09-22",
+ "counts": {
+  "chapters": 13,
+  "equations": 34,
+  "demos": 10,
+  "orbits": 9,
+  "orbits_found_here": 9,
+  "scan_starts": 40000,
+  "events": 27,
+  "terms": 38,
+  "sources": 45
+ },
+ "computed": {
+  "lyapunov_time": 3.5144,
+  "sun_earth_L1_km": 1491539,
+  "random_triples": 643,
+  "ejected": 435,
+  "ejected_share": 0.6765,
+  "softening": 0.05,
+  "energy_drift_median": 2.1592789892867883e-05,
+  "audit": {
+   "n": 150,
+   "dt": 0.0003333333333333333,
+   "share": 0.64,
+   "share_coarse": 0.7,
+   "agree": 0.6866666666666666,
+   "drift": 1.510754091236536e-06
+  }
+ },
+ "files": [
+  "theory.json",
+  "timeline.json",
+  "words.json",
+  "orbits.json"
+ ]
+}

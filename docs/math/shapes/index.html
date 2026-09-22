@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The two ways three rocks can hold a shape — The Three-Body Problem</title>
+<meta name="description" content="Three bodies can keep the same shape while they spin, and there are exactly two shapes that allow it: a straight line and an equilateral triangle. Euler found the first in 1767, Lagrange the second in 1772.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="color-scheme" content="light dark">
+<meta property="og:site_name" content="The Three-Body Problem"><meta property="og:locale" content="en_US">
+<meta property="og:title" content="The two ways three rocks can hold a shape — The Three-Body Problem"><meta property="og:description" content="Three bodies can keep the same shape while they spin, and there are exactly two shapes that allow it: a straight line and an equilateral triangle. Euler found the first in 1767, Lagrange the second in"><meta property="og:type" content="website">
+<meta property="og:image" content="https://nanobotco.github.io/three-body/img/card.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://nanobotco.github.io/three-body/img/card.jpg">
+<link rel="canonical" href="https://nanobotco.github.io/three-body/math/shapes/">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#0b7a76">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<style>
+:root{
+ --bg:#f7f6f1;--panel:#ffffff;--ink:#101418;--mute:#5b6570;--line:#e2e0d6;--chip:#eceae0;
+ --teal:#0b7a76;--gold:#b7791f;--violet:#6d4fc4;--red:#c8323c;--navy:#0b1220;
+ --focus:#0a4fd1;--shadow:rgba(10,14,20,.10);
+ --e-law:#b7791f;--e-shapes:#0b7a76;--e-proof:#6d4fc4;--e-step:#c8323c;--e-found:#0a66c2;--e-sky:#5b6570;
+ --display:"Avenir Next Condensed","HelveticaNeue-CondensedBold","Arial Narrow Bold",
+   "Franklin Gothic Heavy",Impact,system-ui,sans-serif;
+ --body:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --bg:#0d1117;--panel:#151b24;--ink:#eef1f4;--mute:#a4afbb;--line:#26303c;--chip:#1c2530;
+ --teal:#2fc4bd;--gold:#f0b545;--violet:#a891f2;--red:#ff6b74;--navy:#070b13;
+ --focus:#8ab4f8;--shadow:rgba(0,0,0,.5);
+ --e-law:#f0b545;--e-shapes:#2fc4bd;--e-proof:#a891f2;--e-step:#ff6b74;--e-found:#6cb4ff;--e-sky:#a4afbb;}}
+:root[data-theme="dark"]{
+ --bg:#0d1117;--panel:#151b24;--ink:#eef1f4;--mute:#a4afbb;--line:#26303c;--chip:#1c2530;
+ --teal:#2fc4bd;--gold:#f0b545;--violet:#a891f2;--red:#ff6b74;--navy:#070b13;
+ --focus:#8ab4f8;--shadow:rgba(0,0,0,.5);
+ --e-law:#f0b545;--e-shapes:#2fc4bd;--e-proof:#a891f2;--e-step:#ff6b74;--e-found:#6cb4ff;--e-sky:#a4afbb;}
+*{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62;-webkit-text-size-adjust:100%}
+a{color:var(--teal);text-decoration-thickness:.08em;text-underline-offset:.18em}
+a:hover{color:var(--violet)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:5px}
+img,svg{max-width:100%}
+main{max-width:46rem;margin:0 auto;padding:0 1rem 3rem}
+main.wide{max-width:64rem}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.005em;margin:1.6rem 0 .5rem}
+h1{font-size:clamp(2.2rem,7vw,4rem);margin-top:1.2rem}
+h2{font-size:clamp(1.6rem,4.5vw,2.4rem);border-bottom:3px solid var(--ink);padding-bottom:.2rem}
+h3{font-size:1.3rem}
+p{margin:.6rem 0}
+.lead{font-size:1.25rem;line-height:1.5;max-width:36ch}
+.line{font-size:1.2rem;font-weight:600;border-left:5px solid var(--gold);padding:.3rem 0 .3rem .9rem;margin:1rem 0 1.2rem;background:var(--chip)}
+.mute{color:var(--mute)}
+.small{font-size:.86rem}
+code,.mono{font-family:var(--mono);font-size:.9em}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+/* header */
+header.top{max-width:64rem;margin:0 auto;padding:.7rem 1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.2rem}
+.brand{font-family:var(--display);font-size:1.5rem;text-decoration:none;color:var(--ink);letter-spacing:.01em}
+.brand b{color:var(--teal)}
+nav.crumbs{font-size:.92rem;display:flex;flex-wrap:wrap;gap:.2rem .9rem}
+nav.crumbs a{text-decoration:none;color:var(--ink);border-bottom:2px solid transparent;padding-bottom:.1rem}
+nav.crumbs a:hover,nav.crumbs a[aria-current]{border-bottom-color:var(--gold);color:var(--ink)}
+/* the linked picture: background · scrim · spacer · text — the whole box is the link */
+.shot{position:relative;display:block;overflow:hidden;text-decoration:none;border:3px solid var(--ink);color:#fff;isolation:isolate;background:var(--navy)}
+.shot .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.shot .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,8,14,.05) 0%,rgba(6,8,14,.25) 45%,rgba(6,8,14,.86) 100%)}
+.shot .sp{display:block;padding-top:62%}
+.shot .tx{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:.7rem .9rem;font-family:var(--display);font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.02;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.shot .tx small{display:block;font-family:var(--body);font-size:.78rem;opacity:.9;margin-top:.3rem;font-weight:400}
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin:1.4rem 0}
+.doors h3{margin:0}
+.hero{margin:1rem 0 0}
+.hero .sp{padding-top:44%}
+.hero .tx{font-size:clamp(2rem,7vw,4.4rem);padding:1rem 1.2rem}
+.hero .tx small{font-size:clamp(.95rem,2vw,1.15rem);max-width:40ch}
+/* the parallax band — full bleed, the photograph held still while the page moves over it */
+.band{position:relative;isolation:isolate;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;
+ min-height:clamp(220px,44vh,440px);display:grid;align-items:center;background-size:cover;background-position:center;
+ background-repeat:no-repeat;background-attachment:fixed;background-color:var(--navy);
+ border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);margin-block:2.4rem;color:#fff}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,8,14,.72) 0%,rgba(6,8,14,.30) 40%,rgba(6,8,14,.40) 60%,rgba(6,8,14,.82) 100%)}
+.band .in{max-width:46rem;margin:0 auto;padding:clamp(1.6rem,5vw,3.4rem) 1rem;width:100%}
+.band .kicker{display:block;font-family:var(--display);font-size:.72rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:#f0b545;margin-bottom:.5rem}
+.band h2{border:0;color:#fff;text-transform:uppercase;margin:0 0 .4rem;max-width:22ch;text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.band p{color:#e8ecf0;max-width:38ch;text-shadow:0 1px 12px rgba(0,0,0,.7)}
+.band .big{font-family:var(--display);font-size:clamp(3rem,11vw,7rem);line-height:.86;font-weight:800;color:#fff;margin:0}
+.band .big small{display:block;font-family:var(--body);font-size:.16em;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin-top:.5rem;color:#f0b545}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.band{background-attachment:scroll}}
+/* chapters */
+.chapter{margin:2.2rem 0}
+.chapter .body p{max-width:64ch}
+.try{background:var(--chip);border-left:5px solid var(--teal);padding:.5rem .9rem;margin:.8rem 0;font-size:.95rem}
+.try b{color:var(--teal)}
+.demo{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem;margin:1.2rem 0;box-shadow:0 10px 30px var(--shadow)}
+.demo .row{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin:.5rem 0}
+.demo label{font-size:.88rem;color:var(--mute);display:flex;align-items:center;gap:.4rem}
+.demo input[type=range]{accent-color:var(--teal);width:9rem}
+.demo .readout{font-family:var(--mono);font-size:.9rem;background:var(--chip);padding:.15rem .5rem;border-radius:6px}
+.demo svg{display:block;width:100%;height:auto}
+.demo canvas{display:block;width:100%;height:auto;border-radius:8px;background:#070b13}
+.btn{display:inline-block;font:inherit;font-weight:700;font-size:.92rem;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:.45rem 1rem;cursor:pointer;text-decoration:none}
+.btn.alt{background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+.tally{display:grid;grid-template-columns:auto 1fr auto;gap:.3rem .6rem;align-items:center;font-size:.9rem;margin:.5rem 0}
+.tally .bar{height:.7rem;background:var(--line);border-radius:4px;overflow:hidden}
+.tally .bar i{display:block;height:100%;background:var(--teal);transform-origin:left;transform:scaleX(var(--v,0))}
+.tally .bar.t i{background:var(--gold)}
+.note{font-size:.86rem;color:var(--mute);margin:.4rem 0 0}
+/* timeline */
+.tl{list-style:none;margin:1.5rem 0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:5.2rem;top:0;bottom:0;width:3px;background:var(--line)}
+.tl li{position:relative;display:grid;grid-template-columns:4.2rem 1fr;gap:1.4rem;margin:0 0 1.6rem}
+.tl .yr{font-family:var(--display);font-size:1.6rem;line-height:1;text-align:right;color:var(--mute);padding-top:.15rem}
+.tl .dot{position:absolute;left:calc(5.2rem - 8px);top:.45rem;width:19px;height:19px;border-radius:50%;background:var(--e,var(--teal));border:3px solid var(--bg);box-shadow:0 0 0 2px var(--e,var(--teal))}
+.tl h3{margin:0 0 .2rem;font-size:1.35rem}
+.tl .plain{margin:.1rem 0 .3rem;font-size:1.02rem}
+.tl details{font-size:.95rem}
+.tl summary{cursor:pointer;color:var(--teal);font-size:.9rem}
+.tl .who{font-size:.82rem;color:var(--mute)}
+.tl .era{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--e,var(--teal));margin-right:.5rem}
+@media (max-width:540px){.tl::before{left:.55rem}.tl li{grid-template-columns:1fr;gap:.2rem;padding-left:1.6rem}.tl .yr{text-align:left}.tl .dot{left:calc(.55rem - 8px)}}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-size:.82rem;margin:.6rem 0}
+.legend span::before{content:"";display:inline-block;width:.8em;height:.8em;border-radius:50%;background:var(--e);margin-right:.35em;vertical-align:-.05em}
+/* cards, lists */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:1rem;margin:1rem 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;box-shadow:0 6px 18px var(--shadow)}
+.card h3{margin:.2rem 0 .3rem}
+.card .kv{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;font-size:.86rem;margin:.6rem 0}
+.card .kv b{color:var(--mute);font-weight:600}
+.card .who{font-size:.84rem;color:var(--mute)}
+.pro,.con{font-size:.94rem;margin:.4rem 0;padding-left:1.2rem;position:relative}
+.pro::before{content:"+";position:absolute;left:0;color:var(--teal);font-weight:800}
+.con::before{content:"−";position:absolute;left:0;color:var(--red);font-weight:800}
+dl.gloss{margin:1rem 0}
+dl.gloss dt{font-weight:700;margin-top:.8rem}
+dl.gloss dd{margin:0 0 0 0;color:var(--ink)}
+dl.gloss dd a{font-size:.84rem}
+.ledger{list-style:none;margin:1rem 0;padding:0}
+.ledger li{display:grid;grid-template-columns:6.2rem 1fr;gap:.2rem 1rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.ledger .d{font-family:var(--mono);font-size:.84rem;color:var(--mute);padding-top:.25rem}
+.ledger .w{font-weight:700}
+.ledger .why{font-size:.92rem;color:var(--mute)}
+.ledger .src{font-size:.82rem}
+.ledger .unc{font-size:.78rem;color:var(--gold);font-weight:700}
+@media (max-width:540px){.ledger li{grid-template-columns:1fr}}
+.feed{list-style:none;margin:.6rem 0;padding:0;font-size:.92rem}
+.feed li{padding:.45rem 0;border-top:1px solid var(--line);display:grid;grid-template-columns:5.6rem 1fr;gap:.6rem}
+.feed .d{font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+.feed .s{color:var(--mute);font-size:.82rem}
+@media (max-width:540px){.feed li{grid-template-columns:1fr}}
+.chart{margin:1.2rem 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.8rem}
+.chart svg text{font-family:var(--body);fill:var(--ink)}
+.chart .cap{font-size:.84rem;color:var(--mute);margin:.4rem .2rem 0}
+.myth p{max-width:64ch}
+.myth strong{color:var(--red)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:1rem 0}
+th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.wrap{overflow-x:auto}
+footer{max-width:64rem;margin:2rem auto 0;padding:1.4rem 1rem 3rem;border-top:3px solid var(--ink);font-size:.86rem;color:var(--mute)}
+footer a{color:var(--mute)}
+.fleet{margin:.6rem 0 0;line-height:1.9}.fleet a{margin-right:.55rem;white-space:nowrap}
+.support{margin:.45rem 0 0}.support a{margin-right:.5rem}
+.bots a{margin-right:.5rem}
+.share{margin:2rem 0 0;font-size:.86rem;color:var(--mute)}
+
+/* the maths: one equation to a block, a plain reading under it */
+.eq{margin:1.1rem 0;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--gold);
+ border-radius:10px;padding:.7rem .95rem;box-shadow:0 4px 14px var(--shadow)}
+.eqn{display:block;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+ font-size:clamp(1.15rem,3.1vw,1.5rem);line-height:1.5;text-align:center;padding:.35rem 0 .5rem;overflow-x:auto}
+.eqn i{font-style:italic;padding:0 .04em}
+.eqn b{font-weight:700;font-style:italic}
+.eqn sub,.eqn sup{font-size:.66em}
+.eqn .sum{font-size:1.15em;padding:0 .12em}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .28em;line-height:1.22}
+.frac>span:first-child{padding:0 .3em .05em}
+.frac>span:last-child{border-top:1.5px solid currentColor;padding:.05em .3em 0}
+.eq .read{margin:.2rem 0 0;font-size:.98rem}
+.eq .read b{color:var(--gold)}
+.eq .why{margin:.35rem 0 0;font-size:.88rem;color:var(--mute)}
+.kvgrid{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;align-items:center;margin:.6rem 0;font-size:.9rem}
+.kvgrid b{color:var(--mute);font-weight:600}
+.sel{font:inherit;font-size:.9rem;padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);
+ background:var(--chip);color:var(--ink);max-width:18rem}
+.orbits{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;margin:1.2rem 0}
+.orb{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.7rem .8rem;box-shadow:0 6px 18px var(--shadow)}
+.orb svg{display:block;width:100%;height:auto;background:var(--chip);border-radius:10px}
+.orb h3{margin:.5rem 0 .15rem;font-size:1.05rem}
+.orb .kv{font-family:var(--mono);font-size:.76rem;color:var(--mute);line-height:1.5}
+.orb .tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--teal);margin-bottom:.2rem}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding:.2rem 0 .6rem 2.4rem}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.15rem;width:1.7rem;height:1.7rem;border-radius:50%;
+ background:var(--chip);border:2px solid var(--gold);display:grid;place-items:center;font-weight:800;font-size:.9rem}
+pre.code{background:var(--navy);color:#e8ecf0;border-radius:12px;padding:.9rem 1rem;overflow-x:auto;font-family:var(--mono);
+ font-size:.82rem;line-height:1.55;border:1px solid var(--line)}
+pre.code b{color:#f0b545;font-weight:700}
+pre.code i{color:#8fb7c9;font-style:normal}
+/* motion — transform and opacity only, behind the gate */
+@media (prefers-reduced-motion:no-preference){
+ .shot .bg{transition:transform .6s ease}.shot:hover .bg{transform:scale(1.04)}
+ .shot,.card{transition:transform .18s ease,box-shadow .18s ease}
+ .shot:hover,.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px var(--shadow)}
+ .btn{transition:transform .15s ease}.btn:hover{transform:scale(1.05)}.btn:active{transform:scale(.97)}
+ .tl li{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+ .tl li.in,.tl.nojs li{opacity:1;transform:none}
+ .tally .bar i{transition:transform .35s ease}
+ .demo::before{content:"";position:absolute;inset:-2px;border-radius:16px;z-index:-1;
+  background:conic-gradient(from var(--a,0deg),var(--teal),var(--violet),var(--gold),var(--teal));
+  animation:spin 9s linear infinite;opacity:.55}
+ @property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+ @keyframes spin{to{--a:360deg}}
+ .coin.air{animation:flip 1.1s linear infinite}
+ @keyframes flip{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(1)}}
+ .pulse{animation:pulse 1.6s ease-in-out infinite}
+ @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+ .spinarrow{transform-origin:center;animation:turn 6s linear infinite}
+ @keyframes turn{to{transform:rotate(360deg)}}
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The two ways three rocks can hold a shape", "description": "Three bodies can keep the same shape while they spin, and there are exactly two shapes that allow it: a straight line and an equilateral triangle. Euler found the first in 1767, Lagrange the second in 1772.", "url": "https://nanobotco.github.io/three-body/math/shapes/", "license": "https://creativecommons.org/licenses/by/4.0/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "The Three-Body Problem", "url": "https://nanobotco.github.io/three-body/"}, "publisher": {"@type": "Organization", "name": "NaNoBotCo", "url": "https://nanobotco.github.io/index/", "email": "nan@motdang.net", "sameAs": ["https://motdang.net/", "https://nanobotco.github.io/mae-hong-son-loop/", "https://motdang.net/muay-thai/", "https://motdang.net/roads/", "https://wichaa.net/", "https://nanobotco.github.io/hand-poke/", "https://nanobotco.github.io/black-holes/", "https://nanobotco.github.io/quantum-computing/", "https://nanobotco.github.io/goin-fast/", "https://nanobotco.github.io/amulet-atlas/", "https://nanobotco.github.io/carolina-barbecue/", "https://nanobotco.github.io/buffalo-wings/", "https://nanobotco.github.io/pink-box/", "https://nanobotco.github.io/basque-tables/", "https://nanobotco.github.io/pinot-noir/", "https://nanobotco.github.io/care-abroad/", "https://nanobotco.github.io/thairoots/", "https://nanobotco.github.io/index/", "https://nanobotco.github.io/uptake/", "https://nanobotco.github.io/", "https://ask.motdang.net/", "https://ai.motdang.net/", "https://defiant.to/", "https://hongdam.net/", "https://hakfarang.net/", "https://offrampt.net/"]}, "dateModified": "2026-09-22"}</script>
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html">Three <b>Body</b></a>
+<nav class="crumbs"><a href="../../index.html">Home</a> · <a href="../../math/index.html" aria-current=page>Math</a> · <a href="../../orbits/index.html">Orbits</a> · <a href="../../history/index.html">History</a> · <a href="../../code/index.html">Code</a> · <a href="../../words/index.html">Words</a> · <a href="../../sources/index.html">Sources</a> · <a href="../../llms.txt">llms.txt</a> · <a href="https://github.com/NaNoBotCo/three-body">Source</a></nav></header>
+<main>
+
+<p class="small mute">Math · chapter 7 of 13</p>
+<h1>The two ways three rocks can hold a shape</h1>
+<p class="line">Three bodies can keep the same shape while they spin, and there are exactly two shapes that allow it: a straight line and an equilateral triangle. Euler found the first in 1767, Lagrange the second in 1772.</p>
+<div class="chapter"><div class="body"><p>Forget the general case for a minute and ask a smaller question. Can three bodies move so that the triangle they make never changes shape — only turns and scales? That is a shape you could write down.</p><p><strong>Euler, 1767.</strong> Put all three on a line, spinning about the balance point like a baton. It works, but only at one spacing, and finding it means solving a fifth-degree equation. There is no formula for a general fifth-degree equation — that is Abel&#x27;s theorem, a different piece of mathematics arriving in the same century — so even this tidy case ends in a number you have to hunt for rather than write. It has exactly one answer for any three weights you choose.</p><p><strong>Lagrange, 1772.</strong> Put the three at the corners of an equilateral triangle and spin. This one works for <strong>any</strong> three weights, with no equation to solve: the triangle holds, each body running an ellipse of its own around the balance point. A heavy body and a light one at two corners is the Trojan asteroid case from the last chapter.</p><p>Those two are the only ones. For three bodies there are five such arrangements in total — three collinear ones, depending on which body sits in the middle, and the two mirror-image triangles — and that is the complete list. Nobody has proved the equivalent for every number of bodies; whether the count is always finite is Smale&#x27;s sixth problem, still open.</p><p>This is worth sitting with. The general three-body problem has no formula, and yet within it sit these exact, eternal, writable solutions. A problem being unsolvable in general does not mean it is dark everywhere.</p></div></div>
+<div class="eq"><span class="eqn"><i>r</i><sup>5</sup> − (3−<i>μ</i>)<i>r</i><sup>4</sup> + (3−2<i>μ</i>)<i>r</i><sup>3</sup> − <i>μr</i><sup>2</sup> + 2<i>μr</i> − <i>μ</i> = 0</span><p class="read"><b>Reading it:</b> Where the inner balance point sits: the one distance that satisfies this fifth-degree equation.</p><p class="why">This is the L1 case of Euler&#x27;s quintic. Solved by hunting, not by formula. For the Sun and the Earth it puts L1 about 1.5 million km sunward of us — the figure printed on the page is this equation solved at build time.</p></div><div class="eq"><span class="eqn"><i>ω</i><sup>2</sup> = <span class="frac"><span><i>G</i>(<i>m</i><sub>1</sub>+<i>m</i><sub>2</sub>+<i>m</i><sub>3</sub>)</span><span><i>a</i><sup>3</sup></span></span></span><p class="read"><b>Reading it:</b> An equilateral triangle of any three weights, sides of length a, spins at this rate and holds its shape.</p><p class="why">Compare Kepler&#x27;s third law for two bodies — same form, with all three weights added. Lagrange&#x27;s triangle is the closest thing the three-body problem has to a napkin answer.</p></div><div class="eq"><span class="eqn">3 collinear + 2 triangles = 5</span><p class="read"><b>Reading it:</b> Five arrangements that keep their shape, for any three weights. That is all of them.</p><p class="why">Called central configurations. Five for three bodies; fifty for five bodies with generic weights; no general count is proved.</p></div>
+<div class="try"><b>Try it.</b> Press the triangle in the demo and then drag one weight up. The shape holds — the spin rate changes and the balance point moves, and the triangle stays equilateral. Now press the line and drag: the spacing has to be re-solved every time, and you can watch the solver hunt.</div>
+<div class="demo" data-demo="shapes"><p class="mute small">This one runs in the browser, with JavaScript on. The words above it stand on their own.</p></div>
+<div class="chart"><svg viewBox="0 0 620 300" role="img" aria-label="the quintic whose root gives L1"><line x1="54" y1="150.0" x2="600" y2="150.0" stroke="var(--mute)"/><path d="M56.73 150.00 L57.64 150.00 L58.54 150.00 L59.45 150.00 L60.36 150.00 L61.26 150.00 L62.17 150.00 L63.08 150.00 L63.99 150.00 L64.89 150.00 L65.80 150.00 L66.71 150.00 L67.61 149.99 L68.52 149.99 L69.43 149.99 L70.33 149.99 L71.24 149.99 L72.15 149.99 L73.06 149.99 L73.96 149.98 L74.87 149.98 L75.78 149.98 L76.68 149.97 L77.59 149.97 L78.50 149.97 L79.40 149.96 L80.31 149.96 L81.22 149.96 L82.12 149.95 L83.03 149.95 L83.94 149.94 L84.85 149.94 L85.75 149.93 L86.66 149.93 L87.57 149.92 L88.47 149.91 L89.38 149.91 L90.29 149.90 L91.19 149.89 L92.10 149.88 L93.01 149.87 L93.92 149.87 L94.82 149.86 L95.73 149.85 L96.64 149.84 L97.54 149.83 L98.45 149.82 L99.36 149.80 L100.26 149.79 L101.17 149.78 L102.08 149.77 L102.99 149.76 L103.89 149.74 L104.80 149.73 L105.71 149.71 L106.61 149.70 L107.52 149.68 L108.43 149.67 L109.33 149.65 L110.24 149.63 L111.15 149.62 L112.05 149.60 L112.96 149.58 L113.87 149.56 L114.78 149.54 L115.68 149.52 L116.59 149.50 L117.50 149.48 L118.40 149.46 L119.31 149.44 L120.22 149.41 L121.12 149.39 L122.03 149.37 L122.94 149.34 L123.85 149.32 L124.75 149.29 L125.66 149.26 L126.57 149.24 L127.47 149.21 L128.38 149.18 L129.29 149.15 L130.19 149.12 L131.10 149.09 L132.01 149.06 L132.91 149.03 L133.82 149.00 L134.73 148.97 L135.64 148.93 L136.54 148.90 L137.45 148.86 L138.36 148.83 L139.26 148.79 L140.17 148.76 L141.08 148.72 L141.98 148.68 L142.89 148.64 L143.80 148.60 L144.71 148.56 L145.61 148.52 L146.52 148.48 L147.43 148.44 L148.33 148.39 L149.24 148.35 L150.15 148.31 L151.05 148.26 L151.96 148.21 L152.87 148.17 L153.77 148.12 L154.68 148.07 L155.59 148.02 L156.50 147.97 L157.40 147.92 L158.31 147.87 L159.22 147.82 L160.12 147.77 L161.03 147.71 L161.94 147.66 L162.84 147.60 L163.75 147.55 L164.66 147.49 L165.57 147.43 L166.47 147.37 L167.38 147.31 L168.29 147.25 L169.19 147.19 L170.10 147.13 L171.01 147.07 L171.91 147.00 L172.82 146.94 L173.73 146.88 L174.64 146.81 L175.54 146.74 L176.45 146.67 L177.36 146.61 L178.26 146.54 L179.17 146.47 L180.08 146.40 L180.98 146.32 L181.89 146.25 L182.80 146.18 L183.70 146.10 L184.61 146.03 L185.52 145.95 L186.43 145.88 L187.33 145.80 L188.24 145.72 L189.15 145.64 L190.05 145.56 L190.96 145.48 L191.87 145.40 L192.77 145.31 L193.68 145.23 L194.59 145.14 L195.50 145.06 L196.40 144.97 L197.31 144.88 L198.22 144.80 L199.12 144.71 L200.03 144.62 L200.94 144.53 L201.84 144.43 L202.75 144.34 L203.66 144.25 L204.56 144.15 L205.47 144.06 L206.38 143.96 L207.29 143.86 L208.19 143.77 L209.10 143.67 L210.01 143.57 L210.91 143.46 L211.82 143.36 L212.73 143.26 L213.63 143.16 L214.54 143.05 L215.45 142.95 L216.36 142.84 L217.26 142.73 L218.17 142.62 L219.08 142.51 L219.98 142.40 L220.89 142.29 L221.80 142.18 L222.70 142.07 L223.61 141.95 L224.52 141.84 L225.42 141.72 L226.33 141.61 L227.24 141.49 L228.15 141.37 L229.05 141.25 L229.96 141.13 L230.87 141.01 L231.77 140.89 L232.68 140.76 L233.59 140.64 L234.49 140.51 L235.40 140.39 L236.31 140.26 L237.22 140.13 L238.12 140.00 L239.03 139.87 L239.94 139.74 L240.84 139.61 L241.75 139.48 L242.66 139.35 L243.56 139.21 L244.47 139.08 L245.38 138.94 L246.28 138.80 L247.19 138.66 L248.10 138.52 L249.01 138.38 L249.91 138.24 L250.82 138.10 L251.73 137.96 L252.63 137.81 L253.54 137.67 L254.45 137.52 L255.35 137.38 L256.26 137.23 L257.17 137.08 L258.08 136.93 L258.98 136.78 L259.89 136.63 L260.80 136.48 L261.70 136.32 L262.61 136.17 L263.52 136.01 L264.42 135.86 L265.33 135.70 L266.24 135.54 L267.15 135.38 L268.05 135.22 L268.96 135.06 L269.87 134.90 L270.77 134.74 L271.68 134.58 L272.59 134.41 L273.49 134.25 L274.40 134.08 L275.31 133.91 L276.21 133.74 L277.12 133.58 L278.03 133.41 L278.94 133.23 L279.84 133.06 L280.75 132.89 L281.66 132.72 L282.56 132.54 L283.47 132.37 L284.38 132.19 L285.28 132.01 L286.19 131.83 L287.10 131.65 L288.01 131.47 L288.91 131.29 L289.82 131.11 L290.73 130.93 L291.63 130.74 L292.54 130.56 L293.45 130.37 L294.35 130.19 L295.26 130.00 L296.17 129.81 L297.07 129.62 L297.98 129.43 L298.89 129.24 L299.80 129.05 L300.70 128.85 L301.61 128.66 L302.52 128.47 L303.42 128.27 L304.33 128.07 L305.24 127.88 L306.14 127.68 L307.05 127.48 L307.96 127.28 L308.87 127.08 L309.77 126.88 L310.68 126.67 L311.59 126.47 L312.49 126.27 L313.40 126.06 L314.31 125.85 L315.21 125.65 L316.12 125.44 L317.03 125.23 L317.93 125.02 L318.84 124.81 L319.75 124.60 L320.66 124.38 L321.56 124.17 L322.47 123.96 L323.38 123.74 L324.28 123.53 L325.19 123.31 L326.10 123.09 L327.00 122.87 L327.91 122.65 L328.82 122.43 L329.73 122.21 L330.63 121.99 L331.54 121.77 L332.45 121.55 L333.35 121.32 L334.26 121.10 L335.17 120.87 L336.07 120.64 L336.98 120.42 L337.89 120.19 L338.80 119.96 L339.70 119.73 L340.61 119.50 L341.52 119.26 L342.42 119.03 L343.33 118.80 L344.24 118.56 L345.14 118.33 L346.05 118.09 L346.96 117.86 L347.86 117.62 L348.77 117.38 L349.68 117.14 L350.59 116.90 L351.49 116.66 L352.40 116.42 L353.31 116.17 L354.21 115.93 L355.12 115.69 L356.03 115.44 L356.93 115.20 L357.84 114.95 L358.75 114.70 L359.66 114.45 L360.56 114.21 L361.47 113.96 L362.38 113.71 L363.28 113.45 L364.19 113.20 L365.10 112.95 L366.00 112.70 L366.91 112.44 L367.82 112.19 L368.72 111.93 L369.63 111.67 L370.54 111.42 L371.45 111.16 L372.35 110.90 L373.26 110.64 L374.17 110.38 L375.07 110.12 L375.98 109.86 L376.89 109.59 L377.79 109.33 L378.70 109.07 L379.61 108.80 L380.52 108.54 L381.42 108.27 L382.33 108.00 L383.24 107.73 L384.14 107.47 L385.05 107.20 L385.96 106.93 L386.86 106.66 L387.77 106.38 L388.68 106.11 L389.58 105.84 L390.49 105.56 L391.40 105.29 L392.31 105.02 L393.21 104.74 L394.12 104.46 L395.03 104.19 L395.93 103.91 L396.84 103.63 L397.75 103.35 L398.65 103.07 L399.56 102.79 L400.47 102.51 L401.38 102.22 L402.28 101.94 L403.19 101.66 L404.10 101.37 L405.00 101.09 L405.91 100.80 L406.82 100.52 L407.72 100.23 L408.63 99.94 L409.54 99.65 L410.45 99.36 L411.35 99.07 L412.26 98.78 L413.17 98.49 L414.07 98.20 L414.98 97.91 L415.89 97.62 L416.79 97.32 L417.70 97.03 L418.61 96.73 L419.51 96.44 L420.42 96.14 L421.33 95.84 L422.24 95.55 L423.14 95.25 L424.05 94.95 L424.96 94.65 L425.86 94.35 L426.77 94.05 L427.68 93.75 L428.58 93.44 L429.49 93.14 L430.40 92.84 L431.31 92.53 L432.21 92.23 L433.12 91.92 L434.03 91.62 L434.93 91.31 L435.84 91.00 L436.75 90.69 L437.65 90.39 L438.56 90.08 L439.47 89.77 L440.37 89.46 L441.28 89.15 L442.19 88.83 L443.10 88.52 L444.00 88.21 L444.91 87.90 L445.82 87.58 L446.72 87.27 L447.63 86.95 L448.54 86.64 L449.44 86.32 L450.35 86.00 L451.26 85.69 L452.17 85.37 L453.07 85.05 L453.98 84.73 L454.89 84.41 L455.79 84.09 L456.70 83.77 L457.61 83.44 L458.51 83.12 L459.42 82.80 L460.33 82.48 L461.23 82.15 L462.14 81.83 L463.05 81.50 L463.96 81.18 L464.86 80.85 L465.77 80.52 L466.68 80.19 L467.58 79.87 L468.49 79.54 L469.40 79.21 L470.30 78.88 L471.21 78.55 L472.12 78.22 L473.03 77.89 L473.93 77.55 L474.84 77.22 L475.75 76.89 L476.65 76.55 L477.56 76.22 L478.47 75.88 L479.37 75.55 L480.28 75.21 L481.19 74.88 L482.09 74.54 L483.00 74.20 L483.91 73.86 L484.82 73.52 L485.72 73.18 L486.63 72.85 L487.54 72.50 L488.44 72.16 L489.35 71.82 L490.26 71.48 L491.16 71.14 L492.07 70.79 L492.98 70.45 L493.89 70.11 L494.79 69.76 L495.70 69.42 L496.61 69.07 L497.51 68.72 L498.42 68.38 L499.33 68.03 L500.23 67.68 L501.14 67.33 L502.05 66.98 L502.96 66.63 L503.86 66.28 L504.77 65.93 L505.68 65.58 L506.58 65.23 L507.49 64.88 L508.40 64.52 L509.30 64.17 L510.21 63.81 L511.12 63.46 L512.02 63.11 L512.93 62.75 L513.84 62.39 L514.75 62.04 L515.65 61.68 L516.56 61.32 L517.47 60.96 L518.37 60.60 L519.28 60.24 L520.19 59.88 L521.09 59.52 L522.00 59.16 L522.91 58.80 L523.82 58.44 L524.72 58.08 L525.63 57.71 L526.54 57.35 L527.44 56.99 L528.35 56.62 L529.26 56.26 L530.16 55.89 L531.07 55.52 L531.98 55.16 L532.88 54.79 L533.79 54.42 L534.70 54.05 L535.61 53.68 L536.51 53.31 L537.42 52.94 L538.33 52.57 L539.23 52.20 L540.14 51.83 L541.05 51.46 L541.95 51.08 L542.86 50.71 L543.77 50.33 L544.68 49.96 L545.58 49.58 L546.49 49.21 L547.40 48.83 L548.30 48.46 L549.21 48.08 L550.12 47.70 L551.02 47.32 L551.93 46.94 L552.84 46.56 L553.74 46.18 L554.65 45.80 L555.56 45.42 L556.47 45.04 L557.37 44.66 L558.28 44.27 L559.19 43.89 L560.09 43.51 L561.00 43.12 L561.91 42.73 L562.81 42.35 L563.72 41.96 L564.63 41.58 L565.54 41.19 L566.44 40.80 L567.35 40.41 L568.26 40.02 L569.16 39.63 L570.07 39.24 L570.98 38.85 L571.88 38.46 L572.79 38.06 L573.70 37.67 L574.61 37.28 L575.51 36.88 L576.42 36.49 L577.33 36.09 L578.23 35.70 L579.14 35.30 L580.05 34.90 L580.95 34.51 L581.86 34.11 L582.77 33.71 L583.67 33.31 L584.58 32.91 L585.49 32.51 L586.40 32.10 L587.30 31.70 L588.21 31.30 L589.12 30.90 L590.02 30.49 L590.93 30.09 L591.84 29.68 L592.74 29.27 L593.65 28.87 L594.56 28.46 L595.47 28.05 L596.37 27.64 L597.28 27.23 L598.19 26.82 L599.09 26.41 L600.00 26.00" fill="none" stroke="var(--teal)" stroke-width="2.6"/><circle cx="59.4" cy="150.0" r="7" fill="var(--gold)" stroke="var(--ink)" stroke-width="1.5"/><text x="59.4" y="134.0" text-anchor="middle" font-size="13" font-weight="700" fill="var(--gold)">r = 0.009970</text><text x="163.2" y="294" text-anchor="middle" font-size="11" fill="var(--mute)">0.2</text><text x="272.4" y="294" text-anchor="middle" font-size="11" fill="var(--mute)">0.4</text><text x="381.6" y="294" text-anchor="middle" font-size="11" fill="var(--mute)">0.6</text><text x="490.8" y="294" text-anchor="middle" font-size="11" fill="var(--mute)">0.8</text><text x="600.0" y="294" text-anchor="middle" font-size="11" fill="var(--mute)">1</text><text x="8" y="20" font-size="12" fill="var(--mute)">value of the quintic</text><text x="600" y="142" text-anchor="end" font-size="12" fill="var(--mute)">distance from the small body</text></svg><p class="cap">Euler's quintic for the Sun and the Earth, drawn and then solved by bisection at build time: the root is r = 0.009970 in units of the Earth's distance, which puts L1 <b>1,491,539 km</b> sunward of us. No formula exists for a general fifth-degree equation, so this is a hunt, and it takes about forty steps.</p></div><div class="chart"><svg viewBox="0 0 620 420" role="img" aria-label="the five Lagrange points of a two-body system"><line x1="45" y1="220" x2="575" y2="220" stroke="var(--line)"/><circle cx="347.8" cy="220.0" r="63.0" fill="none" stroke="var(--line)" stroke-dasharray="3 5"/><circle cx="365.2" cy="220.0" r="7" fill="var(--violet)"/><text x="365.2" y="207.0" text-anchor="middle" font-size="13" font-weight="700" fill="var(--violet)">L1</text><circle cx="470.2" cy="220.0" r="7" fill="var(--violet)"/><text x="470.2" y="207.0" text-anchor="middle" font-size="13" font-weight="700" fill="var(--violet)">L2</text><circle cx="173.6" cy="220.0" r="7" fill="var(--violet)"/><text x="173.6" y="207.0" text-anchor="middle" font-size="13" font-weight="700" fill="var(--violet)">L3</text><circle cx="347.8" cy="110.9" r="7" fill="var(--red)"/><text x="347.8" y="97.9" text-anchor="middle" font-size="13" font-weight="700" fill="var(--red)">L4</text><circle cx="347.8" cy="329.1" r="7" fill="var(--red)"/><text x="347.8" y="316.1" text-anchor="middle" font-size="13" font-weight="700" fill="var(--red)">L5</text><circle cx="284.8" cy="220.0" r="16" fill="var(--gold)" stroke="var(--ink)" stroke-width="1.5"/><text x="284.8" y="253.0" text-anchor="middle" font-size="12" fill="var(--mute)">the heavy one</text><circle cx="410.8" cy="220.0" r="10" fill="var(--teal)" stroke="var(--ink)" stroke-width="1.5"/><text x="410.8" y="247.0" text-anchor="middle" font-size="12" fill="var(--mute)">the light one</text><path d="M284.80 220.00 L347.80 110.88 L410.80 220.00" fill="none" stroke="var(--red)" stroke-width="1.2" stroke-dasharray="5 4" opacity=".7"/><path d="M284.80 220.00 L347.80 329.12 L410.80 220.00" fill="none" stroke="var(--red)" stroke-width="1.2" stroke-dasharray="5 4" opacity=".7"/><text x="610" y="412" text-anchor="end" font-size="12" fill="var(--mute)">mass ratio μ = 0.2, L1 at x = 0.4381, L2 at 1.2710, L3 at -1.0828</text></svg><p class="cap">The five places, computed for a mass ratio of 0.2. Three on the line through the pair, from the quintics; two at the corners of equilateral triangles, from Lagrange.</p></div>
+<h3>Sources</h3><ul class='small'><li><a href="https://en.wikipedia.org/wiki/Euler%27s_three-body_problem">Wikipedia, Euler&#x27;s three-body problem</a></li><li><a href="https://en.wikipedia.org/wiki/Central_configuration">Wikipedia, Central configuration</a></li><li><a href="https://en.wikipedia.org/wiki/Lagrange_point">Wikipedia, Lagrange point derivation</a></li><li><a href="https://en.wikipedia.org/wiki/Smale%27s_problems">Wikipedia, Smale&#x27;s problems</a></li></ul>
+<p class="row"><a class="btn alt" href="../restricted/index.html">← Two big, one small</a> <a class="btn" href="../eight/index.html">The ones that come back around →</a></p>
+
+</main>
+<footer>
+<div class="bots">For the machines: <a href="../../api/theory.json">theory.json</a> <a href="../../api/orbits.json">orbits.json</a> <a href="../../api/timeline.json">timeline.json</a> <a href="../../api/words.json">words.json</a> <a href="../../llms-full.txt">llms-full.txt</a> <a href="../../sitemap.xml">sitemap.xml</a></div>
+<p>Text, data and pictures <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; code <a href="https://github.com/NaNoBotCo/three-body/blob/main/LICENSE">MIT</a>. The pictures and diagrams are computed from the equations in <a href="https://github.com/NaNoBotCo/three-body/blob/main/tools/physics.py">tools/physics.py</a> when the page is built. Sources sit beside the facts they support and are listed at <a href="../../sources/index.html">Sources</a>. Built 2026-09-22.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a></div>
+<div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
+</footer>
+<script>window.TB_ORBITS=[{"id": "braided-eight", "name": "The braided eight", "v": [0.339407412, 0.536184978], "period": 6.29081877, "closes": 1.09e-12}, {"id": "figure-eight", "name": "The figure eight", "v": [0.347116888, 0.532724945], "period": 6.32591398, "closes": 5.61e-13}, {"id": "moth", "name": "The moth", "v": [0.464445163, 0.396060015], "period": 14.89430474, "closes": 4.79e-12}, {"id": "lacewing", "name": "The lacewing", "v": [0.18194288, 0.514805998], "period": 18.14136765, "closes": 4.75e-12}, {"id": "shawl", "name": "The shawl", "v": [0.189004892, 0.539762453], "period": 19.73539189, "closes": 3.92e-12}, {"id": "thicket", "name": "The thicket", "v": [0.327578071, 0.57986168], "period": 29.21293407, "closes": 2.21e-11}, {"id": "ribbon", "name": "The ribbon", "v": [0.209661505, 0.525702389], "period": 33.86151867, "closes": 1.28e-11}, {"id": "wide-ribbon", "name": "The wide ribbon", "v": [0.255430936, 0.516385839], "period": 35.04308702, "closes": 3.52e-11}, {"id": "skein", "name": "The skein", "v": [0.254918844, 0.539739712], "period": 37.77007981, "closes": 1.22e-11}];</script><script>/* anim.js — the demos. Vanilla, no library, inlined into the pages that use them.
+
+   Each demo mounts into an element with data-demo="<name>". The physics is the same
+   leapfrog step as tools/physics.py, written out for three bodies. Continuous motion
+   runs only where the reader has not asked for reduced motion; every demo also works
+   from its buttons, so a still page is a working page.
+
+   The orbits a demo can load are put on the page by tools/build.py as window.TB_ORBITS. */
+(function () {
+  "use strict";
+  var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ORB = window.TB_ORBITS || [];
+
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) { if (k === "text") e.textContent = attrs[k]; else if (k === "html") e.innerHTML = attrs[k]; else e.setAttribute(k, attrs[k]); }
+    (kids || []).forEach(function (c) { e.appendChild(c); });
+    return e;
+  }
+  function btn(label, cls) { return el("button", { class: "btn" + (cls ? " " + cls : ""), type: "button", text: label }); }
+  function range(min, max, val, step) { return el("input", { type: "range", min: min, max: max, value: val, step: step || 1 }); }
+  function readout(t) { return el("span", { class: "readout", text: t || "" }); }
+  function row(kids) { return el("div", { class: "row" }, kids); }
+  function note(t) { return el("p", { class: "note", text: t }); }
+  function label(t, kids) { return el("label", { text: t }, kids); }
+  function fmt(x, d) { return (isFinite(x) ? x : 0).toFixed(d); }
+  function pick(opts, val) {
+    var s = el("select", { class: "sel" });
+    opts.forEach(function (o) { var op = el("option", { value: o[0], text: o[1] }); if (o[0] === val) op.selected = true; s.appendChild(op); });
+    return s;
+  }
+  var css = getComputedStyle(document.documentElement);
+  function v(n, d) { return (css.getPropertyValue(n) || "").trim() || d; }
+  var C = { teal: v("--teal", "#0b7a76"), gold: v("--gold", "#b7791f"), violet: v("--violet", "#6d4fc4"),
+            red: v("--red", "#c8323c"), ink: v("--ink", "#101418"), mute: v("--mute", "#5b6570"),
+            line: v("--line", "#e2e0d6"), panel: v("--panel", "#fff") };
+  var BODY = [C.teal, C.gold, C.violet];
+
+  /* ---------------------------------------------------------------- the physics */
+  function accel(s, m, soft) {
+    var a = [0, 0, 0, 0, 0, 0], e = soft || 0;
+    for (var i = 0; i < 3; i++) for (var j = i + 1; j < 3; j++) {
+      var dx = s[2 * j] - s[2 * i], dy = s[2 * j + 1] - s[2 * i + 1];
+      var r2 = dx * dx + dy * dy + e * e, inv = 1 / (r2 * Math.sqrt(r2));
+      a[2 * i] += m[j] * dx * inv; a[2 * i + 1] += m[j] * dy * inv;
+      a[2 * j] -= m[i] * dx * inv; a[2 * j + 1] -= m[i] * dy * inv;
+    }
+    return a;
+  }
+  /* state = [x1,y1,x2,y2,x3,y3, vx1,vy1,vx2,vy2,vx3,vy3] */
+  function step(s, m, h, soft) {
+    var a = accel(s, m, soft), i;
+    for (i = 0; i < 6; i++) { s[6 + i] += 0.5 * h * a[i]; s[i] += h * s[6 + i]; }
+    a = accel(s, m, soft);
+    for (i = 0; i < 6; i++) s[6 + i] += 0.5 * h * a[i];
+    return s;
+  }
+  function stepEuler(s, m, h) {
+    var a = accel(s, m, 0), i;
+    for (i = 0; i < 6; i++) { s[i] += h * s[6 + i]; s[6 + i] += h * a[i]; }
+    return s;
+  }
+  function energy(s, m) {
+    var ke = 0, pe = 0, i, j;
+    for (i = 0; i < 3; i++) ke += 0.5 * m[i] * (s[6 + 2 * i] * s[6 + 2 * i] + s[7 + 2 * i] * s[7 + 2 * i]);
+    for (i = 0; i < 3; i++) for (j = i + 1; j < 3; j++) {
+      var dx = s[2 * j] - s[2 * i], dy = s[2 * j + 1] - s[2 * i + 1];
+      pe -= m[i] * m[j] / Math.sqrt(dx * dx + dy * dy);
+    }
+    return ke + pe;
+  }
+  function spin(s, m) {
+    var l = 0;
+    for (var i = 0; i < 3; i++) l += m[i] * (s[2 * i] * s[7 + 2 * i] - s[2 * i + 1] * s[6 + 2 * i]);
+    return l;
+  }
+  function momentum(s, m) {
+    var px = 0, py = 0;
+    for (var i = 0; i < 3; i++) { px += m[i] * s[6 + 2 * i]; py += m[i] * s[7 + 2 * i]; }
+    return [px, py];
+  }
+  function sdState(vx, vy) { return [-1, 0, 1, 0, 0, 0, vx, vy, vx, vy, -2 * vx, -2 * vy]; }
+  function clone(s) { return s.slice(0); }
+
+  /* ---------------------------------------------------------------- canvas helpers */
+  function canvas(root, w, h) {
+    var c = el("canvas"); var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = w * dpr; c.height = h * dpr; c.style.aspectRatio = w + " / " + h;
+    var g = c.getContext("2d"); g.scale(dpr, dpr);
+    c._w = w; c._h = h; c._g = g;
+    root.appendChild(c);
+    return c;
+  }
+  function clear(c, fade) {
+    var g = c._g;
+    g.globalCompositeOperation = "source-over";
+    g.fillStyle = fade ? "rgba(7,11,19," + fade + ")" : "#070b13";
+    g.fillRect(0, 0, c._w, c._h);
+  }
+  function view(c, span, cx, cy) {
+    var s = Math.min(c._w, c._h) / span;
+    return { x: function (x) { return c._w / 2 + (x - (cx || 0)) * s; },
+             y: function (y) { return c._h / 2 - (y - (cy || 0)) * s; }, s: s };
+  }
+  function dot(c, V, x, y, r, col) {
+    var g = c._g;
+    g.beginPath(); g.arc(V.x(x), V.y(y), r, 0, 6.2832); g.fillStyle = col; g.fill();
+  }
+  function rafLoop(fn) {
+    var on = false, id = 0;
+    function tick() { if (!on) return; fn(); id = requestAnimationFrame(tick); }
+    return { start: function () { if (!on) { on = true; tick(); } }, stop: function () { on = false; cancelAnimationFrame(id); },
+             get running() { return on; } };
+  }
+  function onScreen(node, loop) {
+    if (!("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (!e.isIntersecting && loop.running) loop.stop(); });
+    }, { rootMargin: "200px" }).observe(node);
+  }
+
+  /* ---------------------------------------------------------------- 1  inverse square */
+  function inverse(root) {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "0 0 640 190"); s.setAttribute("role", "img");
+    s.setAttribute("aria-label", "two masses and the pull between them");
+    root.appendChild(s);
+    function mk(tag, at) { var e = document.createElementNS(s.namespaceURI, tag); for (var k in at) e.setAttribute(k, at[k]); return e; }
+    var barBg = mk("rect", { x: 60, y: 140, width: 520, height: 16, rx: 8, fill: C.line });
+    var bar = mk("rect", { x: 60, y: 140, height: 16, rx: 8, fill: C.teal });
+    var a = mk("circle", { cx: 90, cy: 70, r: 22, fill: C.gold, stroke: C.ink, "stroke-width": 2 });
+    var b = mk("circle", { cx: 400, cy: 70, r: 16, fill: C.violet, stroke: C.ink, "stroke-width": 2 });
+    var link = mk("line", { x1: 90, y1: 70, x2: 400, y2: 70, stroke: C.mute, "stroke-dasharray": "5 5" });
+    var txt = mk("text", { x: 60, y: 128, "font-size": 13, fill: C.mute }); txt.textContent = "";
+    [link, a, b, barBg, bar, txt].forEach(function (n) { s.appendChild(n); });
+    var d = range(10, 100, 30), m2 = range(1, 10, 3), out = readout("");
+    function draw() {
+      var dist = d.value / 10, mm = +m2.value;
+      var F = mm / (dist * dist);
+      var Fmax = 10 / 1;
+      b.setAttribute("cx", 90 + dist * 55);
+      b.setAttribute("r", 8 + mm * 1.6);
+      link.setAttribute("x2", 90 + dist * 55);
+      var wpx = Math.max(2, Math.min(1, F / Fmax) * 520);
+      bar.setAttribute("width", wpx);
+      txt.textContent = "pull";
+      out.textContent = "distance " + fmt(dist, 1) + " · weight " + mm + " · pull " + (F < 0.01 ? F.toExponential(1) : fmt(F, 3));
+    }
+    d.oninput = draw; m2.oninput = draw;
+    root.appendChild(row([label("distance", [d]), label("the other weight", [m2]), out]));
+    root.appendChild(note("Double the distance and the bar drops to a quarter. Double the weight and it doubles. That is the whole of Newton's law in two sliders."));
+    draw();
+  }
+
+  /* ---------------------------------------------------------------- 2  Kepler */
+  function kepler(root) {
+    var c = canvas(root, 640, 340);
+    var ecc = range(0, 85, 50), speed = range(1, 40, 14), out = readout("");
+    var th = 0, sweeps = [], last = 0;
+    function draw() {
+      var e = ecc.value / 100, a = 1.0;
+      clear(c);
+      var V = view(c, 2.9, e * a, 0);
+      var g = c._g;
+      // the ellipse
+      g.beginPath();
+      for (var k = 0; k <= 240; k++) {
+        var t = k / 240 * 6.2832, r = a * (1 - e * e) / (1 + e * Math.cos(t));
+        var x = r * Math.cos(t), y = r * Math.sin(t);
+        if (k === 0) g.moveTo(V.x(x), V.y(y)); else g.lineTo(V.x(x), V.y(y));
+      }
+      g.strokeStyle = C.mute; g.lineWidth = 1.2; g.stroke();
+      // equal areas: wedges swept in equal time
+      var r0 = a * (1 - e * e) / (1 + e * Math.cos(th));
+      sweeps.forEach(function (w, i) {
+        g.beginPath(); g.moveTo(V.x(0), V.y(0));
+        w.forEach(function (p, j) { g.lineTo(V.x(p[0]), V.y(p[1])); });
+        g.closePath(); g.fillStyle = i % 2 ? "rgba(47,196,189,.30)" : "rgba(240,181,69,.30)"; g.fill();
+      });
+      dot(c, V, 0, 0, 9, C.gold);
+      dot(c, V, r0 * Math.cos(th), r0 * Math.sin(th), 6, C.teal);
+      var vel = Math.sqrt((1 + e * e + 2 * e * Math.cos(th)) / (1 - e * e));
+      out.textContent = "e = " + fmt(e, 2) + " · distance " + fmt(r0, 2) + " · speed " + fmt(vel, 2) + " (fast when close, slow when far)";
+    }
+    var loop = rafLoop(function () {
+      var e = ecc.value / 100;
+      var r = 1 * (1 - e * e) / (1 + e * Math.cos(th));
+      th += (speed.value / 1400) / (r * r) * (1 - e * e);       // equal areas in equal times
+      if (th > 6.2832) { th -= 6.2832; }
+      var pts = sweeps[sweeps.length - 1];
+      if (!pts || pts.length > 26) { sweeps.push(pts = []); if (sweeps.length > 6) sweeps.shift(); }
+      pts.push([r * Math.cos(th), r * Math.sin(th)]);
+      draw();
+    });
+    var go = btn("Pause");
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    root.appendChild(row([go, label("squash", [ecc]), label("speed", [speed]), out]));
+    root.appendChild(note("One body, one fixed pull, and the shape closes and repeats forever. The shaded wedges are swept in equal times — Kepler's second law, which is angular momentum not changing."));
+    ecc.oninput = function () { sweeps = []; th = 0; draw(); };
+    draw();
+    onScreen(c, loop);
+    if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 3  the sandbox */
+  function sim(root) {
+    var c = canvas(root, 640, 400);
+    var presets = [["eight", "figure eight"], ["triangle", "Lagrange triangle"], ["line", "Euler line"],
+                   ["random", "a random throw"], ["binary", "a pair and an intruder"]];
+    ORB.slice(0, 6).forEach(function (o) { if (o.id !== "figure-eight") presets.push(["orb:" + o.id, o.name]); });
+    var sel = pick(presets, "eight");
+    var play = btn("Pause"), reset = btn("Reset", "alt"), trailsBtn = btn("Clear trails", "alt");
+    var sp = range(1, 40, 14), out = readout(""), eout = readout("");
+    var m = [1, 1, 1], s = null, E0 = 0, t = 0, trails = [[], [], []], span = 3.2;
+    function setup(kind) {
+      t = 0; trails = [[], [], []]; m = [1, 1, 1]; span = 3.2;
+      if (kind === "eight" || kind.indexOf("orb:") === 0) {
+        var o = kind === "eight" ? (ORB.filter(function (q) { return q.id === "figure-eight"; })[0] || { v: [0.3471169, 0.5327249] })
+                                 : ORB.filter(function (q) { return "orb:" + q.id === kind; })[0];
+        s = sdState(o.v[0], o.v[1]); span = 3.4;
+      } else if (kind === "triangle") {
+        var w = Math.sqrt(3);                                   // ω² = 3Gm/a³ with a = side = √3 r
+        var r = 1 / Math.sqrt(3), om = Math.sqrt(3 * 1 / Math.pow(w * r, 3));
+        s = [];
+        for (var i = 0; i < 3; i++) { var th = i * 2.0944; s.push(r * Math.cos(th), r * Math.sin(th)); }
+        for (i = 0; i < 3; i++) { var th2 = i * 2.0944; s.push(-om * r * Math.sin(th2), om * r * Math.cos(th2)); }
+        span = 2.4;
+      } else if (kind === "line") {
+        var omg = Math.sqrt(1.25);                              // equal masses at -1, 0, 1
+        s = [-1, 0, 0, 0, 1, 0, 0, -omg, 0, 0, 0, omg];
+        span = 3.0;
+      } else if (kind === "binary") {
+        s = [-0.5, 0, 0.5, 0, 3.0, 1.6, 0, -0.707, 0, 0.707, -0.62, -0.30];
+        span = 7.0;
+      } else {
+        s = [];
+        for (var k = 0; k < 3; k++) s.push((Math.random() * 2 - 1) * 1.1, (Math.random() * 2 - 1) * 1.1);
+        var vx = 0, vy = 0, vs = [];
+        for (k = 0; k < 3; k++) { var ax = (Math.random() * 2 - 1) * 0.45, ay = (Math.random() * 2 - 1) * 0.45; vs.push(ax, ay); vx += ax; vy += ay; }
+        for (k = 0; k < 3; k++) { vs[2 * k] -= vx / 3; vs[2 * k + 1] -= vy / 3; }
+        s = s.concat(vs); span = 4.0;
+      }
+      E0 = energy(s, m);
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, span);
+      var g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.globalAlpha = 0.85; g.lineWidth = 1.6; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 5.5 + 2 * (m[i] - 1), BODY[i]);
+      }
+      var E = energy(s, m);
+      out.textContent = "t = " + fmt(t, 1);
+      eout.textContent = "energy " + fmt(E, 5) + "  ·  drift " + ((Math.abs((E - E0) / E0)) < 1e-9 ? "under 1e-9" : (Math.abs((E - E0) / E0)).toExponential(1));
+    }
+    var loop = rafLoop(function () {
+      var h = 0.0006 * sp.value;
+      for (var k = 0; k < 12; k++) { step(s, m, h / 12, 0); t += h / 12; }
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 1400) trails[i].shift(); }
+      draw();
+    });
+    play.onclick = function () { if (loop.running) { loop.stop(); play.textContent = "Run"; } else { loop.start(); play.textContent = "Pause"; } };
+    reset.onclick = function () { setup(sel.value); draw(); };
+    trailsBtn.onclick = function () { trails = [[], [], []]; draw(); };
+    sel.onchange = function () { setup(sel.value); draw(); };
+    root.appendChild(row([play, reset, trailsBtn, sel]));
+    root.appendChild(row([label("speed", [sp]), out, eout]));
+    root.appendChild(note("The same four lines of arithmetic as tools/physics.py, running in your browser. The drift readout is the check on it: energy cannot change, so anything it does here is the stepper's doing, not the physics."));
+    setup("eight"); draw();
+    onScreen(c, loop);
+    if (!RM) loop.start(); else play.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 4  the ten */
+  function integrals(root) {
+    var c = canvas(root, 640, 300);
+    var s = sdState(0.28, 0.45), m = [1, 1, 1], t = 0, trails = [[], [], []];
+    var E0 = energy(s, m), L0 = spin(s, m), P0 = momentum(s, m);
+    var tbl = el("div", { class: "kvgrid" });
+    var cells = {};
+    [["energy", "never changes"], ["spin", "never changes"], ["momentum x", "never changes"],
+     ["momentum y", "never changes"], ["time", "runs on"]].forEach(function (r) {
+      tbl.appendChild(el("b", { text: r[0] }));
+      var sp2 = el("span", { class: "readout" }); cells[r[0]] = sp2; tbl.appendChild(sp2);
+    });
+    function draw() {
+      clear(c);
+      var V = view(c, 4.2), g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.globalAlpha = .7; g.lineWidth = 1.4; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 5, BODY[i]);
+      }
+      var p = momentum(s, m);
+      cells["energy"].textContent = fmt(energy(s, m), 8);
+      cells["spin"].textContent = fmt(spin(s, m), 8);
+      cells["momentum x"].textContent = fmt(p[0], 8);
+      cells["momentum y"].textContent = fmt(p[1], 8);
+      cells["time"].textContent = fmt(t, 2);
+    }
+    var loop = rafLoop(function () {
+      for (var k = 0; k < 10; k++) { step(s, m, 0.0012, 0); t += 0.0012; }
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 700) trails[i].shift(); }
+      draw();
+    });
+    var go = btn("Pause"), rs = btn("Reset", "alt");
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    rs.onclick = function () { s = sdState(0.28, 0.45); t = 0; trails = [[], [], []]; draw(); };
+    root.appendChild(row([go, rs]));
+    root.appendChild(tbl);
+    root.appendChild(note("Four of the ten, ticking away while the three bodies do whatever they like. They hold to eight decimal places, and they are not enough to pin the motion down — that is the whole difficulty in one panel."));
+    draw(); onScreen(c, loop); if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 5  divergence */
+  function chaos(root) {
+    var c = canvas(root, 640, 300);
+    var plot = canvas(root, 640, 220);
+    var nud = range(3, 14, 6), go = btn("Run"), rs = btn("Reset", "alt"), out = readout("");
+    var m = [1, 1, 1], a = null, b = null, t = 0, hist = [], trails = [[], []];
+    function setup() {
+      var e = Math.pow(10, -nud.value);
+      a = sdState(0.28, 0.45); b = sdState(0.28, 0.45); b[0] += e;
+      t = 0; hist = []; trails = [[], []];
+      out.textContent = "nudge " + e.toExponential(0) + " — the two starts differ by that much, in one number";
+    }
+    function gap() {
+      var d = 0; for (var i = 0; i < 12; i++) { var q = a[i] - b[i]; d += q * q; } return Math.sqrt(d);
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, 4.6), g = c._g, i;
+      [a, b].forEach(function (s, k) {
+        for (i = 0; i < 3; i++) dot(c, V, s[2 * i], s[2 * i + 1], k ? 4 : 6, k ? C.red : BODY[i]);
+      });
+      [0, 1].forEach(function (k) {
+        g.beginPath();
+        trails[k].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = k ? C.red : C.teal; g.globalAlpha = .55; g.lineWidth = 1.2; g.stroke(); g.globalAlpha = 1;
+      });
+      // the log plot
+      var pg = plot._g;
+      pg.fillStyle = C.panel; pg.fillRect(0, 0, plot._w, plot._h);
+      pg.strokeStyle = C.line; pg.lineWidth = 1;
+      for (var p = -14; p <= 1; p += 3) {
+        var Y = 200 - (p + 15) / 16 * 180;
+        pg.beginPath(); pg.moveTo(40, Y); pg.lineTo(630, Y); pg.stroke();
+        pg.fillStyle = C.mute; pg.font = "11px system-ui"; pg.fillText("1e" + p, 4, Y + 4);
+      }
+      pg.beginPath();
+      hist.forEach(function (h, j) {
+        var X = 40 + h[0] / 60 * 590, Y = 200 - (Math.log(Math.max(h[1], 1e-15)) / Math.LN10 + 15) / 16 * 180;
+        if (j === 0) pg.moveTo(X, Y); else pg.lineTo(X, Y);
+      });
+      pg.strokeStyle = C.teal; pg.lineWidth = 2.4; pg.stroke();
+      // fit the straight stretch → Lyapunov time
+      var fit = hist.filter(function (h) { return h[1] > Math.pow(10, -nud.value) * 30 && h[1] < 0.3; });
+      if (fit.length > 12) {
+        var n = fit.length, sx = 0, sy = 0, sxx = 0, sxy = 0;
+        fit.forEach(function (h) { var x = h[0], y = Math.log(h[1]); sx += x; sy += y; sxx += x * x; sxy += x * y; });
+        var sl = (n * sxy - sx * sy) / (n * sxx - sx * sx);
+        if (sl > 0) out.textContent = "nudge " + Math.pow(10, -nud.value).toExponential(0) +
+          " · the gap multiplies by e every " + fmt(1 / sl, 2) + " time units · at this rate a millionth becomes a whole in " +
+          fmt(Math.log(1e6) / sl, 1);
+      }
+    }
+    var loop = rafLoop(function () {
+      for (var k = 0; k < 44; k++) { step(a, m, 0.002, 0); step(b, m, 0.002, 0); t += 0.002; }
+      hist.push([t, gap()]);
+      trails[0].push([a[0], a[1]]); trails[1].push([b[0], b[1]]);
+      if (trails[0].length > 900) { trails[0].shift(); trails[1].shift(); }
+      draw();
+      if (t > 60) { loop.stop(); go.textContent = "Run again"; }
+    });
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { if (t > 60) setup(); loop.start(); go.textContent = "Pause"; } };
+    rs.onclick = function () { setup(); draw(); };
+    nud.oninput = function () { setup(); draw(); };
+    root.appendChild(row([go, rs, label("nudge size", [nud])]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("Two copies of one start, differing in a single number. The lower panel is the gap between them on a log scale: flat, then a straight climb — that straight stretch is the exponent — then flat again at the top, where the gap has run out of room to grow."));
+    setup(); draw(); onScreen(c, loop);
+    if (!RM) { loop.start(); go.textContent = "Pause"; }
+  }
+
+  /* ---------------------------------------------------------------- 6  the fence */
+  function zvc(root) {
+    var c = canvas(root, 640, 400);
+    var mu = range(1, 50, 25), cj = range(280, 420, 360), out = readout("");
+    function lagr(m2) {
+      function dO(x) {
+        var r1 = Math.abs(x + m2), r2 = Math.abs(x - 1 + m2);
+        return x - (1 - m2) * (x + m2) / (r1 * r1 * r1) - m2 * (x - 1 + m2) / (r2 * r2 * r2);
+      }
+      function root(a, b) { var fa = dO(a); for (var i = 0; i < 90; i++) { var m = (a + b) / 2, fm = dO(m); if ((fm > 0) === (fa > 0)) { a = m; fa = fm; } else b = m; } return (a + b) / 2; }
+      var e = 1e-7;
+      return [[root(-m2 + e, 1 - m2 - e), 0], [root(1 - m2 + e, 2.5), 0], [root(-2.5, -m2 - e), 0],
+              [0.5 - m2, Math.sqrt(3) / 2], [0.5 - m2, -Math.sqrt(3) / 2]];
+    }
+    function draw() {
+      var m2 = mu.value / 100, Cj = cj.value / 100;
+      var g = c._g, w = c._w, h = c._h;
+      var img = g.createImageData(w, h);
+      var span = 3.4, sc = Math.min(w, h) / span;
+      for (var py = 0; py < h; py++) for (var px = 0; px < w; px++) {
+        var x = (px - w / 2) / sc, y = (h / 2 - py) / sc;
+        var r1 = Math.hypot(x + m2, y), r2 = Math.hypot(x - 1 + m2, y);
+        var Om = 0.5 * (x * x + y * y) + (1 - m2) / r1 + m2 / r2;
+        var vv = 2 * Om - Cj;
+        var k = (py * w + px) * 4;
+        if (vv < 0) { img.data[k] = 12; img.data[k + 1] = 16; img.data[k + 2] = 26; }      // shut out
+        else {
+          var u = Math.min(Math.sqrt(vv) / 2.2, 1);
+          img.data[k] = 20 + u * 60; img.data[k + 1] = 40 + u * 150; img.data[k + 2] = 60 + u * 140;
+        }
+        img.data[k + 3] = 255;
+      }
+      g.putImageData(img, 0, 0);
+      var V = view(c, span);
+      dot(c, V, -m2, 0, 9, C.gold); dot(c, V, 1 - m2, 0, 6, C.teal);
+      lagr(m2).forEach(function (p, i) {
+        dot(c, V, p[0], p[1], 5, i < 3 ? C.violet : C.red);
+        g.fillStyle = i < 3 ? C.violet : C.red; g.font = "bold 12px system-ui";
+        g.fillText("L" + (i + 1), V.x(p[0]) + 8, V.y(p[1]) - 6);
+      });
+      out.textContent = "mass ratio μ = " + fmt(m2, 2) + " · Jacobi constant C = " + fmt(Cj, 2) +
+        " · the dark region is where this body cannot go";
+    }
+    mu.oninput = draw; cj.oninput = draw;
+    root.appendChild(row([label("mass ratio", [mu]), label("Jacobi constant", [cj]), out]));
+    root.appendChild(note("Bring the constant down and watch the neck open at L1, then the back door at L2. Every low-energy transfer ever flown goes through those gates, and the picture is computed per pixel from 2Ω − C."));
+    draw();
+  }
+
+  /* ---------------------------------------------------------------- 7  the two shapes */
+  function shapes(root) {
+    var c = canvas(root, 640, 360);
+    var kind = pick([["tri", "Lagrange's triangle"], ["line", "Euler's line"]], "tri");
+    var m1 = range(5, 40, 10), m3 = range(5, 40, 10), out = readout("");
+    var s = null, m = [1, 1, 1], trails = [[], [], []];
+    /* Three on a line, spinning about the balance point. Bodies at -1, 0 and x with
+       weights m1, m2, m3: both outer bodies have to need the same ω, which fixes x.
+       There is no formula for it — this hunts for it by bisection, every time. */
+    function lineConfig(m1v, m2v, m3v) {
+      function mism(x) {
+        var M = m1v + m2v + m3v;
+        var xc = (m1v * -1 + m3v * x) / M;
+        var w1 = (m2v + m3v / ((x + 1) * (x + 1))) / (xc + 1);
+        var w3 = (m1v / ((x + 1) * (x + 1)) + m2v / (x * x)) / (x - xc);
+        return w1 - w3;
+      }
+      var lo = 0.02, hi = 40, flo = mism(lo);
+      for (var i = 0; i < 200; i++) {
+        var mid = Math.sqrt(lo * hi), fm = mism(mid);
+        if ((fm > 0) === (flo > 0)) { lo = mid; flo = fm; } else hi = mid;
+      }
+      var x = Math.sqrt(lo * hi);
+      var M2 = m1v + m2v + m3v, xc2 = (m1v * -1 + m3v * x) / M2;
+      var om2 = (m2v + m3v / ((x + 1) * (x + 1))) / (xc2 + 1);
+      return { x: x, xc: xc2, om: Math.sqrt(Math.abs(om2)) };
+    }
+    function setup() {
+      m = [m1.value / 10, 1, m3.value / 10];
+      trails = [[], [], []];
+      if (kind.value === "tri") {
+        var M = m[0] + m[1] + m[2], a = 1.0;
+        var om = Math.sqrt(M / (a * a * a));
+        var pos = [[0, 0], [1, 0], [0.5, Math.sqrt(3) / 2]];
+        var cx = (m[0] * pos[0][0] + m[1] * pos[1][0] + m[2] * pos[2][0]) / M;
+        var cy = (m[0] * pos[0][1] + m[1] * pos[1][1] + m[2] * pos[2][1]) / M;
+        s = [];
+        pos.forEach(function (p) { s.push(p[0] - cx, p[1] - cy); });
+        pos.forEach(function (p) { s.push(-om * (p[1] - cy), om * (p[0] - cx)); });
+        out.textContent = "any three weights, one equilateral triangle, ω = " + fmt(om, 4) + " — no equation to solve";
+      } else {
+        var cfg = lineConfig(m[0], m[1], m[2]);
+        var xs = [-1 - cfg.xc, 0 - cfg.xc, cfg.x - cfg.xc];
+        s = [xs[0], 0, xs[1], 0, xs[2], 0];
+        xs.forEach(function (px) { s.push(0, cfg.om * px); });
+        var x = cfg.x, om2 = cfg.om;
+        out.textContent = "spacing solved by hunting: the far body sits at " + fmt(x, 5) + " · ω = " + fmt(om2, 4);
+      }
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, 3.4), g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.globalAlpha = .8; g.lineWidth = 1.4; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 4 + 3 * m[i], BODY[i]);
+      }
+      g.strokeStyle = C.mute; g.setLineDash([4, 4]); g.beginPath();
+      g.moveTo(V.x(s[0]), V.y(s[1])); g.lineTo(V.x(s[2]), V.y(s[3])); g.lineTo(V.x(s[4]), V.y(s[5])); g.closePath();
+      g.stroke(); g.setLineDash([]);
+    }
+    var loop = rafLoop(function () {
+      for (var k = 0; k < 8; k++) step(s, m, 0.0015, 0);
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 500) trails[i].shift(); }
+      draw();
+    });
+    var go = btn("Pause");
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    [m1, m3].forEach(function (r) { r.oninput = function () { setup(); draw(); }; });
+    kind.onchange = function () { setup(); draw(); };
+    root.appendChild(row([go, kind, label("first weight", [m1]), label("third weight", [m3]), ]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("The triangle holds its shape for any weights you set. The line has to be re-solved every time you move a slider, and the solving is a hunt, because there is no formula for a fifth-degree equation."));
+    setup(); draw(); onScreen(c, loop); if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 8  the closed ones */
+  function eight(root) {
+    var c = canvas(root, 640, 380);
+    var opts = ORB.map(function (o) { return [o.id, o.name + " · T = " + o.period.toFixed(3)]; });
+    var sel = pick(opts.length ? opts : [["figure-eight", "figure eight"]], "figure-eight");
+    var go = btn("Pause"), tr = btn("Clear trails", "alt"), sp = range(1, 40, 16), out = readout("");
+    var s = null, m = [1, 1, 1], t = 0, trails = [[], [], []], cur = null, span = 3.4;
+    function setup() {
+      cur = ORB.filter(function (o) { return o.id === sel.value; })[0] || { v: [0.3471169, 0.5327249], period: 6.325914, closes: 0, name: "figure eight" };
+      s = sdState(cur.v[0], cur.v[1]); t = 0; trails = [[], [], []];
+      var mx = 0;
+      var probe = clone(s);
+      for (var k = 0; k < 4000; k++) { step(probe, m, cur.period / 4000, 0); for (var i = 0; i < 3; i++) mx = Math.max(mx, Math.abs(probe[2 * i]), Math.abs(probe[2 * i + 1])); }
+      span = Math.max(2.4, mx * 2.3);
+      out.textContent = cur.name + " · period " + cur.period.toFixed(6) + " · returns to its start within " +
+        (cur.closes ? cur.closes.toExponential(1) : "—");
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, span), g = c._g;
+      for (var i = 0; i < 3; i++) {
+        g.beginPath();
+        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.lineWidth = 1.7; g.globalAlpha = .9; g.stroke(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], 6, BODY[i]);
+      }
+      g.fillStyle = C.mute; g.font = "12px system-ui";
+      g.fillText("t = " + fmt(t, 2) + " of " + cur.period.toFixed(3), 12, 20);
+    }
+    var loop = rafLoop(function () {
+      var h = 0.0005 * sp.value;
+      for (var k = 0; k < 10; k++) { step(s, m, h / 10, 0); t += h / 10; }
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 2600) trails[i].shift(); }
+      draw();
+    });
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
+    tr.onclick = function () { trails = [[], [], []]; draw(); };
+    sel.onchange = function () { setup(); draw(); };
+    root.appendChild(row([go, tr, sel, label("speed", [sp])]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("Every start in this list was found on the machine that built the page: a grid of starting speeds, then a solver that walks each near-miss in until the orbit closes. The number it closes to is printed beside it."));
+    setup(); draw(); onScreen(c, loop); if (!RM) loop.start(); else go.textContent = "Run";
+  }
+
+  /* ---------------------------------------------------------------- 9  the two steppers */
+  function integrator(root) {
+    var c = canvas(root, 640, 300);
+    var plot = canvas(root, 640, 200);
+    var hs = range(5, 120, 40), go = btn("Run"), rs = btn("Reset", "alt"), out = readout("");
+    var m = [1, 1, 1], a = null, b = null, E0 = 0, t = 0, hist = [];
+    function setup() {
+      var st = [0.97000436, -0.24308753, -0.97000436, 0.24308753, 0, 0,
+                0.466203685, 0.43236573, 0.466203685, 0.43236573, -0.93240737, -0.86473146];
+      a = clone(st); b = clone(st); E0 = energy(a, m); t = 0; hist = [];
+    }
+    function draw() {
+      clear(c);
+      var V = view(c, 3.2), g = c._g, i;
+      for (i = 0; i < 3; i++) dot(c, V, a[2 * i], a[2 * i + 1], 5, C.teal);
+      for (i = 0; i < 3; i++) dot(c, V, b[2 * i], b[2 * i + 1], 5, C.red);
+      g.fillStyle = C.teal; g.font = "bold 13px system-ui"; g.fillText("leapfrog", 12, 22);
+      g.fillStyle = C.red; g.fillText("Euler", 12, 42);
+      var pg = plot._g;
+      pg.fillStyle = C.panel; pg.fillRect(0, 0, plot._w, plot._h);
+      pg.strokeStyle = C.line;
+      for (var p = -12; p <= 2; p += 2) {
+        var Y = 180 - (p + 13) / 15 * 160;
+        pg.beginPath(); pg.moveTo(44, Y); pg.lineTo(630, Y); pg.stroke();
+        pg.fillStyle = C.mute; pg.font = "11px system-ui"; pg.fillText("1e" + p, 6, Y + 4);
+      }
+      [[0, C.teal], [1, C.red]].forEach(function (q) {
+        pg.beginPath();
+        hist.forEach(function (hh, j) {
+          var X = 44 + hh[0] / 60 * 586, Y = 180 - (Math.log(Math.max(hh[1 + q[0]], 1e-13)) / Math.LN10 + 13) / 15 * 160;
+          if (j === 0) pg.moveTo(X, Y); else pg.lineTo(X, Y);
+        });
+        pg.strokeStyle = q[1]; pg.lineWidth = 2.2; pg.stroke();
+      });
+      var ea = Math.abs((energy(a, m) - E0) / E0), eb = Math.abs((energy(b, m) - E0) / E0);
+      out.textContent = "step " + fmt(hs.value / 10000, 4) + " · t = " + fmt(t, 1) +
+        " · leapfrog error " + ea.toExponential(1) + " · Euler error " + eb.toExponential(1);
+    }
+    var loop = rafLoop(function () {
+      var h = hs.value / 10000;
+      for (var k = 0; k < 8; k++) { step(a, m, h, 0); stepEuler(b, m, h); t += h; }
+      hist.push([t, Math.abs((energy(a, m) - E0) / E0), Math.abs((energy(b, m) - E0) / E0)]);
+      draw();
+      if (t > 60) { loop.stop(); go.textContent = "Run again"; }
+    });
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { if (t > 60) setup(); loop.start(); go.textContent = "Pause"; } };
+    rs.onclick = function () { setup(); draw(); };
+    hs.oninput = function () { setup(); draw(); };
+    root.appendChild(row([go, rs, label("step size", [hs])]));
+    root.appendChild(el("div", { class: "row" }, [out]));
+    root.appendChild(note("Both start on the figure eight. Leapfrog's energy error wobbles and stays put; Euler's climbs and keeps climbing, and its orbit swells until it comes apart. Same equations, same step, four lines of difference."));
+    setup(); draw(); onScreen(c, loop);
+  }
+
+  /* ---------------------------------------------------------------- 10  the odds */
+  function odds(root) {
+    var runs = range(50, 600, 200, 50), go = btn("Run them"), out = readout(""), bars = el("div", { class: "tally" });
+    var plot = canvas(root, 640, 200);
+    root.insertBefore(el("p", { class: "mute small", text: "Random starts, equal weights, zero total momentum. Each one is run for 60 time units and the ending is recorded. The bottom of each well is rounded off at 0.05, so that a near pass cannot throw the arithmetic — the same choice, and the same number, as the chart above." }), plot);
+    var rows = {};
+    ["one was thrown out", "all three still together"].forEach(function (k) {
+      bars.appendChild(el("span", { text: k }));
+      var bar = el("div", { class: "bar" }), fill = el("i");
+      bar.appendChild(fill); bars.appendChild(bar);
+      var n = el("span", { text: "0" }); bars.appendChild(n);
+      rows[k] = { fill: fill, n: n };
+    });
+    function one() {
+      var s = [], vx = 0, vy = 0, k;
+      for (k = 0; k < 3; k++) s.push((Math.random() * 2 - 1) * 1.1, (Math.random() * 2 - 1) * 1.1);
+      var vs = [];
+      for (k = 0; k < 3; k++) { var ax = (Math.random() * 2 - 1) * 0.4, ay = (Math.random() * 2 - 1) * 0.4; vs.push(ax, ay); vx += ax; vy += ay; }
+      for (k = 0; k < 3; k++) { vs[2 * k] -= vx / 3; vs[2 * k + 1] -= vy / 3; }
+      s = s.concat(vs);
+      for (k = 0; k < 3; k++) for (var j = k + 1; j < 3; j++) {
+        var dx = s[2 * j] - s[2 * k], dy = s[2 * j + 1] - s[2 * k + 1];
+        if (Math.hypot(dx, dy) < 0.4) return null;
+      }
+      var m = [1, 1, 1], t = 0, out2 = null;
+      while (t < 60) {
+        step(s, m, 0.001, 0.05); t += 0.001;
+        var far = 0;
+        for (k = 0; k < 3; k++) far = Math.max(far, Math.hypot(s[2 * k], s[2 * k + 1]));
+        if (far > 12) { out2 = t; break; }
+      }
+      return { ejected: out2 !== null, t: out2 };
+    }
+    var times = [], tally = { "one was thrown out": 0, "all three still together": 0 }, total = 0;
+    function draw() {
+      var n = total || 1;
+      Object.keys(tally).forEach(function (k) {
+        rows[k].fill.style.setProperty("--v", tally[k] / n);
+        rows[k].n.textContent = tally[k] + " (" + Math.round(100 * tally[k] / n) + "%)";
+      });
+      var g = plot._g;
+      g.fillStyle = C.panel; g.fillRect(0, 0, plot._w, plot._h);
+      var bins = new Array(30).fill(0);
+      times.forEach(function (t) { bins[Math.min(29, Math.floor(t / 2))]++; });
+      var mx = Math.max.apply(null, bins) || 1;
+      bins.forEach(function (cnt, i) {
+        var hh = cnt / mx * 150;
+        g.fillStyle = C.teal;
+        g.fillRect(40 + i * 19, 175 - hh, 17, hh);
+      });
+      g.fillStyle = C.mute; g.font = "11px system-ui";
+      [0, 20, 40, 60].forEach(function (k) { g.fillText(String(k), 36 + k / 60 * 570, 192); });
+      g.fillText("how long before one of them left, in time units", 40, 16);
+    }
+    go.onclick = function () {
+      go.disabled = true; go.textContent = "running…";
+      var want = +runs.value, done = 0;
+      times = []; tally = { "one was thrown out": 0, "all three still together": 0 }; total = 0;
+      function batch() {
+        for (var i = 0; i < 12 && done < want; i++) {
+          var r = one();
+          if (!r) continue;
+          done++; total++;
+          if (r.ejected) { tally["one was thrown out"]++; times.push(r.t); }
+          else tally["all three still together"]++;
+        }
+        draw();
+        out.textContent = done + " of " + want + " run" + (done >= want && times.length ?
+          " · half of the ejections happened before t = " + fmt(times.slice().sort(function (a, b) { return a - b; })[Math.floor(times.length / 2)], 1) : "");
+        if (done < want) setTimeout(batch, 0); else { go.disabled = false; go.textContent = "Run them again"; }
+      }
+      batch();
+    };
+    root.appendChild(row([go, label("how many", [runs]), out]));
+    root.appendChild(bars);
+    root.appendChild(note("Run it twice. Which triples break up changes; the percentage barely moves. That is why this problem has a statistical answer even though it has no formula."));
+    draw();
+  }
+
+  var DEMOS = { inverse: inverse, kepler: kepler, sim: sim, integrals: integrals, chaos: chaos,
+                zvc: zvc, shapes: shapes, eight: eight, integrator: integrator, odds: odds };
+  document.querySelectorAll("[data-demo]").forEach(function (root) {
+    var f = DEMOS[root.getAttribute("data-demo")];
+    if (f) { root.innerHTML = ""; try { f(root); } catch (e) { root.innerHTML = '<p class="note">This demo did not start: ' + e.message + "</p>"; } }
+  });
+
+  var tl = document.querySelector(".tl");
+  if (tl && !RM && "IntersectionObserver" in window) {
+    tl.classList.remove("nojs");
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    tl.querySelectorAll("li").forEach(function (li) { io.observe(li); });
+  }
+})();
+</script>
+</body>
+</html>
