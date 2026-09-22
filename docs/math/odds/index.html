@@ -656,7 +656,12 @@ pre.code i{color:#8fb7c9;font-style:normal}
     function draw() {
       var m2 = mu.value / 100, Cj = cj.value / 100;
       var g = c._g, w = c._w, h = c._h;
-      var img = g.createImageData(w, h);
+      /* The field is computed once per CSS pixel on an offscreen canvas and then drawn
+         to fill this one. putImageData ignores the device-pixel scaling on the context,
+         so writing it straight in would paint one corner of a retina canvas. */
+      var off = document.createElement("canvas");
+      off.width = w; off.height = h;
+      var og = off.getContext("2d"), img = og.createImageData(w, h);
       var span = 3.4, sc = Math.min(w, h) / span;
       for (var py = 0; py < h; py++) for (var px = 0; px < w; px++) {
         var x = (px - w / 2) / sc, y = (h / 2 - py) / sc;
@@ -671,7 +676,8 @@ pre.code i{color:#8fb7c9;font-style:normal}
         }
         img.data[k + 3] = 255;
       }
-      g.putImageData(img, 0, 0);
+      og.putImageData(img, 0, 0);
+      g.drawImage(off, 0, 0, w, h);
       var V = view(c, span);
       dot(c, V, -m2, 0, 9, C.gold); dot(c, V, 1 - m2, 0, 6, C.teal);
       lagr(m2).forEach(function (p, i) {
@@ -679,8 +685,8 @@ pre.code i{color:#8fb7c9;font-style:normal}
         g.fillStyle = i < 3 ? C.violet : C.red; g.font = "bold 12px system-ui";
         g.fillText("L" + (i + 1), V.x(p[0]) + 8, V.y(p[1]) - 6);
       });
-      out.textContent = "mass ratio μ = " + fmt(m2, 2) + " · Jacobi constant C = " + fmt(Cj, 2) +
-        " · the dark region is where this body cannot go";
+      out.textContent = "mass ratio \u03bc = " + fmt(m2, 2) + " \u00b7 Jacobi constant C = " + fmt(Cj, 2) +
+        " \u00b7 the dark region is where this body cannot go";
     }
     mu.oninput = draw; cj.oninput = draw;
     root.appendChild(row([label("mass ratio", [mu]), label("Jacobi constant", [cj]), out]));
