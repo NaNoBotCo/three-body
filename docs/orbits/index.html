@@ -403,16 +403,25 @@ pre.code i{color:#8fb7c9;font-style:normal}
     var g = c._g;
     g.beginPath(); g.arc(V.x(x), V.y(y), r, 0, 6.2832); g.fillStyle = col; g.fill();
   }
+  /* A loop that runs when it is both wanted and on screen. Wanted is the reader's
+     doing — the Run and Pause buttons — and on screen is the observer's, so scrolling
+     past a demo stops it and scrolling back starts it again where it left off. */
   function rafLoop(fn) {
-    var on = false, id = 0;
+    var on = false, id = 0, wanted = false, vis = true;
     function tick() { if (!on) return; fn(); id = requestAnimationFrame(tick); }
-    return { start: function () { if (!on) { on = true; tick(); } }, stop: function () { on = false; cancelAnimationFrame(id); },
-             get running() { return on; } };
+    function sync() {
+      if (wanted && vis) { if (!on) { on = true; tick(); } }
+      else { on = false; cancelAnimationFrame(id); }
+    }
+    return { start: function () { wanted = true; sync(); },
+             stop: function () { wanted = false; sync(); },
+             setVisible: function (v) { vis = v; sync(); },
+             get running() { return wanted; } };
   }
   function onScreen(node, loop) {
     if (!("IntersectionObserver" in window)) return;
     new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (!e.isIntersecting && loop.running) loop.stop(); });
+      es.forEach(function (e) { loop.setVisible(e.isIntersecting); });
     }, { rootMargin: "200px" }).observe(node);
   }
 
@@ -507,7 +516,7 @@ pre.code i{color:#8fb7c9;font-style:normal}
     ORB.slice(0, 6).forEach(function (o) { if (o.id !== "figure-eight") presets.push(["orb:" + o.id, o.name]); });
     var sel = pick(presets, "eight");
     var play = btn("Pause"), reset = btn("Reset", "alt"), trailsBtn = btn("Clear trails", "alt");
-    var sp = range(1, 40, 14), out = readout(""), eout = readout("");
+    var sp = range(1, 40, 24), out = readout(""), eout = readout("");
     var m = [1, 1, 1], s = null, E0 = 0, t = 0, trails = [[], [], []], span = 3.2;
     function setup(kind) {
       t = 0; trails = [[], [], []]; m = [1, 1, 1]; span = 3.2;
@@ -820,7 +829,7 @@ pre.code i{color:#8fb7c9;font-style:normal}
     var c = canvas(root, 640, 380);
     var opts = ORB.map(function (o) { return [o.id, o.name + " · T = " + o.period.toFixed(3)]; });
     var sel = pick(opts.length ? opts : [["figure-eight", "figure eight"]], "figure-eight");
-    var go = btn("Pause"), tr = btn("Clear trails", "alt"), sp = range(1, 40, 16), out = readout("");
+    var go = btn("Pause"), tr = btn("Clear trails", "alt"), sp = range(1, 40, 26), out = readout("");
     var s = null, m = [1, 1, 1], t = 0, trails = [[], [], []], cur = null, span = 3.4;
     function setup() {
       cur = ORB.filter(function (o) { return o.id === sel.value; })[0] || { v: [0.3471169, 0.5327249], period: 6.325914, closes: 0, name: "figure eight" };
