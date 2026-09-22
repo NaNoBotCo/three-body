@@ -323,7 +323,7 @@ def orbits_page():
     scan = ORB.get("scan", {})
     body = f"""
 <h1>Orbits</h1>
-<p class="lead">{N_ORB} three-body starts that come back to exactly where they began and then do it again. {FOUND_HERE} of them were found by the machine that built this page, and every one of them says how close it comes to closing. {N_CHOREO} are choreographies: all three bodies on a single track, one behind the other.</p>
+<p class="lead">{N_ORB} three-body starts that come back to exactly where they began and then do it again, each one found by the machine that built this page and each one saying how close it comes to closing. {N_CHOREO} of them are choreographies: all three bodies on a single track, one behind the other.</p>
 <div class="demo" data-demo="eight"><p class="mute small">The browser runs these from the same numbers printed on the cards below.</p></div>
 <h2>How they were found</h2>
 <ol class="steps">
