@@ -189,6 +189,7 @@
     "The time it takes to grow by a factor of e — about three — has a name: the **Lyapunov time**. It is the shelf life of a prediction. Past a few dozen Lyapunov times, knowing the starting numbers to any precision you can name buys you nothing.",
     "This is not sloppiness in the equations and it is not randomness. Run the same start twice and you get the same path twice, to the last decimal. The trouble is that you never have the start to the last decimal. Nobody does. The rocks are not measured that well, and cannot be.",
     "Poincaré found this in 1889 while competing for a prize from Oscar II of Sweden, and he found it by finding a mistake in his own winning entry. The corrected memoir describes two curves that were supposed to meet cleanly and instead cross each other an infinite number of times, folded into what he called a tangle so complicated he would not attempt to draw it. He paid to have the printed copies replaced. That reversal is where the study of chaos begins, thirty years before anyone had a computer to see it with.",
+    "The cleanest demonstration is the oldest test case in the subject. **Carl Burrau, 1913**: weights of three, four and five, at rest, at the corners of a three-four-five triangle. Nothing is moving and nothing is arranged. It falls together, misses, swings, misses again for about sixty time units, and then throws one body out for good and leaves the other two paired up — and which body that is depends on the last decimal place you kept.",
     "Our own solar system is in this condition, mildly. Track the inner planets and the predictions go soft after around **five million years** — fine for a calendar, useless for asking where Mercury will be in a hundred million."
    ],
    "eqs": [
@@ -230,7 +231,7 @@
      "https://en.wikipedia.org/wiki/Stability_of_the_Solar_System"
     ]
    ],
-   "try": "In the demo, set the nudge to 10⁻⁹ and watch the gap. It sits flat, then bends, then goes straight up the log scale, then flattens at the top — that last flattening is not order returning, it is the gap running out of room to grow."
+   "try": "Set the copies a billionth apart and watch the tally underneath. They agree for a long while. Then they do not agree about which body gets thrown out, which is as far as prediction goes in this problem."
   },
   {
    "id": "restricted",
@@ -486,6 +487,7 @@
     "Done the obvious way — move, then change speed, with the same step — it is called **Euler's method** and it leaks. Energy climbs, orbits spiral outward, and nothing warns you. The fix is almost free: change the speed by half a step, move a whole step, change the speed by the other half. That is **leapfrog**, also called Verlet, and it belongs to a family called **symplectic** methods whose defining virtue is that they do not leak. The energy wobbles up and down with each orbit and comes back. Over a million orbits it is still wobbling around the same value.",
     "That wobble is the audit. Total energy is a quantity that cannot change, so watching what your computer does to it tells you what your computer is doing to everything else. Every demo on this site prints it, and the demo on this page runs both methods side by side so the leak is visible.",
     "Close passes are where stepping fails. When two bodies nearly touch, the pull goes up like the square of the closing distance and a step that was fine a second ago now throws a body across the screen. Two ways out. **Softening** — add a small constant under the square root, which rounds off the bottom of the well and is a lie you have chosen knowingly. Or **regularisation** — change variables so a collision stretches out into something smooth, which Levi-Civita did in 1903 and which is what serious codes use.",
+    "Burrau's problem from the chaos chapter is the worked example of all of this. At a fixed step it comes out with the energy wrong by a factor of about a thousand and **the wrong body thrown out**. Give it a step taken from the closest pair and the energy error drops to about a millionth and the lightest body leaves, which is the answer Szebehely and Peters got in 1967 with a change of variables. Same equations, same start, three different endings depending only on how the arithmetic was done.",
     "Then there is the deeper problem the chaos chapter set up. A computer carries about sixteen digits. In a chaotic triple, the error in the sixteenth digit doubles its way up to the first one, and after a few dozen Lyapunov times the trajectory on the screen is a trajectory, not *the* trajectory. Boekholt and Portegies Zwart put a number on it in 2015 by running the same systems in arbitrary precision: a large share of chaotic triples are **not reproducible** at ordinary double precision. Their answer was Brutus, a code that carries as many digits as needed and slows down to whatever extent that takes.",
     "So a picture of a three-body orbit is a claim about a calculation. The version of the claim worth printing comes with the method, the step size, and what the energy did."
    ],
@@ -522,6 +524,10 @@
     [
      "Wikipedia, Levi-Civita regularisation / Kustaanheimo–Stiefel transformation",
      "https://en.wikipedia.org/wiki/Kustaanheimo%E2%80%93Stiefel_transformation"
+    ],
+    [
+     "Szebehely & Peters, Complete solution of a general problem of three bodies (1967)",
+     "https://ui.adsabs.harvard.edu/abs/1967AJ.....72..876S"
     ]
    ],
    "try": "On the demo, put the step size up until the two curves part, then read the energy drift on each. Euler goes one way and keeps going; leapfrog wobbles. That difference is a hundred years of numerical analysis in one picture."
@@ -576,6 +582,10 @@
     [
      "Wikipedia, Hierarchical triple star system",
      "https://en.wikipedia.org/wiki/Star_system"
+    ],
+    [
+     "Wikipedia, Pythagorean three-body problem",
+     "https://en.wikipedia.org/wiki/Pythagorean_three-body_problem"
     ]
    ],
    "try": "Run the demo once, then again. The individual endings differ and the percentages barely move. That gap — unpredictable one at a time, dependable in bulk — is the whole reason stellar dynamics is a science."

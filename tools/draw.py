@@ -6,7 +6,7 @@ Every raster on this site is three bodies actually being moved by tools/physics.
 
     hero.jpg        a chaotic triple, 40 time units of it, trails and all
     band-eight.jpg  the figure-eight orbit, one body's colour per track
-    band-fan.jpg    240 starts a millionth apart, agreeing and then spraying
+    band-fan.jpg    Burrau's problem 48 times over, a billionth apart, agreeing then not
     band-map.jpg    the return map: how close each starting speed comes to closing
     band-well.jpg   the rotating-frame surface, shaded, with the five flat spots
     card.jpg        the share card, 1200×630
@@ -161,23 +161,35 @@ def eight(w=2000, h=900):
 
 
 # ------------------------------------------------------------------ the divergence fan
-def fan(w=2000, h=900, k=240):
-    """One start, k copies, each nudged by a millionth. They agree, and then they do not."""
-    rng = np.random.default_rng(7)
-    st = P.sd_state(0.3671, 0.5327)
-    pos = np.tile(np.array(st[:6]).reshape(1, 3, 2), (k, 1, 1))
-    vel = np.tile(np.array(st[6:]).reshape(1, 3, 2), (k, 1, 1))
-    pos[1:] += rng.normal(0, 1e-6, (k - 1, 3, 2))
-    mass = np.array([1.0, 1.0, 1.0])
-    track, _, _ = P.leapfrog_batch(pos, vel, mass, 1e-3, 40000, every=5)   # (m,k,3,2)
+def fan(w=2000, h=900):
+    """Burrau's problem, forty-eight times over, each copy a billionth off the others.
+
+    Drawn from data/ghosts.npz, which tools/ghost_tally.py writes — the same run the
+    chaos page quotes its tally from. They travel as one line, fray, and then leave in
+    different directions and at different times, having started at the same place."""
+    f = DATA / "ghosts.npz"
+    if not f.exists():
+        print("  band-fan.jpg skipped — run tools/ghost_tally.py first")
+        return np.tile(NAVY.astype(np.float32), (h, w, 1))
+    d = np.load(f)
+    tr, times = d["track"], d["times"]                      # (frames, k, 3, 2)
+    tr = tr[times <= 66.0]
+    # the run is sampled every 0.05, which draws as dots; fill in between them so the
+    # paths read as paths. Straight lines between samples, nothing invented beyond that.
+    steps = 10
+    a, b = tr[:-1], tr[1:]
+    u = np.linspace(0, 1, steps, endpoint=False).reshape(-1, 1, 1, 1, 1)
+    tr = ((1 - u) * a[None] + u * b[None]).transpose(1, 0, 2, 3, 4).reshape(-1, *tr.shape[1:])
     img = np.tile(NAVY.astype(np.float32) * 0.85, (h, w, 1))
-    ext = (-2.4 * w / h * 0.5, 2.4 * w / h * 0.5, -1.2, 1.2)
-    m = track.shape[0]
-    early, late = track[: m // 3], track[m // 3:]
+    ext = (-4.6 * w / h * 0.5 - 0.1, 4.6 * w / h * 0.5 - 0.1, -2.3 + 0.35, 2.3 + 0.35)
+    m = tr.shape[0]
+    early, late = tr[: m // 3], tr[m // 3:]
     for i in range(3):
-        img = ink(img, splat(late[:, :, i, :].reshape(-1, 2), w, h, ext, thick=1.2, gain=0.006), BODY[i], core=0.9, halo=0.40, halo_r=15)
+        img = ink(img, splat(late[:, :, i, :].reshape(-1, 2), w, h, ext, thick=1.6, gain=0.030),
+                  BODY[i], core=1.0, halo=0.60, halo_r=20)
     for i in range(3):
-        img = ink(img, splat(early[:, :, i, :].reshape(-1, 2), w, h, ext, thick=1.0, gain=0.012), WHITE, core=0.40, halo=0.14, halo_r=9)
+        img = ink(img, splat(early[:, :, i, :].reshape(-1, 2), w, h, ext, thick=1.2, gain=0.040),
+                  WHITE, core=0.45, halo=0.18, halo_r=11)
     img *= vignette(w, h, 0.45)[..., None]
     return img
 

@@ -184,6 +184,10 @@ footer a{color:var(--mute)}
 .eq .read{margin:.2rem 0 0;font-size:.98rem}
 .eq .read b{color:var(--gold)}
 .eq .why{margin:.35rem 0 0;font-size:.88rem;color:var(--mute)}
+.tallyrow{display:grid;grid-template-columns:auto 1fr auto;gap:.35rem .7rem;align-items:center;font-size:.9rem;margin:.4rem 0}
+.tallyrow .bar{height:.85rem;background:var(--line);border-radius:5px;overflow:hidden}
+.tallyrow .bar i{display:block;height:100%;background:var(--teal);transform-origin:left;transform:scaleX(var(--v,0))}
+.tallyrow b:nth-of-type(2)~.bar i{background:var(--gold)}
 .kvgrid{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;align-items:center;margin:.6rem 0;font-size:.9rem}
 .kvgrid b{color:var(--mute);font-weight:600}
 .sel{font:inherit;font-size:.9rem;padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);
@@ -225,7 +229,7 @@ pre.code i{color:#8fb7c9;font-style:normal}
  @keyframes turn{to{transform:rotate(360deg)}}
 }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What it is not", "description": "Five things the phrase 'the three-body problem' gets used for that it does not mean.", "url": "https://nanobotco.github.io/three-body/math/myths/", "license": "https://creativecommons.org/licenses/by/4.0/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "The Three-Body Problem", "url": "https://nanobotco.github.io/three-body/"}, "publisher": {"@type": "Organization", "name": "NaNoBotCo", "url": "https://nanobotco.github.io/index/", "email": "nan@motdang.net", "sameAs": ["https://motdang.net/", "https://nanobotco.github.io/mae-hong-son-loop/", "https://motdang.net/muay-thai/", "https://motdang.net/roads/", "https://wichaa.net/", "https://nanobotco.github.io/hand-poke/", "https://nanobotco.github.io/black-holes/", "https://nanobotco.github.io/quantum-computing/", "https://nanobotco.github.io/goin-fast/", "https://nanobotco.github.io/three-body/", "https://nanobotco.github.io/amulet-atlas/", "https://nanobotco.github.io/carolina-barbecue/", "https://nanobotco.github.io/buffalo-wings/", "https://nanobotco.github.io/pink-box/", "https://nanobotco.github.io/basque-tables/", "https://nanobotco.github.io/pinot-noir/", "https://nanobotco.github.io/care-abroad/", "https://nanobotco.github.io/thairoots/", "https://nanobotco.github.io/index/", "https://nanobotco.github.io/uptake/", "https://nanobotco.github.io/", "https://ask.motdang.net/", "https://ai.motdang.net/", "https://defiant.to/", "https://hongdam.net/", "https://hakfarang.net/", "https://offrampt.net/"]}, "dateModified": "2026-09-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What it is not", "description": "Five things the phrase 'the three-body problem' gets used for that it does not mean.", "url": "https://nanobotco.github.io/three-body/math/myths/", "license": "https://creativecommons.org/licenses/by/4.0/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "The Three-Body Problem", "url": "https://nanobotco.github.io/three-body/"}, "publisher": {"@type": "Organization", "name": "NaNoBotCo", "url": "https://nanobotco.github.io/index/", "email": "nan@motdang.net", "sameAs": ["https://motdang.net/", "https://nanobotco.github.io/mae-hong-son-loop/", "https://motdang.net/muay-thai/", "https://motdang.net/roads/", "https://wichaa.net/", "https://nanobotco.github.io/hand-poke/", "https://nanobotco.github.io/black-holes/", "https://nanobotco.github.io/quantum-computing/", "https://nanobotco.github.io/goin-fast/", "https://nanobotco.github.io/three-body/", "https://nanobotco.github.io/exceptional-magic/", "https://nanobotco.github.io/amulet-atlas/", "https://nanobotco.github.io/carolina-barbecue/", "https://nanobotco.github.io/buffalo-wings/", "https://nanobotco.github.io/pink-box/", "https://nanobotco.github.io/basque-tables/", "https://nanobotco.github.io/pinot-noir/", "https://nanobotco.github.io/care-abroad/", "https://nanobotco.github.io/thairoots/", "https://nanobotco.github.io/index/", "https://nanobotco.github.io/uptake/", "https://nanobotco.github.io/", "https://ask.motdang.net/", "https://ai.motdang.net/", "https://defiant.to/", "https://hongdam.net/", "https://hakfarang.net/", "https://offrampt.net/"]}, "dateModified": "2026-09-23"}</script>
 </head>
 <body>
 <header class="top"><a class="brand" href="../../index.html">Three <b>Body</b></a>
@@ -246,17 +250,19 @@ pre.code i{color:#8fb7c9;font-style:normal}
 </main>
 <footer>
 <div class="bots">For the machines: <a href="../../api/theory.json">theory.json</a> <a href="../../api/orbits.json">orbits.json</a> <a href="../../api/timeline.json">timeline.json</a> <a href="../../api/words.json">words.json</a> <a href="../../llms-full.txt">llms-full.txt</a> <a href="../../sitemap.xml">sitemap.xml</a></div>
-<p>Text, data and pictures <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; code <a href="https://github.com/NaNoBotCo/three-body/blob/main/LICENSE">MIT</a>. The pictures and diagrams are computed from the equations in <a href="https://github.com/NaNoBotCo/three-body/blob/main/tools/physics.py">tools/physics.py</a> when the page is built. Sources sit beside the facts they support and are listed at <a href="../../sources/index.html">Sources</a>. Built 2026-09-22.</p>
-<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
+<p>Text, data and pictures <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; code <a href="https://github.com/NaNoBotCo/three-body/blob/main/LICENSE">MIT</a>. The pictures and diagrams are computed from the equations in <a href="https://github.com/NaNoBotCo/three-body/blob/main/tools/physics.py">tools/physics.py</a> when the page is built. Sources sit beside the facts they support and are listed at <a href="../../sources/index.html">Sources</a>. Built 2026-09-23.</p>
+<div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/goin-fast/" title="a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs">Goin&#x27; Fast</a> · <a href="https://nanobotco.github.io/exceptional-magic/" title="the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper">Exceptional Magic</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div>
 <div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a></div>
 <div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div>
 </footer>
 <script>window.TB_ORBITS=[{"id": "braided-eight", "name": "The braided eight", "v": [0.339407412, 0.536184978], "period": 6.29081877, "closes": 1.78e-08}, {"id": "figure-eight", "name": "The figure eight", "v": [0.347116888, 0.532724945], "period": 6.32591398, "closes": 1.48e-08}, {"id": "moth", "name": "The moth", "v": [0.464445163, 0.396060015], "period": 14.89430474, "closes": 4.25e-07}, {"id": "lacewing", "name": "The lacewing", "v": [0.18194288, 0.514805998], "period": 18.14136765, "closes": 4.88e-08}, {"id": "shawl", "name": "The shawl", "v": [0.189004892, 0.539762453], "period": 19.73539189, "closes": 1.05e-07}, {"id": "thicket", "name": "The thicket", "v": [0.327578071, 0.57986168], "period": 29.21293407, "closes": 2.06e-07}, {"id": "ribbon", "name": "The ribbon", "v": [0.209661505, 0.525702389], "period": 33.86151867, "closes": 1.61e-08}, {"id": "wide-ribbon", "name": "The wide ribbon", "v": [0.255430936, 0.516385839], "period": 35.04308702, "closes": 4.54e-08}, {"id": "skein", "name": "The skein", "v": [0.254918844, 0.539739712], "period": 37.77007981, "closes": 4.7e-08}];</script><script>/* anim.js — the demos. Vanilla, no library, inlined into the pages that use them.
 
-   Each demo mounts into an element with data-demo="<name>". The physics is the same
-   leapfrog step as tools/physics.py, written out for three bodies. Continuous motion
-   runs only where the reader has not asked for reduced motion; every demo also works
-   from its buttons, so a still page is a working page.
+   Each demo mounts into an element with data-demo="<name>". The physics is the same as
+   tools/physics.py, written out for three bodies: a leapfrog, the fourth-order
+   composition of it for anything with a close pass in it, and a step chosen from the
+   closest pair rather than fixed. Continuous motion runs only where the reader has not
+   asked for reduced motion; every demo also works from its buttons, so a still page is
+   a working page.
 
    The orbits a demo can load are put on the page by tools/build.py as window.TB_ORBITS. */
 (function () {
@@ -308,6 +314,12 @@ pre.code i{color:#8fb7c9;font-style:normal}
     for (i = 0; i < 6; i++) s[6 + i] += 0.5 * h * a[i];
     return s;
   }
+  /* Yoshida's fourth-order composition of the leapfrog: three of them, with these
+     weights. Three times the work for about a thousand times the accuracy, and the
+     sandbox needs it — with a plain leapfrog, Burrau's problem below throws out a
+     different body depending on the step size. Same composition as tools/physics.py. */
+  var W1 = 1 / (2 - Math.cbrt(2)), W0 = -Math.cbrt(2) * W1;
+  function step4(s, m, h) { step(s, m, W1 * h, 0); step(s, m, W0 * h, 0); step(s, m, W1 * h, 0); }
   function stepEuler(s, m, h) {
     var a = accel(s, m, 0), i;
     for (i = 0; i < 6; i++) { s[i] += h * s[6 + i]; s[6 + i] += h * a[i]; }
@@ -333,6 +345,69 @@ pre.code i{color:#8fb7c9;font-style:normal}
     return [px, py];
   }
   function sdState(vx, vy) { return [-1, 0, 1, 0, 0, 0, vx, vy, vx, vy, -2 * vx, -2 * vy]; }
+  function minSep(s) {
+    var r = 1e9;
+    for (var i = 0; i < 3; i++) for (var j = i + 1; j < 3; j++) {
+      var dx = s[2 * j] - s[2 * i], dy = s[2 * j + 1] - s[2 * i + 1];
+      r = Math.min(r, Math.sqrt(dx * dx + dy * dy));
+    }
+    return r;
+  }
+  /* Advance a trajectory by `budget` of its own time, choosing each step from the
+     closest pair. The time two bodies take to fall together goes as their separation to
+     the three halves, so that is what sets the step. At a fixed step a close pass throws
+     a body across the sky and the energy goes with it — which is the whole reason
+     Burrau's problem below needs this. */
+  function advance(s, m, budget, cap) {
+    var M = m[0] + m[1] + m[2], t = 0, n = 0, hmin = 1e-7, hmax = 4e-3;
+    cap = cap || 12000;
+    while (t < budget && n < cap) {
+      var r = minSep(s);
+      var h = Math.min(Math.max(0.006 * Math.sqrt(r * r * r / M), hmin), hmax);
+      if (h > budget - t) h = budget - t;
+      step4(s, m, h);
+      t += h; n++;
+    }
+    return { t: t, n: n };
+  }
+  /* Which body has left, if any. Distance alone is not enough — one of them can swing
+     wide and come back — so it also has to be moving outward and clear of the pair it
+     left behind. Same test as tools/ghost_tally.py. */
+  function escaper(s, m) {
+    for (var i = 0; i < 3; i++) {
+      var o = [0, 1, 2].filter(function (j) { return j !== i; });
+      var mo = m[o[0]] + m[o[1]];
+      var cx = (m[o[0]] * s[2 * o[0]] + m[o[1]] * s[2 * o[1]]) / mo;
+      var cy = (m[o[0]] * s[2 * o[0] + 1] + m[o[1]] * s[2 * o[1] + 1]) / mo;
+      var ux = (m[o[0]] * s[6 + 2 * o[0]] + m[o[1]] * s[6 + 2 * o[1]]) / mo;
+      var uy = (m[o[0]] * s[7 + 2 * o[0]] + m[o[1]] * s[7 + 2 * o[1]]) / mo;
+      var rx = s[2 * i] - cx, ry = s[2 * i + 1] - cy;
+      var vx = s[6 + 2 * i] - ux, vy = s[7 + 2 * i] - uy;
+      var d = Math.hypot(rx, ry), mu = m[i] * mo / (m[i] + mo);
+      var e = 0.5 * mu * (vx * vx + vy * vy) - m[i] * mo / d;
+      var gap = Math.hypot(s[2 * o[0]] - s[2 * o[1]], s[2 * o[0] + 1] - s[2 * o[1] + 1]);
+      if (e > 0 && rx * vx + ry * vy > 0 && d > 3 * gap) return i;
+    }
+    return -1;
+  }
+  function comet(c, V, pts, col, width) {
+    var g = c._g, n = pts.length;
+    if (n < 2) return;
+    /* the trail fades back in four bands rather than per segment, which keeps it cheap */
+    for (var b = 0; b < 4; b++) {
+      var lo = Math.floor(n * b / 4), hi = Math.floor(n * (b + 1) / 4);
+      g.beginPath();
+      for (var i = Math.max(lo - 1, 0); i < hi; i++) {
+        var X = V.x(pts[i][0]), Y = V.y(pts[i][1]);
+        if (i === Math.max(lo - 1, 0)) g.moveTo(X, Y); else g.lineTo(X, Y);
+      }
+      g.globalAlpha = 0.12 + 0.28 * b;
+      g.strokeStyle = col;
+      g.lineWidth = (width || 1.6) * (0.55 + 0.2 * b);
+      g.stroke();
+    }
+    g.globalAlpha = 1;
+  }
   function clone(s) { return s.slice(0); }
 
   /* ---------------------------------------------------------------- canvas helpers */
@@ -466,72 +541,106 @@ pre.code i{color:#8fb7c9;font-style:normal}
 
   /* ---------------------------------------------------------------- 3  the sandbox */
   function sim(root) {
-    var c = canvas(root, 640, 400);
-    var presets = [["eight", "figure eight"], ["triangle", "Lagrange triangle"], ["line", "Euler line"],
-                   ["random", "a random throw"], ["binary", "a pair and an intruder"]];
-    ORB.slice(0, 6).forEach(function (o) { if (o.id !== "figure-eight") presets.push(["orb:" + o.id, o.name]); });
-    var sel = pick(presets, "eight");
-    var play = btn("Pause"), reset = btn("Reset", "alt"), trailsBtn = btn("Clear trails", "alt");
-    var sp = range(1, 40, 24), out = readout(""), eout = readout("");
-    var m = [1, 1, 1], s = null, E0 = 0, t = 0, trails = [[], [], []], span = 3.2;
-    function setup(kind) {
-      t = 0; trails = [[], [], []]; m = [1, 1, 1]; span = 3.2;
-      if (kind === "eight" || kind.indexOf("orb:") === 0) {
-        var o = kind === "eight" ? (ORB.filter(function (q) { return q.id === "figure-eight"; })[0] || { v: [0.3471169, 0.5327249] })
-                                 : ORB.filter(function (q) { return "orb:" + q.id === kind; })[0];
-        s = sdState(o.v[0], o.v[1]); span = 3.4;
-      } else if (kind === "triangle") {
-        var w = Math.sqrt(3);                                   // ω² = 3Gm/a³ with a = side = √3 r
-        var r = 1 / Math.sqrt(3), om = Math.sqrt(3 * 1 / Math.pow(w * r, 3));
-        s = [];
-        for (var i = 0; i < 3; i++) { var th = i * 2.0944; s.push(r * Math.cos(th), r * Math.sin(th)); }
-        for (i = 0; i < 3; i++) { var th2 = i * 2.0944; s.push(-om * r * Math.sin(th2), om * r * Math.cos(th2)); }
-        span = 2.4;
-      } else if (kind === "line") {
-        var omg = Math.sqrt(1.25);                              // equal masses at -1, 0, 1
-        s = [-1, 0, 0, 0, 1, 0, 0, -omg, 0, 0, 0, omg];
-        span = 3.0;
-      } else if (kind === "binary") {
-        s = [-0.5, 0, 0.5, 0, 3.0, 1.6, 0, -0.707, 0, 0.707, -0.62, -0.30];
-        span = 7.0;
-      } else {
-        s = [];
-        for (var k = 0; k < 3; k++) s.push((Math.random() * 2 - 1) * 1.1, (Math.random() * 2 - 1) * 1.1);
-        var vx = 0, vy = 0, vs = [];
-        for (k = 0; k < 3; k++) { var ax = (Math.random() * 2 - 1) * 0.45, ay = (Math.random() * 2 - 1) * 0.45; vs.push(ax, ay); vx += ax; vy += ay; }
-        for (k = 0; k < 3; k++) { vs[2 * k] -= vx / 3; vs[2 * k + 1] -= vy / 3; }
-        s = s.concat(vs); span = 4.0;
-      }
+    var c = canvas(root, 640, 420);
+    var PRE = {
+      pythagoras: { name: "Burrau's Pythagorean problem (1913)", span: 6,
+        note: "Weights 3, 4 and 5, at rest, at the corners of a 3-4-5 triangle. Nothing is moving at the start and nothing is arranged; it runs for about sixty time units of near misses and then throws the lightest one out for good, leaving the other two paired up.",
+        m: [3, 4, 5], s: [1, 3, -2, -1, 1, -1, 0, 0, 0, 0, 0, 0] },
+      slingshot: { name: "a pair and an intruder", span: 8,
+        note: "Two bodies in a circular orbit and a third one arriving. Most of the time it leaves again with more speed than it came in with, and the pair pays for it by drawing closer together.",
+        m: [1, 1, 1], s: [-0.5, 0, 0.5, 0, 4.2, 2.2, 0, -0.707, 0, 0.707, -0.62, -0.33] },
+      wobble: { name: "the figure eight, nudged", span: 3.4,
+        note: "The closed orbit with a thousandth added to one starting speed. It holds the shape for a few laps, wanders, and comes apart.",
+        m: [1, 1, 1], s: null, wobble: 1e-3 },
+      drop: { name: "three dropped from rest", span: 5,
+        note: "Three equal weights, no motion at all to start with. Zero spin, so all three are allowed to meet — and they very nearly do.",
+        m: [1, 1, 1], s: [-1, 0.3, 1, 0.1, 0.1, -1.4, 0, 0, 0, 0, 0, 0] },
+      random: { name: "a random throw", span: 4.5, note: "Whatever the shuffle turns up. Press it again.", m: [1, 1, 1], s: null },
+      eight: { name: "the figure eight, exactly", span: 3.4,
+        note: "For comparison: the one start in this list that repeats forever.", m: [1, 1, 1], s: null }
+    };
+    var order = ["pythagoras", "slingshot", "wobble", "drop", "random", "eight"];
+    var sel = pick(order.map(function (k) { return [k, PRE[k].name]; }), "pythagoras");
+    var play = btn("Pause"), again = btn("Shuffle", "alt"), reset = btn("Restart", "alt");
+    var sp = range(1, 40, 16), out = readout(""), eout = readout(""), what = el("p", { class: "note" });
+    var m = [1, 1, 1], s = null, E0 = 0, t = 0, trails = [[], [], []], span = 4, target = 4, gone = null, key = "pythagoras";
+
+    function eightState(w) {
+      var o = (ORB.filter(function (q) { return q.id === "figure-eight"; })[0] || { v: [0.3471169, 0.5327249] });
+      var st = sdState(o.v[0], o.v[1]);
+      if (w) st[6] += w;
+      return st;
+    }
+    function randomState() {
+      var st = [], vs = [], vx = 0, vy = 0, k;
+      for (k = 0; k < 3; k++) st.push((Math.random() * 2 - 1) * 1.2, (Math.random() * 2 - 1) * 1.2);
+      for (k = 0; k < 3; k++) { var ax = (Math.random() * 2 - 1) * 0.45, ay = (Math.random() * 2 - 1) * 0.45; vs.push(ax, ay); vx += ax; vy += ay; }
+      for (k = 0; k < 3; k++) { vs[2 * k] -= vx / 3; vs[2 * k + 1] -= vy / 3; }
+      st = st.concat(vs);
+      return minSep(st) > 0.45 ? st : randomState();
+    }
+    function setup(k) {
+      key = k; var P0 = PRE[k];
+      m = P0.m.slice(0);
+      s = P0.s ? P0.s.slice(0) : (k === "random" ? randomState() : eightState(P0.wobble || 0));
+      t = 0; gone = null; trails = [[], [], []];
+      span = target = P0.span;
       E0 = energy(s, m);
+      what.textContent = P0.note;
+      again.textContent = k === "random" ? "Shuffle" : "Shuffle a random one";
+    }
+    function fit() {
+      /* follow the action: the frame grows to hold whatever is still in the fight and
+         lets an escaper go once it is well clear */
+      var d = [];
+      for (var i = 0; i < 3; i++) d.push(Math.hypot(s[2 * i], s[2 * i + 1]));
+      d.sort(function (a, b) { return a - b; });
+      var want = Math.max(2.2, Math.min(d[1] * 3.4, 26));
+      target = want;
+      span += (target - span) * 0.04;
     }
     function draw() {
       clear(c);
-      var V = view(c, span);
-      var g = c._g;
+      var V = view(c, span), g = c._g;
       for (var i = 0; i < 3; i++) {
-        g.beginPath();
-        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
-        g.strokeStyle = BODY[i]; g.globalAlpha = 0.85; g.lineWidth = 1.6; g.stroke(); g.globalAlpha = 1;
-        dot(c, V, s[2 * i], s[2 * i + 1], 5.5 + 2 * (m[i] - 1), BODY[i]);
+        comet(c, V, trails[i], BODY[i], 1.8);
+        var r = 3.2 + 2.6 * Math.cbrt(m[i]);
+        g.beginPath(); g.arc(V.x(s[2 * i]), V.y(s[2 * i + 1]), r + 5, 0, 6.2832);
+        g.fillStyle = BODY[i]; g.globalAlpha = 0.18; g.fill(); g.globalAlpha = 1;
+        dot(c, V, s[2 * i], s[2 * i + 1], r, BODY[i]);
       }
-      var E = energy(s, m);
-      out.textContent = "t = " + fmt(t, 1);
-      eout.textContent = "energy " + fmt(E, 5) + "  ·  drift " + ((Math.abs((E - E0) / E0)) < 1e-9 ? "under 1e-9" : (Math.abs((E - E0) / E0)).toExponential(1));
+      var E = energy(s, m), dr = Math.abs((E - E0) / E0);
+      out.textContent = "t = " + fmt(t, 1) + " · closest pair " + fmt(minSep(s), 3) + " · frame " + fmt(span, 1);
+      eout.textContent = "energy error " + (dr < 1e-9 ? "under 1e-9" : dr.toExponential(1)) +
+        (gone === null ? " · all three still in it" : " · body " + (gone + 1) + " left at t = " + fmt(gone_t, 0));
     }
+    var gone_t = 0;
     var loop = rafLoop(function () {
-      var h = 0.0006 * sp.value;
-      for (var k = 0; k < 12; k++) { step(s, m, h / 12, 0); t += h / 12; }
-      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 1400) trails[i].shift(); }
+      var budget = 0.004 * sp.value * sp.value / 8 + 0.01;
+      var r = advance(s, m, budget);
+      t += r.t;
+      for (var i = 0; i < 3; i++) {
+        trails[i].push([s[2 * i], s[2 * i + 1]]);
+        if (trails[i].length > 1600) trails[i].shift();
+      }
+      if (gone === null) {
+        var e = escaper(s, m);
+        if (e >= 0) { gone = e; gone_t = t; }
+      }
+      fit();
       draw();
+      if (t > 400) loop.stop();
     });
     play.onclick = function () { if (loop.running) { loop.stop(); play.textContent = "Run"; } else { loop.start(); play.textContent = "Pause"; } };
-    reset.onclick = function () { setup(sel.value); draw(); };
-    trailsBtn.onclick = function () { trails = [[], [], []]; draw(); };
+    reset.onclick = function () { setup(key); draw(); };
+    again.onclick = function () { sel.value = "random"; setup("random"); draw(); };
     sel.onchange = function () { setup(sel.value); draw(); };
-    root.appendChild(row([play, reset, trailsBtn, sel]));
-    root.appendChild(row([label("speed", [sp]), out, eout]));
-    root.appendChild(note("The same four lines of arithmetic as tools/physics.py, running in your browser. The drift readout is the check on it: energy cannot change, so anything it does here is the stepper's doing, not the physics."));
-    setup("eight"); draw();
+    root.appendChild(row([play, reset, again, sel]));
+    root.appendChild(row([label("speed", [sp]), out]));
+    root.appendChild(el("div", { class: "row" }, [eout]));
+    root.appendChild(what);
+    root.appendChild(note("The step is not fixed: before every move it is set from the closest pair, because that is what goes wrong. The energy error beside the clock is the check on it. Burrau's problem at a fixed step comes out with the energy wrong by a factor of a thousand and the wrong body thrown out; even with the step chosen this way, a plain leapfrog ejects a different body depending on how fine you make it, which is why these demos run the fourth-order version. Where the escaper ends up is still nobody's to reproduce — only that it was the lightest."));
+    setup("pythagoras"); draw();
     onScreen(c, loop);
     if (!RM) loop.start(); else play.textContent = "Run";
   }
@@ -580,70 +689,141 @@ pre.code i{color:#8fb7c9;font-style:normal}
 
   /* ---------------------------------------------------------------- 5  divergence */
   function chaos(root) {
-    var c = canvas(root, 640, 300);
-    var plot = canvas(root, 640, 220);
-    var nud = range(3, 14, 6), go = btn("Run"), rs = btn("Reset", "alt"), out = readout("");
-    var m = [1, 1, 1], a = null, b = null, t = 0, hist = [], trails = [[], []];
-    function setup() {
-      var e = Math.pow(10, -nud.value);
-      a = sdState(0.28, 0.45); b = sdState(0.28, 0.45); b[0] += e;
-      t = 0; hist = []; trails = [[], []];
-      out.textContent = "nudge " + e.toExponential(0) + " — the two starts differ by that much, in one number";
+    var c = canvas(root, 640, 400);
+    var plot = canvas(root, 640, 190);
+    var K = 48;
+    var STARTS = {
+      burrau: { name: "Burrau's problem, 48 times over", m: [3, 4, 5], span: 6, T: 150,
+        s: [1, 3, -2, -1, 1, -1, 0, 0, 0, 0, 0, 0],
+        note: "Weights 3, 4 and 5 dropped from rest at the corners of a 3-4-5 triangle — forty-eight copies of it, each moved at the start by the distance on the slider. They dance as one, fray, and then throw a body out; and the copies do not agree about which body it is." },
+      tangle: { name: "a bound tangle", m: [1, 1, 1], span: 4.5, T: 60,
+        s: null, v: [0.28, 0.45],
+        note: "Three equal weights that mill about for a while and then break up. The copies part company long before that." },
+      island: { name: "beside the figure eight — the quiet one", m: [1, 1, 1], span: 3.4, T: 60,
+        s: null, v: [0.3671, 0.5327],
+        note: "Two hundredths away from the figure eight, and this one does not fray: the copies spread a little and then stop spreading. Not everywhere in this problem is chaotic, and the islands that are not are what the KAM theorem is about." }
+    };
+    var sel = pick(Object.keys(STARTS).map(function (k) { return [k, STARTS[k].name]; }), "burrau");
+    var nud = range(3, 14, 6), sp = range(1, 40, 26);
+    var go = btn("Pause"), rs = btn("Reset", "alt"), out = readout("");
+    var m = [1, 1, 1], base = null, ghosts = [], t = 0, hist = [], trail = [[], [], []];
+    var span = 5, tally = [0, 0, 0], left = [], cfg = null, done = 0;
+    var bars = el("div", { class: "tally" }), rows = [];
+    function buildBars() {
+      bars.innerHTML = ""; rows = [];
+      for (var i = 0; i < 3; i++) {
+        bars.appendChild(el("span", { text: "copies that threw out body " + (i + 1) + " (weight " + m[i] + ")" }));
+        var bar = el("div", { class: "bar" + (i === 1 ? " t" : "") }), fill = el("i");
+        bar.appendChild(fill); bars.appendChild(bar);
+        var n = el("span", { text: "0" }); bars.appendChild(n);
+        rows.push({ fill: fill, n: n });
+      }
     }
-    function gap() {
-      var d = 0; for (var i = 0; i < 12; i++) { var q = a[i] - b[i]; d += q * q; } return Math.sqrt(d);
+    function setup() {
+      cfg = STARTS[sel.value];
+      m = cfg.m.slice(0);
+      var e = Math.pow(10, -nud.value);
+      base = cfg.s ? cfg.s.slice(0) : sdState(cfg.v[0], cfg.v[1]);
+      ghosts = [];
+      for (var k = 0; k < K; k++) {
+        var g = base.slice(0), a = 6.2832 * k / K;
+        g[0] += e * Math.cos(a); g[1] += e * Math.sin(a);
+        ghosts.push(g);
+      }
+      left = []; for (k = 0; k < K; k++) left.push(-1);
+      tally = [0, 0, 0]; done = 0;
+      t = 0; hist = []; trail = [[], [], []]; span = cfg.span;
+      buildBars();
+      out.textContent = K + " copies, each moved by " + e.toExponential(0) + " at the start";
+    }
+    function spread() {
+      var d = 0;
+      for (var k = 0; k < K; k++) {
+        var q = 0;
+        for (var i = 0; i < 12; i++) { var u = ghosts[k][i] - base[i]; q += u * u; }
+        d += Math.sqrt(q);
+      }
+      return d / K;
+    }
+    function fit() {
+      var d = [];
+      for (var i = 0; i < 3; i++) d.push(Math.hypot(base[2 * i], base[2 * i + 1]));
+      d.sort(function (a, b) { return a - b; });
+      span += (Math.max(cfg.span, Math.min(d[1] * 3.2, 30)) - span) * 0.04;
     }
     function draw() {
       clear(c);
-      var V = view(c, 4.6), g = c._g, i;
-      [a, b].forEach(function (s, k) {
-        for (i = 0; i < 3; i++) dot(c, V, s[2 * i], s[2 * i + 1], k ? 4 : 6, k ? C.red : BODY[i]);
-      });
-      [0, 1].forEach(function (k) {
-        g.beginPath();
-        trails[k].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
-        g.strokeStyle = k ? C.red : C.teal; g.globalAlpha = .55; g.lineWidth = 1.2; g.stroke(); g.globalAlpha = 1;
-      });
-      // the log plot
+      var V = view(c, span), g = c._g, i, k;
+      for (k = 0; k < K; k++) {
+        g.globalAlpha = 0.55;
+        for (i = 0; i < 3; i++) dot(c, V, ghosts[k][2 * i], ghosts[k][2 * i + 1], 1.8, BODY[i]);
+      }
+      g.globalAlpha = 1;
+      for (i = 0; i < 3; i++) {
+        comet(c, V, trail[i], BODY[i], 1.5);
+        dot(c, V, base[2 * i], base[2 * i + 1], 6.5, "#ffffff");
+        dot(c, V, base[2 * i], base[2 * i + 1], 4.6, BODY[i]);
+      }
       var pg = plot._g;
       pg.fillStyle = C.panel; pg.fillRect(0, 0, plot._w, plot._h);
       pg.strokeStyle = C.line; pg.lineWidth = 1;
-      for (var p = -14; p <= 1; p += 3) {
-        var Y = 200 - (p + 15) / 16 * 180;
-        pg.beginPath(); pg.moveTo(40, Y); pg.lineTo(630, Y); pg.stroke();
-        pg.fillStyle = C.mute; pg.font = "11px system-ui"; pg.fillText("1e" + p, 4, Y + 4);
+      for (var q = -13; q <= 3; q += 2) {
+        var Y = 172 - (q + 14) / 17 * 154;
+        pg.beginPath(); pg.moveTo(44, Y); pg.lineTo(632, Y); pg.stroke();
+        pg.fillStyle = C.mute; pg.font = "11px system-ui"; pg.fillText("1e" + q, 4, Y + 4);
       }
       pg.beginPath();
       hist.forEach(function (h, j) {
-        var X = 40 + h[0] / 60 * 590, Y = 200 - (Math.log(Math.max(h[1], 1e-15)) / Math.LN10 + 15) / 16 * 180;
+        var X = 44 + h[0] / cfg.T * 588, Y = 172 - (Math.log(Math.max(h[1], 1e-14)) / Math.LN10 + 14) / 17 * 154;
         if (j === 0) pg.moveTo(X, Y); else pg.lineTo(X, Y);
       });
-      pg.strokeStyle = C.teal; pg.lineWidth = 2.4; pg.stroke();
-      // fit the straight stretch → Lyapunov time
-      var fit = hist.filter(function (h) { return h[1] > Math.pow(10, -nud.value) * 30 && h[1] < 0.3; });
-      if (fit.length > 12) {
-        var n = fit.length, sx = 0, sy = 0, sxx = 0, sxy = 0;
-        fit.forEach(function (h) { var x = h[0], y = Math.log(h[1]); sx += x; sy += y; sxx += x * x; sxy += x * y; });
-        var sl = (n * sxy - sx * sy) / (n * sxx - sx * sx);
-        if (sl > 0) out.textContent = "nudge " + Math.pow(10, -nud.value).toExponential(0) +
-          " · the gap multiplies by e every " + fmt(1 / sl, 2) + " time units · at this rate a millionth becomes a whole in " +
-          fmt(Math.log(1e6) / sl, 1);
+      pg.strokeStyle = C.teal; pg.lineWidth = 2.6; pg.stroke();
+      pg.fillStyle = C.mute; pg.font = "11px system-ui";
+      pg.fillText("how far the copies have wandered from the original", 48, 16);
+      var n = done || 1;
+      for (i = 0; i < 3; i++) {
+        rows[i].fill.style.setProperty("--v", tally[i] / K);
+        rows[i].n.textContent = tally[i] + (done ? " (" + Math.round(100 * tally[i] / K) + "%)" : "");
       }
+      var e = Math.pow(10, -nud.value), d = spread();
+      var fitpts = hist.filter(function (h) { return h[1] > e * 30 && h[1] < 1; });
+      var tail = "";
+      if (fitpts.length > 12) {
+        var nn = fitpts.length, sx = 0, sy = 0, sxx = 0, sxy = 0;
+        fitpts.forEach(function (h) { var x = h[0], y = Math.log(h[1]); sx += x; sy += y; sxx += x * x; sxy += x * y; });
+        var sl = (nn * sxy - sx * sy) / (nn * sxx - sx * sx);
+        if (sl > 0) tail = " · doubling every " + fmt(0.693 / sl, 2) + " time units";
+      }
+      out.textContent = "t = " + fmt(t, 1) + " · started " + e.toExponential(0) + " apart · now " +
+        (d < 1e-3 ? d.toExponential(1) : fmt(d, 3)) + tail +
+        (done ? " · " + done + " of " + K + " have thrown a body out" : "");
     }
     var loop = rafLoop(function () {
-      for (var k = 0; k < 44; k++) { step(a, m, 0.002, 0); step(b, m, 0.002, 0); t += 0.002; }
-      hist.push([t, gap()]);
-      trails[0].push([a[0], a[1]]); trails[1].push([b[0], b[1]]);
-      if (trails[0].length > 900) { trails[0].shift(); trails[1].shift(); }
+      var budget = 0.0016 * sp.value + 0.004;
+      advance(base, m, budget);
+      for (var k = 0; k < K; k++) {
+        advance(ghosts[k], m, budget);
+        if (left[k] < 0) {
+          var e = escaper(ghosts[k], m);
+          if (e >= 0) { left[k] = e; tally[e]++; done++; }
+        }
+      }
+      t += budget;
+      for (var i2 = 0; i2 < 3; i2++) { trail[i2].push([base[2 * i2], base[2 * i2 + 1]]); if (trail[i2].length > 1100) trail[i2].shift(); }
+      hist.push([t, spread()]);
+      fit();
       draw();
-      if (t > 60) { loop.stop(); go.textContent = "Run again"; }
+      if (t > cfg.T) { loop.stop(); go.textContent = "Run it again"; }
     });
-    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { if (t > 60) setup(); loop.start(); go.textContent = "Pause"; } };
+    go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { if (t > cfg.T) setup(); loop.start(); go.textContent = "Pause"; } };
     rs.onclick = function () { setup(); draw(); };
     nud.oninput = function () { setup(); draw(); };
-    root.appendChild(row([go, rs, label("nudge size", [nud])]));
+    sel.onchange = function () { setup(); draw(); };
+    root.appendChild(row([go, rs, sel]));
+    root.appendChild(row([label("how far apart they start", [nud]), label("speed", [sp]), ]));
     root.appendChild(el("div", { class: "row" }, [out]));
-    root.appendChild(note("Two copies of one start, differing in a single number. The lower panel is the gap between them on a log scale: flat, then a straight climb — that straight stretch is the exponent — then flat again at the top, where the gap has run out of room to grow."));
+    root.appendChild(bars);
+    root.appendChild(note("The white dots are the original and the small ones are the copies. Watch the tally: with a billionth of a difference at the start, the copies do not agree about which body ends up thrown out. Some of that disagreement is the arithmetic rather than the physics — which is the same point said twice, and the reason the numbers page exists."));
     setup(); draw(); onScreen(c, loop);
     if (!RM) { loop.start(); go.textContent = "Pause"; }
   }
@@ -782,45 +962,83 @@ pre.code i{color:#8fb7c9;font-style:normal}
 
   /* ---------------------------------------------------------------- 8  the closed ones */
   function eight(root) {
-    var c = canvas(root, 640, 380);
+    var c = canvas(root, 640, 420);
     var opts = ORB.map(function (o) { return [o.id, o.name + " · T = " + o.period.toFixed(3)]; });
     var sel = pick(opts.length ? opts : [["figure-eight", "figure eight"]], "figure-eight");
-    var go = btn("Pause"), tr = btn("Clear trails", "alt"), sp = range(1, 40, 26), out = readout("");
-    var s = null, m = [1, 1, 1], t = 0, trails = [[], [], []], cur = null, span = 3.4;
+    var go = btn("Pause"), tr = btn("Clear trails", "alt");
+    var nud = range(0, 10, 0), sp = range(1, 40, 22), out = readout(""), out2 = readout("");
+    var m = [1, 1, 1], s = null, t = 0, trails = [[], [], []], cur = null, span = 3.4, ref = [], off = null, offAt = 0;
+    function nudge() { return nud.value == 0 ? 0 : Math.pow(10, -7 + nud.value * 0.5); }
     function setup() {
-      cur = ORB.filter(function (o) { return o.id === sel.value; })[0] || { v: [0.3471169, 0.5327249], period: 6.325914, closes: 0, name: "figure eight" };
-      s = sdState(cur.v[0], cur.v[1]); t = 0; trails = [[], [], []];
-      var mx = 0;
-      var probe = clone(s);
-      for (var k = 0; k < 4000; k++) { step(probe, m, cur.period / 4000, 0); for (var i = 0; i < 3; i++) mx = Math.max(mx, Math.abs(probe[2 * i]), Math.abs(probe[2 * i + 1])); }
+      cur = ORB.filter(function (o) { return o.id === sel.value; })[0] ||
+            { v: [0.3471169, 0.5327249], period: 6.325914, closes: 0, name: "figure eight" };
+      s = sdState(cur.v[0], cur.v[1]);
+      var e = nudge();
+      if (e) s[6] += e;
+      t = 0; trails = [[], [], []]; off = null; offAt = 0;
+      /* the exact orbit, drawn once and left on the canvas as the track to wander off */
+      ref = [[], [], []];
+      var q = sdState(cur.v[0], cur.v[1]), mx = 0;
+      var N = 1400, h = cur.period / N;
+      for (var k = 0; k < N; k++) {
+        step(q, m, h, 0);
+        for (var i = 0; i < 3; i++) {
+          ref[i].push([q[2 * i], q[2 * i + 1]]);
+          mx = Math.max(mx, Math.abs(q[2 * i]), Math.abs(q[2 * i + 1]));
+        }
+      }
       span = Math.max(2.4, mx * 2.3);
-      out.textContent = cur.name + " · period " + cur.period.toFixed(6) + " · returns to its start within " +
+      out.textContent = cur.name + " · period " + cur.period.toFixed(6) + " · closes to " +
         (cur.closes ? cur.closes.toExponential(1) : "—");
+      out2.textContent = e ? "started " + e.toExponential(0) + " off the exact orbit" : "started exactly on it";
+    }
+    function fromTrack() {
+      /* how far the nearest point of the drawn orbit is from where body 1 now is */
+      var best = 1e9;
+      for (var k = 0; k < ref[0].length; k += 3) {
+        var dx = ref[0][k][0] - s[0], dy = ref[0][k][1] - s[1];
+        var d = dx * dx + dy * dy;
+        if (d < best) best = d;
+      }
+      return Math.sqrt(best);
     }
     function draw() {
       clear(c);
-      var V = view(c, span), g = c._g;
-      for (var i = 0; i < 3; i++) {
+      var V = view(c, span), g = c._g, i;
+      g.globalAlpha = 0.30; g.lineWidth = 1.2;
+      for (i = 0; i < 3; i++) {
         g.beginPath();
-        trails[i].forEach(function (p, j) { var X = V.x(p[0]), Y = V.y(p[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
-        g.strokeStyle = BODY[i]; g.lineWidth = 1.7; g.globalAlpha = .9; g.stroke(); g.globalAlpha = 1;
+        ref[i].forEach(function (p2, j) { var X = V.x(p2[0]), Y = V.y(p2[1]); if (j === 0) g.moveTo(X, Y); else g.lineTo(X, Y); });
+        g.strokeStyle = BODY[i]; g.stroke();
+      }
+      g.globalAlpha = 1;
+      for (i = 0; i < 3; i++) {
+        comet(c, V, trails[i], BODY[i], 2);
         dot(c, V, s[2 * i], s[2 * i + 1], 6, BODY[i]);
       }
       g.fillStyle = C.mute; g.font = "12px system-ui";
-      g.fillText("t = " + fmt(t, 2) + " of " + cur.period.toFixed(3), 12, 20);
+      g.fillText("t = " + fmt(t, 2) + "  ·  lap " + Math.floor(t / cur.period + 1), 12, 20);
+      var d = fromTrack();
+      if (off === null && d > 0.15) { off = d; offAt = t; }
+      out2.textContent = (nudge() ? "started " + nudge().toExponential(0) + " off · " : "started exactly on it · ") +
+        "now " + (d < 1e-4 ? d.toExponential(1) : fmt(d, 4)) + " from the drawn track" +
+        (off !== null ? " · left it after " + fmt(offAt / cur.period, 1) + " laps" : "");
     }
     var loop = rafLoop(function () {
-      var h = 0.0005 * sp.value;
-      for (var k = 0; k < 10; k++) { step(s, m, h / 10, 0); t += h / 10; }
-      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 2600) trails[i].shift(); }
+      var budget = 0.0012 * sp.value + 0.004;
+      advance(s, m, budget);
+      t += budget;
+      for (var i = 0; i < 3; i++) { trails[i].push([s[2 * i], s[2 * i + 1]]); if (trails[i].length > 2200) trails[i].shift(); }
       draw();
     });
     go.onclick = function () { if (loop.running) { loop.stop(); go.textContent = "Run"; } else { loop.start(); go.textContent = "Pause"; } };
     tr.onclick = function () { trails = [[], [], []]; draw(); };
     sel.onchange = function () { setup(); draw(); };
-    root.appendChild(row([go, tr, sel, label("speed", [sp])]));
+    nud.oninput = function () { setup(); draw(); };
+    root.appendChild(row([go, tr, sel]));
+    root.appendChild(row([label("nudge the start", [nud]), label("speed", [sp]), out2]));
     root.appendChild(el("div", { class: "row" }, [out]));
-    root.appendChild(note("Every start in this list was found on the machine that built the page: a grid of starting speeds, then a solver that walks each near-miss in until the orbit closes. The number it closes to is printed beside it."));
+    root.appendChild(note("The faint curve is the orbit as found; the bright bodies are what you are running. Leave the nudge at nothing and they stay on it for as long as you care to watch. Move it one notch — a millionth — and they hold the track for a few laps and then leave it, and where they go after that is nobody's to say."));
     setup(); draw(); onScreen(c, loop); if (!RM) loop.start(); else go.textContent = "Run";
   }
 

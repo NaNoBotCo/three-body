@@ -49,6 +49,11 @@ TH = load("theory.json")["chapters"]
 TL = load("timeline.json")["events"]
 GL = load("words.json")["terms"]
 ORB = load("orbits.json")
+GH = load("ghosts.json") if (DATA / "ghosts.json").exists() else None
+# a run whose energy walked away is not evidence of anything; the page leaves it out
+if GH and GH.get("energy_error_median", 1) > 1e-3:
+    print(f"ghosts.json ignored: energy error {GH['energy_error_median']:.1e}")
+    GH = None
 ORBITS = ORB["orbits"]
 ROSTER = fleet.load()
 
@@ -209,8 +214,8 @@ def home():
 <ol>
 <li><a href="math/pull/index.html">Everything pulls on everything</a> — the one law.</li>
 <li><a href="math/two/index.html">Two is easy</a> — the case with an answer.</li>
-<li><a href="math/three/index.html">Add one rock</a> — where the answer goes.</li>
-<li><a href="math/chaos/index.html">A hair's difference, and a different sky</a> — the reason it stays gone.</li>
+<li><a href="math/three/index.html">Add one rock</a> — where the answer goes, with the sandbox: three weights dropped from rest in 1913, sixty time units of near misses, and one of them thrown out at the end.</li>
+<li><a href="math/chaos/index.html">A hair's difference, and a different sky</a> — the reason it stays gone. Forty-eight copies of that same start, a billionth apart, ending differently.</li>
 <li><a href="math/myths/index.html">What it is not</a> — before the next headline.</li>
 </ol>
 <h2>Things on this site that were worked out here</h2>
@@ -254,11 +259,31 @@ def math_chapters():
         extra = ""
         if c["id"] == "count":
             extra = f'<div class="chart">{diagrams.ledger_svg()}<p class="cap">Eighteen numbers, ten of them held fixed by conservation, then the clock and the compass. Six left, and no way through them by bookkeeping.</p></div>'
-        if c["id"] == "chaos":
-            extra = (f'<div class="chart">{LYAP_SVG}<p class="cap">The gap between two runs of the same start, on a log scale, '
+        if c["id"] == "chaos" and GH:
+            tal = GH["tally"]
+            pct = [round(100 * n / GH["copies"]) for n in tal]
+            extra = (f'<div class="chart"><div class="tallyrow">'
+                     + "".join(f'<b>weight {mm}</b><span class="bar"><i style="--v:{n / GH["copies"]:.3f}"></i></span>'
+                               f'<span>{n} of {GH["copies"]} ({p}%)</span>'
+                               for mm, n, p in zip(GH["masses"], tal, pct))
+                     + (f'<b>still together</b><span class="bar"><i style="--v:{GH["none"] / GH["copies"]:.3f}"></i></span>'
+                        f'<span>{GH["none"]}</span>' if GH["none"] else "")
+                     + f'</div><p class="cap">Burrau\'s problem run <b>{GH["copies"]} times over</b>, each copy moved by '
+                     f'{GH["nudge"]:.0e} at the start — a billionth of the distance between the bodies — and stepped together with a step '
+                     f'taken from the closest pair. The bars are which body ended up thrown out. The copies do not agree. '
+                     f'The first ejection happened at t = {GH["escape_t_min"]:.0f} and the last at t = {GH["escape_t_max"]:.0f}; '
+                     f'the median energy error over the whole run was {GH["energy_error_median"]:.0e}. '
+                     f'Some of the disagreement is the arithmetic rather than the physics, which is the same point said twice — '
+                     f'see <a href="../numbers/index.html">So you step it</a>. Run by '
+                     f'<a href="{REPO}/blob/main/tools/ghost_tally.py">tools/ghost_tally.py</a>.</p></div>')
+            extra += (f'<div class="chart">{LYAP_SVG}<p class="cap">The gap between two runs of the same start, on a log scale, '
                      f'for four sizes of nudge — computed while this page was built. The straight climb is the exponential; its slope '
                      f'gives a Lyapunov time of about <b>{LYAP_TAU:.2f}</b> time units, so a starting error grows roughly '
                      f'a thousandfold every {2.302585 * LYAP_TAU:.1f}. The flattening at the top is the gap running out of room.</p></div>')
+        if c["id"] == "chaos" and not GH:
+            extra = (f'<div class="chart">{LYAP_SVG}<p class="cap">'
+                     f'The gap between two runs of the same start, on a log scale, for four sizes of nudge — computed while this page was built. '
+                     f'The straight climb is the exponential; its slope gives a Lyapunov time of about <b>{LYAP_TAU:.2f}</b> time units.</p></div>')
         if c["id"] == "shapes":
             extra = (f'<div class="chart">{QUINT_SVG}<p class="cap">Euler\'s quintic for the Sun and the Earth, drawn and then solved by '
                      f'bisection at build time: the root is r = {QUINT_ROOT:.6f} in units of the Earth\'s distance, which puts L1 '
@@ -362,7 +387,7 @@ def history():
 <h1>History</h1>
 <p class="lead">{N_EV} events, from the book that stated the problem to the telescope that lives on a saddle point. Each one gets a line first and the rest underneath.</p>
 <div class="chart">{diagrams.strip(TL)}<div class="legend">{legend}</div><p class="cap">Two hundred years of trying to solve it, then a century of proving which routes are closed, then the computers.</p></div>
-{band("band-fan.jpg", "1890", "He won the prize, and then he found his own mistake", "Poincaré's corrected memoir on the three-body problem is where chaos enters mathematics. The picture is two hundred and forty starts a millionth apart, which is the thing he saw without a screen.", depth=1)}
+{band("band-fan.jpg", "1890", "He won the prize, and then he found his own mistake", "Poincaré's corrected memoir on the three-body problem is where chaos enters mathematics. The picture behind this is " + (f"{GH['copies']} runs of Burrau's problem, each started {GH['nudge']:.0e} from the others" if GH else "one start, run many times over from almost the same place") + " — the thing he saw without a screen.", depth=1)}
 <ul class="tl nojs">{"".join(items)}</ul>
 <p><a class="btn" href="../math/index.html">The math →</a></p>
 """
@@ -395,7 +420,7 @@ def code_page():
 <b>tools/find_orbits.py</b><span>the scan over starting speeds and the Gauss-Newton solver that walks each near-miss in until it closes</span>
 <b>tools/draw.py</b><span>the photographs that are not photographs: every raster on the site is a trajectory laid down as light</span>
 <b>tools/svg.py</b><span>the diagrams, computed while the page is written, which is why the numbers in the captions match the pictures above them</span>
-<b>tools/anim.js</b><span>the demos, the same leapfrog in the browser</span>
+<b>tools/anim.js</b><span>the demos: the same steppers in the browser, including the fourth-order one and the step chosen from the closest pair</span>
 <b>tools/build.py</b><span>this page and the rest of them</span>
 </div>
 <p class="small mute">All of it is <a href="{REPO}">on GitHub</a>, MIT for the code and CC BY 4.0 for the words, pictures and data. It needs Python 3, numpy and pillow; the program above needs nothing at all.</p>

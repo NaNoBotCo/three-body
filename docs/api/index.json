@@ -2,7 +2,7 @@
  "site": "The Three-Body Problem",
  "url": "https://nanobotco.github.io/three-body/",
  "license": "https://creativecommons.org/licenses/by/4.0/",
- "built": "2026-09-22",
+ "built": "2026-09-23",
  "counts": {
   "chapters": 13,
   "equations": 34,
@@ -10,9 +10,9 @@
   "orbits": 9,
   "orbits_found_here": 9,
   "scan_starts": 40000,
-  "events": 27,
+  "events": 29,
   "terms": 38,
-  "sources": 45
+  "sources": 47
  },
  "computed": {
   "lyapunov_time": 3.5144,

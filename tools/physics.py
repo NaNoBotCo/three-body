@@ -10,6 +10,8 @@ them (tests/check_data.py), and the browser runs the same leapfrog in JavaScript
 """
 from __future__ import annotations
 
+import math
+
 import numpy as np
 
 G = 1.0
@@ -169,3 +171,101 @@ def returns(s0, period, dt=2e-4, g: float = G, m=(1.0, 1.0, 1.0)) -> float:
     n = max(int(round(period / dt)), 1)
     s1, _ = yoshida3(s0, period / n, n, g, m)
     return float(np.linalg.norm(s1 - s0))
+
+
+def yoshida3_adaptive(s, T, g: float = G, m=(1.0, 1.0, 1.0), eta=0.02, hmax=1e-2, hmin=1e-9, keep=0.01):
+    """One trajectory, with the step set by the closest pair at every turn.
+
+    A fixed step is what ruins a three-body calculation. When two bodies pass close, the
+    time they take to fall together goes as the separation to the three halves, and a step
+    that was fine a moment ago throws one of them across the sky — Burrau's Pythagorean
+    problem does exactly that, and at a fixed step it comes out with the energy wrong by a
+    factor of a thousand. Here the step is a small fraction of that free-fall time.
+
+    Returns the sampled track, the times, the final state and the energy error."""
+    s = np.array(s, float)
+    mass = np.array(m, float)
+    M = float(mass.sum())
+
+    def sep(st):
+        p = st[:6].reshape(3, 2)
+        return min(np.linalg.norm(p[i] - p[j]) for i, j in ((0, 1), (0, 2), (1, 2)))
+
+    def E(st):
+        return energy(st[:6].reshape(3, 2), st[6:].reshape(3, 2), mass, g)
+
+    e0 = E(s)
+    t = 0.0
+    nxt = 0.0
+    track, times = [s[:6].copy()], [0.0]
+    while t < T:
+        h = float(np.clip(eta * np.sqrt(max(sep(s), 1e-12) ** 3 / (g * M)), hmin, hmax))
+        h = min(h, T - t)
+        s, _ = yoshida3(s, h, 1, g, tuple(m))
+        t += h
+        if t >= nxt:
+            track.append(s[:6].copy())
+            times.append(t)
+            nxt += keep
+    return np.array(track), np.array(times), s, abs((E(s) - e0) / e0)
+
+
+def ghosts_adaptive(pos, vel, mass, T, eta=0.006, hmax=4e-3, hmin=1e-8, far=16.0, g: float = G):
+    """A batch of near-identical starts, stepped together with one shared step size.
+
+    The copies follow nearly the same path, so their close passes happen at nearly the
+    same moment and a step taken from the closest pair anywhere in the batch suits all of
+    them. Returns which body left each copy (-1 for none), when, and the energy error."""
+    pos = pos.astype(float).copy()
+    vel = vel.astype(float).copy()
+    k, n, _ = pos.shape
+    idx = np.arange(n)
+    M = float(mass.sum())
+    e0 = np.array([energy(pos[i], vel[i], mass, g) for i in range(k)])
+    gone = np.full(k, -1, int)
+    gone_t = np.full(k, np.nan)
+    t = 0.0
+    w1 = 1.0 / (2.0 - 2.0 ** (1.0 / 3.0))
+    w0 = -(2.0 ** (1.0 / 3.0)) * w1
+    while t < T:
+        d = pos[:, None, :, :] - pos[:, :, None, :]
+        r2 = (d ** 2).sum(-1)
+        r2[:, idx, idx] = np.inf
+        rmin = float(np.sqrt(r2.min()))
+        h = min(max(eta * math.sqrt(rmin ** 3 / (g * M)), hmin), hmax)
+        h = min(h, T - t)
+        for w in (w1, w0, w1):
+            hh = w * h
+            vel += 0.5 * hh * accel_batch(pos, mass, g)
+            pos += hh * vel
+            vel += 0.5 * hh * accel_batch(pos, mass, g)
+        t += h
+        far_now = np.linalg.norm(pos, axis=2)
+        for i in range(n):
+            hit = (gone < 0) & (far_now[:, i] > far)
+            gone[hit] = i
+            gone_t[hit] = t
+    e1 = np.array([energy(pos[i], vel[i], mass, g) for i in range(k)])
+    return gone, gone_t, np.abs((e1 - e0) / e0)
+
+
+def escaped(pos, vel, mass, g: float = G):
+    """Which body, if any, is no longer bound to the other two.
+
+    The test is the one the physics uses rather than a line drawn on the picture: take a
+    body against the pair it left, and ask whether its motion away from them beats the
+    pull holding it. A body can swing far out and come back; a body with positive energy
+    against the pair, moving away, does not come back."""
+    for i in range(3):
+        o = [j for j in range(3) if j != i]
+        mo = mass[o].sum()
+        com = (mass[o, None] * pos[o]).sum(0) / mo
+        vom = (mass[o, None] * vel[o]).sum(0) / mo
+        r = pos[i] - com
+        v = vel[i] - vom
+        d = float(np.linalg.norm(r))
+        mu = mass[i] * mo / (mass[i] + mo)
+        e = 0.5 * mu * float((v ** 2).sum()) - g * mass[i] * mo / d
+        if e > 0 and float((r * v).sum()) > 0 and d > 3 * float(np.linalg.norm(pos[o[0]] - pos[o[1]])):
+            return i, d, e
+    return -1, 0.0, 0.0

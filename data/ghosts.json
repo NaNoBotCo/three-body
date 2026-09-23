@@ -1,0 +1,26 @@
+{
+ "problem": "Burrau's Pythagorean problem: weights 3, 4, 5 at rest at the corners of a 3-4-5 triangle",
+ "copies": 12,
+ "nudge": 1e-09,
+ "T": 115.0,
+ "eta": 0.006,
+ "tally": [
+  7,
+  5,
+  0
+ ],
+ "none": 0,
+ "masses": [
+  3,
+  4,
+  5
+ ],
+ "escape_t_median": 62.20006924387764,
+ "escape_t_min": 61.75000803251139,
+ "escape_t_max": 63.400150519631275,
+ "energy_error_median": 1.2724577126528932e-06,
+ "energy_error_max": 0.0039932187923680485,
+ "ran": "2026-09-23",
+ "seconds": 570,
+ "note": "Every copy is the same problem; they differ only by the nudge, applied to the first body's position. They do not agree on which body ends up thrown out. Some of that disagreement is the arithmetic and not the physics, which is the same point twice."
+}

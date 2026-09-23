@@ -131,6 +131,16 @@
    "source_name": "Diacu, The solution of the n-body problem (1996)"
   },
   {
+   "year": 1913,
+   "era": "step",
+   "who": "Carl Burrau",
+   "title": "Three weights, dropped, and nobody could say what happens",
+   "plain": "Burrau sets a problem anyone can state: weights of 3, 4 and 5 at rest at the corners of a 3-4-5 triangle. He works it by hand as far as hand-work goes and it gets away from him.",
+   "more": "It became the standard test case for the whole subject, because it is easy to state, has no arrangement to it, and runs straight into the near-collisions that break a calculation. This site's sandbox opens on it.",
+   "source": "https://en.wikipedia.org/wiki/Pythagorean_three-body_problem",
+   "source_name": "Wikipedia, Pythagorean three-body problem"
+  },
+  {
    "year": 1954,
    "era": "proof",
    "who": "Kolmogorov, Arnold, Moser",
@@ -159,6 +169,16 @@
    "more": "Lidov was working on artificial satellites, Kozai on asteroids. The mechanism is now standard in accounts of hot Jupiters, of black-hole pairs driven to merge, and of triple stars that tear themselves apart.",
    "source": "https://en.wikipedia.org/wiki/Kozai_mechanism",
    "source_name": "Wikipedia, Kozai mechanism"
+  },
+  {
+   "year": 1967,
+   "era": "step",
+   "who": "Victor Szebehely, C. Frederick Peters",
+   "title": "Burrau's problem, finished by machine",
+   "plain": "With a computer and a change of variables that smooths out the close passes, Szebehely and Peters run Burrau's problem to its end: the lightest body is thrown out and the other two are left as a tight pair.",
+   "more": "Regularisation is what made it possible — without it the near-collisions swallow the accuracy and the answer that comes out is the stepper's. Run here at a fixed step, the same problem ejects the wrong body and gets the energy wrong by a factor of a thousand.",
+   "source": "https://ui.adsabs.harvard.edu/abs/1967AJ.....72..876S",
+   "source_name": "Szebehely & Peters, Astronomical Journal 72, 876 (1967)"
   },
   {
    "year": 1975,

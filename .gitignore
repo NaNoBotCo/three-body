@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 notes/*.log
 data/scan.npz
+data/ghosts.npz

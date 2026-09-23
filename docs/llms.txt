@@ -17,10 +17,10 @@
 - [What usually happens](https://nanobotco.github.io/three-body/math/odds/): Throw three bodies together and the usual ending is a fight two of them win: one gets thrown out, the other two are left closer than they started. You cannot predict which — but you can price it.
 - [What it is not](https://nanobotco.github.io/three-body/math/myths/): Five things the phrase 'the three-body problem' gets used for that it does not mean.
 - [Orbits](https://nanobotco.github.io/three-body/orbits/): 9 periodic orbits with initial conditions, periods and residuals; 9 found by a scan of 40,000 starts run on the building machine
-- [History](https://nanobotco.github.io/three-body/history/): 27 events, 1687 to 2022
+- [History](https://nanobotco.github.io/three-body/history/): 29 events, 1687 to 2022
 - [Code](https://nanobotco.github.io/three-body/code/): the whole thing in 30 lines of Python, no libraries
 - [Words](https://nanobotco.github.io/three-body/words/): 38 terms
-- [Sources](https://nanobotco.github.io/three-body/sources/): 45 sources
+- [Sources](https://nanobotco.github.io/three-body/sources/): 47 sources
 
 ## Computed on this site rather than quoted
 - Lyapunov time for the reference start: 3.514 time units
@@ -46,6 +46,7 @@ Made by Hongdam (https://hongdam.net/), a bilingual web studio in Chiang Rai.
 - [Black Holes, Drawn](https://nanobotco.github.io/black-holes/): black holes modelled and drawn from the equations — generators, the past, present and future, the legends
 - [Quantum Computing, plainly](https://nanobotco.github.io/quantum-computing/): the history and theory of quantum computing in plain words, with demos; refreshed weekly
 - [Goin' Fast](https://nanobotco.github.io/goin-fast/): a dirt-simple explainer about speed — twenty measured speeds from the ground under the house to light, and what each one costs
+- [Exceptional Magic](https://nanobotco.github.io/exceptional-magic/): the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper
 - [Amulet Atlas](https://nanobotco.github.io/amulet-atlas/): amulets, charms and talismans worldwide
 - [Carolina Barbecue](https://nanobotco.github.io/carolina-barbecue/): barbecue in North and South Carolina
 - [Wing Country](https://nanobotco.github.io/buffalo-wings/): the American chicken wing

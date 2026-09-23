@@ -172,6 +172,10 @@ footer a{color:var(--mute)}
 .eq .read{margin:.2rem 0 0;font-size:.98rem}
 .eq .read b{color:var(--gold)}
 .eq .why{margin:.35rem 0 0;font-size:.88rem;color:var(--mute)}
+.tallyrow{display:grid;grid-template-columns:auto 1fr auto;gap:.35rem .7rem;align-items:center;font-size:.9rem;margin:.4rem 0}
+.tallyrow .bar{height:.85rem;background:var(--line);border-radius:5px;overflow:hidden}
+.tallyrow .bar i{display:block;height:100%;background:var(--teal);transform-origin:left;transform:scaleX(var(--v,0))}
+.tallyrow b:nth-of-type(2)~.bar i{background:var(--gold)}
 .kvgrid{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;align-items:center;margin:.6rem 0;font-size:.9rem}
 .kvgrid b{color:var(--mute);font-weight:600}
 .sel{font:inherit;font-size:.9rem;padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);
