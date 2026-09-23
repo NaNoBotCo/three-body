@@ -76,7 +76,7 @@ def page(title, body, depth=0, desc="", canonical="", jsonld=None, wide=False, c
         slim = [{"id": o["id"], "name": o["name"], "v": o["v"], "period": o["period"], "closes": o["closes"]} for o in ORBITS]
         orbjs = f'<script>window.TB_ORBITS={json.dumps(slim)};</script><script>{JS}</script>'
     return f"""<!doctype html>
-<html lang="en">
+<html lang="en" translate="no" class="notranslate">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -95,6 +95,9 @@ def page(title, body, depth=0, desc="", canonical="", jsonld=None, wide=False, c
 <link rel="license" href="{LICENSE_URL}">
 <style>{CSS}</style>
 {ld}
+<meta name="google" content="notranslate">
+<meta name="robots" content="notranslate">
+<script>if(/[.]translate[.]goog$/.test(location.hostname))location.replace("https://"+location.hostname.slice(0,-15).replace(/--/g,"~").replace(/-/g,".").replace(/~/g,"-")+location.pathname+location.search.replace(/([?&])_x_tr_[^&]*/g,"$1").replace(/[?&]+$/,"").replace(/[?]&+/,"?")+location.hash)</script>
 </head>
 <body>
 <header class="top"><a class="brand" href="{r}index.html">Three <b>Body</b></a>
