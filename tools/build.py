@@ -106,7 +106,7 @@ def page(title, body, depth=0, desc="", canonical="", jsonld=None, wide=False, c
 <div class="bots">For the machines: <a href="{r}api/theory.json">theory.json</a> <a href="{r}api/orbits.json">orbits.json</a> <a href="{r}api/timeline.json">timeline.json</a> <a href="{r}api/words.json">words.json</a> <a href="{r}llms-full.txt">llms-full.txt</a> <a href="{r}sitemap.xml">sitemap.xml</a></div>
 <p>Text, data and pictures <a href="{LICENSE_URL}">CC BY 4.0</a>; code <a href="{REPO}/blob/main/LICENSE">MIT</a>. The pictures and diagrams are computed from the equations in <a href="{REPO}/blob/main/tools/physics.py">tools/physics.py</a> when the page is built. Sources sit beside the facts they support and are listed at <a href="{r}sources/index.html">Sources</a>. Built {TODAY}.</p>
 {fleet.row_html(SELF_ID, roster=ROSTER)}
-{fleet.support_html(roster=ROSTER)}
+{fleet.support_html(self_id="three-body", roster=ROSTER)}
 {fleet.maker_html(roster=ROSTER)}
 </footer>
 {orbjs}
