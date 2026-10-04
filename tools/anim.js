@@ -622,7 +622,7 @@
     }
     mu.oninput = draw; cj.oninput = draw;
     root.appendChild(row([label("mass ratio", [mu]), label("Jacobi constant", [cj]), out]));
-    root.appendChild(note("Bring the constant down and watch the neck open at L1, then the back door at L2. Every low-energy transfer ever flown goes through those gates, and the picture is computed per pixel from 2Ω − C."));
+    root.appendChild(note("As the constant comes down, the neck opens at L1, then the back door at L2. Every low-energy transfer ever flown goes through those gates, and the picture is computed per pixel from 2Ω − C."));
     draw();
   }
 
