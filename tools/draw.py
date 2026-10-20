@@ -319,6 +319,66 @@ def card(title="The Three-Body Problem", sub="the math, in plain words, with the
     print("  card.jpg  1200×630")
 
 
+def _wrap(d, text, size, max_w, max_lines):
+    """Shrink until the text fits max_lines with every word whole; return (font, lines)."""
+    while size > 30:
+        f = font(size)
+        lines, cur = [], ""
+        for w in text.split():
+            t = (cur + " " + w).strip()
+            if d.textlength(t, font=f) <= max_w:
+                cur = t
+            else:
+                if cur:
+                    lines.append(cur)
+                cur = w
+        if cur:
+            lines.append(cur)
+        if len(lines) <= max_lines and all(d.textlength(l, font=f) <= max_w for l in lines):
+            return f, lines
+        size -= 4
+    return font(30), [text]
+
+
+def page_card(out, base, title, sub="", kicker="", address="", w=1200, h=630):
+    """A share card for one page: a picture from img/ (base), a scrim, the page's own title and one line under it."""
+    im = Image.open(OUT / base).convert("RGB")
+    r = max(w / im.width, h / im.height)
+    im = im.resize((max(w, round(im.width * r)), max(h, round(im.height * r))), Image.LANCZOS)
+    left, top = (im.width - w) // 2, (im.height - h) // 2
+    im = im.crop((left, top, left + w, top + h)).convert("RGBA")
+    scrim = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    sd = ImageDraw.Draw(scrim)
+    for i in range(h // 5, h):
+        sd.line([(0, i), (w, i)], fill=(4, 7, 18, int(225 * ((i - h / 5) / (h * 0.8)) ** 1.25)))
+    im = Image.alpha_composite(im, scrim)
+    d = ImageDraw.Draw(im)
+    ft, tl = _wrap(d, title.upper(), 112, w - 130, 2)
+    fs, sl = _wrap(d, sub, 38, w - 130, 2) if sub else (font(30), [])
+    f_addr = font(27)
+    if address:
+        d.text((w - 60 - d.textlength(address, font=f_addr), h - 62), address, font=f_addr, fill=(150, 205, 200))
+    lh_t, lh_s = int(ft.size * 1.05), 48
+    y_sub = h - 112 - len(sl) * lh_s
+    y_title = y_sub - 14 - len(tl) * lh_t
+    for i, line in enumerate(sl):
+        d.text((62, y_sub + i * lh_s), line, font=fs, fill=(220, 230, 235))
+    for i, line in enumerate(tl):
+        d.text((60, y_title + i * lh_t), line, font=ft, fill=(255, 250, 240))
+    if kicker:
+        d.text((62, y_title - 46), kicker.upper(), font=font(30), fill=(150, 205, 200))
+    out = Path(out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    im.convert("RGB").save(out, quality=86, optimize=True)
+
+
+def page_cards(cards, folder, kicker="", host=""):
+    """cards: [(slug, title, sub, base, path)] -> folder/<slug>.jpg, with host/path at the foot."""
+    for slug, title, sub, base, path in cards:
+        page_card(Path(folder) / f"{slug}.jpg", base, title, sub, kicker=kicker, address=f"{host}/{path}".rstrip("/"))
+    print(f"  {len(cards)} page cards")
+
+
 PICTURES = {
     "hero": lambda: save(hero(), "hero.jpg"),
     "eight": lambda: save(eight(), "band-eight.jpg"),
