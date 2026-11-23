@@ -96,9 +96,9 @@
    "body": [
     "Three bodies. Each one feels the pull of the other two, added as arrows. That is the entire physics, and here it is, written out.",
     "Nothing is missing from that line. No approximation, no fudge, no term dropped for being small. If you know where the three are and how fast each is going, the line tells you what happens next, to as many decimal places as you care to carry.",
-    "Count what you have to keep track of. Three bodies, three coordinates each, is nine numbers for position and nine for velocity: **eighteen numbers**, and the line above says how each of the eighteen changes. In a flat plane it is twelve. That is a small bookkeeping job.",
+    "Here is what there is to keep track of. Three bodies, three coordinates each, is nine numbers for position and nine for velocity: **eighteen numbers**, and the line above says how each of the eighteen changes. In a flat plane it is twelve. That is a small bookkeeping job.",
     "And yet. There is no formula that takes the eighteen numbers and the time and hands back where everything is. Not a hard one, not a long one — there is none, and the next two chapters are about how that got proved rather than assumed.",
-    "Newton knew. Book I of the *Principia*, Proposition 66, is him going at the Sun–Earth–Moon case by hand, with twenty-two corollaries and no clean answer. Three and a half centuries later the plain statement has not changed much: you can say what the rules are, and to find out what they do you have to watch."
+    "Newton knew. Book I of the *Principia*, Proposition 66, is him going at the Sun–Earth–Moon case by hand, with twenty-two corollaries and no clean answer. Three and a half centuries later the plain statement has not changed much: the rules can be written down, and what they do can only be found by watching."
    ],
    "eqs": [
     {
@@ -298,7 +298,7 @@
    "line": "Three bodies can keep the same shape while they spin, and there are exactly two shapes that allow it: a straight line and an equilateral triangle. Euler found the first in 1767, Lagrange the second in 1772.",
    "body": [
     "Forget the general case for a minute and ask a smaller question. Can three bodies move so that the triangle they make never changes shape — only turns and scales? That is a shape you could write down.",
-    "**Euler, 1767.** Put all three on a line, spinning about the balance point like a baton. It works, but only at one spacing, and finding it means solving a fifth-degree equation. There is no formula for a general fifth-degree equation — that is Abel's theorem, a different piece of mathematics arriving in the same century — so even this tidy case ends in a number you have to hunt for rather than write. It has exactly one answer for any three weights you choose.",
+    "**Euler, 1767.** Put all three on a line, spinning about the balance point like a baton. It works, but only at one spacing, and finding it means solving a fifth-degree equation. There is no formula for a general fifth-degree equation — that is Abel's theorem, a different piece of mathematics arriving in the same century — so even this tidy case ends in a number found by hunting rather than by formula. It has exactly one answer for any three weights you choose.",
     "**Lagrange, 1772.** Put the three at the corners of an equilateral triangle and spin. This one works for **any** three weights, with no equation to solve: the triangle holds, each body running an ellipse of its own around the balance point. A heavy body and a light one at two corners is the Trojan asteroid case from the last chapter.",
     "Those two are the only ones. For three bodies there are five such arrangements in total — three collinear ones, depending on which body sits in the middle, and the two mirror-image triangles — and that is the complete list. Nobody has proved the equivalent for every number of bodies; whether the count is always finite is Smale's sixth problem, still open.",
     "This is worth sitting with. The general three-body problem has no formula, and yet within it sit these exact, eternal, writable solutions. A problem being unsolvable in general does not mean it is dark everywhere."
@@ -431,7 +431,7 @@
      "https://doi.org/10.1007/BF00048987"
     ]
    ],
-   "try": "Ask yourself what 'solved' should mean. A formula nobody can evaluate, or a stepping method that gives you twelve digits by lunchtime and tells you when to stop trusting it? Mathematicians and engineers answer that differently, and both are right about their own question."
+   "try": "What should 'solved' mean? A formula nobody can evaluate, or a stepping method that gives you twelve digits by lunchtime and tells you when to stop trusting it? Mathematicians and engineers answer that differently, and both are right about their own question."
   },
   {
    "id": "blowup",
@@ -484,7 +484,7 @@
    "line": "Nobody solves the three-body problem. Everybody steps it: work out the pulls, move everything a little, do it again. The skill is in knowing when your own arithmetic has started lying.",
    "body": [
     "Here is the whole method, and it is old enough that Euler used it by hand. Where is everything? What is the pull on each? Move each one a little way at its current speed, change each speed a little by its current pull. Repeat a million times.",
-    "Done the obvious way — move, then change speed, with the same step — it is called **Euler's method** and it leaks. Energy climbs, orbits spiral outward, and nothing warns you. The fix is almost free: change the speed by half a step, move a whole step, change the speed by the other half. That is **leapfrog**, also called Verlet, and it belongs to a family called **symplectic** methods whose defining virtue is that they do not leak. The energy wobbles up and down with each orbit and comes back. Over a million orbits it is still wobbling around the same value.",
+    "Done the obvious way — move, then change speed, with the same step — it is called **Euler's method** and it leaks. Energy climbs, orbits spiral outward, and nothing in the output flags it. The fix is almost free: change the speed by half a step, move a whole step, change the speed by the other half. That is **leapfrog**, also called Verlet, and it belongs to a family called **symplectic** methods whose defining virtue is that they do not leak. The energy wobbles up and down with each orbit and comes back. Over a million orbits it is still wobbling around the same value.",
     "That wobble is the audit. Total energy is a quantity that cannot change, so watching what your computer does to it tells you what your computer is doing to everything else. Every demo on this site prints it, and the demo on this page runs both methods side by side so the leak is visible.",
     "Close passes are where stepping fails. When two bodies nearly touch, the pull goes up like the square of the closing distance and a step that was fine a second ago now throws a body across the screen. Two ways out. **Softening** — add a small constant under the square root, which rounds off the bottom of the well and is a lie you have chosen knowingly. Or **regularisation** — change variables so a collision stretches out into something smooth, which Levi-Civita did in 1903 and which is what serious codes use.",
     "Burrau's problem from the chaos chapter is the worked example of all of this. At a fixed step it comes out with the energy wrong by a factor of about a thousand and **the wrong body thrown out**. Give it a step taken from the closest pair and the energy error drops to about a millionth and the lightest body leaves, which is the answer Szebehely and Peters got in 1967 with a change of variables. Same equations, same start, three different endings depending only on how the arithmetic was done.",
@@ -495,7 +495,7 @@
     {
      "html": "Euler:&nbsp; <b>v</b> ← <b>v</b> + <b>a</b> <i>h</i>,&nbsp; <b>r</b> ← <b>r</b> + <b>v</b> <i>h</i>",
      "read": "Change the speed by the pull times the step, then move at the new speed. One line, and it leaks energy.",
-     "note": "Error per step proportional to h². The leak is systematic, not random, which is what makes it dangerous: the orbit drifts one way forever."
+     "note": "Error per step proportional to h². The leak is systematic, not random: the orbit drifts one way forever."
     },
     {
      "html": "Leapfrog:&nbsp; <b>v</b> ← <b>v</b> + <b>a</b> <span class=\"frac\"><span><i>h</i></span><span>2</span></span>,&nbsp; <b>r</b> ← <b>r</b> + <b>v</b><i>h</i>,&nbsp; <b>a</b> ← <b>a</b>(<b>r</b>),&nbsp; <b>v</b> ← <b>v</b> + <b>a</b> <span class=\"frac\"><span><i>h</i></span><span>2</span></span>",
